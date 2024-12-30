@@ -3,28 +3,29 @@
 * .NET Library to access TeamCity via their REST API.
 
 Current Stable Version:
-[![NuGet version (TeamCitySharp-forked-mavezeau)](https://img.shields.io/nuget/v/TeamCitySharp-forked-mavezeau.svg?style=flat-square)](https://www.nuget.org/packages/TeamCitySharp-forked-mavezeau/)
+[![NuGet version (Octopus.TeamCitySharp)](https://img.shields.io/nuget/v/Octopus.TeamCitySharp.svg?style=flat-square)](https://www.nuget.org/packages/Octopus.TeamCitySharp/)
 
 Latest Version:
-[![NuGet version (TeamCitySharp-forked-mavezeau)](https://img.shields.io/nuget/vpre/TeamCitySharp-forked-mavezeau.svg?style=flat-square)](https://www.nuget.org/packages/TeamCitySharp-forked-mavezeau/)
+[![NuGet version (Octopus.TeamCitySharp)](https://img.shields.io/nuget/vpre/Octopus.TeamCitySharp.svg?style=flat-square)](https://www.nuget.org/packages/Octopus.TeamCitySharp/)
 
 For more information on TeamCity visit:
 http://www.jetbrains.com/teamcity
 
 ## Releases
 
-Please find the release notes [here](https://github.com/mavezeau/TeamCitySharp/releases)
+Please find the release notes [here](https://github.com/Octopus.TeamCitySharp/releases)
 
 ## License
 
-http://stack72.mit-license.org/
+MIT
+
+This is a forked version of [mavezeau/TeamCitySharp](https://github.com/mavezeau/TeamCitySharp) (released under MIT), which was forked from [stack72/TeamCitySharp](https://github.com/stack72/TeamCitySharp) (released under MIT).
 
 ## Installation
 
-There are 2 ways to use TeamCitySharp:
-
-* install-package TeamCitySharp-forked-mavezeau (via Nuget)
-* Download source and compile
+```powershell
+install-package Octopus.TeamCitySharp
+```
 
 ## Build Monitor
 
@@ -294,19 +295,3 @@ Each area has its own list of methods available
     Statistics GetFields(string fields);
     Properties GetByBuildId(string buildId);
 
-## Credits
-
-Copyright (c) 2013 Paul Stack (@stack72)
-
-Thanks to the following contributors:
-
-* Barry Mooring (@codingbadger)
-* Simon Bartlett (@sibartlett)
-* Mike Larah (@MikeLarah)
-* Alexander Fast (@mizipzor)
-* Serge Baltic
-* Philipp Dolder
-* Mark deVilliers
-* Marc-Andre Vezeau (@exfo)
-* Bassem Mawassi (@exfo)
-* Tusman Akhter (@exfo)

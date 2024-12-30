@@ -23,12 +23,12 @@ namespace TeamCitySharp.IntegrationTests
 
     public when_interacting_to_get_change_information()
     {
-      m_server = ConfigurationManager.AppSettings["Server"];
-      bool.TryParse(ConfigurationManager.AppSettings["UseSsl"], out m_useSsl);
-      m_username = ConfigurationManager.AppSettings["Username"];
-      m_password = ConfigurationManager.AppSettings["Password"];
-      m_goodBuildConfigId = ConfigurationManager.AppSettings["GoodBuildConfigId"];
-      m_goodProjectId = ConfigurationManager.AppSettings["GoodProjectId"];
+      m_server = Configuration.GetAppSetting("Server");
+      bool.TryParse(Configuration.GetAppSetting("UseSsl"), out m_useSsl);
+      m_username = Configuration.GetAppSetting("Username");
+      m_password = Configuration.GetAppSetting("Password");
+      m_goodBuildConfigId = Configuration.GetAppSetting("GoodBuildConfigId");
+      m_goodProjectId = Configuration.GetAppSetting("GoodProjectId");
     }
     [SetUp]
     public void SetUp()

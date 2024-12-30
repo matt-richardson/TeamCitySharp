@@ -20,10 +20,10 @@ namespace TeamCitySharp.IntegrationTests
 
     public when_interacting_to_get_agent_details()
     {
-      m_server = ConfigurationManager.AppSettings["Server"];
-      bool.TryParse(ConfigurationManager.AppSettings["UseSsl"], out m_useSsl);
-      m_username = ConfigurationManager.AppSettings["Username"];
-      m_password = ConfigurationManager.AppSettings["Password"];
+      m_server = Configuration.GetAppSetting("Server");
+      bool.TryParse(Configuration.GetAppSetting("UseSsl"), out m_useSsl);
+      m_username = Configuration.GetAppSetting("Username");
+      m_password = Configuration.GetAppSetting("Password");
     }
     [SetUp]
     public void SetUp()

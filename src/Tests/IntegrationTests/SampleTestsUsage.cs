@@ -26,13 +26,13 @@ namespace TeamCitySharp.IntegrationTests
 
     public when_interacting_to_get_test()
     {
-      m_server = ConfigurationManager.AppSettings["Server"];
-      bool.TryParse(ConfigurationManager.AppSettings["UseSsl"], out m_useSsl);
-      m_username = ConfigurationManager.AppSettings["Username"];
-      m_password = ConfigurationManager.AppSettings["Password"];
-      int.TryParse(ConfigurationManager.AppSettings["GoodBuildId"], out m_goodBuildId);
-      m_goodProjectId = ConfigurationManager.AppSettings["GoodProjectId"];
-      m_goodTestId = ConfigurationManager.AppSettings["GoodTestId"];
+      m_server = Configuration.GetAppSetting("Server");
+      bool.TryParse(Configuration.GetAppSetting("UseSsl"), out m_useSsl);
+      m_username = Configuration.GetAppSetting("Username");
+      m_password = Configuration.GetAppSetting("Password");
+      int.TryParse(Configuration.GetAppSetting("GoodBuildId"), out m_goodBuildId);
+      m_goodProjectId = Configuration.GetAppSetting("GoodProjectId");
+      m_goodTestId = Configuration.GetAppSetting("GoodTestId");
     }
 
     [SetUp]

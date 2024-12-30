@@ -20,12 +20,12 @@ namespace TeamCitySharp.IntegrationTests
 
     public test_build_artifact_download()
     {
-      m_server = ConfigurationManager.AppSettings["Server"];
-      bool.TryParse(ConfigurationManager.AppSettings["UseSsl"], out m_useSsl);
-      m_username = ConfigurationManager.AppSettings["Username"];
-      m_password = ConfigurationManager.AppSettings["Password"];
-      m_token = ConfigurationManager.AppSettings["Token"];
-      m_goodBuildConfigId = ConfigurationManager.AppSettings["GoodBuildConfigId"];
+      m_server = Configuration.GetAppSetting("Server");
+      bool.TryParse(Configuration.GetAppSetting("UseSsl"), out m_useSsl);
+      m_username = Configuration.GetAppSetting("Username");
+      m_password = Configuration.GetAppSetting("Password");
+      m_token = Configuration.GetAppSetting("Token");
+      m_goodBuildConfigId = Configuration.GetAppSetting("GoodBuildConfigId");
     }
 
     [SetUp]

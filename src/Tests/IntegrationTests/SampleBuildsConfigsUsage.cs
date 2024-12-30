@@ -33,14 +33,14 @@ namespace TeamCitySharp.IntegrationTests
 
     public when_interations_to_get_build_configuration_details()
     {
-      m_server = ConfigurationManager.AppSettings["Server"];
-      bool.TryParse(ConfigurationManager.AppSettings["UseSsl"], out m_useSsl);
-      m_username = ConfigurationManager.AppSettings["Username"];
-      m_password = ConfigurationManager.AppSettings["Password"];
-      m_token = ConfigurationManager.AppSettings["Password"];
-      m_goodBuildConfigId = ConfigurationManager.AppSettings["GoodBuildConfigId"];
-      m_goodProjectId = ConfigurationManager.AppSettings["GoodProjectId"];
-      m_goodTemplateId = ConfigurationManager.AppSettings["GoodTemplateId"];
+      m_server = Configuration.GetAppSetting("Server");
+      bool.TryParse(Configuration.GetAppSetting("UseSsl"), out m_useSsl);
+      m_username = Configuration.GetAppSetting("Username");
+      m_password = Configuration.GetAppSetting("Password");
+      m_token = Configuration.GetAppSetting("Password");
+      m_goodBuildConfigId = Configuration.GetAppSetting("GoodBuildConfigId");
+      m_goodProjectId = Configuration.GetAppSetting("GoodProjectId");
+      m_goodTemplateId = Configuration.GetAppSetting("GoodTemplateId");
     }
 
     [SetUp]

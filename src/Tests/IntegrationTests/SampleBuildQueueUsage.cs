@@ -48,7 +48,7 @@ namespace TeamCitySharp.IntegrationTests
     {
       var result = m_client.BuildQueue.ByBuildTypeLocator(BuildTypeLocator.WithId(m_queuedBuildConfigId));
 
-      Assert.IsNotEmpty(result);
+      Assert.That(result, Is.Not.Empty);
     }
 
     [Test]
@@ -56,7 +56,7 @@ namespace TeamCitySharp.IntegrationTests
     {
       var result = m_client.BuildQueue.ByProjectLocater(ProjectLocator.WithId(m_queuedProjectId));
 
-      Assert.IsNotEmpty(result);
+      Assert.That(result, Is.Not.Empty);
     }
 
     [Test]
@@ -68,7 +68,7 @@ namespace TeamCitySharp.IntegrationTests
       BuildsField buildsField = BuildsField.WithFields(buildField: buildField);
       var result = m_client.BuildQueue.GetFields(buildsField.ToString()).All();
 
-      Assert.IsNotEmpty(result);
+      Assert.That(result, Is.Not.Empty);
     }
   }
 }

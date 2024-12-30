@@ -128,10 +128,6 @@ namespace TeamCitySharp.IntegrationTests
       {
         Assert.That(e.ResponseStatusCode == HttpStatusCode.Forbidden);
       }
-      catch (Exception e)
-      {
-        Assert.Fail($"GetProjectFeatures for {projectId} faced an unexpected exception", e);
-      }
     }
 
     [Test, Ignore("Current user doesn't have access to project features in tested instance.")]
@@ -199,10 +195,6 @@ namespace TeamCitySharp.IntegrationTests
         Assert.That(e.ResponseStatusCode == HttpStatusCode.Forbidden,
           "Creating a project feature should fail with unauthorized http exception.");
       }
-      catch (Exception e)
-      {
-        Assert.Fail("Create project feature raised an expected exception", e);
-      }
     }
 
     [Test, Ignore("User involved in test doesn't have permission.")]
@@ -247,10 +239,6 @@ namespace TeamCitySharp.IntegrationTests
         Console.WriteLine(e);
         Assert.That(e.ResponseStatusCode == HttpStatusCode.Forbidden);
       }
-      catch (Exception e)
-      {
-        Assert.Fail("GetFields faced an unexpected exception", e);
-      }
     }
 
     [Test]
@@ -258,7 +246,7 @@ namespace TeamCitySharp.IntegrationTests
     {
       string projectId = m_goodProjectId;
       var tempBuild = m_client.Projects.GetBranchesByBuildProjectId(projectId);
-      Assert.IsTrue(tempBuild.Count > 0);
+      Assert.That(tempBuild.Count > 0, Is.True);
     }
 
     [Test]
@@ -267,7 +255,7 @@ namespace TeamCitySharp.IntegrationTests
       string projectId = m_goodProjectId;
       var tempBuild = m_client.Projects.GetBranchesByBuildProjectId(projectId,
         BranchLocator.WithDimensions(BranchPolicy.ALL_BRANCHES));
-      Assert.IsTrue(tempBuild.Count == 6);
+      Assert.That(tempBuild.Count == 6, Is.True);
     }
 
     [Test]
@@ -279,7 +267,7 @@ namespace TeamCitySharp.IntegrationTests
       var tempBuild = m_client.Projects.GetFields(branchesField.ToString())
         .GetBranchesByBuildProjectId(projectId, BranchLocator.WithDimensions(BranchPolicy.ALL_BRANCHES));
       var checkIfFieldWork = tempBuild.Branch.Single(x => x.Default);
-      Assert.IsTrue(checkIfFieldWork.Active == false);
+      Assert.That(checkIfFieldWork.Active, Is.False);
 
     }
 
@@ -292,7 +280,7 @@ namespace TeamCitySharp.IntegrationTests
       var tempBuild = m_client.Projects.GetFields(branchesField.ToString())
         .GetBranchesByBuildProjectId(projectId, BranchLocator.WithDimensions(BranchPolicy.ALL_BRANCHES));
       var checkIfFieldWork = tempBuild.Branch.Single(x => x.Default);
-      Assert.IsTrue(checkIfFieldWork.Active);
+      Assert.That(checkIfFieldWork.Active, Is.True);
     }
 
   }

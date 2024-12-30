@@ -52,42 +52,42 @@ namespace TeamCitySharp.IntegrationTests
     public void it_returns_tests_for_all_running_builds()
     {
       var result = m_client.Tests.ByBuildLocator(BuildLocator.WithId(m_goodBuildId));
-      Assert.IsNotEmpty(result.TestOccurrence);
+      Assert.That(result.TestOccurrence, Is.Not.Empty);
     }
 
     [Test]
     public void it_returns_currently_failling_tests_for_project()
     {
       var result = m_client.Tests.ByProjectLocator(ProjectLocator.WithId(m_goodProjectId));
-      Assert.IsNotEmpty(result.TestOccurrence);
+      Assert.That(result.TestOccurrence, Is.Not.Empty);
     }
 
     [Test]
     public void it_returns_test_occurrences_for_test()
     {
       var result = m_client.Tests.ByTestLocator(TestLocator.WithId(m_goodTestId));
-      Assert.IsNotEmpty(result.TestOccurrence);
+      Assert.That(result.TestOccurrence, Is.Not.Empty);
     }
 
     [Test]
     public void it_returns_all_tests_for_all_running_builds()
     {
       var result = m_client.Tests.All(BuildLocator.WithId(m_goodBuildId));
-      Assert.IsNotEmpty(result);
+      Assert.That(result, Is.Not.Empty);
     }
 
     [Test]
     public void it_returns_all_currently_failling_tests_for_project()
     {
       var result = m_client.Tests.All(ProjectLocator.WithId(m_goodProjectId));
-      Assert.IsNotEmpty(result);
+      Assert.That(result, Is.Not.Empty);
     }
 
     [Test]
     public void it_returns_all_test_occurrences_for_test()
     {
       var result = m_client.Tests.All(TestLocator.WithId(m_goodTestId));
-      Assert.IsNotEmpty(result);
+      Assert.That(result, Is.Not.Empty);
     }
   }
 }

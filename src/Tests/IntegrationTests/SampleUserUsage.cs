@@ -69,10 +69,6 @@ namespace TeamCitySharp.IntegrationTests
             {
                 Assert.That(e.ResponseStatusCode == HttpStatusCode.Forbidden);
             }
-            catch (Exception e)
-            {
-                Assert.Fail("Access all users by unauthorized user raised an unexpected exception", e);
-            }
         }
 
 

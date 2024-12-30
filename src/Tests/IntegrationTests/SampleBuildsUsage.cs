@@ -106,14 +106,7 @@ namespace TeamCitySharp.IntegrationTests
     [Test]
     public void it_doesnt_throw_exceptions_when_searching_last_error_build_by_config_id()
     {
-      try
-      {
-        m_client.Builds.LastErrorBuildByBuildConfigId(m_goodBuildConfigId);
-      }
-      catch (Exception e)
-      {
-        Assert.Fail($"Accessing last error build for config {m_goodBuildConfigId} raised an exception", e);
-      }
+      m_client.Builds.LastErrorBuildByBuildConfigId(m_goodBuildConfigId);
     }
 
     [Test]
@@ -141,7 +134,7 @@ namespace TeamCitySharp.IntegrationTests
       const string tag = "Release";
       var builds = m_client.Builds.ByConfigIdAndTag(buildConfigId, tag);
 
-      Assert.IsNotNull(builds, "No builds were found for this build id and Tag");
+      Assert.That(builds, Is.Not.Null, "No builds were found for this build id and Tag");
     }
 
     [Test]
@@ -150,7 +143,7 @@ namespace TeamCitySharp.IntegrationTests
       string userName = m_username;
       var builds = m_client.Builds.ByUserName(userName);
 
-      Assert.IsNotNull(builds, "No builds for this user have been found");
+      Assert.That(builds, Is.Not.Null, "No builds for this user have been found");
     }
 
     [Test]
@@ -159,7 +152,7 @@ namespace TeamCitySharp.IntegrationTests
       string userName = m_username;
       var builds = m_client.Builds.NonSuccessfulBuildsForUser(userName);
 
-      Assert.IsNotNull(builds, "No non successful builds found for this user");
+      Assert.That(builds, Is.Not.Null, "No non successful builds found for this user");
     }
 
     [Test]
@@ -168,7 +161,7 @@ namespace TeamCitySharp.IntegrationTests
       string userName = m_username;
       var builds = m_client.Builds.NonSuccessfulBuildsForUser(userName);
 
-      Assert.IsNotNull(builds, "No non successful builds found for this user");
+      Assert.That(builds, Is.Not.Null, "No non successful builds found for this user");
     }
 
     [Test]
@@ -176,7 +169,7 @@ namespace TeamCitySharp.IntegrationTests
     {
       var builds = m_client.Builds.ByBuildLocator(BuildLocator.RunningBuilds());
 
-      Assert.IsNotNull(builds, "There are currently no running builds");
+      Assert.That(builds, Is.Not.Null, "There are currently no running builds");
     }
 
     [Test]
@@ -184,7 +177,7 @@ namespace TeamCitySharp.IntegrationTests
     {
       var builds = m_client.Builds.AllBuildsOfStatusSinceDate(DateTime.Now.AddDays(-2), BuildStatus.FAILURE);
 
-      Assert.IsNotNull(builds);
+      Assert.That(builds, Is.Not.Null);
     }
 
     [Test]
@@ -198,7 +191,7 @@ namespace TeamCitySharp.IntegrationTests
         client.Builds.ByBuildLocator(BuildLocator.WithDimensions(BuildTypeLocator.WithId(buildConfigId),
           maxResults: 1));
       Assert.That(build.Count == 1);
-      Assert.IsNull(build[0].StatusText);
+      Assert.That(build[0].StatusText, Is.Null);
     }
 
     [Test]
@@ -212,10 +205,6 @@ namespace TeamCitySharp.IntegrationTests
       catch (HttpException e)
       {
         Assert.That(e.ResponseStatusCode == HttpStatusCode.NotFound, "Expects a 404 exception.");
-      }
-      catch (Exception e)
-      {
-        Assert.Fail($"Fetching a build by id for {buildId} raised an unexpected exception", e);
       }
     }
 
@@ -233,7 +222,7 @@ namespace TeamCitySharp.IntegrationTests
         Console.WriteLine($"Build: {build}");
       }
 
-      Assert.That(builds != null);
+      Assert.That(builds, Is.Not.Null);
       Assert.That(builds.Count == 10);
     }
 
@@ -280,12 +269,12 @@ namespace TeamCitySharp.IntegrationTests
       var tempBuild = m_client.Builds.LastBuildByBuildConfigId(tempBuildConfig.Id);
       var build = m_client.Builds.ById(tempBuild.Id);
 
-      Assert.IsNotNull(build.Artifacts, "No Artifacts ");
-      Assert.IsNotNull(build.Artifacts.Href, "No Artifacts href");
-      Assert.IsNotNull(build.RelatedIssues, "No RelatedIssues ");
-      Assert.IsNotNull(build.RelatedIssues.Href, "No RelatedIssues href");
-      Assert.IsNotNull(build.Statistics, "No Statistics ");
-      Assert.IsNotNull(build.Statistics.Href, "No Statistics href");
+      Assert.That(build.Artifacts, Is.Not.Null, "No Artifacts ");
+      Assert.That(build.Artifacts.Href, Is.Not.Null, "No Artifacts href");
+      Assert.That(build.RelatedIssues, Is.Not.Null, "No RelatedIssues ");
+      Assert.That(build.RelatedIssues.Href, Is.Not.Null, "No RelatedIssues href");
+      Assert.That(build.Statistics, Is.Not.Null, "No Statistics ");
+      Assert.That(build.Statistics.Href, Is.Not.Null, "No Statistics href");
     }
 
     [Test]
@@ -298,9 +287,9 @@ namespace TeamCitySharp.IntegrationTests
       var buildField = BuildField.WithFields(number: true, id: true);
       var tempBuild = m_client.Builds.LastBuildByBuildConfigId(tempBuildConfig.Id);
       var build = m_client.Builds.GetFields(buildField.ToString()).ById(tempBuild.Id);
-      Assert.IsNull(build.Artifacts, "No Artifacts 1");
-      Assert.IsNull(build.RelatedIssues, "No RelatedIssues 1");
-      Assert.IsNull(build.Statistics, "No Statistics 1");
+      Assert.That(build.Artifacts, Is.Null, "No Artifacts 1");
+      Assert.That(build.RelatedIssues, Is.Null, "No RelatedIssues 1");
+      Assert.That(build.Statistics, Is.Null, "No Statistics 1");
 
       // section 2
       var artifactsField = ArtifactsField.WithFields();
@@ -310,12 +299,12 @@ namespace TeamCitySharp.IntegrationTests
         statistics: statisticsField);
       tempBuild = m_client.Builds.LastBuildByBuildConfigId(tempBuildConfig.Id);
       build = m_client.Builds.GetFields(buildField.ToString()).ById(tempBuild.Id);
-      Assert.IsNotNull(build.Artifacts, "No Artifacts 2");
-      Assert.IsNotNull(build.Artifacts.Href, "No Artifacts href 2");
-      Assert.IsNotNull(build.RelatedIssues, "No RelatedIssues 2");
-      Assert.IsNotNull(build.RelatedIssues.Href, "No RelatedIssues href 2");
-      Assert.IsNotNull(build.Statistics, "No Statistics 2");
-      Assert.IsNull(build.Statistics.Href, "No Statistics href 2");
+      Assert.That(build.Artifacts, Is.Not.Null, "No Artifacts 2");
+      Assert.That(build.Artifacts.Href, Is.Not.Null, "No Artifacts href 2");
+      Assert.That(build.RelatedIssues, Is.Not.Null, "No RelatedIssues 2");
+      Assert.That(build.RelatedIssues.Href, Is.Not.Null, "No RelatedIssues href 2");
+      Assert.That(build.Statistics, Is.Not.Null, "No Statistics 2");
+      Assert.That(build.Statistics.Href, Is.Null, "No Statistics href 2");
 
       // section 3
       statisticsField = StatisticsField.WithFields(href: true);
@@ -325,12 +314,12 @@ namespace TeamCitySharp.IntegrationTests
         statistics: statisticsField);
       tempBuild = m_client.Builds.LastBuildByBuildConfigId(tempBuildConfig.Id);
       build = m_client.Builds.GetFields(buildField.ToString()).ById(tempBuild.Id);
-      Assert.IsNotNull(build.Artifacts, "No Artifacts 3");
-      Assert.IsNotNull(build.Artifacts.Href, "No Artifacts href 3");
-      Assert.IsNotNull(build.RelatedIssues, "No RelatedIssues 3");
-      Assert.IsNotNull(build.RelatedIssues.Href, "No RelatedIssues href 3");
-      Assert.IsNotNull(build.Statistics, "No Statistics 3");
-      Assert.IsNotNull(build.Statistics.Href, "No Statistics href 3");
+      Assert.That(build.Artifacts, Is.Not.Null, "No Artifacts 3");
+      Assert.That(build.Artifacts.Href, Is.Not.Null, "No Artifacts href 3");
+      Assert.That(build.RelatedIssues, Is.Not.Null, "No RelatedIssues 3");
+      Assert.That(build.RelatedIssues.Href, Is.Not.Null, "No RelatedIssues href 3");
+      Assert.That(build.Statistics, Is.Not.Null, "No Statistics 3");
+      Assert.That(build.Statistics.Href, Is.Not.Null, "No Statistics href 3");
     }
 
     [Test]
@@ -349,7 +338,7 @@ namespace TeamCitySharp.IntegrationTests
         modificationId: true, chainModificationId: true, usedByOtherBuilds: true);
       var tempBuild = m_client.Builds.LastBuildByBuildConfigId(tempBuildConfig.Id);
       var build = m_client.Builds.GetFields(buildField.ToString()).ById(tempBuild.Id);
-      Assert.IsNotNull(build.Id);
+      Assert.That(build.Id, Is.Not.Null);
     }
 
     [Test]
@@ -402,7 +391,7 @@ namespace TeamCitySharp.IntegrationTests
 
       var tempBuild = m_client.Builds.LastBuildByBuildConfigId(tempBuildConfig.Id);
       var build = m_client.Builds.GetFields(buildField.ToString()).ById(tempBuild.Id);
-      Assert.IsNotNull(build);
+      Assert.That(build, Is.Not.Null);
     }
 
     [Test]
@@ -415,7 +404,7 @@ namespace TeamCitySharp.IntegrationTests
       var buildField = BuildField.WithFields(resultingProperties:propertiesField);
       var tempBuild = m_client.Builds.LastBuildByBuildConfigId(tempBuildConfig.Id);
       var build = m_client.Builds.GetFields(buildField.ToString()).ById(tempBuild.Id);
-      Assert.IsNotNull(build);
+      Assert.That(build, Is.Not.Null);
     }
 
     [Test]
@@ -428,7 +417,7 @@ namespace TeamCitySharp.IntegrationTests
       var buildField = BuildField.WithFields( attributes: entriesField);
       var tempBuild = m_client.Builds.LastBuildByBuildConfigId(tempBuildConfig.Id);
       var build = m_client.Builds.GetFields(buildField.ToString()).ById(tempBuild.Id);
-      Assert.IsNotNull(build);
+      Assert.That(build, Is.Not.Null);
     }
 
     [Test]
@@ -443,7 +432,7 @@ namespace TeamCitySharp.IntegrationTests
       var buildField = BuildField.WithFields(triggered: triggeredField);
       var tempBuild = m_client.Builds.LastBuildByBuildConfigId(tempBuildConfig.Id);
       var build = m_client.Builds.GetFields(buildField.ToString()).ById(tempBuild.Id);
-      Assert.IsNotNull(build);
+      Assert.That(build, Is.Not.Null);
     }
 
     [Test]
@@ -457,7 +446,7 @@ namespace TeamCitySharp.IntegrationTests
       var buildField = BuildField.WithFields(artifactDependencyChanges: buildChangesField);
       var tempBuild = m_client.Builds.LastBuildByBuildConfigId(tempBuildConfig.Id);
       var build = m_client.Builds.GetFields(buildField.ToString()).ById(tempBuild.Id);
-      Assert.IsNotNull(build);
+      Assert.That(build, Is.Not.Null);
     }
 
     [Test]
@@ -469,7 +458,7 @@ namespace TeamCitySharp.IntegrationTests
       var buildField = BuildField.WithFields(links:linksField);
       var tempBuild = m_client.Builds.LastBuildByBuildConfigId(tempBuildConfig.Id);
       var build = m_client.Builds.GetFields(buildField.ToString()).ById(tempBuild.Id);
-      Assert.IsNotNull(build);
+      Assert.That(build, Is.Not.Null);
     }
 
     [Test]
@@ -480,7 +469,7 @@ namespace TeamCitySharp.IntegrationTests
       var buildField = BuildField.WithFields(versionedSettingsRevision: revisionField);
       var tempBuild = m_client.Builds.LastBuildByBuildConfigId(tempBuildConfig.Id);
       var build = m_client.Builds.GetFields(buildField.ToString()).ById(tempBuild.Id);
-      Assert.IsNotNull(build);
+      Assert.That(build, Is.Not.Null);
     }
 
     [Test]
@@ -492,9 +481,9 @@ namespace TeamCitySharp.IntegrationTests
       BuildField buildField = BuildField.WithFields(statistics: statisticsField);
       var tempBuild = m_client.Builds.LastBuildByBuildConfigId(tempBuildConfig.Id);
       var build = m_client.Builds.GetFields(buildField.ToString()).ById(tempBuild.Id);
-      Assert.IsNotNull(build.Statistics.Href);
-      Assert.IsNotNull(build.Statistics.Count);
-      Assert.IsNotNull(build.Statistics.Property);
+      Assert.That(build.Statistics.Href, Is.Not.Null);
+      Assert.That(build.Statistics.Count, Is.Not.Null);
+      Assert.That(build.Statistics.Property, Is.Not.Null);
     }
 
     [Test]
@@ -506,9 +495,9 @@ namespace TeamCitySharp.IntegrationTests
       StatisticsField statisticsField = StatisticsField.WithFields(propertyField: propertyField, href: true, count: true);
       var stats = m_client.Statistics.GetFields(statisticsField.ToString()).GetByBuildId(tempBuild.Id);
       // By default teamcity return href null
-      Assert.IsNull(stats.Href);
-      Assert.IsNotNull(stats.Count);
-      Assert.IsNotNull(stats.Property);
+      Assert.That(stats.Href, Is.Null);
+      Assert.That(stats.Count, Is.Not.Null);
+      Assert.That(stats.Property, Is.Not.Null);
 
     }
   }

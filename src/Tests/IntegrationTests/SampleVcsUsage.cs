@@ -141,10 +141,6 @@ namespace TeamCitySharp.IntegrationTests
             {
                 Assert.That(e.ResponseStatusCode == HttpStatusCode.Forbidden);
             }
-            catch (Exception e)
-            {
-                Assert.Fail("CreateNewVsc faced an unexpected exception", e);
-            }
         }
     }
 }

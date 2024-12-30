@@ -56,7 +56,7 @@ namespace TeamCitySharp.IntegrationTests
     public void it_will_throw_an_exception_for_an_unknown_user_throwExceptionOnHttpError()
     {
       m_client.Connect("smithy", "smithy");
-      Assert.IsFalse(m_client.Authenticate(false));
+      Assert.That(m_client.Authenticate(false), Is.False);
 
 
       //Assert.Throws Exception

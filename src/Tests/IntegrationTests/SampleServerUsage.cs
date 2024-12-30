@@ -72,7 +72,7 @@ namespace TeamCitySharp.IntegrationTests
     {
       List<Plugin> plugins = m_client.ServerInformation.AllPlugins();
 
-      Assert.IsNotNull(plugins, "Server is not returning a plugin list");
+      Assert.That(plugins, Is.Not.Null, "Server is not returning a plugin list");
     }
 
     [Test]
@@ -85,10 +85,6 @@ namespace TeamCitySharp.IntegrationTests
       catch (HttpException e)
       {
         Assert.That(e.ResponseStatusCode == HttpStatusCode.Forbidden);
-      }
-      catch (Exception e)
-      {
-        Assert.Fail("Access the server's all plugins faced an unexpected exception", e);
       }
     }
 
@@ -103,11 +99,12 @@ namespace TeamCitySharp.IntegrationTests
       Assert.That(agents != null, "The server is not returning any information");
       foreach (var agent in agents)
       {
-        StringAssert.Contains(version,agent.Href);
-        Assert.IsNull(agent.TypeId);
-        Assert.IsNull(agent.WebUrl);
+        Assert.That(version.Contains(agent.Href), Is.True);
+        Assert.That(agent.TypeId, Is.Null);
+        Assert.That(agent.WebUrl, Is.Null);
       }
     }
+    
     [Test]
     public void it_get_all_agents_version_8_0()
     {
@@ -119,9 +116,9 @@ namespace TeamCitySharp.IntegrationTests
       Assert.That(agents != null, "The server is not returning any information");
       foreach (var agent in agents)
       {
-        StringAssert.Contains(version, agent.Href);
-        Assert.IsNotNull(agent.TypeId);
-        Assert.IsNull(agent.WebUrl);
+        Assert.That(version.Contains(agent.Href), Is.True);
+        Assert.That(agent.TypeId, Is.Not.Null);
+        Assert.That(agent.WebUrl, Is.Null);
       }
     }
     [Test]
@@ -135,9 +132,9 @@ namespace TeamCitySharp.IntegrationTests
       Assert.That(agents != null, "The server is not returning any information");
       foreach (var agent in agents)
       {
-        StringAssert.Contains(version, agent.Href);
-        Assert.IsNotNull(agent.TypeId);
-        Assert.IsNull(agent.WebUrl);
+        Assert.That(version.Contains(agent.Href), Is.True);
+        Assert.That(agent.TypeId, Is.Not.Null);
+        Assert.That(agent.WebUrl, Is.Null);
       }
     }
     [Test]
@@ -151,9 +148,9 @@ namespace TeamCitySharp.IntegrationTests
       Assert.That(agents != null, "The server is not returning any information");
       foreach (var agent in agents)
       {
-        StringAssert.Contains(version, agent.Href);
-        Assert.IsNotNull(agent.TypeId);
-        Assert.IsNotNull(agent.WebUrl);
+        Assert.That(version.Contains(agent.Href), Is.True);
+        Assert.That(agent.TypeId, Is.Not.Null);
+        Assert.That(agent.WebUrl, Is.Not.Null);
       }
     }
   }

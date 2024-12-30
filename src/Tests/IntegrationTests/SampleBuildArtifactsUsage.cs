@@ -42,7 +42,7 @@ namespace TeamCitySharp.IntegrationTests
       var build = m_client.Builds.LastSuccessfulBuildByBuildConfigId(buildConfigId);
       var directartifact = m_client.Artifacts.ByBuildConfigId(build.BuildTypeId);
       var listFilesDownload = directartifact.Specification(build.Number).Download();
-      Assert.IsNotEmpty(listFilesDownload);
+      Assert.That(listFilesDownload, Is.Not.Empty);
     }
 
     [Test, Ignore("You need to configure the token before to run this test")]
@@ -56,7 +56,7 @@ namespace TeamCitySharp.IntegrationTests
       var build = client.Builds.LastSuccessfulBuildByBuildConfigId(buildConfigId);
       var directArtifact = client.Artifacts.ByBuildConfigId(build.BuildTypeId);
       var listFilesDownload = directArtifact.Specification(build.Number).Download();
-      Assert.IsNotEmpty(listFilesDownload);
+      Assert.That(listFilesDownload, Is.Not.Empty);
     }
 
     [Test]
@@ -66,7 +66,7 @@ namespace TeamCitySharp.IntegrationTests
       var build = m_client.Builds.LastFailedBuildByBuildConfigId(buildConfigId);
       var directartifact = m_client.Artifacts.ByBuildConfigId(build.BuildTypeId);
       var listFilesDownload = directartifact.Specification(build.Number).Download();
-      Assert.IsEmpty(listFilesDownload);
+      Assert.That(listFilesDownload, Is.Empty);
     }
 
     [Test]
@@ -79,14 +79,14 @@ namespace TeamCitySharp.IntegrationTests
       var expectedUrl = $"http://{m_server}/repository/download/{m_goodBuildConfigId}/.lastSuccessful/{filename}";
       var artifact = m_client.Artifacts.ByBuildConfigId(buildConfigId);
       var file = artifact.LastSuccessful().DownloadFiltered(Path.GetTempPath(), new[] {filename}.ToList()).FirstOrDefault();
-      Assert.IsNotEmpty(file);
+      Assert.That(file, Is.Not.Empty);
       using (var client = new WebClient())
       {
         client.UseDefaultCredentials = true;
         client.Credentials = new NetworkCredential(m_username, m_password);
         client.DownloadFile(expectedUrl, expectedFile);
       }
-      Assert.IsTrue(FileEquals(expectedFile, file));
+      Assert.That(FileEquals(expectedFile, file), Is.True);
  
       if (File.Exists(file))
       {
@@ -109,14 +109,14 @@ namespace TeamCitySharp.IntegrationTests
       var expectedUrl = $"http://{m_server}/repository/download/{m_goodBuildConfigId}/.lastSuccessful/{filename}?{param}";
       var artifact = m_client.Artifacts.ByBuildConfigId(buildConfigId, param);
       var file = artifact.LastSuccessful().DownloadFiltered(Path.GetTempPath(), new[] { filename }.ToList()).FirstOrDefault();
-      Assert.IsNotEmpty(file);
+      Assert.That(file, Is.Not.Empty);
       using (var client = new WebClient())
       {
         client.UseDefaultCredentials = true;
         client.Credentials = new NetworkCredential(m_username, m_password);
         client.DownloadFile(expectedUrl, expectedFile);
       }
-      Assert.IsTrue(FileEquals(expectedFile, file));
+      Assert.That(FileEquals(expectedFile, file), Is.True);
       if (File.Exists(file))
       {
         File.Delete(file);

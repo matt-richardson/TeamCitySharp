@@ -64,7 +64,7 @@ namespace TeamCitySharp.IntegrationTests
         {
             VcsRoot rootDetails = m_client.VcsRoots.ById(vcsRootId);
 
-            Assert.That(rootDetails != null, "Cannot find the specific VCSRoot");
+            Assert.That(rootDetails, Is.Not.Null, "Cannot find the specific VCSRoot");
         }
 
         [Test]
@@ -78,7 +78,7 @@ namespace TeamCitySharp.IntegrationTests
             VcsRootsField vcsRootsField = VcsRootsField.WithFields(vcsRootField);
             var vcsRoots = client.VcsRoots.GetFields(vcsRootsField.ToString()).All();
 
-            Assert.That(vcsRoots != null);
+            Assert.That(vcsRoots, Is.Not.Null);
         }
 
         [Test, Ignore("Test user doesn't have the rights to create new VcsRoot on tested instance.")]
@@ -131,7 +131,7 @@ namespace TeamCitySharp.IntegrationTests
             }
             catch (HttpException e)
             {
-                Assert.That(e.ResponseStatusCode == HttpStatusCode.Forbidden);
+                Assert.That(e.ResponseStatusCode, Is.EqualTo(HttpStatusCode.Forbidden));
             }
         }
     }

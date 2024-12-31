@@ -63,7 +63,7 @@ namespace TeamCitySharp.IntegrationTests
       string buildConfigId = m_goodBuildConfigId;
       var build = m_client.Builds.LastSuccessfulBuildByBuildConfigId(buildConfigId);
 
-      Assert.That(build != null, "No successful builds have been found");
+      Assert.That(build, Is.Not.Null, "No successful builds have been found");
     }
 
     [Test]
@@ -81,7 +81,7 @@ namespace TeamCitySharp.IntegrationTests
       string buildConfigId = m_goodBuildConfigId;
       var buildDetails = m_client.Builds.LastFailedBuildByBuildConfigId(buildConfigId);
 
-      Assert.That(buildDetails != null, "No failed builds have been found");
+      Assert.That(buildDetails, Is.Not.Null, "No failed builds have been found");
     }
 
     [Test]
@@ -105,7 +105,7 @@ namespace TeamCitySharp.IntegrationTests
       string buildConfigId = m_goodBuildConfigId;
       var build = m_client.Builds.LastBuildByBuildConfigId(buildConfigId);
 
-      Assert.That(build != null, "No builds for this build config have been found");
+      Assert.That(build, Is.Not.Null, "No builds for this build config have been found");
     }
 
     [Test]
@@ -180,7 +180,7 @@ namespace TeamCitySharp.IntegrationTests
       var build =
         client.Builds.ByBuildLocator(BuildLocator.WithDimensions(BuildTypeLocator.WithId(buildConfigId),
           maxResults: 1));
-      Assert.That(build.Count == 1);
+      Assert.That(build.Count, Is.EqualTo(1));
       Assert.That(build[0].StatusText, Is.Null);
     }
 
@@ -194,7 +194,7 @@ namespace TeamCitySharp.IntegrationTests
       }
       catch (HttpException e)
       {
-        Assert.That(e.ResponseStatusCode == HttpStatusCode.NotFound, "Expects a 404 exception.");
+        Assert.That(e.ResponseStatusCode, Is.EqualTo(HttpStatusCode.NotFound), "Expects a 404 exception.");
       }
     }
 
@@ -227,12 +227,12 @@ namespace TeamCitySharp.IntegrationTests
       BuildsField buildsField = BuildsField.WithFields(buildField);
       var builds = client.Builds.GetFields(buildsField.ToString()).NextBuilds(buildId, 10);
 
-      Assert.That(builds != null);
       Assert.That(builds.Count == 10);
+      Assert.That(builds, Is.Not.Null);
       int i = 0;
       foreach (var build in builds)
       {
-        Assert.That(build.FinishDate != new DateTime());
+        Assert.That(build.FinishDate, Is.Not.EqualTo(new DateTime()));
         Console.WriteLine("{0} => BuildId => {1} FinishDate => {2}", i, build.Id, build.FinishDate);
         i++;
       }

@@ -55,7 +55,7 @@ namespace TeamCitySharp.IntegrationTests
     {
       Server serverInfo = m_client.ServerInformation.ServerInfo();
 
-      Assert.That(serverInfo != null, "The server is not returning any information");
+      Assert.That(serverInfo, Is.Not.Null, "The server is not returning any information");
     }
 
     [Test, Ignore("Current user doesn't have the right to list plugins in tested instance.")]
@@ -75,7 +75,7 @@ namespace TeamCitySharp.IntegrationTests
       }
       catch (HttpException e)
       {
-        Assert.That(e.ResponseStatusCode == HttpStatusCode.Forbidden);
+        Assert.That(e.ResponseStatusCode, Is.EqualTo(HttpStatusCode.Forbidden));
       }
     }
 
@@ -136,7 +136,7 @@ namespace TeamCitySharp.IntegrationTests
       client.Connect(m_username, m_password);
       client.UseVersion(version);
       var agents = client.Agents.All();
-      Assert.That(agents != null, "The server is not returning any information");
+      Assert.That(agents, Is.Not.Null, "The server is not returning any information");
       foreach (var agent in agents)
       {
         Assert.That(version.Contains(agent.Href), Is.True);

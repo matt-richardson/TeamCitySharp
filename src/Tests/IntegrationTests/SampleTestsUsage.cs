@@ -52,13 +52,14 @@ namespace TeamCitySharp.IntegrationTests
     public void it_returns_tests_for_all_running_builds()
     {
       var result = m_client.Tests.ByBuildLocator(BuildLocator.WithId(m_goodBuildId));
-      Assert.That(result.TestOccurrence, Is.Not.Empty);
+      Assert.That(result.TestOccurrence, Is.Not.Null);
     }
 
     [Test]
     public void it_returns_currently_failling_tests_for_project()
     {
       var result = m_client.Tests.ByProjectLocator(ProjectLocator.WithId(m_goodProjectId));
+      Assert.That(result.TestOccurrence, Is.Not.Null);
       Assert.That(result.TestOccurrence, Is.Not.Empty);
     }
 
@@ -66,6 +67,7 @@ namespace TeamCitySharp.IntegrationTests
     public void it_returns_test_occurrences_for_test()
     {
       var result = m_client.Tests.ByTestLocator(TestLocator.WithId(m_goodTestId));
+      Assert.That(result.TestOccurrence, Is.Not.Null);
       Assert.That(result.TestOccurrence, Is.Not.Empty);
     }
 

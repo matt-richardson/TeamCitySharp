@@ -71,7 +71,7 @@ namespace TeamCitySharp.IntegrationTests
       var build = m_client.Builds.LastFailedBuildByBuildConfigId(buildConfigId);
       var directartifact = m_client.Artifacts.ByBuildConfigId(build.BuildTypeId);
       var listFilesDownload = directartifact.Specification(build.Number).Download();
-      Assert.That(listFilesDownload, Is.Empty);
+      Assert.That(listFilesDownload, Is.Not.Empty);
     }
 
     [Test]

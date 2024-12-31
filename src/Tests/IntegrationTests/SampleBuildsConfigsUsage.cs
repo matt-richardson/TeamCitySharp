@@ -89,7 +89,7 @@ namespace TeamCitySharp.IntegrationTests
       string buildConfigId = m_goodBuildConfigId;
       var buildConfig = m_client.BuildConfigs.ByConfigurationId(buildConfigId);
 
-      Assert.That(buildConfig != null, "Cannot find a build type for that buildId");
+      Assert.That(buildConfig, Is.Not.Null, "Cannot find a build type for that buildId");
     }
 
     [Test, Ignore("Test user doesn't have the rights to change pause status for build configs.")]
@@ -99,7 +99,7 @@ namespace TeamCitySharp.IntegrationTests
       var buildLocator = BuildTypeLocator.WithId(buildConfigId);
       m_client.BuildConfigs.SetConfigurationPauseStatus(buildLocator, true);
       var status = m_client.BuildConfigs.GetConfigurationPauseStatus(buildLocator);
-      Assert.That(status == true, "Build not paused");
+      Assert.That(status, Is.True, "Build not paused");
     }
 
     [Test]
@@ -115,7 +115,7 @@ namespace TeamCitySharp.IntegrationTests
       }
       catch (HttpException e)
       {
-        Assert.That(e.ResponseStatusCode == HttpStatusCode.Forbidden);
+        Assert.That(e.ResponseStatusCode, Is.EqualTo(HttpStatusCode.Forbidden));
       }
     }
 
@@ -126,7 +126,7 @@ namespace TeamCitySharp.IntegrationTests
       var buildLocator = BuildTypeLocator.WithId(buildConfigId);
       m_client.BuildConfigs.SetConfigurationPauseStatus(buildLocator, false);
       var status = m_client.BuildConfigs.GetConfigurationPauseStatus(buildLocator);
-      Assert.That(status == false, "Build not unpaused");
+      Assert.That(status, Is.False, "Build not unpaused");
     }
 
     [Test]
@@ -135,7 +135,7 @@ namespace TeamCitySharp.IntegrationTests
       string buildConfigName = "Release Build";
       var buildConfig = m_client.BuildConfigs.ByConfigurationName(buildConfigName);
 
-      Assert.That(buildConfig != null, "Cannot find a build type for that buildName");
+      Assert.That(buildConfig, Is.Not.Null, "Cannot find a build type for that buildName");
     }
 
     [Test]
@@ -162,7 +162,8 @@ namespace TeamCitySharp.IntegrationTests
       string buildConfigId = m_goodBuildConfigId;
       var artifactDependencies = m_client.BuildConfigs.GetArtifactDependencies(buildConfigId);
 
-      Assert.That(artifactDependencies != null, "Cannot find a Artifact dependencies for that buildConfigId");
+      Assert.That(artifactDependencies, Is.Not.Null,
+        "Cannot find a Artifact dependencies for that buildConfigId");
     }
 
 
@@ -171,7 +172,8 @@ namespace TeamCitySharp.IntegrationTests
     {
       string buildConfigId = m_goodBuildConfigId;
       var snapshotDependencies = m_client.BuildConfigs.GetSnapshotDependencies(buildConfigId);
-      Assert.That(snapshotDependencies != null, "Cannot find a snapshot dependencies for that buildConfigId");
+      Assert.That(snapshotDependencies, Is.Not.Null,
+        "Cannot find a snapshot dependencies for that buildConfigId");
     }
 
     [Test , Ignore("Test user doesn't have the rights to access artifact dependencies of build config.")]
@@ -323,7 +325,7 @@ namespace TeamCitySharp.IntegrationTests
       }
       catch (HttpException e)
       {
-        Assert.That(e.ResponseStatusCode == HttpStatusCode.Forbidden);
+        Assert.That(e.ResponseStatusCode, Is.EqualTo(HttpStatusCode.Forbidden));
       }
     }
 
@@ -339,7 +341,7 @@ namespace TeamCitySharp.IntegrationTests
       }
       catch (HttpException e)
       {
-        Assert.That(e.ResponseStatusCode == HttpStatusCode.Forbidden);
+        Assert.That(e.ResponseStatusCode, Is.EqualTo(HttpStatusCode.Forbidden));
       }
     }
 
@@ -355,7 +357,7 @@ namespace TeamCitySharp.IntegrationTests
       }
       catch (HttpException e)
       {
-        Assert.That(e.ResponseStatusCode == HttpStatusCode.Forbidden);
+        Assert.That(e.ResponseStatusCode, Is.EqualTo(HttpStatusCode.Forbidden));
       }
     }
 
@@ -636,7 +638,7 @@ namespace TeamCitySharp.IntegrationTests
       {
         buildConfig = m_client.BuildConfigs.CreateConfiguration(buildConfig);
 
-        Assert.That(buildConfig.Id == currentBuildId);
+        Assert.That(buildConfig.Id, Is.EqualTo(currentBuildId));
       }
       finally
       {
@@ -668,8 +670,7 @@ namespace TeamCitySharp.IntegrationTests
       string buildConfigId = m_goodBuildConfigId;
       var tempBuild = m_client.BuildConfigs.GetFields(branchesField.ToString()).GetBranchesByBuildConfigurationId(buildConfigId, BranchLocator.WithDimensions(BranchPolicy.ALL_BRANCHES));
       var checkIfFieldWork = tempBuild.Branch.Single(x => x.Default);
-      Assert.That(checkIfFieldWork.Active == false, Is.True);
-
+      Assert.That(checkIfFieldWork.Active, Is.False);
     }
 
     [Test]

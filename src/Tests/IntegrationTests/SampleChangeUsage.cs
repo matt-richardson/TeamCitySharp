@@ -56,7 +56,8 @@ namespace TeamCitySharp.IntegrationTests
     {
       List<Change> changes = m_client.Changes.All();
 
-      Assert.That(changes.Any(), "Cannot find any changes recorded in any of the projects");
+      Assert.That(changes, Is.Not.Null);
+      Assert.That(changes, Is.Not.Empty, "Cannot find any changes recorded in any of the projects");
     }
 
     [TestCase("4509768")]
@@ -64,7 +65,7 @@ namespace TeamCitySharp.IntegrationTests
     {
       Change changeDetails = m_client.Changes.ByChangeId(changeId);
 
-      Assert.That(changeDetails != null, "Cannot find details of that specified change");
+      Assert.That(changeDetails, Is.Not.Null, "Cannot find details of that specified change");
     }
 
     [Test]
@@ -73,7 +74,7 @@ namespace TeamCitySharp.IntegrationTests
       string buildConfigId = m_goodBuildConfigId;
       Change changeDetails = m_client.Changes.LastChangeDetailByBuildConfigId(buildConfigId);
 
-      Assert.That(changeDetails != null, "Cannot find details of that specified change");
+      Assert.That(changeDetails, Is.Not.Null, "Cannot find details of that specified change");
     }
   }
 }

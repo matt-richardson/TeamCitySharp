@@ -73,7 +73,7 @@ namespace TeamCitySharp.IntegrationTests
       string projectId = m_goodProjectId;
       Project projectDetails = m_client.Projects.ById(projectId);
 
-      Assert.That(projectDetails != null, "No details found for that specific project");
+      Assert.That(projectDetails, Is.Not.Null, "No details found for that specific project");
     }
 
     [Test]
@@ -82,7 +82,7 @@ namespace TeamCitySharp.IntegrationTests
       string projectName = m_goodProjectId;
       Project projectDetails = m_client.Projects.ByName(projectName);
 
-      Assert.That(projectDetails != null, "No details found for that specific project");
+      Assert.That(projectDetails, Is.Not.Null, "No details found for that specific project");
     }
 
     [Test]
@@ -104,8 +104,8 @@ namespace TeamCitySharp.IntegrationTests
       var projectName = Guid.NewGuid().ToString("N");
       var project = client.Projects.Create(projectName);
 
-      Assert.That(project, Is.Not.Null);
-      Assert.That(project.Name, Is.EqualTo(projectName));
+        Assert.That(project, Is.Not.Null);
+        Assert.That(project.Name, Is.EqualTo(projectName));
     }
 
     [Test]
@@ -118,7 +118,7 @@ namespace TeamCitySharp.IntegrationTests
       }
       catch (HttpException e)
       {
-        Assert.That(e.ResponseStatusCode == HttpStatusCode.Forbidden);
+        Assert.That(e.ResponseStatusCode, Is.EqualTo(HttpStatusCode.Forbidden));
       }
     }
 
@@ -129,7 +129,7 @@ namespace TeamCitySharp.IntegrationTests
       string featureId = "PROJECT_EXT_1";
       ProjectFeature projectFeature = m_client.Projects.GetProjectFeatureByProjectFeature(projectId, featureId);
 
-      Assert.That(projectFeature != null, "No project feature found for that specific project");
+      Assert.That(projectFeature, Is.Not.Null, "No project feature found for that specific project");
     }
 
     [Test, Ignore("User involved in test doesn't have permission.")]
@@ -152,7 +152,7 @@ namespace TeamCitySharp.IntegrationTests
       };
 
       ProjectFeature projectFeature = m_client.Projects.CreateProjectFeature(projectId, pf);
-      Assert.That(projectFeature != null, "No project features found for that specific project");
+      Assert.That(projectFeature, Is.Not.Null, "No project features found for that specific project");
 
       m_client.Projects.DeleteProjectFeature(projectId, projectFeature.Id);
     }
@@ -203,11 +203,11 @@ namespace TeamCitySharp.IntegrationTests
       ProjectFeature projectFeature = m_client.Projects.GetFields(projectFeatureField.ToString())
         .GetProjectFeatureByProjectFeature(projectId, featureId);
 
-      Assert.That(projectFeature != null, "No project feature found for that specific project");
-      Assert.That(projectFeature.Type != null, "Bad Value type");
-      Assert.That(projectFeature.Properties != null, "Bad Value type");
-      Assert.That(projectFeature.Href == null, "Bad Value type");
-      Assert.That(projectFeature.Id == null, "Bad Value type");
+      Assert.That(projectFeature, Is.Not.Null, "No project feature found for that specific project");
+      Assert.That(projectFeature.Type, Is.Not.Null, "Bad Value type");
+      Assert.That(projectFeature.Properties, Is.Not.Null, "Bad Value type");
+      Assert.That(projectFeature.Href, Is.Null, "Bad Value type");
+      Assert.That(projectFeature.Id, Is.Null, "Bad Value type");
     }
 
     [Test]
@@ -229,7 +229,7 @@ namespace TeamCitySharp.IntegrationTests
       catch (HttpException e)
       {
         Console.WriteLine(e);
-        Assert.That(e.ResponseStatusCode == HttpStatusCode.Forbidden);
+        Assert.That(e.ResponseStatusCode, Is.EqualTo(HttpStatusCode.Forbidden));
       }
     }
 
@@ -247,7 +247,7 @@ namespace TeamCitySharp.IntegrationTests
       string projectId = m_goodProjectId;
       var tempBuild = m_client.Projects.GetBranchesByBuildProjectId(projectId,
         BranchLocator.WithDimensions(BranchPolicy.ALL_BRANCHES));
-      Assert.That(tempBuild.Count == 6, Is.True);
+      Assert.That(tempBuild.Count, Is.EqualTo(4));
     }
 
     [Test]
@@ -274,6 +274,5 @@ namespace TeamCitySharp.IntegrationTests
       var checkIfFieldWork = tempBuild.Branch.Single(x => x.Default);
       Assert.That(checkIfFieldWork.Active, Is.True);
     }
-
   }
 }

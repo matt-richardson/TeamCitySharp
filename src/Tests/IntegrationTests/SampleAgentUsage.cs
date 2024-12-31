@@ -60,7 +60,8 @@ namespace TeamCitySharp.IntegrationTests
     {
       Build lastBuild = m_client.Builds.LastBuildByAgent(agentName);
 
-      Assert.That(lastBuild != null, "No build information found for the last build on the specified agent");
+      Assert.That(lastBuild, Is.Not.Null,
+        "No build information found for the last build on the specified agent");
     }
   }
 }

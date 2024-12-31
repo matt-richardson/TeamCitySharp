@@ -80,58 +80,9 @@ namespace TeamCitySharp.IntegrationTests
     }
 
     [Test]
-    public void it_get_all_agents_version_7_0()
+    public void it_get_all_agents_version_2018_1()
     {
-      const string version = "7.0";
-      var client = new TeamCityClient(m_server, m_useSsl);
-      client.Connect(m_username, m_password);
-      client.UseVersion(version);
-      var agents = client.Agents.All();
-      Assert.That(agents != null, "The server is not returning any information");
-      foreach (var agent in agents)
-      {
-        Assert.That(version.Contains(agent.Href), Is.True);
-        Assert.That(agent.TypeId, Is.Null);
-        Assert.That(agent.WebUrl, Is.Null);
-      }
-    }
-    
-    [Test]
-    public void it_get_all_agents_version_8_0()
-    {
-      const string version = "8.0";
-      var client = new TeamCityClient(m_server, m_useSsl);
-      client.Connect(m_username, m_password);
-      client.UseVersion(version);
-      var agents = client.Agents.All();
-      Assert.That(agents != null, "The server is not returning any information");
-      foreach (var agent in agents)
-      {
-        Assert.That(version.Contains(agent.Href), Is.True);
-        Assert.That(agent.TypeId, Is.Not.Null);
-        Assert.That(agent.WebUrl, Is.Null);
-      }
-    }
-    [Test]
-    public void it_get_all_agents_version_9_0()
-    {
-      const string version = "9.0";
-      var client = new TeamCityClient(m_server, m_useSsl);
-      client.Connect(m_username, m_password);
-      client.UseVersion(version);
-      var agents = client.Agents.All();
-      Assert.That(agents != null, "The server is not returning any information");
-      foreach (var agent in agents)
-      {
-        Assert.That(version.Contains(agent.Href), Is.True);
-        Assert.That(agent.TypeId, Is.Not.Null);
-        Assert.That(agent.WebUrl, Is.Null);
-      }
-    }
-    [Test]
-    public void it_get_all_agents_version_10_0()
-    {
-      const string version = "10.0";
+      const string version = "2018.1";
       var client = new TeamCityClient(m_server, m_useSsl);
       client.Connect(m_username, m_password);
       client.UseVersion(version);

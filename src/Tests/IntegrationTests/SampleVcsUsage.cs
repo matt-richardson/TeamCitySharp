@@ -70,48 +70,57 @@ namespace TeamCitySharp.IntegrationTests
         [Test]
         public void it_returns_correct_next_builds_with_filter()
         {
-            var client = new TeamCityClient(m_server, m_useSsl);
-            client.ConnectAsGuest();
-
             VcsRootField vcsRootField = VcsRootField.WithFields(id: true, href: true, lastChecked: true, name: true,
                 status: true, vcsName: true, version: true);
             VcsRootsField vcsRootsField = VcsRootsField.WithFields(vcsRootField);
-            var vcsRoots = client.VcsRoots.GetFields(vcsRootsField.ToString()).All();
+            var vcsRoots = m_client.VcsRoots.GetFields(vcsRootsField.ToString()).All();
 
             Assert.That(vcsRoots, Is.Not.Null);
         }
 
-        [Test, Ignore("Test user doesn't have the rights to create new VcsRoot on tested instance.")]
+        [Test]
         public void it_create_new_vsc()
         {
-            var project = m_client.Projects.ById(m_goodProjectId);
+            VcsRoot vcsroot2 = null;
+            try
+            {
+                var project = m_client.Projects.ById(m_goodProjectId);
 
-            VcsRoot vcsroot = new VcsRoot();
-            vcsroot.Id = project.Id + "_vcsroot1_01";
-            vcsroot.Name = project.Name + "_vcsroot1";
-            vcsroot.VcsName = "jetbrains.git";
-            vcsroot.Project = new Project();
-            vcsroot.Project.Id = project.Id;
+                VcsRoot vcsroot = new VcsRoot();
+                vcsroot.Id = project.Id + "_vcsroot1_01";
+                vcsroot.Name = project.Name + "_vcsroot1";
+                vcsroot.VcsName = "jetbrains.git";
+                vcsroot.Project = new Project();
+                vcsroot.Project.Id = project.Id;
 
-            Properties properties = new Properties();
+                Properties properties = new Properties();
 
-            properties.Add("agentCleanFilesPolicy", "IGNORED_ONLY");
-            vcsroot.Properties = properties;
+                properties.Add("agentCleanFilesPolicy", "IGNORED_ONLY");
+                vcsroot.Properties = properties;
 
-            var vcsroot2 = m_client.VcsRoots.CreateVcsRoot(vcsroot, project.Id);
+                vcsroot2 = m_client.VcsRoots.CreateVcsRoot(vcsroot, project.Id);
 
-            m_client.VcsRoots.SetVcsRootValue(vcsroot2, VcsRootValue.Name, "TestChangeName");
+                m_client.VcsRoots.SetVcsRootValue(vcsroot2, VcsRootValue.Name, "TestChangeName");
 
-            m_client.VcsRoots.SetConfigurationProperties(vcsroot2, "agentCleanFilesPolicy", "ALL_UNTRACKED");
-            m_client.VcsRoots.SetConfigurationProperties(vcsroot2, "tt", "tt2");
-            m_client.VcsRoots.DeleteProperties(vcsroot2, "tt");
-            m_client.VcsRoots.DeleteVcsRoot(vcsroot2);
+                m_client.VcsRoots.SetConfigurationProperties(vcsroot2, "agentCleanFilesPolicy", "ALL_UNTRACKED");
+                m_client.VcsRoots.SetConfigurationProperties(vcsroot2, "tt", "tt2");
+            }
+            finally
+            {
+                if (vcsroot2 != null)
+                {
+                    m_client.VcsRoots.DeleteProperties(vcsroot2, "tt");
+                    m_client.VcsRoots.DeleteVcsRoot(vcsroot2);
+                }
+            }
         }
 
         [Test]
         public void it_throws_exception_create_new_vsc_forbidden()
         {
-            var project = m_client.Projects.ById(m_goodProjectId);
+            var client = new TeamCityClient(m_server, m_useSsl);
+            client.Connect(m_username, m_password);
+            var project = client.Projects.ById(m_goodProjectId);
 
             VcsRoot vcsroot = new VcsRoot();
             vcsroot.Id = project.Id + "_vcsroot1_01";
@@ -127,7 +136,7 @@ namespace TeamCitySharp.IntegrationTests
 
             try
             {
-                m_client.VcsRoots.CreateVcsRoot(vcsroot, project.Id);
+                client.VcsRoots.CreateVcsRoot(vcsroot, project.Id);
             }
             catch (HttpException e)
             {

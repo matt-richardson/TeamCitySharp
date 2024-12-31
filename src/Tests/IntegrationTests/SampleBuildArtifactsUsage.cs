@@ -8,6 +8,7 @@ using System.Net.Http.Headers;
 using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using NUnit.Framework;
 
 namespace TeamCitySharp.IntegrationTests
@@ -50,7 +51,7 @@ namespace TeamCitySharp.IntegrationTests
       Assert.That(listFilesDownload, Is.Not.Empty);
     }
 
-    [Test, Ignore("You need to configure the token before to run this test")]
+    [Test]
     public void it_downloads_artifact_with_access_token()
     {
       var buildConfigId = m_goodBuildConfigId;
@@ -65,7 +66,7 @@ namespace TeamCitySharp.IntegrationTests
     }
 
     [Test]
-    public void it_download_no_artifacts_for_failed_builds()
+    public void it_downloads_artifacts_for_failed_builds()
     {
       string buildConfigId = m_goodBuildConfigId;
       var build = m_client.Builds.LastFailedBuildByBuildConfigId(buildConfigId);
@@ -81,10 +82,11 @@ namespace TeamCitySharp.IntegrationTests
 
       const string filename = "Outputs.zip";
       var expectedFile = Path.Combine(Path.GetTempPath(), "expectedFile.zip");
-      var expectedUrl = $"http://{m_server}/repository/download/{m_goodBuildConfigId}/.lastSuccessful/{filename}";
+      var expectedUrl = $"http://{m_server}/repository/download/{buildConfigId}/.lastSuccessful/{filename}";
       var artifact = m_client.Artifacts.ByBuildConfigId(buildConfigId);
       var file = artifact.LastSuccessful().DownloadFiltered(Path.GetTempPath(), new[] {filename}.ToList()).FirstOrDefault();
       Assert.That(file, Is.Not.Empty);
+      
       await DownloadFile(expectedUrl, expectedFile);
 
       Assert.That(FileEquals(expectedFile, file), Is.True);
@@ -122,10 +124,11 @@ namespace TeamCitySharp.IntegrationTests
       const string filename = "Outputs.zip";
       const string param = "branch=dev-2001";
       var expectedFile = Path.Combine(Path.GetTempPath(), "expectedFile.zip");
-      var expectedUrl = $"http://{m_server}/repository/download/{m_goodBuildConfigId}/.lastSuccessful/{filename}?{param}";
+      var expectedUrl = $"http://{m_server}/repository/download/{buildConfigId}/.lastSuccessful/{filename}?{HttpUtility.UrlDecode(param)}";
       var artifact = m_client.Artifacts.ByBuildConfigId(buildConfigId, param);
       var file = artifact.LastSuccessful().DownloadFiltered(Path.GetTempPath(), new[] { filename }.ToList()).FirstOrDefault();
       Assert.That(file, Is.Not.Empty);
+      
       await DownloadFile(expectedUrl, expectedFile);
 
       Assert.That(FileEquals(expectedFile, file), Is.True);

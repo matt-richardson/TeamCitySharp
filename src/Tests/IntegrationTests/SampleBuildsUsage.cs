@@ -175,7 +175,7 @@ namespace TeamCitySharp.IntegrationTests
     {
       string buildConfigId = m_goodBuildConfigId;
       var client = new TeamCityClient(m_server, m_useSsl);
-      client.ConnectAsGuest();
+      client.Connect(m_username, m_password);
 
       var build =
         client.Builds.ByBuildLocator(BuildLocator.WithDimensions(BuildTypeLocator.WithId(buildConfigId),
@@ -203,7 +203,7 @@ namespace TeamCitySharp.IntegrationTests
     {
       const string buildId = "5726";
       var client = new TeamCityClient(m_server, m_useSsl);
-      client.ConnectAsGuest();
+      client.Connect(m_username, m_password);
 
       var builds = client.Builds.NextBuilds(buildId, 10);
 
@@ -221,7 +221,7 @@ namespace TeamCitySharp.IntegrationTests
     {
       const string buildId = "5726";
       var client = new TeamCityClient(m_server, m_useSsl);
-      client.ConnectAsGuest();
+      client.Connect(m_username, m_password);
 
       BuildField buildField = BuildField.WithFields(id: true, number: true, finishDate: true);
       BuildsField buildsField = BuildsField.WithFields(buildField);

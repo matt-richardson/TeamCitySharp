@@ -54,11 +54,13 @@ namespace TeamCitySharp.IntegrationTests
       Assert.That(agents.Any(), "No agents were found");
     }
 
-
-    [TestCase("nhibernate-agent-4")]
-    public void it_returns_last_build_status_for_agent(string agentName)
+    [Test]
+    public void it_returns_last_build_status_for_agent()
     {
-      Build lastBuild = m_client.Builds.LastBuildByAgent(agentName);
+      var agent = m_client.Agents.All().FirstOrDefault();
+      Assert.That(agent, Is.Not.Null, "No agents were found");
+
+      Build lastBuild = m_client.Builds.LastBuildByAgent(agent.Name);
 
       Assert.That(lastBuild, Is.Not.Null,
         "No build information found for the last build on the specified agent");

@@ -139,7 +139,7 @@ namespace TeamCitySharp.IntegrationTests
       Assert.That(agents, Is.Not.Null, "The server is not returning any information");
       foreach (var agent in agents)
       {
-        Assert.That(version.Contains(agent.Href), Is.True);
+        Assert.That(agent.Href.Contains(version), Is.True);
         Assert.That(agent.TypeId, Is.Not.Null);
         Assert.That(agent.WebUrl, Is.Not.Null);
       }

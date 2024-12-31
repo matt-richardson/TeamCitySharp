@@ -60,9 +60,14 @@ namespace TeamCitySharp.IntegrationTests
       Assert.That(changes, Is.Not.Empty, "Cannot find any changes recorded in any of the projects");
     }
 
-    [TestCase("4509768")]
-    public void it_returns_change_details_by_change_id(string changeId)
+    [Test]
+    public void it_returns_change_details_by_change_id()
     {
+      List<Change> changes = m_client.Changes.All();
+      Assert.That(changes, Is.Not.Null);
+      Assert.That(changes, Is.Not.Empty, "Cannot find any changes recorded in any of the projects");
+      
+      var changeId = changes.First().Id;
       Change changeDetails = m_client.Changes.ByChangeId(changeId);
 
       Assert.That(changeDetails, Is.Not.Null, "Cannot find details of that specified change");

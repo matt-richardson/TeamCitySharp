@@ -56,7 +56,7 @@ namespace TeamCitySharp.IntegrationTests
     }
 
     [Test]
-    public void it_returns_currently_failling_tests_for_project()
+    public void it_returns_currently_failing_tests_for_project()
     {
       var result = m_client.Tests.ByProjectLocator(ProjectLocator.WithId(m_goodProjectId));
       Assert.That(result.TestOccurrence, Is.Not.Null);

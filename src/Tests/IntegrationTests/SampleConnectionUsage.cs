@@ -62,7 +62,7 @@ namespace TeamCitySharp.IntegrationTests
       //Assert.Throws Exception
     }
 
-    [Test, Ignore("You need to specify the token in the app.config before to use this test")]
+    [Test]
     public void it_will_authenticate_a_known_user_with_token()
     {
       m_client.ConnectWithAccessToken(m_token);

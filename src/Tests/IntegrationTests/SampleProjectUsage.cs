@@ -96,11 +96,10 @@ namespace TeamCitySharp.IntegrationTests
 
 
     [Test]
-    [Ignore("Modify guid...")]
     public void it_returns_project_details_when_creating_project()
     {
-      var client = new TeamCityClient("localhost:81");
-      client.Connect("admin", "qwerty");
+      var client = new TeamCityClient(m_server, m_useSsl);
+      client.Connect(m_username, m_password);
       var projectName = Guid.NewGuid().ToString("N");
       var project = client.Projects.Create(projectName);
 
@@ -122,7 +121,7 @@ namespace TeamCitySharp.IntegrationTests
       }
     }
 
-    [Test, Ignore("Current user doesn't have access to project features in tested instance.")]
+    [Test]
     public void it_returns_projectFeatures_when_passing_a_project_id_and_feature_id()
     {
       string projectId = "_Root";
@@ -132,7 +131,7 @@ namespace TeamCitySharp.IntegrationTests
       Assert.That(projectFeature, Is.Not.Null, "No project feature found for that specific project");
     }
 
-    [Test, Ignore("User involved in test doesn't have permission.")]
+    [Test]
     public void it_returns_projectFeatures_create_modify_delete()
     {
       string projectId = "_Root";
@@ -189,7 +188,7 @@ namespace TeamCitySharp.IntegrationTests
       }
     }
 
-    [Test, Ignore("User involved in test doesn't have permission.")]
+    [Test]
     public void it_returns_projectFeatures_field()
     {
       string projectId = "_Root";

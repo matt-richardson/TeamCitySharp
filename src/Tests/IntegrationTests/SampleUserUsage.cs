@@ -63,7 +63,7 @@ namespace TeamCitySharp.IntegrationTests
         }
 
 
-        [Test, Ignore("Test user doesn't have the rights to access all user groups list.")]
+        [Test]
         public void it_returns_all_user_groups()
         {
             List<Group> groups = m_client.Users.AllUserGroups();
@@ -71,7 +71,7 @@ namespace TeamCitySharp.IntegrationTests
             Assert.That(groups.Any(), "No user groups were found");
         }
 
-        [Test, Ignore("Test user doesn't have the rights to access all users of a user group.")]
+        [Test]
         public void it_returns_all_users_by_user_group_name()
         {
             string userGroupName = "ALL_USERS_GROUP";
@@ -80,7 +80,7 @@ namespace TeamCitySharp.IntegrationTests
             Assert.That(users.Any(), "No users were found for this group");
         }
 
-        [Test, Ignore("Test user doesn't have the rights to access all user roles by user group.")]
+        [Test]
         public void it_returns_all_roles_by_user_group_name()
         {
             string userGroupName = "ALL_USERS_GROUP";
@@ -89,7 +89,7 @@ namespace TeamCitySharp.IntegrationTests
             Assert.That(roles.Any(), "No roles were found for that userGroup");
         }
 
-        [Test, Ignore("Test user doesn't have the rights to access all users.")]
+        [Test]
         public void it_returns_all_users()
         {
             List<User> users = m_client.Users.All();
@@ -97,7 +97,8 @@ namespace TeamCitySharp.IntegrationTests
             Assert.That(users.Any(), "No users found for this server");
         }
 
-        [Test, Ignore("Test user doesn't have the rights to access all roles of a user.")]
+        [Test]
+        [Ignore("Needs an enterprise license")]
         public void it_returns_all_user_roles_by_user_name()
         {
             string userName = "teamcitysharpuser";

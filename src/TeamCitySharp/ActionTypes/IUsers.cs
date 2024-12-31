@@ -14,6 +14,7 @@ namespace TeamCitySharp.ActionTypes
     List<User> AllUsersByUserGroup(string userGroupName);
     List<Role> AllUserRolesByUserGroup(string userGroupName);
     bool Create(string username, string name, string email, string password);
+    void Delete(string username);
     bool AddPassword(string username, string password);
     bool IsAdministrator(string username);
   }

@@ -42,15 +42,23 @@ namespace TeamCitySharp.IntegrationTests
       string email = "John.Doe@test.com";
       string password = "J0hnD03";
 
-      var createUserResult = m_client.Users.Create(userName, name, email, password);
+      var createUserResult = false;
+      try
+      {
+        createUserResult = m_client.Users.Create(userName, name, email, password);
 
-      ITeamCityClient _newUser;
-      _newUser = new TeamCityClient(m_server, m_useSsl);
-      _newUser.Connect(userName, password);
+        var newUserClient = new TeamCityClient(m_server, m_useSsl);
+        newUserClient.Connect(userName, password);
 
-      var loginResponse = _newUser.Authenticate();
+        var loginResponse = newUserClient.Authenticate();
 
-      Assert.That(createUserResult && loginResponse);
+        Assert.That(createUserResult && loginResponse);
+      }
+      finally
+      {
+        if (createUserResult)
+          m_client.Users.Delete(userName);
+      }
     }
   }
 }

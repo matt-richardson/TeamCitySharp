@@ -100,10 +100,17 @@ namespace TeamCitySharp.IntegrationTests
       var client = new TeamCityClient(m_server, m_useSsl);
       client.Connect(m_username, m_password);
       var projectName = Guid.NewGuid().ToString("N");
-      var project = client.Projects.Create(projectName);
+      try
+      {
+        var project = client.Projects.Create(projectName);
 
         Assert.That(project, Is.Not.Null);
         Assert.That(project.Name, Is.EqualTo(projectName));
+      }
+      finally
+      {
+        client.Projects.Delete(projectName);
+      }
     }
 
     [Test]

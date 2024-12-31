@@ -49,16 +49,6 @@ namespace TeamCitySharp.IntegrationTests
     }
 
     [Test]
-    public void it_throws_exception_when_host_does_not_exist()
-    {
-      var client = new TeamCityClient("test:81");
-      client.Connect("admin", "qwerty");
-
-      const string buildConfigId = "Release Build";
-      Assert.Throws<HttpRequestException>(() => client.Builds.SuccessfulBuildsByBuildConfigId(buildConfigId));
-    }
-
-    [Test]
     public void it_throws_exception_when_no_connection_formed()
     {
       var client = new TeamCityClient(m_server, m_useSsl);

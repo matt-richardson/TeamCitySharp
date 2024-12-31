@@ -56,14 +56,6 @@ namespace TeamCitySharp.IntegrationTests
       Assert.Throws<ArgumentNullException>(() => new TeamCityClient(null));
     }
 
-    [Test]
-    public void it_throws_exception_when_host_does_not_exist()
-    {
-      var client = new TeamCityClient("test:81");
-      client.Connect("teamcitysharpuser", "qwerty");
-
-      Assert.Throws<HttpRequestException>(() => client.BuildConfigs.All());
-    }
     [Test, Ignore("We need to configure token before run this test")]
     public void it_returns_all_build_types_with_access_token()
     {

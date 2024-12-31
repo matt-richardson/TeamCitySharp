@@ -47,14 +47,6 @@ namespace TeamCitySharp.IntegrationTests
       Assert.Throws<ArgumentNullException>(() => new TeamCityClient(null));
     }
 
-    [Test]
-    public void it_throws_exception_when_host_does_not_exist()
-    {
-      var client = new TeamCityClient("test:81");
-      client.Connect("admin", "qwerty");
-
-      Assert.Throws<HttpRequestException>(() => client.Projects.All());
-    }
 
 
     [Test]

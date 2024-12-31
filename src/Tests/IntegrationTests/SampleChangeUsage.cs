@@ -76,7 +76,7 @@ namespace TeamCitySharp.IntegrationTests
     [Test]
     public void it_returns_change_details_for_build_config()
     {
-      string buildConfigId = m_goodBuildConfigId;
+      string buildConfigId = Configuration.GetAppSetting("IdOfBuildConfigWithArtifactAndVcsRoot");
       Change changeDetails = m_client.Changes.LastChangeDetailByBuildConfigId(buildConfigId);
 
       Assert.That(changeDetails, Is.Not.Null, "Cannot find details of that specified change");

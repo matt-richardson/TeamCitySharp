@@ -59,9 +59,10 @@ namespace TeamCitySharp.IntegrationTests
             Assert.That(vcsRoots.Any(), "No VCS Roots were found for the installation");
         }
 
-        [TestCase("TestDrive_ReactApp_HttpsGithubComHypnosphiTeamcityReactDemoRefsHeadsMaster")]
-        public void it_returns_vcs_details_when_passing_vcs_root_id(string vcsRootId)
+        [Test]
+        public void it_returns_vcs_details_when_passing_vcs_root_id()
         {
+            string vcsRootId = Configuration.GetAppSetting("IdOfVcsRoot");
             VcsRoot rootDetails = m_client.VcsRoots.ById(vcsRootId);
 
             Assert.That(rootDetails, Is.Not.Null, "Cannot find the specific VCSRoot");
@@ -119,7 +120,7 @@ namespace TeamCitySharp.IntegrationTests
         public void it_throws_exception_create_new_vsc_forbidden()
         {
             var client = new TeamCityClient(m_server, m_useSsl);
-            client.Connect(m_username, m_password);
+            client.Connect(Configuration.GetAppSetting("NonAdminUser"), m_password);
             var project = client.Projects.ById(m_goodProjectId);
 
             VcsRoot vcsroot = new VcsRoot();

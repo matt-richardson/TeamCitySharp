@@ -111,7 +111,7 @@ namespace TeamCitySharp.IntegrationTests
       try
       {
         var client = new TeamCityClient(m_server, m_useSsl);
-        client.ConnectAsGuest();
+        client.Connect(Configuration.GetAppSetting("NonAdminUser"), m_password);
         client.BuildConfigs.SetConfigurationPauseStatus(buildLocator, true);
       }
       catch (HttpException e)
@@ -133,7 +133,7 @@ namespace TeamCitySharp.IntegrationTests
     [Test]
     public void it_returns_build_config_details_by_configuration_name()
     {
-      string buildConfigName = "Release Build";
+      string buildConfigName = Configuration.GetAppSetting("NameOfBuildConfigWithTests");
       var buildConfig = m_client.BuildConfigs.ByConfigurationName(buildConfigName);
 
       Assert.That(buildConfig, Is.Not.Null, "Cannot find a build type for that buildName");
@@ -151,7 +151,7 @@ namespace TeamCitySharp.IntegrationTests
     [Test]
     public void it_returns_build_configs_by_project_name()
     {
-      string projectName = m_goodProjectId;
+      var projectName = Configuration.GetAppSetting("NameOfProjectWithBuildConfigs");
       var buildConfigs = m_client.BuildConfigs.ByProjectName(projectName);
 
       Assert.That(buildConfigs.Any(), "Cannot find a build type for that projectName");
@@ -317,11 +317,10 @@ namespace TeamCitySharp.IntegrationTests
     [Test]
     public void it_throws_exception_artifact_dependencies_by_build_config_id_forbidden()
     {
-
       try
       {
         var client = new TeamCityClient(m_server, m_useSsl);
-        client.ConnectAsGuest();
+        client.Connect(Configuration.GetAppSetting("NonAdminUser"), m_password);
         client.BuildConfigs.GetArtifactDependencies(m_goodBuildConfigId);
       }
       catch (HttpException e)
@@ -337,7 +336,7 @@ namespace TeamCitySharp.IntegrationTests
       try
       {
         var client = new TeamCityClient(m_server, m_useSsl);
-        client.ConnectAsGuest();
+        client.Connect(Configuration.GetAppSetting("NonAdminUser"), m_password);
         client.BuildConfigs.GetSnapshotDependencies(m_goodBuildConfigId);
       }
       catch (HttpException e)
@@ -352,7 +351,7 @@ namespace TeamCitySharp.IntegrationTests
       try
       {
         var client = new TeamCityClient(m_server, m_useSsl);
-        client.ConnectAsGuest();
+        client.Connect(Configuration.GetAppSetting("NonAdminUser"), m_password);
         client.BuildConfigs.CreateConfigurationByProjectId(m_goodProjectId, "testNewConfig");
       }
       catch (HttpException e)
@@ -521,10 +520,10 @@ namespace TeamCitySharp.IntegrationTests
     public void it_returns_first_build_types_builds_investigations_compatible_agents_field_null()
 
     {
-      var tempBuildConfig = m_client.BuildConfigs.All().First();
+      var tempBuildConfigId =Configuration.GetAppSetting("IdOfBuildConfigWithTests");
       // Section 1
       var buildTypeField = BuildTypeField.WithFields(id:true);
-      var buildConfig = m_client.BuildConfigs.GetFields(buildTypeField.ToString()).ByConfigurationId(tempBuildConfig.Id);
+      var buildConfig = m_client.BuildConfigs.GetFields(buildTypeField.ToString()).ByConfigurationId(tempBuildConfigId);
       Assert.That(buildConfig.Builds, Is.Null, "No builds 1");
       Assert.That(buildConfig.Investigations, Is.Null, "No Investigations 1");
       Assert.That(buildConfig.CompatibleAgents, Is.Null, "No CompatibleAgents 1");
@@ -534,7 +533,7 @@ namespace TeamCitySharp.IntegrationTests
       var investigationsField = InvestigationsField.WithFields();
       var compatibleAgentsField = CompatibleAgentsField.WithFields();
       buildTypeField = BuildTypeField.WithFields(id: true, builds: buildsField,investigations: investigationsField, compatibleAgents:compatibleAgentsField);
-      buildConfig = m_client.BuildConfigs.GetFields(buildTypeField.ToString()).ByConfigurationId(tempBuildConfig.Id);
+      buildConfig = m_client.BuildConfigs.GetFields(buildTypeField.ToString()).ByConfigurationId(tempBuildConfigId);
       Assert.That(buildConfig.Builds, Is.Not.Null, "No builds 2");
       Assert.That(buildConfig.Builds.Href, Is.Null, "No builds href 2");
       Assert.That(buildConfig.Investigations, Is.Not.Null, "No Investigations 2");
@@ -547,7 +546,7 @@ namespace TeamCitySharp.IntegrationTests
       investigationsField = InvestigationsField.WithFields(href:true);
       compatibleAgentsField = CompatibleAgentsField.WithFields(href:true);
       buildTypeField = BuildTypeField.WithFields(id: true, builds: buildsField, investigations: investigationsField, compatibleAgents: compatibleAgentsField);
-      buildConfig = m_client.BuildConfigs.GetFields(buildTypeField.ToString()).ByConfigurationId(tempBuildConfig.Id);
+      buildConfig = m_client.BuildConfigs.GetFields(buildTypeField.ToString()).ByConfigurationId(tempBuildConfigId);
       Assert.That(buildConfig.Builds, Is.Not.Null, "No builds 3");
       Assert.That(buildConfig.Builds.Href, Is.Not.Null, "No builds href 3");
       Assert.That(buildConfig.Investigations, Is.Not.Null, "No Investigations 3");
@@ -652,17 +651,17 @@ namespace TeamCitySharp.IntegrationTests
     [Test]
     public void it_returns_branches()
     {
-      string buildConfigId = m_goodBuildConfigId;
+      string buildConfigId = Configuration.GetAppSetting("IdOfBuildConfigWithArtifactAndVcsRoot");
       var tempBuild = m_client.BuildConfigs.GetBranchesByBuildConfigurationId(buildConfigId);
-      Assert.That(tempBuild.Count == 2, Is.True);
+      Assert.That(tempBuild.Count, Is.EqualTo(int.Parse(Configuration.GetAppSetting("NumberOfBranchesForBuildConfigWithArtifactAndVcsRoot"))));
     }
 
     [Test]
     public void it_returns_branches_history()
     {
-      string buildConfigId = m_goodBuildConfigId;
+      string buildConfigId = Configuration.GetAppSetting("IdOfBuildConfigWithArtifactAndVcsRoot");
       var tempBuild = m_client.BuildConfigs.GetBranchesByBuildConfigurationId(buildConfigId,BranchLocator.WithDimensions(BranchPolicy.ALL_BRANCHES));
-      Assert.That(tempBuild.Count == 6, Is.True);
+      Assert.That(tempBuild.Count, Is.EqualTo(int.Parse(Configuration.GetAppSetting("NumberOfBranchesForBuildConfigWithArtifactAndVcsRoot"))));
     }
 
     [Test]

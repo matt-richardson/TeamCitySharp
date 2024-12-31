@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -79,7 +78,7 @@ namespace TeamCitySharp.IntegrationTests
     [Test]
     public void it_returns_project_details_when_passing_a_project_name()
     {
-      string projectName = m_goodProjectId;
+      string projectName = Configuration.GetAppSetting("NameOfProjectWithBuildConfigs");
       Project projectDetails = m_client.Projects.ByName(projectName);
 
       Assert.That(projectDetails, Is.Not.Null, "No details found for that specific project");
@@ -243,7 +242,7 @@ namespace TeamCitySharp.IntegrationTests
     [Test]
     public void it_returns_branches_history()
     {
-      string projectId = m_goodProjectId;
+      string projectId = Configuration.GetAppSetting("IdOfProjectWithQueuedBuilds");
       var tempBuild = m_client.Projects.GetBranchesByBuildProjectId(projectId,
         BranchLocator.WithDimensions(BranchPolicy.ALL_BRANCHES));
       Assert.That(tempBuild.Count, Is.EqualTo(4));

@@ -78,9 +78,9 @@ namespace TeamCitySharp.IntegrationTests
     [Test]
     public async Task it_download_artifact()
     {
-      var buildConfigId = m_goodBuildConfigId;
+      var buildConfigId = Configuration.GetAppSetting("IdOfBuildConfigWithArtifact");
 
-      const string filename = "Outputs.zip";
+      var filename = Configuration.GetAppSetting("ArtifactNameForBuildConfigWithArtifact");
       var expectedFile = Path.Combine(Path.GetTempPath(), "expectedFile.zip");
       var expectedUrl = $"http://{m_server}/repository/download/{buildConfigId}/.lastSuccessful/{filename}";
       var artifact = m_client.Artifacts.ByBuildConfigId(buildConfigId);
@@ -120,9 +120,9 @@ namespace TeamCitySharp.IntegrationTests
     [Test]
     public async Task it_download_artifact_from_a_git_branch()
     {
-      var buildConfigId = m_goodBuildConfigId;
-      const string filename = "Outputs.zip";
-      const string param = "branch=dev-2001";
+      var buildConfigId = Configuration.GetAppSetting("IdOfBuildConfigWithArtifactAndVcsRoot");
+      var filename = Configuration.GetAppSetting("ArtifactNameForBuildConfigWithArtifactAndVcsRoot");
+      var param = $"branch={Configuration.GetAppSetting("BranchNameForBuildConfigWithArtifactAndVcsRoot")}";
       var expectedFile = Path.Combine(Path.GetTempPath(), "expectedFile.zip");
       var expectedUrl = $"http://{m_server}/repository/download/{buildConfigId}/.lastSuccessful/{filename}?{HttpUtility.UrlDecode(param)}";
       var artifact = m_client.Artifacts.ByBuildConfigId(buildConfigId, param);

@@ -20,9 +20,6 @@ namespace TeamCitySharp.IntegrationTests
     private readonly string m_username;
     private readonly string m_password;
     private readonly string m_goodBuildConfigId;
-    private readonly string m_goodProjectId;
-    private readonly string m_goodNumber;
-
 
     public when_interacting_to_get_build_status_info()
     {
@@ -31,8 +28,6 @@ namespace TeamCitySharp.IntegrationTests
       m_username = Configuration.GetAppSetting("Username");
       m_password = Configuration.GetAppSetting("Password");
       m_goodBuildConfigId = Configuration.GetAppSetting("GoodBuildConfigId");
-      m_goodProjectId = Configuration.GetAppSetting("GoodProjectId");
-      m_goodNumber = Configuration.GetAppSetting("GoodNumber");
     }
 
     [SetUp]
@@ -201,8 +196,8 @@ namespace TeamCitySharp.IntegrationTests
     [Test]
     public void it_returns_correct_next_builds()
     {
-      const string buildId = "5726";
       var client = new TeamCityClient(m_server, m_useSsl);
+      var buildId = Configuration.GetAppSetting("IdOfBuildWithSubsequentBuilds");
       client.Connect(m_username, m_password);
 
       var builds = client.Builds.NextBuilds(buildId, 10);
@@ -213,14 +208,14 @@ namespace TeamCitySharp.IntegrationTests
       }
 
       Assert.That(builds, Is.Not.Null);
-      Assert.That(builds.Count == 10);
+      Assert.That(builds.Count, Is.EqualTo(int.Parse(Configuration.GetAppSetting("NumberOfSubsequentBuilds"))));
     }
 
     [Test]
     public void it_returns_correct_next_builds_with_filter()
     {
-      const string buildId = "5726";
       var client = new TeamCityClient(m_server, m_useSsl);
+      var buildId = Configuration.GetAppSetting("IdOfBuildWithSubsequentBuilds");
       client.Connect(m_username, m_password);
 
       BuildField buildField = BuildField.WithFields(id: true, number: true, finishDate: true);
@@ -238,16 +233,16 @@ namespace TeamCitySharp.IntegrationTests
       }
     }
 
-    [Test, Ignore("m_goodNumber is not pointing to a valid number anymore.")]
+    [Test]
     public void it_pin_by_config()
     {
-      m_client.Builds.PinBuildByBuildNumber(m_goodBuildConfigId, m_goodNumber, "Automated Comment");
+      m_client.Builds.PinBuildByBuildNumber(Configuration.GetAppSetting("IdOfBuildConfigWithTests"), Configuration.GetAppSetting("BuildNumberOfBuildToPin"), "Automated Comment");
     }
 
-    [Test, Ignore("m_goodNumber is not pointing to a valid number anymore.")]
+    [Test]
     public void it_unpin_by_config()
     {
-      m_client.Builds.UnPinBuildByBuildNumber(m_goodBuildConfigId, m_goodNumber);
+      m_client.Builds.UnPinBuildByBuildNumber(Configuration.GetAppSetting("IdOfBuildConfigWithTests"), Configuration.GetAppSetting("BuildNumberOfBuildToPin"));
     }
 
 
@@ -255,8 +250,7 @@ namespace TeamCitySharp.IntegrationTests
     public void it_returns_first_build_artifacts_relatedIssues_Statistics_no_field()
 
     {
-      var tempBuildConfig = m_client.BuildConfigs.All().First();
-      var tempBuild = m_client.Builds.LastBuildByBuildConfigId(tempBuildConfig.Id);
+      var tempBuild = m_client.Builds.LastBuildByBuildConfigId(Configuration.GetAppSetting("IdOfBuildConfigWithTests"));
       var build = m_client.Builds.ById(tempBuild.Id);
 
       Assert.That(build.Artifacts, Is.Not.Null, "No Artifacts ");
@@ -269,13 +263,10 @@ namespace TeamCitySharp.IntegrationTests
 
     [Test]
     public void it_returns_first_build_types_builds_investigations_compatible_agents_field_null()
-
     {
-      var tempBuildConfig = m_client.BuildConfigs.All().First();
-
       // Section 1
       var buildField = BuildField.WithFields(number: true, id: true);
-      var tempBuild = m_client.Builds.LastBuildByBuildConfigId(tempBuildConfig.Id);
+      var tempBuild = m_client.Builds.LastBuildByBuildConfigId(Configuration.GetAppSetting("IdOfBuildConfigWithTests"));
       var build = m_client.Builds.GetFields(buildField.ToString()).ById(tempBuild.Id);
       Assert.That(build.Artifacts, Is.Null, "No Artifacts 1");
       Assert.That(build.RelatedIssues, Is.Null, "No RelatedIssues 1");
@@ -287,7 +278,7 @@ namespace TeamCitySharp.IntegrationTests
       var statisticsField = StatisticsField.WithFields();
       buildField = BuildField.WithFields(id: true, artifacts: artifactsField, relatedIssues: relatedIssuesField,
         statistics: statisticsField);
-      tempBuild = m_client.Builds.LastBuildByBuildConfigId(tempBuildConfig.Id);
+      tempBuild = m_client.Builds.LastBuildByBuildConfigId(Configuration.GetAppSetting("IdOfBuildConfigWithTests"));
       build = m_client.Builds.GetFields(buildField.ToString()).ById(tempBuild.Id);
       Assert.That(build.Artifacts, Is.Not.Null, "No Artifacts 2");
       Assert.That(build.Artifacts.Href, Is.Not.Null, "No Artifacts href 2");
@@ -302,7 +293,7 @@ namespace TeamCitySharp.IntegrationTests
       relatedIssuesField = RelatedIssuesField.WithFields(href: true);
       buildField = BuildField.WithFields(id: true, artifacts: artifactsField, relatedIssues: relatedIssuesField,
         statistics: statisticsField);
-      tempBuild = m_client.Builds.LastBuildByBuildConfigId(tempBuildConfig.Id);
+      tempBuild = m_client.Builds.LastBuildByBuildConfigId(Configuration.GetAppSetting("IdOfBuildConfigWithTests"));
       build = m_client.Builds.GetFields(buildField.ToString()).ById(tempBuild.Id);
       Assert.That(build.Artifacts, Is.Not.Null, "No Artifacts 3");
       Assert.That(build.Artifacts.Href, Is.Not.Null, "No Artifacts href 3");
@@ -315,9 +306,6 @@ namespace TeamCitySharp.IntegrationTests
     [Test]
     public void it_returns_full_build_field_1()
     {
-      var tempBuildConfig = m_client.BuildConfigs.All().First();
-
-
       var buildField = BuildField.WithFields(id: true, taskId: true, buildTypeId: true, buildTypeInternalId: true,
         number: true, status: true, state: true, running: true, composite: true, failedToStart: true, personal: true,
         percentageComplete: true,
@@ -326,7 +314,7 @@ namespace TeamCitySharp.IntegrationTests
         startEstimate: true, waitReason: true,
         startDate: true, finishDate: true, queuedDate: true, settingsHash: true, currentSettingsHash: true,
         modificationId: true, chainModificationId: true, usedByOtherBuilds: true);
-      var tempBuild = m_client.Builds.LastBuildByBuildConfigId(tempBuildConfig.Id);
+      var tempBuild = m_client.Builds.LastBuildByBuildConfigId(Configuration.GetAppSetting("IdOfBuildConfigWithTests"));
       var build = m_client.Builds.GetFields(buildField.ToString()).ById(tempBuild.Id);
       Assert.That(build.Id, Is.Not.Null);
     }
@@ -334,7 +322,6 @@ namespace TeamCitySharp.IntegrationTests
     [Test]
     public void it_returns_full_build_field_2()
     {
-      var tempBuildConfig = m_client.BuildConfigs.All().First();
       ItemsField itemsField = ItemsField.WithFields(item: true);
       BuildsField buildsField = BuildsField.WithFields();
       RelatedField relatedField = RelatedField.WithFields(builds: buildsField);
@@ -379,7 +366,7 @@ namespace TeamCitySharp.IntegrationTests
         statusChangeComment: commentField, relatedIssues: relatedIssuesField, replacementIds: itemsField,
         related: relatedField);
 
-      var tempBuild = m_client.Builds.LastBuildByBuildConfigId(tempBuildConfig.Id);
+      var tempBuild = m_client.Builds.LastBuildByBuildConfigId(Configuration.GetAppSetting("IdOfBuildConfigWithTests"));
       var build = m_client.Builds.GetFields(buildField.ToString()).ById(tempBuild.Id);
       Assert.That(build, Is.Not.Null);
     }
@@ -392,7 +379,7 @@ namespace TeamCitySharp.IntegrationTests
       PropertyField propertyField = PropertyField.WithFields(name:true,value:true);
       PropertiesField propertiesField = PropertiesField.WithFields(propertyField: propertyField);
       var buildField = BuildField.WithFields(resultingProperties:propertiesField);
-      var tempBuild = m_client.Builds.LastBuildByBuildConfigId(tempBuildConfig.Id);
+      var tempBuild = m_client.Builds.LastBuildByBuildConfigId(Configuration.GetAppSetting("IdOfBuildConfigWithTests"));
       var build = m_client.Builds.GetFields(buildField.ToString()).ById(tempBuild.Id);
       Assert.That(build, Is.Not.Null);
     }
@@ -405,7 +392,7 @@ namespace TeamCitySharp.IntegrationTests
       EntryField entryField = EntryField.WithFields(name:true,value:true);
       EntriesField entriesField = EntriesField.WithFields(entry: entryField);
       var buildField = BuildField.WithFields( attributes: entriesField);
-      var tempBuild = m_client.Builds.LastBuildByBuildConfigId(tempBuildConfig.Id);
+      var tempBuild = m_client.Builds.LastBuildByBuildConfigId(Configuration.GetAppSetting("IdOfBuildConfigWithTests"));
       var build = m_client.Builds.GetFields(buildField.ToString()).ById(tempBuild.Id);
       Assert.That(build, Is.Not.Null);
     }
@@ -420,7 +407,7 @@ namespace TeamCitySharp.IntegrationTests
       BuildTypeField buildTypeField = BuildTypeField.WithFields(id: true);
       TriggeredField triggeredField = TriggeredField.WithFields(buildType: buildTypeField,type:true,date:true,details:true,user:userField,displayText:true,rawValue:true, build:buildField1);
       var buildField = BuildField.WithFields(triggered: triggeredField);
-      var tempBuild = m_client.Builds.LastBuildByBuildConfigId(tempBuildConfig.Id);
+      var tempBuild = m_client.Builds.LastBuildByBuildConfigId(Configuration.GetAppSetting("IdOfBuildConfigWithTests"));
       var build = m_client.Builds.GetFields(buildField.ToString()).ById(tempBuild.Id);
       Assert.That(build, Is.Not.Null);
     }
@@ -434,7 +421,7 @@ namespace TeamCitySharp.IntegrationTests
       BuildChangeField buildChangeField = BuildChangeField.WithFields(nextBuild: buildField1, prevBuild: buildField1);
       BuildChangesField buildChangesField = BuildChangesField.WithFields(buildChange: buildChangeField);
       var buildField = BuildField.WithFields(artifactDependencyChanges: buildChangesField);
-      var tempBuild = m_client.Builds.LastBuildByBuildConfigId(tempBuildConfig.Id);
+      var tempBuild = m_client.Builds.LastBuildByBuildConfigId(Configuration.GetAppSetting("IdOfBuildConfigWithTests"));
       var build = m_client.Builds.GetFields(buildField.ToString()).ById(tempBuild.Id);
       Assert.That(build, Is.Not.Null);
     }
@@ -446,7 +433,7 @@ namespace TeamCitySharp.IntegrationTests
       LinkField linkField = LinkField.WithFields(type:true,url:true, relativeUrl: true);
       LinksField linksField = LinksField.WithFields(link:linkField);
       var buildField = BuildField.WithFields(links:linksField);
-      var tempBuild = m_client.Builds.LastBuildByBuildConfigId(tempBuildConfig.Id);
+      var tempBuild = m_client.Builds.LastBuildByBuildConfigId(Configuration.GetAppSetting("IdOfBuildConfigWithTests"));
       var build = m_client.Builds.GetFields(buildField.ToString()).ById(tempBuild.Id);
       Assert.That(build, Is.Not.Null);
     }
@@ -454,10 +441,9 @@ namespace TeamCitySharp.IntegrationTests
     [Test]
     public void it_returns_full_build_field_versionedSettingsRevision()
     {
-      var tempBuildConfig = m_client.BuildConfigs.All().First();
       RevisionField revisionField = RevisionField.WithFields(version: true);
       var buildField = BuildField.WithFields(versionedSettingsRevision: revisionField);
-      var tempBuild = m_client.Builds.LastBuildByBuildConfigId(tempBuildConfig.Id);
+      var tempBuild = m_client.Builds.LastBuildByBuildConfigId(Configuration.GetAppSetting("IdOfBuildConfigWithTests"));
       var build = m_client.Builds.GetFields(buildField.ToString()).ById(tempBuild.Id);
       Assert.That(build, Is.Not.Null);
     }
@@ -469,7 +455,7 @@ namespace TeamCitySharp.IntegrationTests
       PropertyField propertyField = PropertyField.WithFields(name: true, value: true);
       StatisticsField statisticsField = StatisticsField.WithFields(propertyField: propertyField,href:true, count:true);
       BuildField buildField = BuildField.WithFields(statistics: statisticsField);
-      var tempBuild = m_client.Builds.LastBuildByBuildConfigId(tempBuildConfig.Id);
+      var tempBuild = m_client.Builds.LastBuildByBuildConfigId(Configuration.GetAppSetting("IdOfBuildConfigWithTests"));
       var build = m_client.Builds.GetFields(buildField.ToString()).ById(tempBuild.Id);
       Assert.That(build.Statistics.Href, Is.Not.Null);
       Assert.That(build.Statistics.Count, Is.Not.Null);
@@ -479,8 +465,7 @@ namespace TeamCitySharp.IntegrationTests
     [Test]
     public void it_returns_full_build_field_statistics_without_build ()
     {
-      var tempBuildConfig = m_client.BuildConfigs.All().First();
-      var tempBuild = m_client.Builds.LastBuildByBuildConfigId(tempBuildConfig.Id);
+      var tempBuild = m_client.Builds.LastBuildByBuildConfigId(Configuration.GetAppSetting("IdOfBuildConfigWithTests"));
       PropertyField propertyField = PropertyField.WithFields(name: true, value: true);
       StatisticsField statisticsField = StatisticsField.WithFields(propertyField: propertyField, href: true, count: true);
       var stats = m_client.Statistics.GetFields(statisticsField.ToString()).GetByBuildId(tempBuild.Id);

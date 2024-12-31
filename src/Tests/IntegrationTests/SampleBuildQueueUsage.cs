@@ -23,8 +23,6 @@ namespace TeamCitySharp.IntegrationTests
     private readonly string m_username;
     private readonly string m_password;
     private readonly string m_queuedBuildConfigId;
-    private readonly string m_queuedProjectId;
-
 
     public when_interacting_to_get_build_queue_info()
     {
@@ -33,7 +31,6 @@ namespace TeamCitySharp.IntegrationTests
       m_username = Configuration.GetAppSetting("Username");
       m_password = Configuration.GetAppSetting("Password");
       m_queuedBuildConfigId = Configuration.GetAppSetting("QueuedBuildConfigId");
-      m_queuedProjectId = Configuration.GetAppSetting("QueuedProjectId");
     }
 
     [SetUp]
@@ -54,7 +51,8 @@ namespace TeamCitySharp.IntegrationTests
     [Test]
     public void it_returns_the_builds_queued_by_project_id()
     {
-      var result = m_client.BuildQueue.ByProjectLocater(ProjectLocator.WithId(m_queuedProjectId));
+      var projectId = Configuration.GetAppSetting("IdOfProjectWithQueuedBuilds");
+      var result = m_client.BuildQueue.ByProjectLocater(ProjectLocator.WithId(projectId));
 
       Assert.That(result, Is.Not.Empty);
     }

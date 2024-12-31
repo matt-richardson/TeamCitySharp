@@ -19,7 +19,6 @@ namespace TeamCitySharp.IntegrationTests
     private readonly bool m_useSsl;
     private readonly string m_username;
     private readonly string m_password;
-    private readonly int m_goodBuildId;
     private readonly string m_goodProjectId;
     private readonly string m_goodTestId;
 
@@ -30,7 +29,6 @@ namespace TeamCitySharp.IntegrationTests
       bool.TryParse(Configuration.GetAppSetting("UseSsl"), out m_useSsl);
       m_username = Configuration.GetAppSetting("Username");
       m_password = Configuration.GetAppSetting("Password");
-      int.TryParse(Configuration.GetAppSetting("GoodBuildId"), out m_goodBuildId);
       m_goodProjectId = Configuration.GetAppSetting("GoodProjectId");
       m_goodTestId = Configuration.GetAppSetting("GoodTestId");
     }
@@ -51,7 +49,7 @@ namespace TeamCitySharp.IntegrationTests
     [Test]
     public void it_returns_tests_for_all_running_builds()
     {
-      var result = m_client.Tests.ByBuildLocator(BuildLocator.WithId(m_goodBuildId));
+      var result = m_client.Tests.ByBuildLocator(BuildLocator.WithId(int.Parse(Configuration.GetAppSetting("BuildWithTestsId"))));
       Assert.That(result.TestOccurrence, Is.Not.Null);
     }
 
@@ -74,7 +72,7 @@ namespace TeamCitySharp.IntegrationTests
     [Test]
     public void it_returns_all_tests_for_all_running_builds()
     {
-      var result = m_client.Tests.All(BuildLocator.WithId(m_goodBuildId));
+      var result = m_client.Tests.All(BuildLocator.WithId(int.Parse(Configuration.GetAppSetting("BuildWithTestsId"))));
       Assert.That(result, Is.Not.Empty);
     }
 

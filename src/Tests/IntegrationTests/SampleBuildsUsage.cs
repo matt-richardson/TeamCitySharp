@@ -429,7 +429,6 @@ namespace TeamCitySharp.IntegrationTests
     [Test]
     public void it_returns_full_build_field_Links()
     {
-      var tempBuildConfig = m_client.BuildConfigs.All().First();
       LinkField linkField = LinkField.WithFields(type:true,url:true, relativeUrl: true);
       LinksField linksField = LinksField.WithFields(link:linkField);
       var buildField = BuildField.WithFields(links:linksField);
@@ -451,7 +450,6 @@ namespace TeamCitySharp.IntegrationTests
     [Test]
     public void it_returns_full_build_field_statistics_with_build()
     {
-      var tempBuildConfig = m_client.BuildConfigs.All().First();
       PropertyField propertyField = PropertyField.WithFields(name: true, value: true);
       StatisticsField statisticsField = StatisticsField.WithFields(propertyField: propertyField,href:true, count:true);
       BuildField buildField = BuildField.WithFields(statistics: statisticsField);

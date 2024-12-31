@@ -250,9 +250,10 @@ namespace TeamCitySharp.IntegrationTests
     public void it_returns_branches_history()
     {
       string projectId = Configuration.GetAppSetting("IdOfProjectWithQueuedBuilds");
+      var expected = int.Parse(Configuration.GetAppSetting("NumberOfBranchesForBuildConfigWithArtifactAndVcsRoot"));
       var tempBuild = m_client.Projects.GetBranchesByBuildProjectId(projectId,
         BranchLocator.WithDimensions(BranchPolicy.ALL_BRANCHES));
-      Assert.That(tempBuild.Count, Is.EqualTo(4));
+      Assert.That(tempBuild.Count, Is.EqualTo(expected));
     }
 
     [Test]

@@ -9,7 +9,6 @@ using NUnit.Framework;
 namespace TeamCitySharp.IntegrationTests
 {
   [TestFixture]
-  [Ignore("ignore")]
   public class when_team_city_client_is_asked_to_create_a_new_user_with_a_password
   {
     private ITeamCityClient m_client;

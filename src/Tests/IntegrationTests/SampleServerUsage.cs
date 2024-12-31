@@ -58,7 +58,7 @@ namespace TeamCitySharp.IntegrationTests
       Assert.That(serverInfo, Is.Not.Null, "The server is not returning any information");
     }
 
-    [Test, Ignore("Current user doesn't have the right to list plugins in tested instance.")]
+    [Test]
     public void it_returns_all_server_plugins()
     {
       List<Plugin> plugins = m_client.ServerInformation.AllPlugins();

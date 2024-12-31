@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Xml;
 using TeamCitySharp.Connection;
 using TeamCitySharp.DomainEntities;
 using TeamCitySharp.Locators;
@@ -269,8 +271,21 @@ namespace TeamCitySharp.ActionTypes
     /// <param name="comment"></param>
     public void PinBuildByBuildNumber(string buildConfigId, string buildNumber, string comment)
     {
-      const string urlPart = "/builds/buildType:{0},number:{1}/pin/";
-      m_caller.PutFormat(comment, HttpContentTypes.TextPlain, urlPart, buildConfigId, buildNumber );
+      const string urlPart = "/builds/buildType:{0},number:{1}/pinInfo";
+      
+      var sw = new StringWriter();
+      using (var writer = new XmlTextWriter(sw))
+      {
+        writer.WriteStartElement("pinInfo");
+        writer.WriteAttributeString("status", "true");
+        writer.WriteStartElement("comment");
+        writer.WriteStartElement("text");
+        writer.WriteString(comment);
+        writer.WriteEndElement();
+        writer.WriteEndElement();
+      }
+      
+      m_caller.PutFormat(sw.ToString(), HttpContentTypes.ApplicationXml, urlPart, buildConfigId, buildNumber );
     }
 
     /// <summary>
@@ -280,8 +295,17 @@ namespace TeamCitySharp.ActionTypes
     /// <param name="buildNumber"></param>
     public void UnPinBuildByBuildNumber(string buildConfigId, string buildNumber)
     {
-      var urlPart = $"/builds/buildType:{buildConfigId},number:{buildNumber}/pin/";
-      m_caller.Delete(urlPart);
+      var urlPart = $"/builds/buildType:{buildConfigId},number:{buildNumber}/pinInfo";
+      
+      var sw = new StringWriter();
+      using (var writer = new XmlTextWriter(sw))
+      {
+        writer.WriteStartElement("pinInfo");
+        writer.WriteAttributeString("status", "false");
+        writer.WriteEndElement();
+      }
+      
+      m_caller.PutFormat(sw.ToString(), HttpContentTypes.ApplicationXml, urlPart, buildConfigId, buildNumber );
     }
 
     #endregion

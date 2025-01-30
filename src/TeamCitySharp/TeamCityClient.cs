@@ -1,4 +1,6 @@
-﻿using TeamCitySharp.ActionTypes;
+﻿using System;
+using System.Net.Http;
+using TeamCitySharp.ActionTypes;
 using TeamCitySharp.Connection;
 
 namespace TeamCitySharp
@@ -20,9 +22,9 @@ namespace TeamCitySharp
     private IStatistics m_statistics;
     private ITests m_tests;
 
-    public TeamCityClient(string hostName, bool useSsl = false)
+    public TeamCityClient(string hostName, bool useSsl = false, Func<HttpClient> httpClientFactory = null)
     {
-      m_caller = new TeamCityCaller(hostName, useSsl);
+      m_caller = new TeamCityCaller(hostName, useSsl, httpClientFactory);
     }
 
     public void Connect(string userName, string password)

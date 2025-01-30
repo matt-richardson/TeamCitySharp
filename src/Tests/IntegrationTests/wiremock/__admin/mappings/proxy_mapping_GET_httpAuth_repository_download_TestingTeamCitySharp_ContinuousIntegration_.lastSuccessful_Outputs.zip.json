@@ -1,0 +1,71 @@
+{
+  "Guid": "7c62d480-cc1e-4405-b9bc-429be1984466",
+  "UpdatedAt": "2025-01-01T05:23:26.422968Z",
+  "Title": "Proxy Mapping for GET /httpAuth/repository/download/TestingTeamCitySharp_ContinuousIntegration/.lastSuccessful/Outputs.zip",
+  "Description": "Proxy Mapping for GET /httpAuth/repository/download/TestingTeamCitySharp_ContinuousIntegration/.lastSuccessful/Outputs.zip",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/repository/download/TestingTeamCitySharp_ContinuousIntegration/.lastSuccessful/Outputs.zip",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "Body": "filecontents\n",
+    "Headers": {
+      "Last-Modified": "Mon, 30 Dec 2024 05:11:22 GMT",
+      "Content-Disposition": "attachment; filename*=UTF-8''Outputs.zip;",
+      "Content-Type": "application/zip",
+      "Content-Length": "13",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=3DD3BC7BBC4B8E3FE55ABD9B80492CB3; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:23:36 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "max-age=86400",
+      "Accept-Ranges": "bytes",
+      "ETag": "\"7c14cb9ed766a7869fe1974a6ddc2215\"",
+      "Date": "Wed, 01 Jan 2025 05:23:26 GMT"
+    }
+  }
+}

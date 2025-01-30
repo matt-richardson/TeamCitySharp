@@ -1,0 +1,125 @@
+{
+  "Guid": "628d2a76-54b2-4df7-8ca5-ca3fbf5346a9",
+  "UpdatedAt": "2025-01-01T05:23:27.545351Z",
+  "Title": "Proxy Mapping for GET /httpAuth/app/rest/changes/id:40",
+  "Description": "Proxy Mapping for GET /httpAuth/app/rest/changes/id:40",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/changes/id:40",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "id": 40,
+      "version": "a066c167d618d06db7b5ac65d90c03c9f09d3e75",
+      "username": "matt.richardson",
+      "date": "20241231T151741+1100",
+      "href": "/httpAuth/app/rest/changes/id:40",
+      "webUrl": "http://localhost:8111/change/40?personal=false",
+      "comment": "Small Cleanups (#20)\n\n",
+      "files": {
+        "count": 5,
+        "file": [
+          {
+            "before-revision": "f42c77c72647ea3b5a199b4899d3ffea6dde7f40",
+            "after-revision": "a066c167d618d06db7b5ac65d90c03c9f09d3e75",
+            "changeType": "edited",
+            "file": ".gitignore",
+            "relative-file": ".gitignore"
+          },
+          {
+            "before-revision": "f42c77c72647ea3b5a199b4899d3ffea6dde7f40",
+            "after-revision": "a066c167d618d06db7b5ac65d90c03c9f09d3e75",
+            "changeType": "edited",
+            "file": "src/TeamCitySharp/Connection/TeamCityCaller.cs",
+            "relative-file": "src/TeamCitySharp/Connection/TeamCityCaller.cs"
+          },
+          {
+            "before-revision": "f42c77c72647ea3b5a199b4899d3ffea6dde7f40",
+            "after-revision": "a066c167d618d06db7b5ac65d90c03c9f09d3e75",
+            "changeType": "edited",
+            "file": "src/Tests/IntegrationTests/SampleBuildsUsage.cs",
+            "relative-file": "src/Tests/IntegrationTests/SampleBuildsUsage.cs"
+          },
+          {
+            "before-revision": "f42c77c72647ea3b5a199b4899d3ffea6dde7f40",
+            "after-revision": "a066c167d618d06db7b5ac65d90c03c9f09d3e75",
+            "changeType": "edited",
+            "file": "src/Tests/IntegrationTests/SampleProjectUsage.cs",
+            "relative-file": "src/Tests/IntegrationTests/SampleProjectUsage.cs"
+          },
+          {
+            "before-revision": "f42c77c72647ea3b5a199b4899d3ffea6dde7f40",
+            "after-revision": "a066c167d618d06db7b5ac65d90c03c9f09d3e75",
+            "changeType": "edited",
+            "file": "src/Tests/IntegrationTests/TeamCitySharp.IntegrationTests.csproj",
+            "relative-file": "src/Tests/IntegrationTests/TeamCitySharp.IntegrationTests.csproj"
+          }
+        ]
+      },
+      "vcsRootInstance": {
+        "id": "3",
+        "vcs-root-id": "TestingTeamCitySharp_VcsRootTeamCitySharp",
+        "name": "https://github.com/OctopusDeploy/Octopus.TeamCitySharp",
+        "href": "/httpAuth/app/rest/vcs-root-instances/id:3"
+      },
+      "commiter": {
+        "vcsUsername": "matt.richardson"
+      }
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "1862",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=30AAA5CC3089F76474F98E81EDD73B18; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:23:37 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 05:23:27 GMT"
+    }
+  }
+}

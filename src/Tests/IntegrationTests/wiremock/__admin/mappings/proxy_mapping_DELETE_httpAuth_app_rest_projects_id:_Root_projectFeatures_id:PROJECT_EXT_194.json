@@ -1,0 +1,55 @@
+{
+  "Guid": "1cabf89f-86a8-47c1-a6e7-48800da08ceb",
+  "UpdatedAt": "2024-12-31T06:00:24.305964Z",
+  "Title": "Proxy Mapping for DELETE /httpAuth/app/rest/projects/id:_Root/projectFeatures/id:PROJECT_EXT_194",
+  "Description": "Proxy Mapping for DELETE /httpAuth/app/rest/projects/id:_Root/projectFeatures/id:PROJECT_EXT_194",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/projects/id:_Root/projectFeatures/id:PROJECT_EXT_194",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "DELETE"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "text/plain",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ],
+    "Body": {
+      "Matcher": {
+        "Name": "ExactMatcher",
+        "Pattern": "",
+        "IgnoreCase": true
+      }
+    }
+  },
+  "Response": {
+    "StatusCode": 204,
+    "Headers": {
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=321D5CFA8F10DA486C3EE2E476099A81; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Tue, 31 Dec 2024 06:00:34 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Tue, 31 Dec 2024 06:00:24 GMT"
+    }
+  }
+}

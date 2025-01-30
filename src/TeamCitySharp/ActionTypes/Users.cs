@@ -90,6 +90,11 @@ namespace TeamCitySharp.ActionTypes
 
       return result;
     }
+    
+    public void Delete(string username)
+    {
+      m_caller.Delete($"/users/username:{username}");
+    }
 
     public bool AddPassword(string username, string password)
     {

@@ -1,0 +1,673 @@
+{
+  "Guid": "9ad7d1c7-f5dc-4f0e-b204-5a1b29b613e7",
+  "UpdatedAt": "2025-01-01T05:23:27.761509Z",
+  "Title": "Proxy Mapping for GET /httpAuth/app/rest/server/plugins",
+  "Description": "Proxy Mapping for GET /httpAuth/app/rest/server/plugins",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/server/plugins",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "count": 98,
+      "plugin": [
+        {
+          "name": "artifactsSizeStatistics",
+          "displayName": "Statistics: artifacts size",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/artifactsSizeStatistics"
+        },
+        {
+          "name": "Ipr",
+          "displayName": "IntelliJ IDEA project runner",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/Ipr"
+        },
+        {
+          "name": "perfmon",
+          "displayName": "Performance Monitor",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/perfmon"
+        },
+        {
+          "name": "youtrack",
+          "displayName": "YouTrack integration",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/youtrack"
+        },
+        {
+          "name": "ssh-manager",
+          "displayName": "SSH Keys Manager",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/ssh-manager"
+        },
+        {
+          "name": "nt-domain-login",
+          "displayName": "Microsoft Windows Domain authentication",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/nt-domain-login"
+        },
+        {
+          "name": "qodana",
+          "displayName": "Qodana",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/qodana"
+        },
+        {
+          "name": "docker-support",
+          "displayName": "Docker Support",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/docker-support"
+        },
+        {
+          "name": "FxCop",
+          "displayName": "FxCop support",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/fxcop"
+        },
+        {
+          "name": "kotlin-script-runner",
+          "displayName": "Kotlin Script runner",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/kotlin-script-runner"
+        },
+        {
+          "name": "sbt-runner",
+          "displayName": "Simple Build Tool (Scala)",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/sbt-runner"
+        },
+        {
+          "name": "Duplicator",
+          "displayName": "Duplicates Finder (Java)",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/Duplicator"
+        },
+        {
+          "name": "teamcity-kubernetes-plugin",
+          "displayName": "Kubernetes support",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/kubernetes-plugin"
+        },
+        {
+          "name": "overview-plugin",
+          "displayName": "Overview Plugin",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/overview-plugin"
+        },
+        {
+          "name": "GitLabIssues",
+          "displayName": "GitLab Issues",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/GitLabIssues"
+        },
+        {
+          "name": "tcWebHooks",
+          "displayName": "Web Hooks (tcWebHooks)",
+          "version": "2.0.1-rc.3",
+          "loadPath": "/Users/matt/.BuildServer/system/caches/plugins.unpacked/tcWebHooks-2.0.1-rc.3-build.501"
+        },
+        {
+          "name": "commit-status-publisher",
+          "displayName": "Commit Status Publisher",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/commit-status-publisher"
+        },
+        {
+          "name": "teamcity-agent-terminal",
+          "displayName": "Agent Terminal",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/teamcity-agents-terminal-plugin"
+        },
+        {
+          "name": "jvm-update",
+          "displayName": "Build Agent JVM updater",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/jvm-update"
+        },
+        {
+          "name": "searchBuildByNumber",
+          "displayName": "Search builds plugin",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/searchBuildByNumber"
+        },
+        {
+          "name": "intellij-plugin-distributor",
+          "displayName": "IntelliJ Platform Plugin Distributor",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/intellij-plugin-distributor"
+        },
+        {
+          "name": "tfs",
+          "displayName": "VCS support: TFVC",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/tfs"
+        },
+        {
+          "name": "dotnet",
+          "displayName": ".NET Support",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/dotnet"
+        },
+        {
+          "name": "Octopus.TeamCity",
+          "displayName": "Octopus Deploy integration",
+          "version": "6.1.9",
+          "loadPath": "/Users/matt/.BuildServer/system/caches/plugins.unpacked/Octopus.TeamCity (1)"
+        },
+        {
+          "name": "s3-artifact-storage",
+          "displayName": "Amazon S3 Artifact Storage",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/s3-artifact-storage"
+        },
+        {
+          "name": "Octopus.TeamCity.OpenTelemetry",
+          "displayName": "OpenTelemetry Build Exporter",
+          "version": "20241204102300",
+          "loadPath": "/Users/matt/.BuildServer/system/caches/plugins.unpacked/Octopus.TeamCity.OpenTelemetry.20241204102300"
+        },
+        {
+          "name": "bugzilla",
+          "displayName": "Bugzilla integration",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/bugzilla"
+        },
+        {
+          "name": "visualstudiotest",
+          "displayName": "Visual Studio Test Support",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/visualstudiotest"
+        },
+        {
+          "name": "java-dowser",
+          "displayName": "JavaDowser",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/java-dowser"
+        },
+        {
+          "name": "buildDurationStatisticsPlugin",
+          "displayName": "Statistics: build duration",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/buildDurationStatisticsPlugin"
+        },
+        {
+          "name": "gant-tool",
+          "displayName": "Gant distribution rebundled by JetBrains",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/gant-tool"
+        },
+        {
+          "name": "gantRunner",
+          "displayName": "Gant runner support",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/gantRunner"
+        },
+        {
+          "name": "TeamCity.BitBucketIssues",
+          "displayName": "TeamCity.BitBucketIssues",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/TeamCity.BitBucketIssues"
+        },
+        {
+          "name": "queue-pauser",
+          "displayName": "Queue Pauser",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/TeamCity.QueueManager"
+        },
+        {
+          "name": "unified-ui",
+          "displayName": "unified-ui-webapp",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/unified-ui"
+        },
+        {
+          "name": "TeamCity.SharedResources",
+          "displayName": "Shared Resources",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/TeamCity.SharedResources"
+        },
+        {
+          "name": "ant-tool",
+          "displayName": "Apache Ant distribution rebundled by JetBrains",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/ant-tool"
+        },
+        {
+          "name": "perforce",
+          "displayName": "VCS Support: Perforce Helix Core",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/perforce"
+        },
+        {
+          "name": "email",
+          "displayName": "Notifier: E-Mail",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/email"
+        },
+        {
+          "name": "xcode-runner",
+          "displayName": "Xcode Project Runner",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/xcode-runner"
+        },
+        {
+          "name": "configs-dsl",
+          "displayName": "Configs DSL",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/configs-dsl"
+        },
+        {
+          "name": "github-app",
+          "displayName": "GitHub App Connection",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/github-app"
+        },
+        {
+          "name": "powershell-runner",
+          "displayName": "PowerShell Runner",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/powershell"
+        },
+        {
+          "name": "xml-report-plugin",
+          "displayName": "XML-based reports",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/xml-report-plugin"
+        },
+        {
+          "name": "svn",
+          "displayName": "VCS Support: Subversion",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/svn"
+        },
+        {
+          "name": "nuget",
+          "displayName": "NuGet Support",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/dotNetPackagesSupport"
+        },
+        {
+          "name": "tcWebHooks-rest-api",
+          "displayName": "Web Hooks REST API (tcWebHooks)",
+          "version": "2.0.1-rc.3",
+          "loadPath": "/Users/matt/.BuildServer/system/caches/plugins.unpacked/tcWebHooks-REST-API-2.0.1-rc.3-build.501"
+        },
+        {
+          "name": "usage-statistics",
+          "displayName": "Usage Statistics",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/usage-statistics"
+        },
+        {
+          "name": "rest-api",
+          "displayName": "REST API",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/rest-api",
+          "parameters": {
+            "property": [
+              {
+                "name": "api.path",
+                "value": "/app/rest/2018.1,/app/rest,/app/rest/latest,/app/rest/ui,/api,/app/graphql"
+              },
+              {
+                "name": "api.version",
+                "value": "2018.1"
+              }
+            ],
+            "count": 2
+          }
+        },
+        {
+          "name": "vsphere",
+          "displayName": "VMware vSphere",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/cloud-vmware"
+        },
+        {
+          "name": "rake-runner",
+          "displayName": "Rake Runner",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/rake-runner"
+        },
+        {
+          "name": "webhooks",
+          "displayName": "WebHooks support",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/webhooks"
+        },
+        {
+          "name": "mercurial",
+          "displayName": "VCS Support: Mercurial",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/mercurial"
+        },
+        {
+          "name": "data-dir",
+          "displayName": "Data directory browser",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/data-dir"
+        },
+        {
+          "name": "teamcity-vault-support",
+          "displayName": "HashiCorp Vault Support",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/hashicorp-vault-plugin"
+        },
+        {
+          "name": "swabra",
+          "displayName": "Swabra",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/swabra"
+        },
+        {
+          "name": "ant-net-tasks",
+          "displayName": "Ant network tasks",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/ant-net-tasks"
+        },
+        {
+          "name": "rest-api-contrib",
+          "displayName": "REST API Contrib",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/rest-api-contrib"
+        },
+        {
+          "name": "python-runner",
+          "displayName": "Python",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/python-runner"
+        },
+        {
+          "name": "jetbrains.git",
+          "displayName": "VCS support: Git",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/jetbrains.git"
+        },
+        {
+          "name": "ldap",
+          "displayName": "LDAP support",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/ldap"
+        },
+        {
+          "name": "slackNotifier",
+          "displayName": "Slack Notifier",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/slack"
+        },
+        {
+          "name": "file-content-replacer",
+          "displayName": "General purpose file content replacer",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/file-content-replacer"
+        },
+        {
+          "name": "jps-tool",
+          "displayName": "JetBrains JPS",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/jps-tool"
+        },
+        {
+          "name": "file-to-build-log-streaming",
+          "displayName": "File to build log streaming plugin",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/file-to-build-log-streaming-plugin"
+        },
+        {
+          "name": "Inspection",
+          "displayName": "IntelliJ IDEA-based code inspections",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/Inspection"
+        },
+        {
+          "name": "agent.push",
+          "displayName": "Install Agent on remote host (agent push)",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/agent.push"
+        },
+        {
+          "name": "flaky-test-detector",
+          "displayName": "Flaky Test Detector",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/flaky-test-detector"
+        },
+        {
+          "name": "jira-cloud-integration",
+          "displayName": "Jira Cloud API integration",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/jira-cloud"
+        },
+        {
+          "name": "crash-detector",
+          "displayName": "JVM crash detector",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/crash-detector"
+        },
+        {
+          "name": "TeamCity.GitHubIssues",
+          "displayName": "TeamCity.GitHubIssues",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/TeamCity.GitHubIssues"
+        },
+        {
+          "name": "WindowsTray",
+          "displayName": "Notifier: Windows Tray",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/WindowsTray"
+        },
+        {
+          "name": "nodejs-runner",
+          "displayName": "Node.js",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/nodejs-runner"
+        },
+        {
+          "name": "idea-tool",
+          "displayName": "IntelliJ IDEA redistribution",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/idea-tool"
+        },
+        {
+          "name": "metarunner",
+          "displayName": "Meta-runner",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/metarunner"
+        },
+        {
+          "name": "Ant",
+          "displayName": "Apache Ant runner support",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/Ant"
+        },
+        {
+          "name": "golang",
+          "displayName": "Golang build support",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/golang"
+        },
+        {
+          "name": "bbserver-connection",
+          "displayName": "Bitbucket Server / Data Center connection",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/bbserver-connection"
+        },
+        {
+          "name": "commandLineRunner",
+          "displayName": "Command Line",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/commandLineRunner"
+        },
+        {
+          "name": "vs-addin-distributor",
+          "displayName": "Visual Studio Addin Distributor",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/vs-addin-distributor"
+        },
+        {
+          "name": "starteam",
+          "displayName": "VCS Support: StarTeam",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/starteam"
+        },
+        {
+          "name": "Maven2",
+          "displayName": "Maven support",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/Maven2"
+        },
+        {
+          "name": "Octopus.TeamCity.ReportPortal",
+          "displayName": "ReportPortal support",
+          "version": "2024-12-10-18-03-33",
+          "loadPath": "/Users/matt/.BuildServer/system/caches/plugins.unpacked/Octopus.TeamCity.ReportPortal.2024-12-10-18-03-33"
+        },
+        {
+          "name": "deploy-runner",
+          "displayName": "Artifact Deployer",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/deploy-runner"
+        },
+        {
+          "name": "teamcity-compare-builds",
+          "displayName": "Compare Builds",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/teamcity-compare-builds"
+        },
+        {
+          "name": "pull-requests",
+          "displayName": "Pull Requests",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/pull-requests"
+        },
+        {
+          "name": "coverage",
+          "displayName": "Code Coverage (Java)",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/coverage"
+        },
+        {
+          "name": "priority-queue",
+          "displayName": "Priorities for build queue",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/priority-queue"
+        },
+        {
+          "name": "dotNetRunners",
+          "displayName": ".NET build runners support",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/dotNetRunners"
+        },
+        {
+          "name": "teamcity-parallel-tests",
+          "displayName": "Parallel Tests",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/teamcity-parallel-tests"
+        },
+        {
+          "name": "stacktraces",
+          "displayName": "Thread dump taking support",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/stacktraces"
+        },
+        {
+          "name": "cloud-amazon",
+          "displayName": "Amazon EC2 Support",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/amazon-cloud-agents"
+        },
+        {
+          "name": "environment-fetcher",
+          "displayName": "Process Environment Fetcher",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/environment-fetcher"
+        },
+        {
+          "name": "gradle-runner",
+          "displayName": "Gradle Runner",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/Gradle"
+        },
+        {
+          "name": "agent-system-info",
+          "displayName": "Agent System Info",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/agentSystemInfo"
+        },
+        {
+          "name": "aws-core-plugin",
+          "displayName": "AWS Core",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/aws-core-plugin"
+        },
+        {
+          "name": "investigations-auto-assigner",
+          "displayName": "Investigations Auto-Assigner",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/.unpacked/investigations-auto-assigner"
+        },
+        {
+          "name": "remoteAccess",
+          "displayName": "Remote access",
+          "version": "156166",
+          "loadPath": "/Users/matt/Downloads/TeamCity/webapps/ROOT/WEB-INF/plugins/remoteAccess"
+        }
+      ]
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=9C67A20208F0D1C4276D6BC27ED2C786; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:23:37 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Transfer-Encoding": "chunked",
+      "Date": "Wed, 01 Jan 2025 05:23:27 GMT"
+    }
+  }
+}

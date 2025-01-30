@@ -1,0 +1,797 @@
+[
+  {
+    "Guid": "db1dc9b5-2f51-458a-b73b-0aaab867bc0c",
+    "UpdatedAt": "2025-01-02T00:07:59.509737Z",
+    "Title": "Proxy Mapping for POST /httpAuth/app/rest/projects/id:TestingTeamCitySharp/buildTypes",
+    "Description": "Proxy Mapping for POST /httpAuth/app/rest/projects/id:TestingTeamCitySharp/buildTypes",
+    "Scenario": "Modify Snapshot Dependencies",
+    "SetStateTo": "Build config created",
+    "Priority": -2000000,
+    "Request": {
+      "Path": {
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "/httpAuth/app/rest/projects/id:TestingTeamCitySharp/buildTypes",
+            "IgnoreCase": false
+          }
+        ]
+      },
+      "Methods": [
+        "POST"
+      ],
+      "HttpVersion": "1.1",
+      "Headers": [
+        {
+          "Name": "Accept",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "application/json",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Authorization",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Content-Type",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "text/plain; charset=us-ascii",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Content-Length",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "14",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        }
+      ],
+      "Body": {
+        "Matcher": {
+          "Name": "ExactMatcher",
+          "Pattern": "testNewConfig7",
+          "IgnoreCase": true
+        }
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "BodyAsJson": {
+        "id": "TestingTeamCitySharp_TestNewConfig7",
+        "name": "testNewConfig7",
+        "projectName": "Testing TeamCitySharp",
+        "projectId": "TestingTeamCitySharp",
+        "href": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestNewConfig7",
+        "webUrl": "http://localhost:8111/buildConfiguration/TestingTeamCitySharp_TestNewConfig7?mode=builds",
+        "project": {
+          "id": "TestingTeamCitySharp",
+          "name": "Testing TeamCitySharp",
+          "parentProjectId": "_Root",
+          "href": "/httpAuth/app/rest/projects/id:TestingTeamCitySharp",
+          "webUrl": "http://localhost:8111/project.html?projectId=TestingTeamCitySharp"
+        },
+        "templates": {
+          "count": 0,
+          "buildType": []
+        },
+        "vcs-root-entries": {
+          "count": 0,
+          "vcs-root-entry": []
+        },
+        "settings": {
+          "property": [
+            {
+              "name": "buildNumberCounter",
+              "value": "1"
+            }
+          ],
+          "count": 1
+        },
+        "parameters": {
+          "property": [
+            {
+              "name": "test",
+              "value": "",
+              "inherited": true
+            }
+          ],
+          "count": 1,
+          "href": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestNewConfig7/parameters"
+        },
+        "steps": {
+          "count": 0
+        },
+        "features": {
+          "count": 0
+        },
+        "triggers": {
+          "count": 0
+        },
+        "snapshot-dependencies": {
+          "count": 0
+        },
+        "artifact-dependencies": {
+          "count": 0
+        },
+        "agent-requirements": {
+          "count": 0
+        },
+        "builds": {
+          "href": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestNewConfig7/builds/"
+        },
+        "investigations": {
+          "href": "/httpAuth/app/rest/investigations?locator=buildType:(id:TestingTeamCitySharp_TestNewConfig7)"
+        },
+        "compatibleAgents": {
+          "href": "/httpAuth/app/rest/agents?locator=compatible:(buildType:(id:TestingTeamCitySharp_TestNewConfig7))"
+        },
+        "compatibleCloudImages": {}
+      },
+      "Headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "1437",
+        "X-Frame-Options": "sameorigin",
+        "Strict-Transport-Security": "max-age=31536000;",
+        "X-Content-Type-Options": "nosniff",
+        "X-XSS-Protection": "1; mode=block",
+        "Referrer-Policy": "origin-when-cross-origin",
+        "mixed-content": "noupgrade",
+        "TeamCity-Node-Id": "MAIN_SERVER",
+        "Set-Cookie": [
+          "TCSESSIONID=671E803AFA176A64F73F005A923ED7F8; Path=/; HttpOnly",
+          "RecentLogin=; Max-Age=10; Expires=Thu, 02 Jan 2025 00:08:09 GMT; Path=/",
+          "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+        ],
+        "Cache-Control": "no-store",
+        "Date": "Thu, 02 Jan 2025 00:07:59 GMT"
+      }
+    }
+  },
+  {
+    "Guid": "0b9d98d7-6e31-4041-928f-1d712ff1964e",
+    "UpdatedAt": "2025-01-02T00:09:02.636235Z",
+    "Title": "Proxy Mapping for POST /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestNewConfig7/snapshot-dependencies",
+    "Description": "Proxy Mapping for POST /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestNewConfig7/snapshot-dependencies",
+    "Scenario": "Modify Snapshot Dependencies",
+    "WhenStateIs": "Build config created",
+    "SetStateTo": "Added snapshot dependency",
+    "Priority": -2000000,
+    "Request": {
+      "Path": {
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestNewConfig7/snapshot-dependencies",
+            "IgnoreCase": false
+          }
+        ]
+      },
+      "Methods": [
+        "POST"
+      ],
+      "HttpVersion": "1.1",
+      "Headers": [
+        {
+          "Name": "Accept",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "application/json",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Authorization",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Content-Type",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "application/json; charset=us-ascii",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Content-Length",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "1081",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        }
+      ],
+      "Body": {
+        "Matcher": {
+          "Name": "JsonMatcher",
+          "Pattern": {
+            "id": "TTTT_100",
+            "properties": {
+              "property": [
+                {
+                  "name": "run-build-if-dependency-failed",
+                  "value": "RUN_ADD_PROBLEM",
+                  "inherited": false
+                },
+                {
+                  "name": "run-build-if-dependency-failed-to-start",
+                  "value": "MAKE_FAILED_TO_START",
+                  "inherited": false
+                },
+                {
+                  "name": "run-build-on-the-same-agent",
+                  "value": "false",
+                  "inherited": false
+                },
+                {
+                  "name": "take-started-build-with-same-revisions",
+                  "value": "true",
+                  "inherited": false
+                },
+                {
+                  "name": "take-successful-builds-only",
+                  "value": "true",
+                  "inherited": false
+                }
+              ],
+              "count": 0,
+              "href": null
+            },
+            "type": "snapshot_dependency",
+            "inherited": false,
+            "source-buildType": {
+              "id": "TeamcityDashboardScenario_Test_TestWithCheckout",
+              "name": null,
+              "number": null,
+              "status": null,
+              "href": null,
+              "projectId": null,
+              "projectName": null,
+              "description": null,
+              "webUrl": null,
+              "personal": null,
+              "cancelled": null,
+              "history": null,
+              "pinned": null,
+              "running": null,
+              "project": null,
+              "template": null,
+              "templates": null,
+              "parameters": null,
+              "artifact-dependencies": null,
+              "snapshot-dependencies": null,
+              "vcs-root-entries": null,
+              "steps": null,
+              "agent-requirements": null,
+              "triggers": null,
+              "settings": null,
+              "builds": null,
+              "investigations": null,
+              "compatibleAgents": null
+            }
+          },
+          "IgnoreCase": true,
+          "Regex": false
+        }
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "BodyAsJson": {
+        "id": "TeamcityDashboardScenario_Test_TestWithCheckout",
+        "type": "snapshot_dependency",
+        "properties": {
+          "property": [
+            {
+              "name": "run-build-if-dependency-failed",
+              "value": "RUN_ADD_PROBLEM"
+            },
+            {
+              "name": "run-build-if-dependency-failed-to-start",
+              "value": "MAKE_FAILED_TO_START"
+            },
+            {
+              "name": "run-build-on-the-same-agent",
+              "value": "false"
+            },
+            {
+              "name": "sync-revisions",
+              "value": "true"
+            },
+            {
+              "name": "take-started-build-with-same-revisions",
+              "value": "true"
+            },
+            {
+              "name": "take-successful-builds-only",
+              "value": "true"
+            }
+          ],
+          "count": 6
+        },
+        "source-buildType": {
+          "id": "TeamcityDashboardScenario_Test_TestWithCheckout",
+          "internalId": "__unresolved__TeamcityDashboardScenario_Test_TestWithCheckout"
+        }
+      },
+      "Headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "641",
+        "X-Frame-Options": "sameorigin",
+        "Strict-Transport-Security": "max-age=31536000;",
+        "X-Content-Type-Options": "nosniff",
+        "X-XSS-Protection": "1; mode=block",
+        "Referrer-Policy": "origin-when-cross-origin",
+        "mixed-content": "noupgrade",
+        "TeamCity-Node-Id": "MAIN_SERVER",
+        "Set-Cookie": [
+          "TCSESSIONID=3F1F66F4803B85E4535E2E46533A860C; Path=/; HttpOnly",
+          "RecentLogin=; Max-Age=10; Expires=Thu, 02 Jan 2025 00:09:12 GMT; Path=/",
+          "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+        ],
+        "Cache-Control": "no-store",
+        "Date": "Thu, 02 Jan 2025 00:09:02 GMT"
+      }
+    }
+  },
+  {
+    "Guid": "054af3d2-beee-4f45-8623-48d2a206eb41",
+    "UpdatedAt": "2025-01-02T00:09:27.51251Z",
+    "Title": "Proxy Mapping for GET /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestNewConfig7/snapshot-dependencies/TeamcityDashboardScenario_Test_TestWithCheckout",
+    "Description": "Proxy Mapping for GET /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestNewConfig7/snapshot-dependencies/TeamcityDashboardScenario_Test_TestWithCheckout",
+    "Scenario": "Modify Snapshot Dependencies",
+    "WhenStateIs": "Added snapshot dependency",
+    "SetStateTo": "Retrieved snapshot dependencies",
+    "Priority": -2000000,
+    "Request": {
+      "Path": {
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestNewConfig7/snapshot-dependencies/TeamcityDashboardScenario_Test_TestWithCheckout",
+            "IgnoreCase": false
+          }
+        ]
+      },
+      "Methods": [
+        "GET"
+      ],
+      "HttpVersion": "1.1",
+      "Headers": [
+        {
+          "Name": "Accept",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "application/json",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Authorization",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        }
+      ]
+    },
+    "Response": {
+      "StatusCode": 200,
+      "BodyAsJson": {
+        "id": "TeamcityDashboardScenario_Test_TestWithCheckout",
+        "type": "snapshot_dependency",
+        "properties": {
+          "property": [
+            {
+              "name": "run-build-if-dependency-failed",
+              "value": "RUN_ADD_PROBLEM"
+            },
+            {
+              "name": "run-build-if-dependency-failed-to-start",
+              "value": "MAKE_FAILED_TO_START"
+            },
+            {
+              "name": "run-build-on-the-same-agent",
+              "value": "false"
+            },
+            {
+              "name": "sync-revisions",
+              "value": "true"
+            },
+            {
+              "name": "take-started-build-with-same-revisions",
+              "value": "true"
+            },
+            {
+              "name": "take-successful-builds-only",
+              "value": "true"
+            }
+          ],
+          "count": 6
+        },
+        "source-buildType": {
+          "id": "TeamcityDashboardScenario_Test_TestWithCheckout",
+          "internalId": "__unresolved__TeamcityDashboardScenario_Test_TestWithCheckout"
+        }
+      },
+      "Headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "641",
+        "X-Frame-Options": "sameorigin",
+        "Strict-Transport-Security": "max-age=31536000;",
+        "X-Content-Type-Options": "nosniff",
+        "X-XSS-Protection": "1; mode=block",
+        "Referrer-Policy": "origin-when-cross-origin",
+        "mixed-content": "noupgrade",
+        "TeamCity-Node-Id": "MAIN_SERVER",
+        "Set-Cookie": [
+          "TCSESSIONID=DC58F0CD88FA36DE2E8D006A5485681D; Path=/; HttpOnly",
+          "RecentLogin=; Max-Age=10; Expires=Thu, 02 Jan 2025 00:09:37 GMT; Path=/",
+          "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+        ],
+        "Cache-Control": "no-store",
+        "Date": "Thu, 02 Jan 2025 00:09:27 GMT"
+      }
+    }
+  },
+  {
+    "Guid": "4f636c26-4b26-48f2-8fc0-b6c09c30d11c",
+    "UpdatedAt": "2025-01-02T00:17:41.494051Z",
+    "Title": "Proxy Mapping for POST /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestNewConfig7/snapshot-dependencies",
+    "Description": "Proxy Mapping for POST /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestNewConfig7/snapshot-dependencies",
+    "Scenario": "Modify Snapshot Dependencies",
+    "WhenStateIs": "Retrieved snapshot dependencies",
+    "SetStateTo": "Modified snapshot dependencies",
+    "Priority": -2000000,
+    "Request": {
+      "Path": {
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestNewConfig7/snapshot-dependencies",
+            "IgnoreCase": false
+          }
+        ]
+      },
+      "Methods": [
+        "POST"
+      ],
+      "HttpVersion": "1.1",
+      "Headers": [
+        {
+          "Name": "Accept",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "application/json",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Authorization",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Content-Type",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "application/json; charset=us-ascii",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Content-Length",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "716",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        }
+      ],
+      "Body": {
+        "Matcher": {
+          "Name": "JsonMatcher",
+          "Pattern": {
+            "source-buildType": {
+              "id": "TeamcityDashboardScenario_Test_TestWithCheckoutWithDependencies"
+            },
+            "id": "TeamcityDashboardScenario_Test_TestWithCheckoutWithDependencies",
+            "type": "snapshot_dependency",
+            "properties": {
+              "property": [
+                {
+                  "name": "run-build-if-dependency-failed",
+                  "value": "RUN_ADD_PROBLEM",
+                  "inherited": false
+                },
+                {
+                  "name": "run-build-if-dependency-failed-to-start",
+                  "value": "MAKE_FAILED_TO_START",
+                  "inherited": false
+                },
+                {
+                  "name": "run-build-on-the-same-agent",
+                  "value": "false",
+                  "inherited": false
+                },
+                {
+                  "name": "sync-revisions",
+                  "value": "true",
+                  "inherited": false
+                },
+                {
+                  "name": "take-started-build-with-same-revisions",
+                  "value": "true",
+                  "inherited": false
+                },
+                {
+                  "name": "take-successful-builds-only",
+                  "value": "true",
+                  "inherited": false
+                }
+              ],
+              "count": 6,
+              "href": null
+            }
+          },
+          "IgnoreCase": true,
+          "Regex": false
+        }
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "BodyAsJson": {
+        "id": "TeamcityDashboardScenario_Test_TestWithCheckoutWithDependencies",
+        "type": "snapshot_dependency",
+        "properties": {
+          "property": [
+            {
+              "name": "run-build-if-dependency-failed",
+              "value": "RUN_ADD_PROBLEM"
+            },
+            {
+              "name": "run-build-if-dependency-failed-to-start",
+              "value": "MAKE_FAILED_TO_START"
+            },
+            {
+              "name": "run-build-on-the-same-agent",
+              "value": "false"
+            },
+            {
+              "name": "sync-revisions",
+              "value": "true"
+            },
+            {
+              "name": "take-started-build-with-same-revisions",
+              "value": "true"
+            },
+            {
+              "name": "take-successful-builds-only",
+              "value": "true"
+            }
+          ],
+          "count": 6
+        },
+        "source-buildType": {
+          "id": "TeamcityDashboardScenario_Test_TestWithCheckoutWithDependencies",
+          "internalId": "__unresolved__TeamcityDashboardScenario_Test_TestWithCheckoutWithDependencies"
+        }
+      },
+      "Headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "689",
+        "X-Frame-Options": "sameorigin",
+        "Strict-Transport-Security": "max-age=31536000;",
+        "X-Content-Type-Options": "nosniff",
+        "X-XSS-Protection": "1; mode=block",
+        "Referrer-Policy": "origin-when-cross-origin",
+        "mixed-content": "noupgrade",
+        "TeamCity-Node-Id": "MAIN_SERVER",
+        "Set-Cookie": [
+          "TCSESSIONID=449E3851160FE1E3C0196B341ED5B0D2; Path=/; HttpOnly",
+          "RecentLogin=; Max-Age=10; Expires=Thu, 02 Jan 2025 00:17:51 GMT; Path=/",
+          "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+        ],
+        "Cache-Control": "no-store",
+        "Date": "Thu, 02 Jan 2025 00:17:41 GMT"
+      }
+    }
+  },
+  {
+    "Guid": "dcef22d7-2335-4b8d-a80e-99cdd5b01806",
+    "UpdatedAt": "2025-01-02T00:22:55.422432Z",
+    "Title": "Proxy Mapping for DELETE /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestNewConfig7/snapshot-dependencies/TeamcityDashboardScenario_Test_TestWithCheckout",
+    "Description": "Proxy Mapping for DELETE /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestNewConfig7/snapshot-dependencies/TeamcityDashboardScenario_Test_TestWithCheckout",
+    "Scenario": "Modify Snapshot Dependencies",
+    "WhenStateIs": "Modified snapshot dependencies",
+    "SetStateTo": "Deleted old snapshot dependency",
+    "Priority": -2000000,
+    "Request": {
+      "Path": {
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestNewConfig7/snapshot-dependencies/TeamcityDashboardScenario_Test_TestWithCheckout",
+            "IgnoreCase": false
+          }
+        ]
+      },
+      "Methods": [
+        "DELETE"
+      ],
+      "HttpVersion": "1.1",
+      "Headers": [
+        {
+          "Name": "Accept",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "text/plain",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Authorization",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        }
+      ],
+      "Body": {
+        "Matcher": {
+          "Name": "ExactMatcher",
+          "Pattern": "",
+          "IgnoreCase": true
+        }
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "TeamCity-Node-Id": "MAIN_SERVER",
+        "Set-Cookie": [
+          "TCSESSIONID=2A2B566357C3E4097D0555DD059F2334; Path=/; HttpOnly",
+          "RecentLogin=; Max-Age=10; Expires=Thu, 02 Jan 2025 00:23:05 GMT; Path=/",
+          "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+        ],
+        "Cache-Control": "no-store",
+        "Date": "Thu, 02 Jan 2025 00:22:55 GMT"
+      }
+    }
+  },
+  {
+    "Guid": "cc0f290e-bb5e-473f-8c61-c15ec0e8153a",
+    "UpdatedAt": "2025-01-01T05:23:28.698043Z",
+    "Title": "Proxy Mapping for DELETE /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestNewConfig7",
+    "Description": "Proxy Mapping for DELETE /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestNewConfig7",
+    "Scenario": "Modify Snapshot Dependencies",
+    "WhenStateIs": "Deleted old snapshot dependency",
+    "SetStateTo": "Complete",
+    "Priority": -2000000,
+    "Request": {
+      "Path": {
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestNewConfig7",
+            "IgnoreCase": false
+          }
+        ]
+      },
+      "Methods": [
+        "DELETE"
+      ],
+      "HttpVersion": "1.1",
+      "Headers": [
+        {
+          "Name": "Accept",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "text/plain",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Authorization",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        }
+      ],
+      "Body": {
+        "Matcher": {
+          "Name": "ExactMatcher",
+          "Pattern": "",
+          "IgnoreCase": true
+        }
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "TeamCity-Node-Id": "MAIN_SERVER",
+        "Set-Cookie": [
+          "TCSESSIONID=EC6BE1D4736776E1998913C7D5D8C532; Path=/; HttpOnly",
+          "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:23:38 GMT; Path=/",
+          "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+        ],
+        "Cache-Control": "no-store",
+        "Date": "Wed, 01 Jan 2025 05:23:28 GMT"
+      }
+    }
+  }
+]

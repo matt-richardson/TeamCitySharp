@@ -1,0 +1,222 @@
+{
+  "Guid": "9f2f7e5a-a3e1-4b75-a3cf-054b221b9aab",
+  "UpdatedAt": "2025-01-01T03:37:59.822557Z",
+  "Title": "Proxy Mapping for POST /httpAuth/app/rest/buildTypes",
+  "Description": "Proxy Mapping for POST /httpAuth/app/rest/buildTypes",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/buildTypes",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "POST"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Content-Type",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json; charset=us-ascii",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Content-Length",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "779",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ],
+    "Body": {
+      "Matcher": {
+        "Name": "JsonMatcher",
+        "Pattern": {
+          "id": "testId",
+          "name": "testNewConfig8",
+          "number": null,
+          "status": null,
+          "href": null,
+          "projectId": null,
+          "projectName": null,
+          "description": null,
+          "webUrl": null,
+          "personal": null,
+          "cancelled": null,
+          "history": null,
+          "pinned": null,
+          "running": null,
+          "project": {
+            "archived": false,
+            "description": null,
+            "href": null,
+            "id": "TestingTeamCitySharp",
+            "name": null,
+            "webUrl": null,
+            "parentProject": null,
+            "buildTypes": null,
+            "parameters": null,
+            "templates": null,
+            "projects": null,
+            "projectFeatures": null
+          },
+          "template": null,
+          "templates": null,
+          "parameters": {
+            "property": [
+              {
+                "name": "category",
+                "value": "test",
+                "inherited": false
+              }
+            ]
+          },
+          "artifact-dependencies": null,
+          "snapshot-dependencies": null,
+          "vcs-root-entries": null,
+          "steps": null,
+          "agent-requirements": null,
+          "triggers": null,
+          "settings": null,
+          "builds": null,
+          "investigations": null,
+          "compatibleAgents": null
+        },
+        "IgnoreCase": true,
+        "Regex": false
+      }
+    }
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "id": "testId",
+      "name": "testNewConfig8",
+      "projectName": "Testing TeamCitySharp",
+      "projectId": "TestingTeamCitySharp",
+      "href": "/httpAuth/app/rest/buildTypes/id:testId",
+      "webUrl": "http://localhost:8111/buildConfiguration/testId?mode=builds",
+      "project": {
+        "id": "TestingTeamCitySharp",
+        "name": "Testing TeamCitySharp",
+        "parentProjectId": "_Root",
+        "href": "/httpAuth/app/rest/projects/id:TestingTeamCitySharp",
+        "webUrl": "http://localhost:8111/project.html?projectId=TestingTeamCitySharp"
+      },
+      "templates": {
+        "count": 0,
+        "buildType": []
+      },
+      "vcs-root-entries": {
+        "count": 0,
+        "vcs-root-entry": []
+      },
+      "settings": {
+        "property": [
+          {
+            "name": "buildNumberCounter",
+            "value": "1"
+          }
+        ],
+        "count": 1
+      },
+      "parameters": {
+        "property": [
+          {
+            "name": "category",
+            "value": "test"
+          },
+          {
+            "name": "test",
+            "value": "",
+            "inherited": true
+          }
+        ],
+        "count": 2,
+        "href": "/httpAuth/app/rest/buildTypes/id:testId/parameters"
+      },
+      "steps": {
+        "count": 0
+      },
+      "features": {
+        "count": 0
+      },
+      "triggers": {
+        "count": 0
+      },
+      "snapshot-dependencies": {
+        "count": 0
+      },
+      "artifact-dependencies": {
+        "count": 0
+      },
+      "agent-requirements": {
+        "count": 0
+      },
+      "builds": {
+        "href": "/httpAuth/app/rest/buildTypes/id:testId/builds/"
+      },
+      "investigations": {
+        "href": "/httpAuth/app/rest/investigations?locator=buildType:(id:testId)"
+      },
+      "compatibleAgents": {
+        "href": "/httpAuth/app/rest/agents?locator=compatible:(buildType:(id:testId))"
+      },
+      "compatibleCloudImages": {}
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "1269",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=B4E7BED9718928137676D90F70493A88; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 03:38:09 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 03:37:58 GMT"
+    }
+  }
+}

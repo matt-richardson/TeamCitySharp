@@ -1,0 +1,147 @@
+{
+  "Guid": "0ed4fc86-672b-4b5e-acd1-6897f96f2144",
+  "UpdatedAt": "2025-01-01T05:23:27.378Z",
+  "Title": "Proxy Mapping for GET /httpAuth/app/rest/builds/id:2508",
+  "Description": "Proxy Mapping for GET /httpAuth/app/rest/builds/id:2508",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/builds/id:2508",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "id": 2508,
+      "buildTypeId": "TestingTeamCitySharp_BuildWithTests",
+      "number": "4",
+      "status": "FAILURE",
+      "state": "finished",
+      "href": "/httpAuth/app/rest/builds/id:2508",
+      "webUrl": "http://localhost:8111/buildConfiguration/TestingTeamCitySharp_BuildWithTests/2508",
+      "statusText": "Tests failed: 1 (1 new), passed: 4; system.NullReferenceException: Object reference not set to an instance of an object.\n   at Octopus.MattsTestProject.UnitTest1.Test4WithABuildProblem() in /Users/matt/Downloads/TeamCity/buildAgent/work/3ed1d0ebda23a...",
+      "buildType": {
+        "id": "TestingTeamCitySharp_BuildWithTests",
+        "name": "Build with tests",
+        "projectName": "Testing TeamCitySharp",
+        "projectId": "TestingTeamCitySharp",
+        "href": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_BuildWithTests",
+        "webUrl": "http://localhost:8111/buildConfiguration/TestingTeamCitySharp_BuildWithTests?mode=builds"
+      },
+      "queuedDate": "20241231T104204+1100",
+      "startDate": "20241231T104204+1100",
+      "finishDate": "20241231T104208+1100",
+      "triggered": {
+        "type": "user",
+        "date": "20241231T104204+1100",
+        "user": {
+          "username": "testing-tc-sharp",
+          "name": "Testing TeamCitySharp",
+          "id": 1,
+          "href": "/httpAuth/app/rest/users/id:1"
+        }
+      },
+      "changes": {
+        "count": 0,
+        "href": "/httpAuth/app/rest/changes?locator=build:(id:2508)"
+      },
+      "revisions": {
+        "count": 0
+      },
+      "agent": {
+        "id": 1,
+        "name": "Default Agent",
+        "typeId": 1,
+        "href": "/httpAuth/app/rest/agents/id:1",
+        "webUrl": "http://localhost:8111/agentDetails.html?id=1&agentTypeId=1&realAgentName=Default%20Agent"
+      },
+      "testOccurrences": {
+        "count": 5,
+        "href": "/httpAuth/app/rest/testOccurrences?locator=build:(id:2508)",
+        "failed": 1,
+        "passed": 4,
+        "newFailed": 1
+      },
+      "problemOccurrences": {
+        "count": 3,
+        "href": "/httpAuth/app/rest/problemOccurrences?locator=build:(id:2508)",
+        "newFailed": 3
+      },
+      "artifacts": {
+        "count": 0,
+        "href": "/httpAuth/app/rest/builds/id:2508/artifacts/children/"
+      },
+      "relatedIssues": {
+        "href": "/httpAuth/app/rest/builds/id:2508/relatedIssues"
+      },
+      "properties": {
+        "property": [
+          {
+            "name": "test",
+            "value": "",
+            "inherited": true
+          }
+        ],
+        "count": 1
+      },
+      "statistics": {
+        "href": "/httpAuth/app/rest/builds/id:2508/statistics"
+      },
+      "vcsLabels": [],
+      "finishOnAgentDate": "20241231T104208+1100",
+      "customization": {}
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "2074",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=4356EF5BE29BCDD91D26220221D6D005; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:23:37 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 05:23:26 GMT"
+    }
+  }
+}

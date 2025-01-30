@@ -1,0 +1,146 @@
+{
+  "Guid": "9e930470-9656-4b61-a480-9b67dd1c5606",
+  "UpdatedAt": "2025-01-01T21:01:44.229081Z",
+  "Title": "Proxy Mapping for GET /httpAuth/app/rest/projects/id:TestingTeamCitySharp",
+  "Description": "Proxy Mapping for GET /httpAuth/app/rest/projects/id:TestingTeamCitySharp",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/projects/id:TestingTeamCitySharp",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "id": "TestingTeamCitySharp",
+      "name": "Testing TeamCitySharp",
+      "parentProjectId": "_Root",
+      "virtual": false,
+      "href": "/httpAuth/app/rest/projects/id:TestingTeamCitySharp",
+      "webUrl": "http://localhost:8111/project.html?projectId=TestingTeamCitySharp",
+      "parentProject": {
+        "id": "_Root",
+        "name": "<Root project>",
+        "description": "Contains all other projects",
+        "href": "/httpAuth/app/rest/projects/id:_Root",
+        "webUrl": "http://localhost:8111/project.html?projectId=_Root"
+      },
+      "buildTypes": {
+        "count": 4,
+        "buildType": [
+          {
+            "id": "TestingTeamCitySharp_BuildThatNeverRuns",
+            "name": "Build that never runs",
+            "projectName": "Testing TeamCitySharp",
+            "projectId": "TestingTeamCitySharp",
+            "href": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_BuildThatNeverRuns",
+            "webUrl": "http://localhost:8111/buildConfiguration/TestingTeamCitySharp_BuildThatNeverRuns?mode=builds"
+          },
+          {
+            "id": "TestingTeamCitySharp_BuildWithTests",
+            "name": "Build with tests",
+            "projectName": "Testing TeamCitySharp",
+            "projectId": "TestingTeamCitySharp",
+            "href": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_BuildWithTests",
+            "webUrl": "http://localhost:8111/buildConfiguration/TestingTeamCitySharp_BuildWithTests?mode=builds"
+          },
+          {
+            "id": "TestingTeamCitySharp_BuildWithVcsRoot",
+            "name": "Build with vcs root",
+            "projectName": "Testing TeamCitySharp",
+            "projectId": "TestingTeamCitySharp",
+            "href": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_BuildWithVcsRoot",
+            "webUrl": "http://localhost:8111/buildConfiguration/TestingTeamCitySharp_BuildWithVcsRoot?mode=builds"
+          },
+          {
+            "id": "TestingTeamCitySharp_ContinuousIntegration",
+            "name": "ContinuousIntegration",
+            "projectName": "Testing TeamCitySharp",
+            "projectId": "TestingTeamCitySharp",
+            "href": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_ContinuousIntegration",
+            "webUrl": "http://localhost:8111/buildConfiguration/TestingTeamCitySharp_ContinuousIntegration?mode=builds"
+          }
+        ]
+      },
+      "templates": {
+        "count": 1,
+        "buildType": [
+          {
+            "id": "TestingTeamCitySharp_TestTemplate",
+            "name": "Test Template",
+            "templateFlag": true,
+            "projectName": "Testing TeamCitySharp",
+            "projectId": "TestingTeamCitySharp",
+            "href": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestTemplate"
+          }
+        ]
+      },
+      "deploymentDashboards": {
+        "count": 0
+      },
+      "parameters": {
+        "property": [
+          {
+            "name": "test",
+            "value": "",
+            "inherited": true
+          }
+        ],
+        "count": 1,
+        "href": "/httpAuth/app/rest/projects/id:TestingTeamCitySharp/parameters"
+      },
+      "vcsRoots": {
+        "count": 1,
+        "href": "/httpAuth/app/rest/vcs-roots?locator=project:(id:TestingTeamCitySharp)"
+      },
+      "projectFeatures": {
+        "count": 0,
+        "href": "/httpAuth/app/rest/projects/id:TestingTeamCitySharp/projectFeatures"
+      },
+      "projects": {
+        "count": 0
+      }
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "2521",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=AB390E73A4C73CA1C1416DBC637256BF; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 21:01:54 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 21:01:44 GMT"
+    }
+  }
+}

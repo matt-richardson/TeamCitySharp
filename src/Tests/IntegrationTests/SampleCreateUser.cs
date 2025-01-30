@@ -9,7 +9,6 @@ using NUnit.Framework;
 namespace TeamCitySharp.IntegrationTests
 {
   [TestFixture]
-  [Ignore("ignore")]
   public class when_team_city_client_is_asked_to_create_a_new_user_with_a_password
   {
     private ITeamCityClient m_client;
@@ -21,16 +20,16 @@ namespace TeamCitySharp.IntegrationTests
 
     public when_team_city_client_is_asked_to_create_a_new_user_with_a_password()
     {
-      m_server = ConfigurationManager.AppSettings["Server"];
-      bool.TryParse(ConfigurationManager.AppSettings["UseSsl"], out m_useSsl);
-      m_username = ConfigurationManager.AppSettings["Username"];
-      m_password = ConfigurationManager.AppSettings["Password"];
+      m_server = Configuration.GetAppSetting("Server");
+      bool.TryParse(Configuration.GetAppSetting("UseSsl"), out m_useSsl);
+      m_username = Configuration.GetAppSetting("Username");
+      m_password = Configuration.GetAppSetting("Password");
     }
 
     [SetUp]
     public void SetUp()
     {
-      m_client = new TeamCityClient(m_server, m_useSsl);
+      m_client = new TeamCityClient(m_server, m_useSsl, Configuration.GetWireMockClient);
       m_client.Connect(m_username, m_password);
     }
 
@@ -42,15 +41,23 @@ namespace TeamCitySharp.IntegrationTests
       string email = "John.Doe@test.com";
       string password = "J0hnD03";
 
-      var createUserResult = m_client.Users.Create(userName, name, email, password);
+      var createUserResult = false;
+      try
+      {
+        createUserResult = m_client.Users.Create(userName, name, email, password);
 
-      ITeamCityClient _newUser;
-      _newUser = new TeamCityClient(m_server, m_useSsl);
-      _newUser.Connect(userName, password);
+        var newUserClient = new TeamCityClient(m_server, m_useSsl, Configuration.GetWireMockClient);
+        newUserClient.Connect(userName, password);
 
-      var loginResponse = _newUser.Authenticate();
+        var loginResponse = newUserClient.Authenticate();
 
-      Assert.That(createUserResult && loginResponse);
+        Assert.That(createUserResult && loginResponse);
+      }
+      finally
+      {
+        if (createUserResult)
+          m_client.Users.Delete(userName);
+      }
     }
   }
 }

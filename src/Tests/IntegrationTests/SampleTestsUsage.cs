@@ -19,26 +19,24 @@ namespace TeamCitySharp.IntegrationTests
     private readonly bool m_useSsl;
     private readonly string m_username;
     private readonly string m_password;
-    private readonly int m_goodBuildId;
     private readonly string m_goodProjectId;
     private readonly string m_goodTestId;
 
 
     public when_interacting_to_get_test()
     {
-      m_server = ConfigurationManager.AppSettings["Server"];
-      bool.TryParse(ConfigurationManager.AppSettings["UseSsl"], out m_useSsl);
-      m_username = ConfigurationManager.AppSettings["Username"];
-      m_password = ConfigurationManager.AppSettings["Password"];
-      int.TryParse(ConfigurationManager.AppSettings["GoodBuildId"], out m_goodBuildId);
-      m_goodProjectId = ConfigurationManager.AppSettings["GoodProjectId"];
-      m_goodTestId = ConfigurationManager.AppSettings["GoodTestId"];
+      m_server = Configuration.GetAppSetting("Server");
+      bool.TryParse(Configuration.GetAppSetting("UseSsl"), out m_useSsl);
+      m_username = Configuration.GetAppSetting("Username");
+      m_password = Configuration.GetAppSetting("Password");
+      m_goodProjectId = Configuration.GetAppSetting("GoodProjectId");
+      m_goodTestId = Configuration.GetAppSetting("GoodTestId");
     }
 
     [SetUp]
     public void SetUp()
     {
-      m_client = new TeamCityClient(m_server, m_useSsl);
+      m_client = new TeamCityClient(m_server, m_useSsl, Configuration.GetWireMockClient);
       m_client.Connect(m_username, m_password);
     }
 
@@ -51,43 +49,45 @@ namespace TeamCitySharp.IntegrationTests
     [Test]
     public void it_returns_tests_for_all_running_builds()
     {
-      var result = m_client.Tests.ByBuildLocator(BuildLocator.WithId(m_goodBuildId));
-      Assert.IsNotEmpty(result.TestOccurrence);
+      var result = m_client.Tests.ByBuildLocator(BuildLocator.WithId(int.Parse(Configuration.GetAppSetting("BuildWithTestsId"))));
+      Assert.That(result.TestOccurrence, Is.Not.Null);
     }
 
     [Test]
-    public void it_returns_currently_failling_tests_for_project()
+    public void it_returns_currently_failing_tests_for_project()
     {
       var result = m_client.Tests.ByProjectLocator(ProjectLocator.WithId(m_goodProjectId));
-      Assert.IsNotEmpty(result.TestOccurrence);
+      Assert.That(result.TestOccurrence, Is.Not.Null);
+      Assert.That(result.TestOccurrence, Is.Not.Empty);
     }
 
     [Test]
     public void it_returns_test_occurrences_for_test()
     {
       var result = m_client.Tests.ByTestLocator(TestLocator.WithId(m_goodTestId));
-      Assert.IsNotEmpty(result.TestOccurrence);
+      Assert.That(result.TestOccurrence, Is.Not.Null);
+      Assert.That(result.TestOccurrence, Is.Not.Empty);
     }
 
     [Test]
     public void it_returns_all_tests_for_all_running_builds()
     {
-      var result = m_client.Tests.All(BuildLocator.WithId(m_goodBuildId));
-      Assert.IsNotEmpty(result);
+      var result = m_client.Tests.All(BuildLocator.WithId(int.Parse(Configuration.GetAppSetting("BuildWithTestsId"))));
+      Assert.That(result, Is.Not.Empty);
     }
 
     [Test]
     public void it_returns_all_currently_failling_tests_for_project()
     {
       var result = m_client.Tests.All(ProjectLocator.WithId(m_goodProjectId));
-      Assert.IsNotEmpty(result);
+      Assert.That(result, Is.Not.Empty);
     }
 
     [Test]
     public void it_returns_all_test_occurrences_for_test()
     {
       var result = m_client.Tests.All(TestLocator.WithId(m_goodTestId));
-      Assert.IsNotEmpty(result);
+      Assert.That(result, Is.Not.Empty);
     }
   }
 }

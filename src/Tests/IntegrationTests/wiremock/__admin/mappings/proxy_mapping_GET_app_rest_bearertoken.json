@@ -1,0 +1,57 @@
+{
+  "Guid": "5e50cd00-6d77-424a-8d8e-4980f0c1ea47",
+  "UpdatedAt": "2025-01-01T01:45:29.565168Z",
+  "Title": "Proxy Mapping for GET /app/rest",
+  "Description": "Proxy Mapping for GET /app/rest",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/app/rest",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "text/plain",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Bearer secret-token-for-testing-teamcity-sharp-admin-user",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "Body": "This is a root of TeamCity REST API.\nExplore what's inside from '/app/rest/server'.\nSee also notes on the usage at https://www.jetbrains.com/help/teamcity/2024.03/?REST+API",
+    "Headers": {
+      "Content-Type": "text/plain",
+      "Content-Length": "172",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 01:45:29 GMT"
+    }
+  }
+}

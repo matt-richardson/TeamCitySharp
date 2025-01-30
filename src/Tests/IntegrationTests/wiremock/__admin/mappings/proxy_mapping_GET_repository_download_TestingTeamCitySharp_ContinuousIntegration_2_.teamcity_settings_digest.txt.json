@@ -1,0 +1,66 @@
+{
+  "Guid": "be68242b-c998-49f4-ab72-f8f5ad339287",
+  "UpdatedAt": "2025-01-01T05:23:26.765407Z",
+  "Title": "Proxy Mapping for GET /repository/download/TestingTeamCitySharp_ContinuousIntegration/2/.teamcity/settings/digest.txt",
+  "Description": "Proxy Mapping for GET /repository/download/TestingTeamCitySharp_ContinuousIntegration/2/.teamcity/settings/digest.txt",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/repository/download/TestingTeamCitySharp_ContinuousIntegration/2/.teamcity/settings/digest.txt",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Bearer secret-token-for-testing-teamcity-sharp-admin-user",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "Body": "1fd0e415796e864cc9c8d10c35798b1e9acec8eb",
+    "Headers": {
+      "Last-Modified": "Mon, 30 Dec 2024 05:11:21 GMT",
+      "Content-Disposition": "attachment; filename*=UTF-8''digest.txt;",
+      "Content-Type": "text/plain",
+      "Content-Length": "40",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Cache-Control": "max-age=86400",
+      "Accept-Ranges": "bytes",
+      "ETag": "\"5c913bedf129b18318c37a699c97d74c\"",
+      "Date": "Wed, 01 Jan 2025 05:23:26 GMT"
+    }
+  }
+}

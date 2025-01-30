@@ -1,0 +1,118 @@
+{
+  "Guid": "8349b172-34e6-4f90-ade8-395eecd2f2a9",
+  "UpdatedAt": "2025-01-01T03:31:48.800139Z",
+  "Title": "Proxy Mapping for POST /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestNewConfig/steps",
+  "Description": "Proxy Mapping for POST /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestNewConfig/steps",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestNewConfig/steps",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "POST"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Content-Type",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/xml; charset=us-ascii",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Content-Length",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "249",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ],
+    "Body": {
+      "Matcher": {
+        "Name": "ExactMatcher",
+        "Pattern": "<step type=\"simpleRunner\"><properties><property name=\"script.content\" value=\"@echo off&#xA;echo Step1&#xA;touch step1.txt\" /><property name=\"teamcity.step.mode\" value=\"default\" /><property name=\"use.custom.script\" value=\"true\" /></properties></step>",
+        "IgnoreCase": true
+      }
+    }
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "id": "RUNNER_402",
+      "name": "",
+      "type": "simpleRunner",
+      "properties": {
+        "property": [
+          {
+            "name": "script.content",
+            "value": "@echo off\necho Step1\ntouch step1.txt"
+          },
+          {
+            "name": "teamcity.step.mode",
+            "value": "default"
+          },
+          {
+            "name": "use.custom.script",
+            "value": "true"
+          }
+        ],
+        "count": 3
+      }
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "256",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=87D110247E438A3B5E2AD54EA02370F9; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 03:31:58 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 03:31:48 GMT"
+    }
+  }
+}

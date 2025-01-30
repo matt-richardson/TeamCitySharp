@@ -1,8 +1,14 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Resources;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web;
 using NUnit.Framework;
 
 namespace TeamCitySharp.IntegrationTests
@@ -20,73 +26,70 @@ namespace TeamCitySharp.IntegrationTests
 
     public test_build_artifact_download()
     {
-      m_server = ConfigurationManager.AppSettings["Server"];
-      bool.TryParse(ConfigurationManager.AppSettings["UseSsl"], out m_useSsl);
-      m_username = ConfigurationManager.AppSettings["Username"];
-      m_password = ConfigurationManager.AppSettings["Password"];
-      m_token = ConfigurationManager.AppSettings["Token"];
-      m_goodBuildConfigId = ConfigurationManager.AppSettings["GoodBuildConfigId"];
+      m_server = Configuration.GetAppSetting("Server");
+      bool.TryParse(Configuration.GetAppSetting("UseSsl"), out m_useSsl);
+      m_username = Configuration.GetAppSetting("Username");
+      m_password = Configuration.GetAppSetting("Password");
+      m_token = Configuration.GetAppSetting("Token");
+      m_goodBuildConfigId = Configuration.GetAppSetting("GoodBuildConfigId");
     }
 
     [SetUp]
     public void SetUp()
     {
-      m_client = new TeamCityClient(m_server, m_useSsl);
+      m_client = new TeamCityClient(m_server, m_useSsl, Configuration.GetWireMockClient);
       m_client.Connect(m_username, m_password);
     }
 
     [Test]
-    public void it_downloads_artifact()
+    public void it_downloads_artifacts()
     {
       string buildConfigId = m_goodBuildConfigId;
       var build = m_client.Builds.LastSuccessfulBuildByBuildConfigId(buildConfigId);
       var directartifact = m_client.Artifacts.ByBuildConfigId(build.BuildTypeId);
       var listFilesDownload = directartifact.Specification(build.Number).Download();
-      Assert.IsNotEmpty(listFilesDownload);
+      Assert.That(listFilesDownload, Is.Not.Empty);
     }
 
-    [Test, Ignore("You need to configure the token before to run this test")]
-    public void it_downloads_artifact_with_access_token()
+    [Test]
+    public void it_downloads_artifacts_with_access_token()
     {
       var buildConfigId = m_goodBuildConfigId;
       var token = m_token;
-      var client = new TeamCityClient(m_server, m_useSsl);
+      var client = new TeamCityClient(m_server, m_useSsl, Configuration.GetWireMockClient);
       client.ConnectWithAccessToken(token);
       
       var build = client.Builds.LastSuccessfulBuildByBuildConfigId(buildConfigId);
       var directArtifact = client.Artifacts.ByBuildConfigId(build.BuildTypeId);
       var listFilesDownload = directArtifact.Specification(build.Number).Download();
-      Assert.IsNotEmpty(listFilesDownload);
+      Assert.That(listFilesDownload, Is.Not.Empty);
     }
 
     [Test]
-    public void it_download_no_artifacts_for_failed_builds()
+    public void it_downloads_artifacts_for_failed_builds()
     {
       string buildConfigId = m_goodBuildConfigId;
       var build = m_client.Builds.LastFailedBuildByBuildConfigId(buildConfigId);
       var directartifact = m_client.Artifacts.ByBuildConfigId(build.BuildTypeId);
       var listFilesDownload = directartifact.Specification(build.Number).Download();
-      Assert.IsEmpty(listFilesDownload);
+      Assert.That(listFilesDownload, Is.Not.Empty);
     }
 
     [Test]
-    public void it_download_artifact()
+    public async Task it_downloads_specific_artifact()
     {
-      var buildConfigId = m_goodBuildConfigId;
+      var buildConfigId = Configuration.GetAppSetting("IdOfBuildConfigWithArtifact");
 
-      const string filename = "Outputs.zip";
+      var filename = Configuration.GetAppSetting("ArtifactNameForBuildConfigWithArtifact");
       var expectedFile = Path.Combine(Path.GetTempPath(), "expectedFile.zip");
-      var expectedUrl = $"http://{m_server}/repository/download/{m_goodBuildConfigId}/.lastSuccessful/{filename}";
+      var expectedUrl = $"http://{m_server}/repository/download/{buildConfigId}/.lastSuccessful/{filename}";
       var artifact = m_client.Artifacts.ByBuildConfigId(buildConfigId);
       var file = artifact.LastSuccessful().DownloadFiltered(Path.GetTempPath(), new[] {filename}.ToList()).FirstOrDefault();
-      Assert.IsNotEmpty(file);
-      using (var client = new WebClient())
-      {
-        client.UseDefaultCredentials = true;
-        client.Credentials = new NetworkCredential(m_username, m_password);
-        client.DownloadFile(expectedUrl, expectedFile);
-      }
-      Assert.IsTrue(FileEquals(expectedFile, file));
+      Assert.That(file, Is.Not.Empty);
+      
+      await DownloadFile(expectedUrl, expectedFile);
+
+      Assert.That(FileEquals(expectedFile, file), Is.True);
  
       if (File.Exists(file))
       {
@@ -99,24 +102,36 @@ namespace TeamCitySharp.IntegrationTests
       }
     }
 
-    [Test]
-    public void it_download_artifact_from_a_git_branch()
+    private async Task DownloadFile(string expectedUrl, string expectedFile)
     {
-      var buildConfigId = m_goodBuildConfigId;
-      const string filename = "Outputs.zip";
-      const string param = "branch=dev-2001";
+      var client = new HttpClient();
+      var credentials = Encoding.ASCII.GetBytes($"{m_username}:{m_password}");
+      client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(credentials));
+
+      using HttpResponseMessage response = await client.GetAsync(expectedUrl, HttpCompletionOption.ResponseHeadersRead);
+      
+      response.EnsureSuccessStatusCode();
+
+      await using Stream contentStream = await response.Content.ReadAsStreamAsync();
+      await using FileStream fileStream = new FileStream(expectedFile, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true);
+      await contentStream.CopyToAsync(fileStream);
+    }
+
+    [Test]
+    public async Task it_download_artifact_from_a_git_branch()
+    {
+      var buildConfigId = Configuration.GetAppSetting("IdOfBuildConfigWithArtifactAndVcsRoot");
+      var filename = Configuration.GetAppSetting("ArtifactNameForBuildConfigWithArtifactAndVcsRoot");
+      var param = $"branch={Configuration.GetAppSetting("BranchNameForBuildConfigWithArtifactAndVcsRoot")}";
       var expectedFile = Path.Combine(Path.GetTempPath(), "expectedFile.zip");
-      var expectedUrl = $"http://{m_server}/repository/download/{m_goodBuildConfigId}/.lastSuccessful/{filename}?{param}";
+      var expectedUrl = $"http://{m_server}/repository/download/{buildConfigId}/.lastSuccessful/{filename}?{HttpUtility.UrlDecode(param)}";
       var artifact = m_client.Artifacts.ByBuildConfigId(buildConfigId, param);
       var file = artifact.LastSuccessful().DownloadFiltered(Path.GetTempPath(), new[] { filename }.ToList()).FirstOrDefault();
-      Assert.IsNotEmpty(file);
-      using (var client = new WebClient())
-      {
-        client.UseDefaultCredentials = true;
-        client.Credentials = new NetworkCredential(m_username, m_password);
-        client.DownloadFile(expectedUrl, expectedFile);
-      }
-      Assert.IsTrue(FileEquals(expectedFile, file));
+      Assert.That(file, Is.Not.Empty);
+      
+      await DownloadFile(expectedUrl, expectedFile);
+
+      Assert.That(FileEquals(expectedFile, file), Is.True);
       if (File.Exists(file))
       {
         File.Delete(file);

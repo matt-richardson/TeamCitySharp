@@ -1,0 +1,120 @@
+{
+  "Guid": "e66b185d-5d11-4ccc-8bc7-0b459c73b3f1",
+  "UpdatedAt": "2025-01-01T23:50:02.046083Z",
+  "Title": "Proxy Mapping for GET /httpAuth/app/rest/testOccurrences",
+  "Description": "Proxy Mapping for GET /httpAuth/app/rest/testOccurrences",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/testOccurrences",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ],
+    "Params": [
+      {
+        "Name": "locator",
+        "Matchers": [
+          {
+            "Name": "ExactMatcher",
+            "Pattern": "build:(id:2505)",
+            "IgnoreCase": false
+          }
+        ]
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "count": 5,
+      "href": "http://localhost:8111/app/rest/testOccurrences?locator=build%3A%28id%3A2505%29",
+      "testOccurrence": [
+        {
+          "id": "build:(id:2505),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:2505),id:2000000001"
+        },
+        {
+          "id": "build:(id:2505),id:2000000002",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test2(num: 17, value: False, testString: \"another, string, i am. With a : in it too\")",
+          "status": "SUCCESS",
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:2505),id:2000000002"
+        },
+        {
+          "id": "build:(id:2505),id:2000000003",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test2(num: 7, value: True, testString: \"a string\")",
+          "status": "SUCCESS",
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:2505),id:2000000003"
+        },
+        {
+          "id": "build:(id:2505),id:2000000004",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test4WithABuildProblem",
+          "status": "SUCCESS",
+          "duration": 3,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:2505),id:2000000004"
+        },
+        {
+          "id": "build:(id:2505),id:2000000005",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test1",
+          "status": "SUCCESS",
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:2505),id:2000000005"
+        }
+      ],
+      "failed": 1,
+      "passed": 4,
+      "newFailed": 1
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "1366",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=F12E63A15128E8F9119A755C2312A1DB; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 23:50:12 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 23:50:02 GMT"
+    }
+  }
+}

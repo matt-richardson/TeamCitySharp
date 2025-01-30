@@ -1,0 +1,71 @@
+{
+  "Guid": "a76cc275-759e-4370-88f6-dc9f5b33088a",
+  "UpdatedAt": "2025-01-01T05:23:26.664221Z",
+  "Title": "Proxy Mapping for GET /httpAuth/repository/download/TestingTeamCitySharp_ContinuousIntegration/2/.teamcity/settings/buildSettings.xml",
+  "Description": "Proxy Mapping for GET /httpAuth/repository/download/TestingTeamCitySharp_ContinuousIntegration/2/.teamcity/settings/buildSettings.xml",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/repository/download/TestingTeamCitySharp_ContinuousIntegration/2/.teamcity/settings/buildSettings.xml",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "Body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<build-type xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"https://www.jetbrains.com/teamcity/schemas/2021.1/project-config.xsd\">\n  <settings>\n    <parameters>\n      <param name=\"test\" value=\"\" />\n    </parameters>\n    <build-runners>\n      <runner id=\"simpleRunner\" name=\"\" type=\"simpleRunner\">\n        <parameters>\n          <param name=\"script.content\"><![CDATA[echo \"hello\"\n\necho \"filecontents\" > Outputs.zip\n\necho \"##teamcity[publishArtifacts 'Outputs.zip']\"]]></param>\n          <param name=\"teamcity.step.mode\" value=\"default\" />\n          <param name=\"use.custom.script\" value=\"true\" />\n        </parameters>\n      </runner>\n    </build-runners>\n    <vcs-settings />\n    <requirements />\n    <build-triggers />\n    <cleanup />\n  </settings>\n</build-type>\n\n",
+    "Headers": {
+      "Last-Modified": "Mon, 30 Dec 2024 05:11:21 GMT",
+      "Content-Disposition": "attachment; filename*=UTF-8''buildSettings.xml;",
+      "Content-Type": "application/xml",
+      "Content-Length": "841",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=199DEFDB1532D74B565CF377A940F606; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:23:36 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "max-age=86400",
+      "Accept-Ranges": "bytes",
+      "ETag": "\"85dc85377adb0ea92771f7f5329e9ca6\"",
+      "Date": "Wed, 01 Jan 2025 05:23:26 GMT"
+    }
+  }
+}

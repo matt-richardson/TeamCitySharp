@@ -23,23 +23,20 @@ namespace TeamCitySharp.IntegrationTests
     private readonly string m_username;
     private readonly string m_password;
     private readonly string m_queuedBuildConfigId;
-    private readonly string m_queuedProjectId;
-
 
     public when_interacting_to_get_build_queue_info()
     {
-      m_server = ConfigurationManager.AppSettings["Server"];
-      bool.TryParse(ConfigurationManager.AppSettings["UseSsl"], out m_useSsl);
-      m_username = ConfigurationManager.AppSettings["Username"];
-      m_password = ConfigurationManager.AppSettings["Password"];
-      m_queuedBuildConfigId = ConfigurationManager.AppSettings["QueuedBuildConfigId"];
-      m_queuedProjectId = ConfigurationManager.AppSettings["QueuedProjectId"];
+      m_server = Configuration.GetAppSetting("Server");
+      bool.TryParse(Configuration.GetAppSetting("UseSsl"), out m_useSsl);
+      m_username = Configuration.GetAppSetting("Username");
+      m_password = Configuration.GetAppSetting("Password");
+      m_queuedBuildConfigId = Configuration.GetAppSetting("QueuedBuildConfigId");
     }
 
     [SetUp]
     public void SetUp()
     {
-      m_client = new TeamCityClient(m_server, m_useSsl);
+      m_client = new TeamCityClient(m_server, m_useSsl, Configuration.GetWireMockClient);
       m_client.Connect(m_username, m_password);
     }
 
@@ -48,15 +45,16 @@ namespace TeamCitySharp.IntegrationTests
     {
       var result = m_client.BuildQueue.ByBuildTypeLocator(BuildTypeLocator.WithId(m_queuedBuildConfigId));
 
-      Assert.IsNotEmpty(result);
+      Assert.That(result, Is.Not.Empty);
     }
 
     [Test]
     public void it_returns_the_builds_queued_by_project_id()
     {
-      var result = m_client.BuildQueue.ByProjectLocater(ProjectLocator.WithId(m_queuedProjectId));
+      var projectId = Configuration.GetAppSetting("IdOfProjectWithQueuedBuilds");
+      var result = m_client.BuildQueue.ByProjectLocater(ProjectLocator.WithId(projectId));
 
-      Assert.IsNotEmpty(result);
+      Assert.That(result, Is.Not.Empty);
     }
 
     [Test]
@@ -68,7 +66,7 @@ namespace TeamCitySharp.IntegrationTests
       BuildsField buildsField = BuildsField.WithFields(buildField: buildField);
       var result = m_client.BuildQueue.GetFields(buildsField.ToString()).All();
 
-      Assert.IsNotEmpty(result);
+      Assert.That(result, Is.Not.Empty);
     }
   }
 }

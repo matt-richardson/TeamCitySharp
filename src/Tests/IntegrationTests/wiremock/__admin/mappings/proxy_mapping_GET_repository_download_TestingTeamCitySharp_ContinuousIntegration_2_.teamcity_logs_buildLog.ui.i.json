@@ -1,0 +1,66 @@
+{
+  "Guid": "4eb59694-7c69-4713-ae35-55942af14c52",
+  "UpdatedAt": "2025-01-01T05:23:26.731817Z",
+  "Title": "Proxy Mapping for GET /repository/download/TestingTeamCitySharp_ContinuousIntegration/2/.teamcity/logs/buildLog.ui.i",
+  "Description": "Proxy Mapping for GET /repository/download/TestingTeamCitySharp_ContinuousIntegration/2/.teamcity/logs/buildLog.ui.i",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/repository/download/TestingTeamCitySharp_ContinuousIntegration/2/.teamcity/logs/buildLog.ui.i",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Bearer secret-token-for-testing-teamcity-sharp-admin-user",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsBytes": "AAAAAAAAAADZrjuKAAAAAAAAAAEAAAAAAAAAAAAAADXZrjuKAAAAAAAAAAMAAAAAAAAAAAAAAJRw4mtjAAAAXgAAAAcAAAAAAAAAAAAAAMFw4mtjAAAAAAAAAAEAAAAAAAAAAAAAARdw4mtjAAAAfQAAAAIAAAAAAAAAAAAAAWTZrjuKAAAAAAAAAAMAAAAAAAAAAAAAAdDZrjuKAAAAAAAAAAMAAAAAAAAAAAAAAivZrjuKAAAAAAAAAAMAAAAAAAAAAAAAAofZrjuKAAAAAAAAAAMAAAAAAAAAAAAAAuPZrjuKAAAAAAAAAAEAAAAAAAAAAAAAAyzZrjuKAAAAAAAAAAMAAAAAAAAAAAAAA3LZrjuKAAAAfQAAAAIAAAAAAAAAAAAAA7zZrjuKAAAAAAAAAAMAAAAAAAAAAAAABDO4MtC8AAAAXgAAAAcAAAAAAAAAAAAABGC4MtC8AAAAAAAAAAEAAAAAAAAAAAAABKS4MtC8AAAAAAAAAAMAAAAAAAAAAAAABOy4MtC8AAAAAAAAAAMAAAAAAAAAAAAABUO4MtC8AAAAAAAAAAMAAAAAAAAAAAAABbC4MtC8AAAAfQAAAAIAAAAAAAAAAAAABfW4MtC8AAAAXgAAAAgAAAAAAAAAAAAABiPZrjuKAAAAAAAAAAMAAAAAAAAAAAAABpPZrjuKAAAAAAAAAAMAAAAAAAAAAAAABwbZrjuKAAAAAAAAAAMAAAAAAAAAAAAAB4rZrjuKtzoPrgAAAAMAAAAAAAAAAAAAB8jZrjuKE89/5AAAAAEAAAAAAAAAAAAACBdUH/ZTAAAAXgAAAAcAAAAAAAAAAAAACERUH/ZTAAAAAAAAAAMAAAAAAAAAAAAACUjZrjuKAAAAAAAAAAMAAAAAAAAAAAAACczZrjuKAAAAAAAAAAMAAAAAAAAAAAAACjtUH/ZTAAAAAAAAAAMAAAAAAAAAAAAACmK0VbbYAAAAXgAAAAcAAAAAAAAAAAAACo+0VbbYAAAAAAAAAAEAAAAAAAAAAAAACsq0VbbYAAAAAAAAAAMAAAAAAAAAAAAACxa0VbbYAAAAAAAAAAMAAAAAAAAAAAAAC2u0VbbYAAAAAAAAAAMAAAAAAAAAAAAAC8+0VbbYAAAAAAAAAAMAAAAAAAAAAAAADDy0VbbYAAAAfQAAAAIAAAAAAAAAAAAADHi0VbbYAAAAXgAAAAgAAAAAAAAAAAAADKZUH/ZTAAAAAAAAAAMAAAAAAAAAAAAADQhUH/ZTAAAAAAAAAAMAAAAAAAAAAAAADURUH/ZTAAAAXgAAAAgAAAAAAAAAAAAADXHZrjuKAAAAfQAAAAIAAAAAAAAAAAAADbTM9ji/AAAAXgAAAAcAAAAAAAAAAAAADeHM9ji/AAAAAAAAAAEAAAAAAAAAAAAADiXM9ji/AAAAAAAAAAMAAAAAAAAAAAAADm3M9ji/AAAAAAAAAAMAAAAAAAAAAAAADsTM9ji/AAAAAAAAAAMAAAAAAAAAAAAADzHM9ji/AAAAfQAAAAIAAAAAAAAAAAAAD3bM9ji/AAAAXgAAAAgAAAAAAAAAAAAAD6PohRLUAAAAXgAAAAcAAAAAAAAAAAAAD9DohRLUAAAAAAAAAAEAAAAAAAAAAAAAEBTohRLUAAAAfQAAAAIAAAAAAAAAAAAAEFnohRLUAAAAXgAAAAgAAAAAAAAAAAAAEIbZrjuKAAAAAAAAAAMAAAAAAAAAAAAAEMDZrjuKAAAAfQAAAAIAAAAA",
+    "Headers": {
+      "Last-Modified": "Mon, 30 Dec 2024 05:16:05 GMT",
+      "Content-Disposition": "attachment; filename*=UTF-8''buildLog.ui.i;",
+      "Content-Type": "application/octet-stream",
+      "Content-Length": "1320",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Cache-Control": "max-age=86400",
+      "Accept-Ranges": "bytes",
+      "ETag": "\"0a394a624e332a5f39c62404669147f6\"",
+      "Date": "Wed, 01 Jan 2025 05:23:26 GMT"
+    }
+  }
+}

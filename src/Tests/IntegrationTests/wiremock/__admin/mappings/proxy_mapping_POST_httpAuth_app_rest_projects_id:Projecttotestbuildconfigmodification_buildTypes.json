@@ -1,0 +1,167 @@
+{
+  "Guid": "a83606ea-d795-4952-a7b9-acb9693c0c63",
+  "UpdatedAt": "2025-01-01T06:24:06.145727Z",
+  "Title": "Proxy Mapping for POST /httpAuth/app/rest/projects/id:Projecttotestbuildconfigmodification/buildTypes",
+  "Description": "Proxy Mapping for POST /httpAuth/app/rest/projects/id:Projecttotestbuildconfigmodification/buildTypes",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/projects/id:Projecttotestbuildconfigmodification/buildTypes",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "POST"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Content-Type",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "text/plain; charset=us-ascii",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Content-Length",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "14",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ],
+    "Body": {
+      "Matcher": {
+        "Name": "ExactMatcher",
+        "Pattern": "testNewConfig5",
+        "IgnoreCase": true
+      }
+    }
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "id": "Projecttotestbuildconfigmodification_TestNewConfig5",
+      "name": "testNewConfig5",
+      "projectName": "Testing TeamCitySharp / Project to test build config modification",
+      "projectId": "Projecttotestbuildconfigmodification",
+      "href": "/httpAuth/app/rest/buildTypes/id:Projecttotestbuildconfigmodification_TestNewConfig5",
+      "webUrl": "http://localhost:8111/buildConfiguration/Projecttotestbuildconfigmodification_TestNewConfig5?mode=builds",
+      "project": {
+        "id": "Projecttotestbuildconfigmodification",
+        "name": "Project to test build config modification",
+        "parentProjectId": "TestingTeamCitySharp",
+        "href": "/httpAuth/app/rest/projects/id:Projecttotestbuildconfigmodification",
+        "webUrl": "http://localhost:8111/project.html?projectId=Projecttotestbuildconfigmodification"
+      },
+      "templates": {
+        "count": 0,
+        "buildType": []
+      },
+      "vcs-root-entries": {
+        "count": 0,
+        "vcs-root-entry": []
+      },
+      "settings": {
+        "property": [
+          {
+            "name": "buildNumberCounter",
+            "value": "1"
+          }
+        ],
+        "count": 1
+      },
+      "parameters": {
+        "property": [
+          {
+            "name": "test",
+            "value": "",
+            "inherited": true
+          }
+        ],
+        "count": 1,
+        "href": "/httpAuth/app/rest/buildTypes/id:Projecttotestbuildconfigmodification_TestNewConfig5/parameters"
+      },
+      "steps": {
+        "count": 0
+      },
+      "features": {
+        "count": 0
+      },
+      "triggers": {
+        "count": 0
+      },
+      "snapshot-dependencies": {
+        "count": 0
+      },
+      "artifact-dependencies": {
+        "count": 0
+      },
+      "agent-requirements": {
+        "count": 0
+      },
+      "builds": {
+        "href": "/httpAuth/app/rest/buildTypes/id:Projecttotestbuildconfigmodification_TestNewConfig5/builds/"
+      },
+      "investigations": {
+        "href": "/httpAuth/app/rest/investigations?locator=buildType:(id:Projecttotestbuildconfigmodification_TestNewConfig5)"
+      },
+      "compatibleAgents": {
+        "href": "/httpAuth/app/rest/agents?locator=compatible:(buildType:(id:Projecttotestbuildconfigmodification_TestNewConfig5))"
+      },
+      "compatibleCloudImages": {}
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "1692",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=E0884DBD3DC3BE462B3EA61429D45BA1; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 06:24:16 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 06:24:06 GMT"
+    }
+  }
+}

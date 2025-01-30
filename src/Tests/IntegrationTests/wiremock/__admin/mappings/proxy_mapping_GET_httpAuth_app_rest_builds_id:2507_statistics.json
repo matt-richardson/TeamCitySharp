@@ -1,0 +1,140 @@
+{
+  "Guid": "a761143d-c914-40c8-9c76-9e8f5d68c460",
+  "UpdatedAt": "2025-01-01T05:23:27.040258Z",
+  "Title": "Proxy Mapping for GET /httpAuth/app/rest/builds/id:2507/statistics",
+  "Description": "Proxy Mapping for GET /httpAuth/app/rest/builds/id:2507/statistics",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/builds/id:2507/statistics",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "property": [
+        {
+          "name": "ArtifactsSize",
+          "value": "30921"
+        },
+        {
+          "name": "BuildDuration",
+          "value": "4561"
+        },
+        {
+          "name": "BuildDurationNetTime",
+          "value": "3908"
+        },
+        {
+          "name": "buildStageDuration:artifactsPublishing",
+          "value": "332"
+        },
+        {
+          "name": "buildStageDuration:buildFinishing",
+          "value": "231"
+        },
+        {
+          "name": "buildStageDuration:buildStepsimpleRunner",
+          "value": "3908"
+        },
+        {
+          "name": "buildStageDuration:firstStepPreparation",
+          "value": "10"
+        },
+        {
+          "name": "buildStageDuration:toolsUpdating",
+          "value": "1"
+        },
+        {
+          "name": "BuildTestStatus",
+          "value": "1"
+        },
+        {
+          "name": "PassedTestCount",
+          "value": "5"
+        },
+        {
+          "name": "queueWaitReason:Build_settings_have_not_been_finalized",
+          "value": "13"
+        },
+        {
+          "name": "queueWaitReason:Preparing_a_build_for_a_start_on_an_agent",
+          "value": "2"
+        },
+        {
+          "name": "queueWaitReason:Waiting_for_the_build_queue_distribution_process",
+          "value": "2"
+        },
+        {
+          "name": "serverSideBuildFinishing",
+          "value": "6"
+        },
+        {
+          "name": "SuccessRate",
+          "value": "1"
+        },
+        {
+          "name": "TimeSpentInQueue",
+          "value": "19"
+        },
+        {
+          "name": "TotalTestCount",
+          "value": "5"
+        }
+      ],
+      "count": 17
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "951",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=D087DB1DEE073D2264F5FF2D5ED08AAD; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:23:37 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 05:23:26 GMT"
+    }
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "Guid": "2f6d294e-bf6e-47e1-b5e3-eecb8b5d1a65",
+  "UpdatedAt": "2025-01-01T05:23:27.869999Z",
+  "Title": "Proxy Mapping for GET /httpAuth/app/rest/users/username:testing-tc-sharp",
+  "Description": "Proxy Mapping for GET /httpAuth/app/rest/users/username:testing-tc-sharp",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/users/username:testing-tc-sharp",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "username": "testing-tc-sharp",
+      "name": "Testing TeamCitySharp",
+      "id": 1,
+      "email": "testing-tc-sharp@example.com",
+      "lastLogin": "20250101T162326+1100",
+      "href": "/httpAuth/app/rest/users/id:1",
+      "properties": {
+        "property": [
+          {
+            "name": "addTriggeredBuildToFavorites",
+            "value": "true"
+          },
+          {
+            "name": "hasSeenExperimentalOverview",
+            "value": "true"
+          },
+          {
+            "name": "lastSeenSakuraUIVersion",
+            "value": "2024.03"
+          },
+          {
+            "name": "lastSelectedCreateObjectOption",
+            "value": "createManually"
+          },
+          {
+            "name": "plugin:vcs:anyVcs:anyVcsRoot",
+            "value": "testing-tc-sharp"
+          },
+          {
+            "name": "showAdvancedOpts_buildTypeVcsSettings",
+            "value": "true"
+          },
+          {
+            "name": "showAllBuildTypeTabs",
+            "value": "true"
+          },
+          {
+            "name": "showBuilds.changelog",
+            "value": "false"
+          },
+          {
+            "name": "teamcity.server.buildNumber",
+            "value": "156166"
+          },
+          {
+            "name": "teamcity.ui.runFirstBuild.tooltipShown",
+            "value": "true"
+          },
+          {
+            "name": "visible.projects.configured",
+            "value": "true"
+          },
+          {
+            "name": "was.logged.in",
+            "value": "true"
+          }
+        ],
+        "count": 12,
+        "href": "/httpAuth/app/rest/users/id:1/properties"
+      },
+      "roles": {
+        "role": []
+      },
+      "groups": {
+        "count": 2,
+        "group": [
+          {
+            "key": "ADMINUSERS",
+            "name": "AdminUsers",
+            "href": "/httpAuth/app/rest/userGroups/key:ADMINUSERS"
+          },
+          {
+            "key": "ALL_USERS_GROUP",
+            "name": "All Users",
+            "href": "/httpAuth/app/rest/userGroups/key:ALL_USERS_GROUP",
+            "description": "Contains all TeamCity users"
+          }
+        ]
+      }
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "1235",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=6CE1BA648A1736C5953B95AFA757FA00; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:23:37 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 05:23:27 GMT"
+    }
+  }
+}

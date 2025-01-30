@@ -1,0 +1,96 @@
+{
+  "Guid": "32c35095-44e2-42fa-822d-d05ab1148a6c",
+  "UpdatedAt": "2025-01-01T23:18:25.849682Z",
+  "Title": "Proxy Mapping for GET /httpAuth/app/rest/builds",
+  "Description": "Proxy Mapping for GET /httpAuth/app/rest/builds",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/builds",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ],
+    "Params": [
+      {
+        "Name": "locator",
+        "Matchers": [
+          {
+            "Name": "ExactMatcher",
+            "Pattern": "buildType:(id:TestingTeamCitySharp_BuildWithTests),status:SUCCESS,count:1",
+            "IgnoreCase": false
+          }
+        ]
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "count": 1,
+      "nextHref": "/httpAuth/app/rest/builds?locator=buildType:(id:TestingTeamCitySharp_BuildWithTests),count:1,start:1,status:SUCCESS",
+      "build": [
+        {
+          "id": 2507,
+          "buildTypeId": "TestingTeamCitySharp_BuildWithTests",
+          "number": "3",
+          "status": "SUCCESS",
+          "state": "finished",
+          "href": "/httpAuth/app/rest/builds/id:2507",
+          "webUrl": "http://localhost:8111/buildConfiguration/TestingTeamCitySharp_BuildWithTests/2507",
+          "finishOnAgentDate": "20241231T102117+1100"
+        }
+      ],
+      "href": "/httpAuth/app/rest/builds?locator=buildType:(id:TestingTeamCitySharp_BuildWithTests),status:SUCCESS,count:1"
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "561",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=AE89AA7DE25552312FACA1F876C664BC; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 23:18:35 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 23:18:25 GMT"
+    }
+  }
+}

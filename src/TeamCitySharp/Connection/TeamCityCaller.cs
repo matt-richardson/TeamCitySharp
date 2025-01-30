@@ -17,8 +17,9 @@ namespace TeamCitySharp.Connection
     private bool m_useNoCache;
     private string m_version="";
     private string m_userAgent;
+    private readonly Func<HttpClient> m_httpClientFactory;
 
-    public TeamCityCaller(string hostName, bool useSsl)
+    public TeamCityCaller(string hostName, bool useSsl, Func<HttpClient> httpClientFactory)
     {
       if (string.IsNullOrEmpty(hostName))
         throw new ArgumentNullException("hostName");
@@ -27,6 +28,7 @@ namespace TeamCitySharp.Connection
 
       var version = typeof(TeamCityCaller).Assembly.GetName().Version;
       m_userAgent = $"TeamCitySharp/{version}";
+      m_httpClientFactory = httpClientFactory ?? (() => new HttpClient());
     }
 
     public void DisableCache()
@@ -106,7 +108,7 @@ namespace TeamCitySharp.Connection
     public void GetDownloadFormat(Action<string> downloadHandler, string urlPart, bool rest, params object[] parts)
     {
       if (CheckForAuthRequest())
-        throw new ArgumentException("If you are not acting as a guest you must supply userName and password");
+        throw new ArgumentException("If you are not acting as a guest you must supply an access token or userName and password");
       if (string.IsNullOrEmpty(urlPart))
         throw new ArgumentException("Url must be specified");
 
@@ -132,7 +134,7 @@ namespace TeamCitySharp.Connection
     public string StartBackup(string urlPart)
     {
       if (CheckForAuthRequest())
-        throw new ArgumentException("If you are not acting as a guest you must supply userName and password");
+        throw new ArgumentException("If you are not acting as a guest you must supply an access token or userName and password");
 
       if (string.IsNullOrEmpty(urlPart))
         throw new ArgumentException("Url must be specified");
@@ -163,7 +165,7 @@ namespace TeamCitySharp.Connection
     private HttpResponseMessage GetResponse(string urlPart)
     {
       if (CheckForAuthRequest())
-        throw new ArgumentException("If you are not acting as a guest you must supply userName and password");
+        throw new ArgumentException("If you are not acting as a guest you must supply an access token or userName and password");
 
       if (string.IsNullOrEmpty(urlPart))
         throw new ArgumentException("Url must be specified");
@@ -301,7 +303,7 @@ namespace TeamCitySharp.Connection
 
     private HttpClient CreateHttpClient(string userName, string password, string accept)
     {
-      var httpClient = new HttpClient();
+      var httpClient = m_httpClientFactory();
       httpClient.DefaultRequestHeaders.Accept
           .Add(new MediaTypeWithQualityHeaderValue(accept));
       httpClient.DefaultRequestHeaders.Add("User-Agent", m_userAgent);
@@ -340,7 +342,7 @@ namespace TeamCitySharp.Connection
     public string GetRaw(string urlPart, bool rest)
     {
       if (CheckForAuthRequest())
-        throw new ArgumentException("If you are not acting as a guest you must supply userName and password");
+        throw new ArgumentException("If you are not acting as a guest you must supply an access token or userName and password");
 
       if (string.IsNullOrEmpty(urlPart))
         throw new ArgumentException("Url must be specified");
@@ -352,7 +354,7 @@ namespace TeamCitySharp.Connection
       if (IsHttpError(response))
       {
         throw new HttpException(response.StatusCode,
-          $"Error {response.ReasonPhrase}: Thrown with URL {url}");
+          $"Error {response.ReasonPhrase} returned from URL {url}");
       }
 
       return response.RawText();
@@ -384,7 +386,7 @@ namespace TeamCitySharp.Connection
       try
       {
         if (CheckForAuthRequest())
-          throw new ArgumentException("If you are not acting as a guest you must supply userName and password");
+          throw new ArgumentException("If you are not acting as a guest you must supply an access token or userName and password");
 
         if (string.IsNullOrEmpty(urlFull))
           throw new ArgumentException("Url must be specified");

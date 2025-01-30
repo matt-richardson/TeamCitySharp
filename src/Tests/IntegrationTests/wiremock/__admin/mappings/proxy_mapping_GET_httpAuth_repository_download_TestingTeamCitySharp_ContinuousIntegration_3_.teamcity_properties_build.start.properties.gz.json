@@ -1,0 +1,71 @@
+{
+  "Guid": "7d1da8a6-5d3a-4def-930f-650218af37ff",
+  "UpdatedAt": "2025-01-01T05:23:26.870904Z",
+  "Title": "Proxy Mapping for GET /httpAuth/repository/download/TestingTeamCitySharp_ContinuousIntegration/3/.teamcity/properties/build.start.properties.gz",
+  "Description": "Proxy Mapping for GET /httpAuth/repository/download/TestingTeamCitySharp_ContinuousIntegration/3/.teamcity/properties/build.start.properties.gz",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/repository/download/TestingTeamCitySharp_ContinuousIntegration/3/.teamcity/properties/build.start.properties.gz",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsBytes": "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",
+    "Headers": {
+      "Last-Modified": "Mon, 30 Dec 2024 05:20:30 GMT",
+      "Content-Disposition": "attachment; filename*=UTF-8''build.start.properties.gz;",
+      "Content-Type": "application/x-gzip",
+      "Content-Length": "2857",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=9F680D4F956A872973917C1085D026C9; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:23:36 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "max-age=86400",
+      "Accept-Ranges": "bytes",
+      "ETag": "\"e02f5e6d42dfc88d650d70ee91cb4bb9\"",
+      "Date": "Wed, 01 Jan 2025 05:23:26 GMT"
+    }
+  }
+}

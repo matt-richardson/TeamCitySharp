@@ -3,28 +3,29 @@
 * .NET Library to access TeamCity via their REST API.
 
 Current Stable Version:
-[![NuGet version (TeamCitySharp-forked-mavezeau)](https://img.shields.io/nuget/v/TeamCitySharp-forked-mavezeau.svg?style=flat-square)](https://www.nuget.org/packages/TeamCitySharp-forked-mavezeau/)
+[![NuGet version (Octopus.TeamCitySharp)](https://img.shields.io/nuget/v/Octopus.TeamCitySharp.svg?style=flat-square)](https://www.nuget.org/packages/Octopus.TeamCitySharp/)
 
 Latest Version:
-[![NuGet version (TeamCitySharp-forked-mavezeau)](https://img.shields.io/nuget/vpre/TeamCitySharp-forked-mavezeau.svg?style=flat-square)](https://www.nuget.org/packages/TeamCitySharp-forked-mavezeau/)
+[![NuGet version (Octopus.TeamCitySharp)](https://img.shields.io/nuget/vpre/Octopus.TeamCitySharp.svg?style=flat-square)](https://www.nuget.org/packages/Octopus.TeamCitySharp/)
 
 For more information on TeamCity visit:
 http://www.jetbrains.com/teamcity
 
 ## Releases
 
-Please find the release notes [here](https://github.com/mavezeau/TeamCitySharp/releases)
+Please find the release notes [here](https://github.com/Octopus.TeamCitySharp/releases)
 
 ## License
 
-http://stack72.mit-license.org/
+MIT
+
+This is a forked version of [mavezeau/TeamCitySharp](https://github.com/mavezeau/TeamCitySharp) (released under MIT), which was forked from [stack72/TeamCitySharp](https://github.com/stack72/TeamCitySharp) (released under MIT).
 
 ## Installation
 
-There are 2 ways to use TeamCitySharp:
-
-* install-package TeamCitySharp-forked-mavezeau (via Nuget)
-* Download source and compile
+```powershell
+install-package Octopus.TeamCitySharp
+```
 
 ## Build Monitor
 
@@ -106,207 +107,46 @@ There are many tasks that the TeamCity API can do for us. TeamCitySharp groups t
 
 Each area has its own list of methods available
 
-### Builds
 
-    Builds GetFields(string fields);
-    List<Build> SuccessfulBuildsByBuildConfigId(string buildConfigId, List<String> param = null);
-    Build LastSuccessfulBuildByBuildConfigId(string buildConfigId, List<String> param = null);
-    List<Build> FailedBuildsByBuildConfigId(string buildConfigId, List<String> param = null);
-    Build LastFailedBuildByBuildConfigId(string buildConfigId, List<String> param = null);
-    Build LastBuildByBuildConfigId(string buildConfigId, List<String> param = null);
-    List<Build> ErrorBuildsByBuildConfigId(string buildConfigId, List<String> param = null);
-    Build LastErrorBuildByBuildConfigId(string buildConfigId, List<String> param = null);
-    Build LastBuildByAgent(string agentName, List<String> param = null);
-    Build ById(string id);
-    List<Build> ByBuildConfigId(string buildConfigId);
-    List<Build> RunningByBuildConfigId(string buildConfigId);
-    List<Build> ByBuildConfigId(string buildConfigId, List<String> param);
-    List<Build> ByBuildLocator(BuildLocator locator, List<String> param);
-    List<Build> ByConfigIdAndTag(string buildConfigId, string tag);
-    List<Build> ByUserName(string userName);
-    List<Build> ByBuildLocator(BuildLocator locator);
-    List<Build> AllSinceDate(DateTime date, long count = 100, List<string> param = null);
-    List<Build> AllBuildsOfStatusSinceDate(DateTime date, BuildStatus buildStatus);
-    List<Build> NonSuccessfulBuildsForUser(string userName);
-    List<Build> ByBranch(string branchName);
-    void Add2QueueBuildByBuildConfigId(string buildConfigId);
-    List<Build> AllRunningBuild();
-    List<Build> RetrieveEntireBuildChainFrom(string buildConfigId, bool includeInitial = true, List<string> param = null);
-    List<Build> RetrieveEntireBuildChainTo(string buildConfigId, bool includeInitial = true, List<string> param = null);
-    List<Build> NextBuilds(string buildid, long count = 100, List<string> param = null);
-    List<Build> AffectedProject(string projectId, long count = 100, List<string> param = null);
-    void DownloadLogs(string projectId, bool zipped, Action<string> downloadHandler);
+## Testing
 
-### BuildConfigs
+This project uses [WireMock](https://github.com/WireMock-Net/WireMock.Net) to mock the TeamCity server during 
+Integration Tests, using mapping files containing the request and response. This allows us to test without needing a 
+real TeamCity server, avoiding a bunch of test flakiness and unplanned toil.
 
-    List<BuildConfig> All();
-    BuildConfigs GetFields(string fields);
-    BuildConfig ByConfigurationName(string buildConfigName);
-    BuildConfig ByConfigurationId(string buildConfigId);
-    BuildConfig ByProjectNameAndConfigurationName(string projectName, string buildConfigName);
-    BuildConfig ByProjectNameAndConfigurationId(string projectName, string buildConfigId);
-    BuildConfig ByProjectIdAndConfigurationName(string projectId, string buildConfigName);
-    BuildConfig ByProjectIdAndConfigurationId(string projectId, string buildConfigId);
-    List<BuildConfig> ByProjectId(string projectId);
-    List<BuildConfig> ByProjectName(string projectName);
-    bool ModifTrigger(string format, string oldTriggerConfigurationId, string id);
-    BuildConfig CreateConfiguration(BuildConfig buildConfig);
-    BuildConfig CreateConfiguration(string projectName, string configurationName);
-    BuildConfig CreateConfigurationByProjectId(string projectId, string configurationName);
-    BuildConfig Copy(string buildConfigId, string buildConfigName, string destinationProjectId, string newBuildTypeId = "");
+The downside of this is that if JetBrains changes the response, we won't find out about it until it's reported in production.
+Given the low expectation of change for this code, and that JetBrains is pretty good at backwards compat, this is
+an acceptable risk.
 
+If we were to look at changing it so that we can automatically detect regressions, we'd need to setup terraform / 
+infra-as-code to find out, which brings us back to the pain/maintenance overhead of using "real services" in tests.
 
-    void SetConfigurationSetting(BuildTypeLocator locator, string settingName, string settingValue);
-    bool GetConfigurationPauseStatus(BuildTypeLocator locator);
-    void SetConfigurationPauseStatus(BuildTypeLocator locator, bool isPaused);
-    void PostRawArtifactDependency(BuildTypeLocator locator, string rawXml);
-    void PostRawBuildStep(BuildTypeLocator locator, string rawXml);
-    void PutRawBuildStep(BuildTypeLocator locator, string rawXml);
-    BuildSteps GetRawBuildStep(BuildTypeLocator locator);
-    void PostRawBuildTrigger(BuildTypeLocator locator, string rawXml);
-    void SetConfigurationParameter(BuildTypeLocator locator, string key, string value);
-    void PostRawAgentRequirement(BuildTypeLocator locator, string rawXml);
-    void DeleteBuildStep(BuildTypeLocator locator, string buildStepId);
-    void DeleteArtifactDependency(BuildTypeLocator locator, string artifactDependencyId);
-    void DeleteAgentRequirement(BuildTypeLocator locator, string agentRequirementId);
-    void DeleteParameter(BuildTypeLocator locator, string parameterName);
-    void DeleteBuildTrigger(BuildTypeLocator locator, string buildTriggerId);
-    void SetBuildTypeTemplate(BuildTypeLocator locatorBuildType, BuildTypeLocator locatorTemplate);
-    void DeleteSnapshotDependency(BuildTypeLocator locator, string snapshotDependencyId);
-    void PostRawSnapshotDependency(BuildTypeLocator locator, XmlElement rawXml);
-    BuildConfig BuildType(BuildTypeLocator locator);
-    void SetBuildTypeVariable(BuildTypeLocator locatorBuildType, string nameVariable, string value);
-    void DeleteConfiguration(BuildTypeLocator locator);
-    void DownloadConfiguration(BuildTypeLocator locator, Action<string> downloadHandler);
-    Template CopyTemplate(string templateId, string templateName, string destinationProjectId, string newTemplateId = "");
-    Template GetTemplate(BuildTypeLocator locator); 
-    void AttachTemplate(BuildTypeLocator locator, string templateId);
-    void DetachTemplate(BuildTypeLocator locator);
-    ArtifactDependencies GetArtifactDependencies(string buildTypeId);
-    SnapshotDependencies GetSnapshotDependencies(string buildTypeId);
-    bool ModifArtifactDependencies(string format, string oldDendencyConfigurationId, string id);
-    bool ModifSnapshotDependencies(string format, string oldDendencyConfigurationId, string id);
+# FAQ
 
-    /// <since>8.0</since>
-    void DeleteAllBuildTypeParameters(BuildTypeLocator locator);
-    void PutAllBuildTypeParameters(BuildTypeLocator locator, IDictionary<string, string> parameters);
+Q: Would you recommend using the record/replay approach for other projects?
+A: For other greenfield projects, I'd recommend the fluent approach. 
 
-    // <since>2017.1</since>
-    Branches GetBranchesByBuildConfigurationId(string buildTypeId, BranchLocator locator = null);
+Q: Should I write new tests using the record/replay approach?
+For this project, I'd say consistency is better, and we should use mapping files.
 
-    /// <since>2017.2</since>
-    Templates GetTemplates(BuildTypeLocator locator); 
-    void AttachTemplates(BuildTypeLocator locator, Templates templateList);
-    void DetachTemplates(BuildTypeLocator locator);
+Q: How do I record/replay for a changed response?
+A: If the response has changed, you can record the updated response by uncommenting the `//EnableProxyAndRecord()` 
+method in the `Configuration` class. You'll also need to ensure you have a TeamCity setup in a way the test expects, 
+with a bearer token in the appsettings.
 
-### BuildInvestigation
+Q: Why does record/replay keep overwriting files?
+A: Given the hardcoded naming convention for the files, if the only thing that is different between requests is 
+the body of the request, then it can overwrite the file. Assuming the (http) request is different, you can copy the 
+overwritten file to a new one, and revert the changes to the original.  
 
-    List<Investigation> All();
-    BuildInvestigations GetFields(string fields);
-    List<Investigation> InvestigationsByBuildTypeId(string buildTypeId);
+Q: Why is replay picking up the wrong mapping file?
+A: WireMock selects the mapping based on the number of matchers that are satisfied, and ranks them by percentage.
+If you have a mapping file that is too generic, it may be selected over the one you want. (ie, if you have 3 matches in 
+one file ,and 4 matches in another, it doesn't appear to be deterministic.)
+Another option is to use [scenarios](https://github.com/WireMock-Net/WireMock.Net/wiki/Scenarios-and-States) to help it 
+figure out what state the server is in.
 
-### BuildQueue
-
-    List<Build> All();
-    BuildQueue GetFields(string fields);
-    List<Build> ByBuildTypeLocator(BuildTypeLocator locator);
-    List<Build> ByProjectLocater(ProjectLocator projectLocator);
-
-### Projects
-
-    List<Project> All();
-    Projects GetFields(string fields);
-    Project ByName(string projectLocatorName);
-    Project ById(string projectLocatorId);
-    Project Details(Project project);
-    Project Create(string projectName);
-    Project Create(string projectName, string sourceId, string projectId = "");
-    Project Move(string projectId, string destinationId);
-    Project Copy(string projectid, string projectName, string newProjectId, string parentProjectId = "");
-    string GenerateID(string projectName);
-    void Delete(string projectName);
-    void DeleteById(string projectId);
-    void DeleteProjectParameter(string projectName, string parameterName);
-    void SetProjectParameter(string projectName, string settingName, string settingValue);
-    bool ModifParameters(string projectId, string mainprojectbranch, string variablePath);
-    bool ModifSettings(string projectId, string description, string fullProjectName);
-    ProjectFeatures GetProjectFeatures(string projectLocatorId);
-    ProjectFeature GetProjectFeatureByProjectFeature(string projectLocatorId, string projectFeatureId);
-    ProjectFeature CreateProjectFeature(string projectId, ProjectFeature projectFeature);
-    void DeleteProjectFeature(string projectId, string projectFeatureId);
-
-    // <since>2017.1</since>
-    Branches GetBranchesByBuildProjectId(string projectId, BranchLocator locator = null);
-
-### ServerInformation
-
-    Server ServerInfo();
-    List<Plugin> AllPlugins();
-    string TriggerServerInstanceBackup(BackupOptions backupOptions);
-    string GetBackupStatus();
-
-### Users
-
-    List<User> All();
-    Users GetFields(string fields);
-    User Details(string userName);
-    List<Role> AllRolesByUserName(string userName);
-    List<Group> AllGroupsByUserName(string userName);
-    List<Group> AllUserGroups();
-    List<User> AllUsersByUserGroup(string userGroupName);
-    List<Role> AllUserRolesByUserGroup(string userGroupName);
-    bool Create(string username, string name, string email, string password);
-    bool AddPassword(string username, string password);
-    bool IsAdministrator(string username);
-
-### Agents
-
-    List<Agent> All(bool includeDisconnected = false, bool includeUnauthorized = false);
-    Agents GetFields(string fields);
-
-### VcsRoots
-
-    VcsRoots GetFields(string fields);
-    List<VcsRoot> All();
-    VcsRoot ById(string vcsRootId);
-    VcsRoot AttachVcsRoot(BuildTypeLocator locator, VcsRoot vcsRoot);
-    void DetachVcsRoot(BuildTypeLocator locator, string vcsRootId);
-    void SetVcsRootField(VcsRoot vcsRoot, VcsRootField field, object value);
-    VcsRoot CreateVcsRoot(VcsRoot configurationName, string projectId);
-    void SetConfigurationProperties(VcsRoot vcsRootId, string key, string value);
-    void DeleteProperties(VcsRoot vcsRootId, string parameterName);
-    void DeleteVcsRoot(VcsRoot vcsRoot);
-
-### Changes
-
-    List<Change> All();
-    Change ByChangeId(string id);
-    Change LastChangeDetailByBuildConfigId(string buildConfigId);
-    List<Change> ByBuildConfigId(string buildConfigId);
-
-### BuildArtifacts
-
-    void DownloadArtifactsByBuildId(string buildId, Action<string> downloadHandler);
-    ArtifactWrapper ByBuildConfigId(string buildConfigId, string param="");
-
-### Statistics
-
-    Statistics GetFields(string fields);
-    Properties GetByBuildId(string buildId);
-
-## Credits
-
-Copyright (c) 2013 Paul Stack (@stack72)
-
-Thanks to the following contributors:
-
-* Barry Mooring (@codingbadger)
-* Simon Bartlett (@sibartlett)
-* Mike Larah (@MikeLarah)
-* Alexander Fast (@mizipzor)
-* Serge Baltic
-* Philipp Dolder
-* Mark deVilliers
-* Marc-Andre Vezeau (@exfo)
-* Bassem Mawassi (@exfo)
-* Tusman Akhter (@exfo)
+Q: Why is there a bearer token in the mapping files?
+A: Some test validate "does it work with admin user", and "does it throw an exception with an invalid user". 
+Unfortunately, the only difference in these requests is the bearer token, so we need to have it in the mapping file.
+Note that the bearer token is for a local TeamCity instance, and has been revoked.

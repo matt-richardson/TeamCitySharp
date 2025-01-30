@@ -1,0 +1,62 @@
+{
+  "Guid": "a3d64fca-01a8-4bcc-a391-70612a030a16",
+  "UpdatedAt": "2025-01-01T03:05:16.482702Z",
+  "Title": "Proxy Mapping for GET /httpAuth/app/rest",
+  "Description": "Proxy Mapping for GET /httpAuth/app/rest",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "text/plain",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic Sm9obi5Eb2U6SjBobkQwMw==",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "Body": "This is a root of TeamCity REST API.\nExplore what's inside from '/httpAuth/app/rest/server'.\nSee also notes on the usage at https://www.jetbrains.com/help/teamcity/2024.03/?REST+API",
+    "Headers": {
+      "Content-Type": "text/plain",
+      "Content-Length": "181",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=A6AFABA81DA0F87F5771296D586C2653; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 03:05:26 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 03:05:16 GMT"
+    }
+  }
+}

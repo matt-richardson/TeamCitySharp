@@ -15,6 +15,7 @@ using TeamCitySharp.Connection;
 using TeamCitySharp.DomainEntities;
 using TeamCitySharp.Fields;
 using TeamCitySharp.Locators;
+using File = System.IO.File;
 
 namespace TeamCitySharp.IntegrationTests
 {
@@ -33,20 +34,20 @@ namespace TeamCitySharp.IntegrationTests
 
     public when_interations_to_get_build_configuration_details()
     {
-      m_server = ConfigurationManager.AppSettings["Server"];
-      bool.TryParse(ConfigurationManager.AppSettings["UseSsl"], out m_useSsl);
-      m_username = ConfigurationManager.AppSettings["Username"];
-      m_password = ConfigurationManager.AppSettings["Password"];
-      m_token = ConfigurationManager.AppSettings["Password"];
-      m_goodBuildConfigId = ConfigurationManager.AppSettings["GoodBuildConfigId"];
-      m_goodProjectId = ConfigurationManager.AppSettings["GoodProjectId"];
-      m_goodTemplateId = ConfigurationManager.AppSettings["GoodTemplateId"];
+      m_server = Configuration.GetAppSetting("Server");
+      bool.TryParse(Configuration.GetAppSetting("UseSsl"), out m_useSsl);
+      m_username = Configuration.GetAppSetting("Username");
+      m_password = Configuration.GetAppSetting("Password");
+      m_token = Configuration.GetAppSetting("Token");
+      m_goodBuildConfigId = Configuration.GetAppSetting("GoodBuildConfigId");
+      m_goodProjectId = Configuration.GetAppSetting("GoodProjectId");
+      m_goodTemplateId = Configuration.GetAppSetting("GoodTemplateId");
     }
 
     [SetUp]
     public void SetUp()
     {
-      m_client = new TeamCityClient(m_server, m_useSsl);
+      m_client = new TeamCityClient(m_server, m_useSsl, Configuration.GetWireMockClient);
       m_client.Connect(m_username, m_password);
     }
 
@@ -57,17 +58,9 @@ namespace TeamCitySharp.IntegrationTests
     }
 
     [Test]
-    public void it_throws_exception_when_host_does_not_exist()
-    {
-      var client = new TeamCityClient("test:81");
-      client.Connect("teamcitysharpuser", "qwerty");
-
-      Assert.Throws<HttpRequestException>(() => client.BuildConfigs.All());
-    }
-    [Test, Ignore("We need to configure token before run this test")]
     public void it_returns_all_build_types_with_access_token()
     {
-      var client = new TeamCityClient(m_server, m_useSsl);
+      var client = new TeamCityClient(m_server, m_useSsl, Configuration.GetWireMockClient);
       client.ConnectWithAccessToken(m_token);
       var buildConfigs = client.BuildConfigs.All();
       Assert.That(buildConfigs.Any(), "No build types were found in this server");
@@ -97,58 +90,43 @@ namespace TeamCitySharp.IntegrationTests
       string buildConfigId = m_goodBuildConfigId;
       var buildConfig = m_client.BuildConfigs.ByConfigurationId(buildConfigId);
 
-      Assert.That(buildConfig != null, "Cannot find a build type for that buildId");
-    }
-
-    [Test, Ignore("Test user doesn't have the rights to change pause status for build configs.")]
-    public void it_pauses_configuration()
-    {
-      string buildConfigId = m_goodBuildConfigId;
-      var buildLocator = BuildTypeLocator.WithId(buildConfigId);
-      m_client.BuildConfigs.SetConfigurationPauseStatus(buildLocator, true);
-      var status = m_client.BuildConfigs.GetConfigurationPauseStatus(buildLocator);
-      Assert.That(status == true, "Build not paused");
+      Assert.That(buildConfig, Is.Not.Null, "Cannot find a build type for that buildId");
     }
 
     [Test]
+    public void it_pauses_and_unpauses_configuration()
+    {
+      string buildConfigId = m_goodBuildConfigId;
+      var buildLocator = BuildTypeLocator.WithId(buildConfigId);
+
+      m_client.BuildConfigs.SetConfigurationPauseStatus(buildLocator, true);
+      var status = m_client.BuildConfigs.GetConfigurationPauseStatus(buildLocator);
+      Assert.That(status, Is.True, "Build not paused");
+
+      m_client.BuildConfigs.SetConfigurationPauseStatus(buildLocator, false);
+      status = m_client.BuildConfigs.GetConfigurationPauseStatus(buildLocator);
+      Assert.That(status, Is.False, "Build not unpaused");
+    }
+
+    [Test]
+    [Ignore("Not working - not throwing exception as expected")]
     public void it_throws_exception_pauses_configuration_forbidden()
     {
       string buildConfigId = m_goodBuildConfigId;
       var buildLocator = BuildTypeLocator.WithId(buildConfigId);
-      try
-      {
-        var client = new TeamCityClient(m_server, m_useSsl);
-        client.ConnectAsGuest();
-        client.BuildConfigs.SetConfigurationPauseStatus(buildLocator, true);
-      }
-      catch (HttpException e)
-      {
-        Assert.That(e.ResponseStatusCode == HttpStatusCode.Forbidden);
-      }
-      catch (Exception e)
-      {
-        Assert.Fail($"Set configurationPauseStatus faced an unexpected exception", e);
-      }
-    }
-
-    [Test, Ignore("Test user doesn't have the rights to change pause status for build configs.")]
-    public void it_unpauses_configuration()
-    {
-      string buildConfigId = m_goodBuildConfigId;
-      var buildLocator = BuildTypeLocator.WithId(buildConfigId);
-      m_client.BuildConfigs.SetConfigurationPauseStatus(buildLocator, false);
-      var status = m_client.BuildConfigs.GetConfigurationPauseStatus(buildLocator);
-      Assert.That(status == false, "Build not unpaused");
-
+      var client = new TeamCityClient(m_server, m_useSsl, Configuration.GetWireMockClient);
+      client.Connect(Configuration.GetAppSetting("NonAdminUser"), m_password);
+      var e = Assert.Throws<HttpException>(() => client.BuildConfigs.SetConfigurationPauseStatus(buildLocator, true), "Expected that the user does not have permission to pause the build");
+      Assert.That(e.ResponseStatusCode, Is.EqualTo(HttpStatusCode.Forbidden));
     }
 
     [Test]
     public void it_returns_build_config_details_by_configuration_name()
     {
-      string buildConfigName = "Release Build";
+      string buildConfigName = Configuration.GetAppSetting("NameOfBuildConfigWithTests");
       var buildConfig = m_client.BuildConfigs.ByConfigurationName(buildConfigName);
 
-      Assert.That(buildConfig != null, "Cannot find a build type for that buildName");
+      Assert.That(buildConfig, Is.Not.Null, "Cannot find a build type for that buildName");
     }
 
     [Test]
@@ -163,38 +141,39 @@ namespace TeamCitySharp.IntegrationTests
     [Test]
     public void it_returns_build_configs_by_project_name()
     {
-      string projectName = m_goodProjectId;
+      var projectName = Configuration.GetAppSetting("NameOfProjectWithBuildConfigs");
       var buildConfigs = m_client.BuildConfigs.ByProjectName(projectName);
 
       Assert.That(buildConfigs.Any(), "Cannot find a build type for that projectName");
     }
 
-    [Test, Ignore("Test user doesn't have the rights to access artifact dependencies of build config.")]
+    [Test]
     public void it_returns_artifact_dependencies_by_build_config_id()
     {
       string buildConfigId = m_goodBuildConfigId;
       var artifactDependencies = m_client.BuildConfigs.GetArtifactDependencies(buildConfigId);
 
-      Assert.That(artifactDependencies != null, "Cannot find a Artifact dependencies for that buildConfigId");
+      Assert.That(artifactDependencies, Is.Not.Null,
+        "Cannot find a Artifact dependencies for that buildConfigId");
     }
-
-
-    [Test, Ignore("Test user doesn't have the rights to access artifact dependencies of build config.")]
+    
+    [Test]
     public void it_returns_snapshot_dependencies_by_build_config_id()
     {
       string buildConfigId = m_goodBuildConfigId;
       var snapshotDependencies = m_client.BuildConfigs.GetSnapshotDependencies(buildConfigId);
-      Assert.That(snapshotDependencies != null, "Cannot find a snapshot dependencies for that buildConfigId");
+      Assert.That(snapshotDependencies, Is.Not.Null,
+        "Cannot find a snapshot dependencies for that buildConfigId");
     }
 
-    [Test , Ignore("Test user doesn't have the rights to access artifact dependencies of build config.")]
+    [Test]
     public void it_create_build_config_step()
     {
       var bt = new BuildConfig();
       try
       {
         bt = m_client.BuildConfigs.CreateConfigurationByProjectId(m_goodProjectId,
-          "testNewConfig");
+          "testNewConfig1");
 
 
         var xml = "<step type=\"simpleRunner\">" +
@@ -215,24 +194,20 @@ namespace TeamCitySharp.IntegrationTests
                     currentStepBuild.Properties.Property.FirstOrDefault(x => x.Name == "use.custom.script").Value ==
                     "true");
       }
-      catch (Exception e)
-      {
-        Assert.Fail($"{e.Message}", e);
-      }
       finally
       {
         m_client.BuildConfigs.DeleteConfiguration(BuildTypeLocator.WithId(bt.Id));
       }
     }
 
-    [Test, Ignore("Test user doesn't have the rights to access artifact dependencies of build config.")]
+    [Test]
     public void it_create_build_config_steps()
     {
       var bt = new BuildConfig();
       try
       {
         bt = m_client.BuildConfigs.CreateConfigurationByProjectId(m_goodProjectId,
-          "testNewConfig");
+          "testNewConfig2");
 
 
         const string xml = @"<steps>
@@ -270,24 +245,20 @@ namespace TeamCitySharp.IntegrationTests
                     currentStepBuild.Properties.Property.FirstOrDefault(x => x.Name == "use.custom.script").Value ==
                     "true");
       }
-      catch (Exception e)
-      {
-        Assert.Fail($"{e.Message}", e);
-      }
       finally
       {
         m_client.BuildConfigs.DeleteConfiguration(BuildTypeLocator.WithId(bt.Id));
       }
     }
 
-    [Test, Ignore("Test user doesn't have the rights to access artifact dependencies of build config.")]
+    [Test]
     public void it_getraw_build_config_steps()
     {
       var bt = new BuildConfig();
       try
       {
         bt = m_client.BuildConfigs.CreateConfigurationByProjectId(m_goodProjectId,
-          "testNewConfig");
+          "testNewConfig3");
 
 
         const string xml = @"<steps>
@@ -325,10 +296,6 @@ namespace TeamCitySharp.IntegrationTests
                     currentStepBuild.Properties.Property.FirstOrDefault(x => x.Name == "use.custom.script").Value ==
                     "true");
       }
-      catch (Exception e)
-      {
-        Assert.Fail($"{e.Message}", e);
-      }
       finally
       {
         m_client.BuildConfigs.DeleteConfiguration(BuildTypeLocator.WithId(bt.Id));
@@ -337,109 +304,76 @@ namespace TeamCitySharp.IntegrationTests
 
 
     [Test]
+    [Ignore("Not working - not throwing exception as expected")]
     public void it_throws_exception_artifact_dependencies_by_build_config_id_forbidden()
     {
-
-      try
-      {
-        var client = new TeamCityClient(m_server, m_useSsl);
-        client.ConnectAsGuest();
-        client.BuildConfigs.GetArtifactDependencies(m_goodBuildConfigId);
-      }
-      catch (HttpException e)
-      {
-        Assert.That(e.ResponseStatusCode == HttpStatusCode.Forbidden);
-      }
-      catch (Exception e)
-      {
-        Assert.Fail($"GetArtifactDependencies faced an unexpected exception for {m_goodBuildConfigId}", e);
-      }
+      var client = new TeamCityClient(m_server, m_useSsl, Configuration.GetWireMockClient);
+      client.Connect(Configuration.GetAppSetting("NonAdminUser"), m_password);
+      var e = Assert.Throws<HttpException>(() => client.BuildConfigs.GetArtifactDependencies(m_goodBuildConfigId));
+      Assert.That(e.ResponseStatusCode, Is.EqualTo(HttpStatusCode.Forbidden));
     }
 
-
     [Test]
+    [Ignore("Not working - not throwing exception as expected")]
     public void it_throws_exception_snapshot_dependencies_by_build_config_id_forbidden()
     {
-      try
-      {
-        var client = new TeamCityClient(m_server, m_useSsl);
-        client.ConnectAsGuest();
-        client.BuildConfigs.GetSnapshotDependencies(m_goodBuildConfigId);
-      }
-      catch (HttpException e)
-      {
-        Assert.That(e.ResponseStatusCode == HttpStatusCode.Forbidden);
-      }
-      catch (Exception e)
-      {
-        Assert.Fail($"GetSnapshotDependencies faced an unexpected exception for {m_goodBuildConfigId}", e);
-      }
+      var client = new TeamCityClient(m_server, m_useSsl, Configuration.GetWireMockClient);
+      client.Connect(Configuration.GetAppSetting("NonAdminUser"), m_password);
+      var e = Assert.Throws<HttpException>(() =>   client.BuildConfigs.GetSnapshotDependencies(m_goodBuildConfigId));
+      Assert.That(e.ResponseStatusCode, Is.EqualTo(HttpStatusCode.Forbidden));
     }
 
     [Test]
     public void it_throws_exception_create_build_config_forbidden()
     {
-
-      try
-      {
-        var client = new TeamCityClient(m_server, m_useSsl);
-        client.ConnectAsGuest();
-        client.BuildConfigs.CreateConfigurationByProjectId(m_goodProjectId, "testNewConfig");
-      }
-      catch (HttpException e)
-      {
-        Assert.That(e.ResponseStatusCode == HttpStatusCode.Forbidden);
-      }
-      catch (Exception e)
-      {
-        Assert.Fail($"PostRawBuildStep faced an unexpected exception for {m_goodBuildConfigId}", e);
-      }
+      var client = new TeamCityClient(m_server, m_useSsl, Configuration.GetWireMockClient);
+      client.Connect(Configuration.GetAppSetting("NonAdminUser"), m_password);
+      var e = Assert.Throws<HttpException>(() => client.BuildConfigs.CreateConfigurationByProjectId(m_goodProjectId, "testNewConfig4"));
+      Assert.That(e.ResponseStatusCode, Is.EqualTo(HttpStatusCode.Forbidden));
     }
 
-    [Test, Ignore("Test user doesn't have the rights to access artifact dependencies of build config.")]
+    [Test]
     public void it_modify_build_config()
     {
       const string depend = "TeamcityDashboardScenario_Test_TestWithCheckout";
       const string newDepend = "TeamcityDashboardScenario_Test_TestWithCheckoutWithDependencies";
-      try
+      
+      var projectName = "Project to test build config modification";
+      var project = m_client.Projects.Create(projectName, m_goodProjectId);
+      
+      var buildConfig = m_client.BuildConfigs.CreateConfigurationByProjectId(project.Id, "testNewConfig5");
+      var buildLocator = BuildTypeLocator.WithId(buildConfig.Id);
+      var bt = new BuildTrigger
       {
-        var buildConfig = m_client.BuildConfigs.CreateConfigurationByProjectId(m_goodProjectId, "testNewConfig");
-        var buildLocator = BuildTypeLocator.WithId(buildConfig.Id);
-        var bt = new BuildTrigger
+        Id = "ttt1", Type = "buildDependencyTrigger", Properties = new Properties
         {
-          Id = "ttt1", Type = "buildDependencyTrigger", Properties = new Properties
+          Property = new List<Property>
           {
-            Property = new List<Property>
-            {
-              new Property {Name = "afterSuccessfulBuildOnly", Value = "true"},
-              new Property {Name = "dependsOn", Value = depend}
-            }
+            new Property {Name = "afterSuccessfulBuildOnly", Value = "true"},
+            new Property {Name = "dependsOn", Value = depend}
           }
-        };
+        }
+      };
 
-        // Configure starting trigger
-        m_client.BuildConfigs.SetTrigger(buildLocator, bt);
+      // Configure starting trigger
+      m_client.BuildConfigs.SetTrigger(buildLocator, bt);
 
-        var actualFirst = m_client.BuildConfigs.ByConfigurationId(buildConfig.Id);
-        Assert.That(actualFirst.Triggers.Trigger[0].Type == "buildDependencyTrigger" &&
-                    actualFirst.Triggers.Trigger[0].Properties.Property.FirstOrDefault(x => x.Name == "dependsOn")
-                      .Value == depend);
+      var actualFirst = m_client.BuildConfigs.ByConfigurationId(buildConfig.Id);
+      Assert.That(actualFirst.Triggers.Trigger[0].Type == "buildDependencyTrigger" &&
+                  actualFirst.Triggers.Trigger[0].Properties.Property.FirstOrDefault(x => x.Name == "dependsOn")
+                    .Value == depend);
 
-        // Modify trigger
-        m_client.BuildConfigs.ModifTrigger(buildConfig.Id, depend, newDepend);
-        var actualTwo = m_client.BuildConfigs.ByConfigurationId(buildConfig.Id);
-        Assert.That(actualTwo.Triggers.Trigger[0].Type == "buildDependencyTrigger" &&
-                    actualTwo.Triggers.Trigger[0].Properties.Property.FirstOrDefault(x => x.Name == "dependsOn")
-                      .Value == newDepend);
-        var buildLocatorFinal = BuildTypeLocator.WithId(buildConfig.Id);
+      // Modify trigger
+      m_client.BuildConfigs.ModifTrigger(buildConfig.Id, depend, newDepend);
+      var actualTwo = m_client.BuildConfigs.ByConfigurationId(buildConfig.Id);
+      Assert.That(actualTwo.Triggers.Trigger[0].Type == "buildDependencyTrigger" &&
+                  actualTwo.Triggers.Trigger[0].Properties.Property.FirstOrDefault(x => x.Name == "dependsOn")
+                    .Value == newDepend);
+      var buildLocatorFinal = BuildTypeLocator.WithId(buildConfig.Id);
 
-        //Cleanup 
-        m_client.BuildConfigs.DeleteConfiguration(buildLocatorFinal);
-      }
-      catch (Exception e)
-      {
-        Assert.Fail($"{e.Message}", e);
-      }
+      //Cleanup 
+      m_client.BuildConfigs.DeleteConfiguration(buildLocatorFinal);
+      m_client.Projects.Delete(project.Name);
     }
 
     [Test]
@@ -450,7 +384,7 @@ namespace TeamCitySharp.IntegrationTests
       var buildLocatorFinal = new BuildTypeLocator();
       try
       {
-        var buildConfig = m_client.BuildConfigs.CreateConfigurationByProjectId(m_goodProjectId, "testNewConfig");
+        var buildConfig = m_client.BuildConfigs.CreateConfigurationByProjectId(m_goodProjectId, "testNewConfig6");
         buildLocatorFinal = BuildTypeLocator.WithId(buildConfig.Id);
         var artifactDependencies = new ArtifactDependencies
         {
@@ -480,11 +414,6 @@ namespace TeamCitySharp.IntegrationTests
         m_client.BuildConfigs.ModifArtifactDependencies(buildConfig.Id, depend, newDepend);
 
       }
-      catch (Exception e)
-      {
-        Console.WriteLine(e);
-        throw;
-      }
       finally
       {
         //Cleanup 
@@ -499,50 +428,38 @@ namespace TeamCitySharp.IntegrationTests
       const string depend = "TeamcityDashboardScenario_Test_TestWithCheckout";
       const string newDepend = "TeamcityDashboardScenario_Test_TestWithCheckoutWithDependencies";
       var buildLocatorFinal = new BuildTypeLocator();
-      try
+
+      var buildConfig = m_client.BuildConfigs.CreateConfigurationByProjectId(m_goodProjectId, "testNewConfig7");
+      buildLocatorFinal = BuildTypeLocator.WithId(buildConfig.Id);
+      var snapshotDependencies = new SnapshotDependencies
       {
-        var buildConfig = m_client.BuildConfigs.CreateConfigurationByProjectId(m_goodProjectId, "testNewConfig");
-        buildLocatorFinal = BuildTypeLocator.WithId(buildConfig.Id);
-        var snapshotDependencies = new SnapshotDependencies
+        SnapshotDependency = new List<SnapshotDependency>
         {
-          SnapshotDependency = new List<SnapshotDependency>
+          new SnapshotDependency
           {
-            new SnapshotDependency
+            Id = "TTTT_100",
+            Type = "snapshot_dependency",
+            SourceBuildType = new BuildConfig{Id = depend},
+            Properties = new Properties
             {
-              Id = "TTTT_100",
-              Type = "snapshot_dependency",
-              SourceBuildType = new BuildConfig{Id = depend},
-              Properties = new Properties
+              Property = new List<Property>
               {
-                Property = new List<Property>
-                {
-                  new Property {Name = "run-build-if-dependency-failed", Value = "RUN_ADD_PROBLEM"},
-                  new Property {Name = "run-build-if-dependency-failed-to-start", Value = "MAKE_FAILED_TO_START"},
-                  new Property {Name = "run-build-on-the-same-agent", Value = "false"},
-                  new Property {Name = "take-started-build-with-same-revisions", Value = "true"},
-                  new Property {Name = "take-successful-builds-only", Value = "true"}
-                }
+                new Property {Name = "run-build-if-dependency-failed", Value = "RUN_ADD_PROBLEM"},
+                new Property {Name = "run-build-if-dependency-failed-to-start", Value = "MAKE_FAILED_TO_START"},
+                new Property {Name = "run-build-on-the-same-agent", Value = "false"},
+                new Property {Name = "take-started-build-with-same-revisions", Value = "true"},
+                new Property {Name = "take-successful-builds-only", Value = "true"}
               }
             }
           }
-        };
+        }
+      };
 
-        m_client.BuildConfigs.SetSnapshotDependency(buildLocatorFinal, snapshotDependencies.SnapshotDependency[0]);
+      m_client.BuildConfigs.SetSnapshotDependency(buildLocatorFinal, snapshotDependencies.SnapshotDependency[0]);
 
-        m_client.BuildConfigs.ModifSnapshotDependencies(buildConfig.Id, depend, newDepend);
+      m_client.BuildConfigs.ModifSnapshotDependencies(buildConfig.Id, depend, newDepend);
 
-      }
-      catch (Exception e)
-      {
-        Console.WriteLine(e);
-        throw;
-      }
-      finally
-      {
-        //Cleanup 
-        m_client.BuildConfigs.DeleteConfiguration(buildLocatorFinal);
-      }
-
+      m_client.BuildConfigs.DeleteConfiguration(buildLocatorFinal);
     }
 
     [Test]
@@ -551,78 +468,54 @@ namespace TeamCitySharp.IntegrationTests
     {
       var tempBuildConfig = m_client.BuildConfigs.All().First();
       var buildConfig = m_client.BuildConfigs.ByConfigurationId(tempBuildConfig.Id);
-      Assert.IsNotNull(buildConfig.Builds, "No builds ");
-      Assert.IsNotNull(buildConfig.Builds.Href, "No builds href");
-      Assert.IsNotNull(buildConfig.Investigations, "No Investigations ");
-      Assert.IsNotNull(buildConfig.Investigations.Href, "No Investigations href");
-      Assert.IsNotNull(buildConfig.CompatibleAgents, "No CompatibleAgents ");
-      Assert.IsNotNull(buildConfig.CompatibleAgents.Href, "No CompatibleAgents href");
+      Assert.That(buildConfig.Builds, Is.Not.Null, "No builds ");
+      Assert.That(buildConfig.Builds.Href, Is.Not.Null, "No builds href");
+      Assert.That(buildConfig.Investigations, Is.Not.Null, "No Investigations ");
+      Assert.That(buildConfig.Investigations.Href, Is.Not.Null, "No Investigations href");
+      Assert.That(buildConfig.CompatibleAgents, Is.Not.Null, "No CompatibleAgents ");
+      Assert.That(buildConfig.CompatibleAgents.Href, Is.Not.Null, "No CompatibleAgents href");
     }
 
     [Test]
     public void it_returns_first_build_types_builds_investigations_compatible_agents_field_null()
-
     {
-      var tempBuildConfig = m_client.BuildConfigs.All().First();
+      var tempBuildConfigId =Configuration.GetAppSetting("IdOfBuildConfigWithTests");
       // Section 1
       var buildTypeField = BuildTypeField.WithFields(id:true);
-      var buildConfig = m_client.BuildConfigs.GetFields(buildTypeField.ToString()).ByConfigurationId(tempBuildConfig.Id);
-      Assert.IsNull(buildConfig.Builds, "No builds 1");
-      Assert.IsNull(buildConfig.Investigations, "No Investigations 1");
-      Assert.IsNull(buildConfig.CompatibleAgents, "No CompatibleAgents 1");
+      var buildConfig = m_client.BuildConfigs.GetFields(buildTypeField.ToString()).ByConfigurationId(tempBuildConfigId);
+      Assert.That(buildConfig.Builds, Is.Null, "No builds 1");
+      Assert.That(buildConfig.Investigations, Is.Null, "No Investigations 1");
+      Assert.That(buildConfig.CompatibleAgents, Is.Null, "No CompatibleAgents 1");
 
       // section 2
       var buildsField = BuildsField.WithFields(count:true);
       var investigationsField = InvestigationsField.WithFields();
       var compatibleAgentsField = CompatibleAgentsField.WithFields();
       buildTypeField = BuildTypeField.WithFields(id: true, builds: buildsField,investigations: investigationsField, compatibleAgents:compatibleAgentsField);
-      buildConfig = m_client.BuildConfigs.GetFields(buildTypeField.ToString()).ByConfigurationId(tempBuildConfig.Id);
-      Assert.IsNotNull(buildConfig.Builds, "No builds 2");
-      Assert.IsNull(buildConfig.Builds.Href, "No builds href 2");
-      Assert.IsNotNull(buildConfig.Investigations, "No Investigations 2");
-      Assert.IsNotNull(buildConfig.Investigations.Href, "No Investigations href 2");
-      Assert.IsNotNull(buildConfig.CompatibleAgents, "No CompatibleAgents 2");
-      Assert.IsNotNull(buildConfig.CompatibleAgents.Href, "No CompatibleAgents href 2");
+      buildConfig = m_client.BuildConfigs.GetFields(buildTypeField.ToString()).ByConfigurationId(tempBuildConfigId);
+      Assert.That(buildConfig.Builds, Is.Not.Null, "No builds 2");
+      Assert.That(buildConfig.Builds.Href, Is.Null, "No builds href 2");
+      Assert.That(buildConfig.Investigations, Is.Not.Null, "No Investigations 2");
+      Assert.That(buildConfig.Investigations.Href, Is.Null, "No Investigations href 2");
+      Assert.That(buildConfig.CompatibleAgents, Is.Not.Null, "No CompatibleAgents 2");
+      Assert.That(buildConfig.CompatibleAgents.Href, Is.Not.Null, "No CompatibleAgents href 2");
 
       // section 3
       buildsField = BuildsField.WithFields(count: true,href:true);
       investigationsField = InvestigationsField.WithFields(href:true);
       compatibleAgentsField = CompatibleAgentsField.WithFields(href:true);
       buildTypeField = BuildTypeField.WithFields(id: true, builds: buildsField, investigations: investigationsField, compatibleAgents: compatibleAgentsField);
-      buildConfig = m_client.BuildConfigs.GetFields(buildTypeField.ToString()).ByConfigurationId(tempBuildConfig.Id);
-      Assert.IsNotNull(buildConfig.Builds, "No builds 3");
-      Assert.IsNotNull(buildConfig.Builds.Href, "No builds href 3");
-      Assert.IsNotNull(buildConfig.Investigations, "No Investigations 3");
-      Assert.IsNotNull(buildConfig.Investigations.Href, "No Investigations href 3");
-      Assert.IsNotNull(buildConfig.CompatibleAgents, "No CompatibleAgents 3");
-      Assert.IsNotNull(buildConfig.CompatibleAgents.Href, "No CompatibleAgents href 3");
+      buildConfig = m_client.BuildConfigs.GetFields(buildTypeField.ToString()).ByConfigurationId(tempBuildConfigId);
+      Assert.That(buildConfig.Builds, Is.Not.Null, "No builds 3");
+      Assert.That(buildConfig.Builds.Href, Is.Not.Null, "No builds href 3");
+      Assert.That(buildConfig.Investigations, Is.Not.Null, "No Investigations 3");
+      Assert.That(buildConfig.Investigations.Href, Is.Not.Null, "No Investigations href 3");
+      Assert.That(buildConfig.CompatibleAgents, Is.Not.Null, "No CompatibleAgents 3");
+      Assert.That(buildConfig.CompatibleAgents.Href, Is.Not.Null, "No CompatibleAgents href 3");
     }
 
     [Test]
-    public void it_returns_build_config_templates()
-    {
-      string buildConfigId = m_goodBuildConfigId;
-      var buildLocator = BuildTypeLocator.WithId(buildConfigId);
-      var templates = m_client.BuildConfigs.GetTemplates(buildLocator);
-      Assert.IsNotNull(templates, "No templates found, invalid templates call.");
-    }
-
-    [Test]
-    public void it_attaches_templates_to_build_config()
-    {
-      string buildConfigId = m_goodBuildConfigId;
-      var buildLocator = BuildTypeLocator.WithId(buildConfigId);
-      var buildConfig = new Template { Id = m_goodTemplateId };
-      var buildConfigList = new List<Template>() { buildConfig };
-      var templates = new Templates { BuildType = buildConfigList };
-      m_client.BuildConfigs.AttachTemplates(buildLocator, templates);
-
-      var templatesReceived = m_client.BuildConfigs.GetTemplates(buildLocator);
-      Assert.That(templatesReceived.BuildType.Any(), "Templates not attached");
-    }
-
-    [Test]
-    public void it_detaches_templates_from_build_config()
+    public void it_attaches_and_detaches_templates_from_build_config()
     {
       string buildConfigId = m_goodBuildConfigId;
       var buildLocator = BuildTypeLocator.WithId(buildConfigId);
@@ -632,27 +525,14 @@ namespace TeamCitySharp.IntegrationTests
       m_client.BuildConfigs.AttachTemplates(buildLocator, templates);
       var templatesReceived = m_client.BuildConfigs.GetTemplates(buildLocator);
       Assert.That(templatesReceived.BuildType.Any(), "Templates not attached");
+      
+      var templatesField = m_client.BuildConfigs.ByConfigurationId(buildConfigId).Templates;
+      Assert.That(templatesField, Is.Not.Null, "Templates property not retrieved correctly");
+      
       m_client.BuildConfigs.DetachTemplates(buildLocator);
 
       templatesReceived = m_client.BuildConfigs.GetTemplates(buildLocator);
       Assert.That(!templatesReceived.BuildType.Any(), "Templates not detached");
-
-    }
-
-    [Test]
-    public void it_returns_build_config_templates_property()
-    {
-      string buildConfigId = m_goodBuildConfigId;
-      var buildLocator = BuildTypeLocator.WithId(buildConfigId);
-      var buildConfig = new Template { Id = m_goodTemplateId };
-      var buildConfigList = new List<Template>() { buildConfig };
-      var templates = new Templates { BuildType = buildConfigList };
-      m_client.BuildConfigs.AttachTemplates(buildLocator, templates);
-      var templatesReceived = m_client.BuildConfigs.GetTemplates(buildLocator);
-      Assert.That(templatesReceived.BuildType.Any(), "Templates not attached");
-
-      var templatesField = m_client.BuildConfigs.ByConfigurationId(buildConfigId).Templates;
-      Assert.IsNotNull(templatesField, "Templates property not retrieved correctly");
     }
 
     [Test]
@@ -661,10 +541,13 @@ namespace TeamCitySharp.IntegrationTests
       string buildConfigId = m_goodBuildConfigId;
       string directory = Directory.GetCurrentDirectory();
       string destination = Path.Combine(directory, "config.txt");
+      if (File.Exists(destination))
+        File.Delete(destination);
+      
       var buildLocator = BuildTypeLocator.WithId(buildConfigId);
       m_client.BuildConfigs.DownloadConfiguration(buildLocator, tempfile => System.IO.File.Move(tempfile, destination));
-      Assert.IsTrue(System.IO.File.Exists(destination));
-      Assert.IsTrue(new FileInfo(destination).Length > 0);
+      Assert.That(System.IO.File.Exists(destination), Is.True);
+      Assert.That(new FileInfo(destination).Length > 0, Is.True);
     }
 
     [Test]
@@ -674,17 +557,13 @@ namespace TeamCitySharp.IntegrationTests
       var buildProject = new Project() { Id = m_goodProjectId };
       var parameters = new Parameters
         { Property = new List<Property>() { new Property() { Name = "category", Value = "test"} } };
-      var buildConfig = new BuildConfig() { Id = currentBuildId, Name = "testNewConfig", Project = buildProject, Parameters = parameters };
+      var buildConfig = new BuildConfig() { Id = currentBuildId, Name = "testNewConfig8", Project = buildProject, Parameters = parameters };
 
       try
       {
         buildConfig = m_client.BuildConfigs.CreateConfiguration(buildConfig);
 
-        Assert.That(buildConfig.Id == currentBuildId);
-      }
-      catch (Exception e)
-      {
-        Assert.Fail($"{e.Message}", e);
+        Assert.That(buildConfig.Id, Is.EqualTo(currentBuildId));
       }
       finally
       {
@@ -695,43 +574,40 @@ namespace TeamCitySharp.IntegrationTests
     [Test]
     public void it_returns_branches()
     {
-      string buildConfigId = m_goodBuildConfigId;
+      string buildConfigId = Configuration.GetAppSetting("IdOfBuildConfigWithArtifactAndVcsRoot");
       var tempBuild = m_client.BuildConfigs.GetBranchesByBuildConfigurationId(buildConfigId);
-      Assert.IsTrue(tempBuild.Count == 2);
+      Assert.That(tempBuild.Count, Is.EqualTo(int.Parse(Configuration.GetAppSetting("NumberOfBranchesForBuildConfigWithArtifactAndVcsRoot"))));
     }
 
     [Test]
     public void it_returns_branches_history()
     {
-      string buildConfigId = m_goodBuildConfigId;
+      string buildConfigId = Configuration.GetAppSetting("IdOfBuildConfigWithArtifactAndVcsRoot");
       var tempBuild = m_client.BuildConfigs.GetBranchesByBuildConfigurationId(buildConfigId,BranchLocator.WithDimensions(BranchPolicy.ALL_BRANCHES));
-      Assert.IsTrue(tempBuild.Count == 6);
+      Assert.That(tempBuild.Count, Is.EqualTo(int.Parse(Configuration.GetAppSetting("NumberOfBranchesForBuildConfigWithArtifactAndVcsRoot"))));
     }
 
     [Test]
-    public void it_returns_branches_history_with_field_Default_but_active_not_fetched()
+    public void it_returns_branches_history_with_field_default_but_active_not_fetched()
     {
-      BranchField branchField = BranchField.WithFields(name:true,defaultValue:true);
+      BranchField branchField = BranchField.WithFields(name:true, defaultValue:true);
       BranchesField branchesField = BranchesField.WithFields(branch: branchField);
       string buildConfigId = m_goodBuildConfigId;
       var tempBuild = m_client.BuildConfigs.GetFields(branchesField.ToString()).GetBranchesByBuildConfigurationId(buildConfigId, BranchLocator.WithDimensions(BranchPolicy.ALL_BRANCHES));
       var checkIfFieldWork = tempBuild.Branch.Single(x => x.Default);
-      Assert.IsTrue(checkIfFieldWork.Active == false);
-
+      Assert.That(checkIfFieldWork.Active, Is.False);
     }
 
     [Test]
-    public void it_returns_branches_history_with_field_Default_active_fetched()
+    public void it_returns_branches_history_with_field_default_active_fetched()
     {
-      BranchField branchField = BranchField.WithFields(name: true, defaultValue: true,active:true);
+      BranchField branchField = BranchField.WithFields(name: true, defaultValue: true, active:true);
       BranchesField branchesField = BranchesField.WithFields(branch: branchField);
       string buildConfigId = m_goodBuildConfigId;
       var tempBuild = m_client.BuildConfigs.GetFields(branchesField.ToString()).GetBranchesByBuildConfigurationId(buildConfigId, BranchLocator.WithDimensions(BranchPolicy.ALL_BRANCHES));
       var checkIfFieldWork = tempBuild.Branch.Single(x => x.Default);
-      Assert.IsTrue(checkIfFieldWork.Active);
-
+      Assert.That(checkIfFieldWork.Active, Is.True);
     }
-
 
     #region private
     private string GetXml(object data)

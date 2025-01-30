@@ -16,17 +16,17 @@ namespace TeamCitySharp.IntegrationTests
 
     public when_connecting_to_the_teamcity_server()
     {
-      m_server = ConfigurationManager.AppSettings["Server"];
-      bool.TryParse(ConfigurationManager.AppSettings["UseSsl"], out m_useSsl);
-      m_username = ConfigurationManager.AppSettings["Username"];
-      m_password = ConfigurationManager.AppSettings["Password"];
-      m_token = ConfigurationManager.AppSettings["Token"];
+      m_server = Configuration.GetAppSetting("Server");
+      bool.TryParse(Configuration.GetAppSetting("UseSsl"), out m_useSsl);
+      m_username = Configuration.GetAppSetting("Username");
+      m_password = Configuration.GetAppSetting("Password");
+      m_token = Configuration.GetAppSetting("Token");
     }
 
     [SetUp]
     public void SetUp()
     {
-      m_client = new TeamCityClient(m_server,m_useSsl);
+      m_client = new TeamCityClient(m_server,m_useSsl, Configuration.GetWireMockClient);
     }
 
     [Test]
@@ -65,13 +65,13 @@ namespace TeamCitySharp.IntegrationTests
     public void it_will_throw_an_exception_for_an_unknown_user_throwExceptionOnHttpError()
     {
       m_client.Connect("smithy", "smithy");
-      Assert.IsFalse(m_client.Authenticate(false));
+      Assert.That(m_client.Authenticate(false), Is.False);
 
 
       //Assert.Throws Exception
     }
 
-    [Test, Ignore("You need to specify the token in the app.config before to use this test")]
+    [Test]
     public void it_will_authenticate_a_known_user_with_token()
     {
       m_client.ConnectWithAccessToken(m_token);

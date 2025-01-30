@@ -1,0 +1,171 @@
+{
+  "Guid": "97cc9733-0cd3-48e0-a398-cd2cc45f7017",
+  "UpdatedAt": "2025-01-01T05:23:28.082997Z",
+  "Title": "Proxy Mapping for GET /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_ContinuousIntegration",
+  "Description": "Proxy Mapping for GET /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_ContinuousIntegration",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_ContinuousIntegration",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "id": "TestingTeamCitySharp_ContinuousIntegration",
+      "name": "ContinuousIntegration",
+      "projectName": "Testing TeamCitySharp",
+      "projectId": "TestingTeamCitySharp",
+      "href": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_ContinuousIntegration",
+      "webUrl": "http://localhost:8111/buildConfiguration/TestingTeamCitySharp_ContinuousIntegration?mode=builds",
+      "project": {
+        "id": "TestingTeamCitySharp",
+        "name": "Testing TeamCitySharp",
+        "parentProjectId": "_Root",
+        "href": "/httpAuth/app/rest/projects/id:TestingTeamCitySharp",
+        "webUrl": "http://localhost:8111/project.html?projectId=TestingTeamCitySharp"
+      },
+      "templates": {
+        "count": 1,
+        "buildType": [
+          {
+            "id": "TestingTeamCitySharp_TestTemplate",
+            "name": "Test Template",
+            "templateFlag": true,
+            "projectName": "Testing TeamCitySharp",
+            "projectId": "TestingTeamCitySharp",
+            "href": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestTemplate"
+          }
+        ]
+      },
+      "vcs-root-entries": {
+        "count": 0,
+        "vcs-root-entry": []
+      },
+      "settings": {
+        "property": [
+          {
+            "name": "buildNumberCounter",
+            "value": "4"
+          }
+        ],
+        "count": 1
+      },
+      "parameters": {
+        "property": [
+          {
+            "name": "test",
+            "value": "",
+            "inherited": true
+          }
+        ],
+        "count": 1,
+        "href": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_ContinuousIntegration/parameters"
+      },
+      "steps": {
+        "count": 1,
+        "step": [
+          {
+            "id": "simpleRunner",
+            "name": "",
+            "type": "simpleRunner",
+            "properties": {
+              "property": [
+                {
+                  "name": "script.content",
+                  "value": "echo \"hello\"\n\necho \"filecontents\" > Outputs.zip\n\necho \"##teamcity[publishArtifacts 'Outputs.zip']\"\n\nexit 1"
+                },
+                {
+                  "name": "teamcity.step.mode",
+                  "value": "default"
+                },
+                {
+                  "name": "use.custom.script",
+                  "value": "true"
+                }
+              ],
+              "count": 3
+            }
+          }
+        ]
+      },
+      "features": {
+        "count": 0
+      },
+      "triggers": {
+        "count": 0
+      },
+      "snapshot-dependencies": {
+        "count": 0
+      },
+      "artifact-dependencies": {
+        "count": 0
+      },
+      "agent-requirements": {
+        "count": 0
+      },
+      "builds": {
+        "href": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_ContinuousIntegration/builds/"
+      },
+      "investigations": {
+        "href": "/httpAuth/app/rest/investigations?locator=buildType:(id:TestingTeamCitySharp_ContinuousIntegration)"
+      },
+      "compatibleAgents": {
+        "href": "/httpAuth/app/rest/agents?locator=compatible:(buildType:(id:TestingTeamCitySharp_ContinuousIntegration))"
+      },
+      "compatibleCloudImages": {}
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "2075",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=7512BBAD8E1D5F8B8FF7C3F46F554BE4; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:23:38 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 05:23:27 GMT"
+    }
+  }
+}

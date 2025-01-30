@@ -1,0 +1,72 @@
+{
+  "Guid": "a7562db9-197b-46ba-bb9a-1ab3f645354e",
+  "UpdatedAt": "2025-01-01T05:23:26.493494Z",
+  "Title": "Proxy Mapping for GET /repository/download/TestingTeamCitySharp_BuildWithVcsRoot/.lastSuccessful/Outputs.zip",
+  "Description": "Proxy Mapping for GET /repository/download/TestingTeamCitySharp_BuildWithVcsRoot/.lastSuccessful/Outputs.zip",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/repository/download/TestingTeamCitySharp_BuildWithVcsRoot/.lastSuccessful/Outputs.zip",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ],
+    "Params": [
+      {
+        "Name": "branch",
+        "Matchers": [
+          {
+            "Name": "ExactMatcher",
+            "Pattern": "refs/heads/dependabot/nuget/Nuke.Common-9.0.3",
+            "IgnoreCase": false
+          }
+        ]
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "Body": "filecontents\n",
+    "Headers": {
+      "Last-Modified": "Tue, 31 Dec 2024 00:34:24 GMT",
+      "Content-Disposition": "attachment; filename*=UTF-8''Outputs.zip;",
+      "Content-Type": "application/zip",
+      "Content-Length": "13",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=4B7596C9B82A67596EAFB712C1A611BD; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:23:36 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "max-age=86400",
+      "Accept-Ranges": "bytes",
+      "ETag": "\"7c14cb9ed766a7869fe1974a6ddc2215\"",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "Date": "Wed, 01 Jan 2025 05:23:26 GMT"
+    }
+  }
+}

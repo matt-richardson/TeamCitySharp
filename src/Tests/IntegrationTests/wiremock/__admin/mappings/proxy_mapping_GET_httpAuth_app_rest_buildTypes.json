@@ -1,0 +1,361 @@
+{
+  "Guid": "b2a1d6ab-d210-4d9e-b761-55822f849fdf",
+  "UpdatedAt": "2025-01-01T05:23:27.425251Z",
+  "Title": "Proxy Mapping for GET /httpAuth/app/rest/buildTypes",
+  "Description": "Proxy Mapping for GET /httpAuth/app/rest/buildTypes",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/buildTypes",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "count": 36,
+      "href": "/httpAuth/app/rest/buildTypes",
+      "buildType": [
+        {
+          "id": "ReleaseBotPlayground_Build",
+          "name": "Build",
+          "projectName": "GithubStatusTests",
+          "projectId": "GithubStatusTests",
+          "href": "/httpAuth/app/rest/buildTypes/id:ReleaseBotPlayground_Build",
+          "webUrl": "http://localhost:8111/buildConfiguration/ReleaseBotPlayground_Build?mode=builds"
+        },
+        {
+          "id": "TestTcWebhooks_Run",
+          "name": "Run",
+          "projectName": "Test tcWebhooks",
+          "projectId": "TestTcWebhooks",
+          "href": "/httpAuth/app/rest/buildTypes/id:TestTcWebhooks_Run",
+          "webUrl": "http://localhost:8111/buildConfiguration/TestTcWebhooks_Run?mode=builds"
+        },
+        {
+          "id": "OpenTelemetry_Test3_CalcVersion",
+          "name": "Calc version",
+          "projectName": "Testing OpenTelemetry / Send OTEL to Honeycomb Classic",
+          "projectId": "OpenTelemetry_Test3",
+          "href": "/httpAuth/app/rest/buildTypes/id:OpenTelemetry_Test3_CalcVersion",
+          "webUrl": "http://localhost:8111/buildConfiguration/OpenTelemetry_Test3_CalcVersion?mode=builds"
+        },
+        {
+          "id": "OpenTelemetry_Test3_Fullchain",
+          "name": "fullchain",
+          "projectName": "Testing OpenTelemetry / Send OTEL to Honeycomb Classic",
+          "projectId": "OpenTelemetry_Test3",
+          "href": "/httpAuth/app/rest/buildTypes/id:OpenTelemetry_Test3_Fullchain",
+          "webUrl": "http://localhost:8111/buildConfiguration/OpenTelemetry_Test3_Fullchain?mode=builds"
+        },
+        {
+          "id": "OpenTelemetry_Test3_GateTest",
+          "name": "Gate: Test",
+          "projectName": "Testing OpenTelemetry / Send OTEL to Honeycomb Classic",
+          "projectId": "OpenTelemetry_Test3",
+          "href": "/httpAuth/app/rest/buildTypes/id:OpenTelemetry_Test3_GateTest",
+          "webUrl": "http://localhost:8111/buildConfiguration/OpenTelemetry_Test3_GateTest?mode=builds"
+        },
+        {
+          "id": "OpenTelemetry_Test3_Test1",
+          "name": "Test1",
+          "projectName": "Testing OpenTelemetry / Send OTEL to Honeycomb Classic",
+          "projectId": "OpenTelemetry_Test3",
+          "href": "/httpAuth/app/rest/buildTypes/id:OpenTelemetry_Test3_Test1",
+          "webUrl": "http://localhost:8111/buildConfiguration/OpenTelemetry_Test3_Test1?mode=builds"
+        },
+        {
+          "id": "OpenTelemetry_Test3_Test2",
+          "name": "Test2",
+          "projectName": "Testing OpenTelemetry / Send OTEL to Honeycomb Classic",
+          "projectId": "OpenTelemetry_Test3",
+          "href": "/httpAuth/app/rest/buildTypes/id:OpenTelemetry_Test3_Test2",
+          "webUrl": "http://localhost:8111/buildConfiguration/OpenTelemetry_Test3_Test2?mode=builds"
+        },
+        {
+          "id": "OpenTelemetry_Test3_Test",
+          "name": "Test3",
+          "projectName": "Testing OpenTelemetry / Send OTEL to Honeycomb Classic",
+          "projectId": "OpenTelemetry_Test3",
+          "href": "/httpAuth/app/rest/buildTypes/id:OpenTelemetry_Test3_Test",
+          "webUrl": "http://localhost:8111/buildConfiguration/OpenTelemetry_Test3_Test?mode=builds"
+        },
+        {
+          "id": "OpenTelemetry_SendOtelToHoneycombEnvironment_CalcVersion",
+          "name": "Calc version",
+          "projectName": "Testing OpenTelemetry / Send OTEL to Honeycomb Environment",
+          "projectId": "OpenTelemetry_SendOtelToHoneycombEnvironment",
+          "href": "/httpAuth/app/rest/buildTypes/id:OpenTelemetry_SendOtelToHoneycombEnvironment_CalcVersion",
+          "webUrl": "http://localhost:8111/buildConfiguration/OpenTelemetry_SendOtelToHoneycombEnvironment_CalcVersion?mode=builds"
+        },
+        {
+          "id": "OpenTelemetry_SendOtelToHoneycombEnvironment_Fullchain",
+          "name": "fullchain",
+          "projectName": "Testing OpenTelemetry / Send OTEL to Honeycomb Environment",
+          "projectId": "OpenTelemetry_SendOtelToHoneycombEnvironment",
+          "href": "/httpAuth/app/rest/buildTypes/id:OpenTelemetry_SendOtelToHoneycombEnvironment_Fullchain",
+          "webUrl": "http://localhost:8111/buildConfiguration/OpenTelemetry_SendOtelToHoneycombEnvironment_Fullchain?mode=builds"
+        },
+        {
+          "id": "OpenTelemetry_SendOtelToHoneycombEnvironment_GateTest",
+          "name": "Gate: Test",
+          "projectName": "Testing OpenTelemetry / Send OTEL to Honeycomb Environment",
+          "projectId": "OpenTelemetry_SendOtelToHoneycombEnvironment",
+          "href": "/httpAuth/app/rest/buildTypes/id:OpenTelemetry_SendOtelToHoneycombEnvironment_GateTest",
+          "webUrl": "http://localhost:8111/buildConfiguration/OpenTelemetry_SendOtelToHoneycombEnvironment_GateTest?mode=builds"
+        },
+        {
+          "id": "OpenTelemetry_SendOtelToHoneycombEnvironment_Test1",
+          "name": "Test1",
+          "projectName": "Testing OpenTelemetry / Send OTEL to Honeycomb Environment",
+          "projectId": "OpenTelemetry_SendOtelToHoneycombEnvironment",
+          "href": "/httpAuth/app/rest/buildTypes/id:OpenTelemetry_SendOtelToHoneycombEnvironment_Test1",
+          "webUrl": "http://localhost:8111/buildConfiguration/OpenTelemetry_SendOtelToHoneycombEnvironment_Test1?mode=builds"
+        },
+        {
+          "id": "OpenTelemetry_SendOtelToHoneycombEnvironment_Test2",
+          "name": "Test2",
+          "projectName": "Testing OpenTelemetry / Send OTEL to Honeycomb Environment",
+          "projectId": "OpenTelemetry_SendOtelToHoneycombEnvironment",
+          "href": "/httpAuth/app/rest/buildTypes/id:OpenTelemetry_SendOtelToHoneycombEnvironment_Test2",
+          "webUrl": "http://localhost:8111/buildConfiguration/OpenTelemetry_SendOtelToHoneycombEnvironment_Test2?mode=builds"
+        },
+        {
+          "id": "OpenTelemetry_SendOtelToHoneycombEnvironment_Test",
+          "name": "Test3",
+          "projectName": "Testing OpenTelemetry / Send OTEL to Honeycomb Environment",
+          "projectId": "OpenTelemetry_SendOtelToHoneycombEnvironment",
+          "href": "/httpAuth/app/rest/buildTypes/id:OpenTelemetry_SendOtelToHoneycombEnvironment_Test",
+          "webUrl": "http://localhost:8111/buildConfiguration/OpenTelemetry_SendOtelToHoneycombEnvironment_Test?mode=builds"
+        },
+        {
+          "id": "Childproject_Child",
+          "name": "child",
+          "projectName": "Testing OpenTelemetry / childproject",
+          "projectId": "Childproject",
+          "href": "/httpAuth/app/rest/buildTypes/id:Childproject_Child",
+          "webUrl": "http://localhost:8111/buildConfiguration/Childproject_Child?mode=builds"
+        },
+        {
+          "id": "Test_ChainBuild",
+          "name": "chain build",
+          "projectName": "Testing OpenTelemetry / test",
+          "projectId": "Test",
+          "href": "/httpAuth/app/rest/buildTypes/id:Test_ChainBuild",
+          "webUrl": "http://localhost:8111/buildConfiguration/Test_ChainBuild?mode=builds"
+        },
+        {
+          "id": "Test_Test",
+          "name": "test",
+          "projectName": "Testing OpenTelemetry / test",
+          "projectId": "Test",
+          "href": "/httpAuth/app/rest/buildTypes/id:Test_Test",
+          "webUrl": "http://localhost:8111/buildConfiguration/Test_Test?mode=builds"
+        },
+        {
+          "id": "Test2_Test2",
+          "name": "failing build",
+          "projectName": "Testing OpenTelemetry / test2",
+          "projectId": "Test2",
+          "href": "/httpAuth/app/rest/buildTypes/id:Test2_Test2",
+          "webUrl": "http://localhost:8111/buildConfiguration/Test2_Test2?mode=builds"
+        },
+        {
+          "id": "Test2_Passing",
+          "name": "passing build",
+          "projectName": "Testing OpenTelemetry / test2",
+          "projectId": "Test2",
+          "href": "/httpAuth/app/rest/buildTypes/id:Test2_Passing",
+          "webUrl": "http://localhost:8111/buildConfiguration/Test2_Passing?mode=builds"
+        },
+        {
+          "id": "TestingReportPortalPlugin_CalcVersion",
+          "name": "Calc Version",
+          "projectName": "Testing ReportPortal plugin",
+          "projectId": "TestingReportPortalPlugin",
+          "href": "/httpAuth/app/rest/buildTypes/id:TestingReportPortalPlugin_CalcVersion",
+          "webUrl": "http://localhost:8111/buildConfiguration/TestingReportPortalPlugin_CalcVersion?mode=builds"
+        },
+        {
+          "id": "TestingReportPortalPlugin_TestingReportPortalPlugin",
+          "name": "Build with failing tests",
+          "projectName": "Testing ReportPortal plugin",
+          "projectId": "TestingReportPortalPlugin",
+          "href": "/httpAuth/app/rest/buildTypes/id:TestingReportPortalPlugin_TestingReportPortalPlugin",
+          "webUrl": "http://localhost:8111/buildConfiguration/TestingReportPortalPlugin_TestingReportPortalPlugin?mode=builds"
+        },
+        {
+          "id": "TestingReportPortalPlugin_PassingBuild",
+          "name": "Passing build",
+          "projectName": "Testing ReportPortal plugin",
+          "projectId": "TestingReportPortalPlugin",
+          "href": "/httpAuth/app/rest/buildTypes/id:TestingReportPortalPlugin_PassingBuild",
+          "webUrl": "http://localhost:8111/buildConfiguration/TestingReportPortalPlugin_PassingBuild?mode=builds"
+        },
+        {
+          "id": "TestingReportPortalPlugin_CompositeChain",
+          "name": "Composite Chain",
+          "projectName": "Testing ReportPortal plugin",
+          "projectId": "TestingReportPortalPlugin",
+          "href": "/httpAuth/app/rest/buildTypes/id:TestingReportPortalPlugin_CompositeChain",
+          "webUrl": "http://localhost:8111/buildConfiguration/TestingReportPortalPlugin_CompositeChain?mode=builds"
+        },
+        {
+          "id": "TestingReportPortalPlugin_FullChain",
+          "name": "Full Chain",
+          "projectName": "Testing ReportPortal plugin",
+          "projectId": "TestingReportPortalPlugin",
+          "href": "/httpAuth/app/rest/buildTypes/id:TestingReportPortalPlugin_FullChain",
+          "webUrl": "http://localhost:8111/buildConfiguration/TestingReportPortalPlugin_FullChain?mode=builds"
+        },
+        {
+          "id": "TestingReportPortalPlugin_FullChainRebuild",
+          "name": "Full Chain (Rebuild)",
+          "projectName": "Testing ReportPortal plugin",
+          "projectId": "TestingReportPortalPlugin",
+          "href": "/httpAuth/app/rest/buildTypes/id:TestingReportPortalPlugin_FullChainRebuild",
+          "webUrl": "http://localhost:8111/buildConfiguration/TestingReportPortalPlugin_FullChainRebuild?mode=builds"
+        },
+        {
+          "id": "TestingTeamCitySharp_BuildThatNeverRuns",
+          "name": "Build that never runs",
+          "projectName": "Testing TeamCitySharp",
+          "projectId": "TestingTeamCitySharp",
+          "href": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_BuildThatNeverRuns",
+          "webUrl": "http://localhost:8111/buildConfiguration/TestingTeamCitySharp_BuildThatNeverRuns?mode=builds"
+        },
+        {
+          "id": "TestingTeamCitySharp_BuildWithTests",
+          "name": "Build with tests",
+          "projectName": "Testing TeamCitySharp",
+          "projectId": "TestingTeamCitySharp",
+          "href": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_BuildWithTests",
+          "webUrl": "http://localhost:8111/buildConfiguration/TestingTeamCitySharp_BuildWithTests?mode=builds"
+        },
+        {
+          "id": "TestingTeamCitySharp_BuildWithVcsRoot",
+          "name": "Build with vcs root",
+          "projectName": "Testing TeamCitySharp",
+          "projectId": "TestingTeamCitySharp",
+          "href": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_BuildWithVcsRoot",
+          "webUrl": "http://localhost:8111/buildConfiguration/TestingTeamCitySharp_BuildWithVcsRoot?mode=builds"
+        },
+        {
+          "id": "TestingTeamCitySharp_ContinuousIntegration",
+          "name": "ContinuousIntegration",
+          "projectName": "Testing TeamCitySharp",
+          "projectId": "TestingTeamCitySharp",
+          "href": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_ContinuousIntegration",
+          "webUrl": "http://localhost:8111/buildConfiguration/TestingTeamCitySharp_ContinuousIntegration?mode=builds"
+        },
+        {
+          "id": "TestingTcWebhooksIssue242_SubProject1_BuildConfig3",
+          "name": "build config 3",
+          "projectName": "Testing tcWebhooks Issue 242 / Sub Project 1",
+          "projectId": "TestingTcWebhooksIssue242_SubProject1",
+          "href": "/httpAuth/app/rest/buildTypes/id:TestingTcWebhooksIssue242_SubProject1_BuildConfig3",
+          "webUrl": "http://localhost:8111/buildConfiguration/TestingTcWebhooksIssue242_SubProject1_BuildConfig3?mode=builds"
+        },
+        {
+          "id": "TestingTcWebhooksIssue242_SubProject2_BuildConfig2",
+          "name": "Build Config 2",
+          "projectName": "Testing tcWebhooks Issue 242 / Sub Project 2",
+          "projectId": "TestingTcWebhooksIssue242_SubProject2",
+          "href": "/httpAuth/app/rest/buildTypes/id:TestingTcWebhooksIssue242_SubProject2_BuildConfig2",
+          "webUrl": "http://localhost:8111/buildConfiguration/TestingTcWebhooksIssue242_SubProject2_BuildConfig2?mode=builds"
+        },
+        {
+          "id": "TestingTcWebhooksIssue242_SubProject2_BuildConfig3",
+          "name": "build config 3",
+          "projectName": "Testing tcWebhooks Issue 242 / Sub Project 2",
+          "projectId": "TestingTcWebhooksIssue242_SubProject2",
+          "href": "/httpAuth/app/rest/buildTypes/id:TestingTcWebhooksIssue242_SubProject2_BuildConfig3",
+          "webUrl": "http://localhost:8111/buildConfiguration/TestingTcWebhooksIssue242_SubProject2_BuildConfig3?mode=builds"
+        },
+        {
+          "id": "TestingTcWebhooksIssue242_SubProject3_BuildConfig2",
+          "name": "Build Config 2",
+          "projectName": "Testing tcWebhooks Issue 242 / Sub Project 3",
+          "projectId": "TestingTcWebhooksIssue242_SubProject3",
+          "href": "/httpAuth/app/rest/buildTypes/id:TestingTcWebhooksIssue242_SubProject3_BuildConfig2",
+          "webUrl": "http://localhost:8111/buildConfiguration/TestingTcWebhooksIssue242_SubProject3_BuildConfig2?mode=builds"
+        },
+        {
+          "id": "TestingTcWebhooksIssue242_SubProject3_BuildConfig3",
+          "name": "build config 3",
+          "projectName": "Testing tcWebhooks Issue 242 / Sub Project 3",
+          "projectId": "TestingTcWebhooksIssue242_SubProject3",
+          "href": "/httpAuth/app/rest/buildTypes/id:TestingTcWebhooksIssue242_SubProject3_BuildConfig3",
+          "webUrl": "http://localhost:8111/buildConfiguration/TestingTcWebhooksIssue242_SubProject3_BuildConfig3?mode=builds"
+        },
+        {
+          "id": "TestingTcWebhooksIssue242_SubProject4_BuildConfig3",
+          "name": "build config 3",
+          "projectName": "Testing tcWebhooks Issue 242 / Sub Project 4",
+          "projectId": "TestingTcWebhooksIssue242_SubProject4",
+          "href": "/httpAuth/app/rest/buildTypes/id:TestingTcWebhooksIssue242_SubProject4_BuildConfig3",
+          "webUrl": "http://localhost:8111/buildConfiguration/TestingTcWebhooksIssue242_SubProject4_BuildConfig3?mode=builds"
+        },
+        {
+          "id": "TestingTcWebhooksIssue242_SubProject5_BuildConfig3",
+          "name": "build config 3",
+          "projectName": "Testing tcWebhooks Issue 242 / Sub Project 5",
+          "projectId": "TestingTcWebhooksIssue242_SubProject5",
+          "href": "/httpAuth/app/rest/buildTypes/id:TestingTcWebhooksIssue242_SubProject5_BuildConfig3",
+          "webUrl": "http://localhost:8111/buildConfiguration/TestingTcWebhooksIssue242_SubProject5_BuildConfig3?mode=builds"
+        }
+      ]
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=A685ECE0619468EE7C64D70809C6FF1E; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:23:37 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Transfer-Encoding": "chunked",
+      "Date": "Wed, 01 Jan 2025 05:23:27 GMT"
+    }
+  }
+}

@@ -1,0 +1,1213 @@
+[
+  {
+    "Guid": "c99231f5-3a5a-4928-b8e0-4b7e9b77c987",
+    "UpdatedAt": "2025-01-01T05:25:03.583298Z",
+    "Title": "Proxy Mapping for POST /httpAuth/app/rest/projects/",
+    "Description": "Proxy Mapping for POST /httpAuth/app/rest/projects/",
+    "Scenario": "Modify build configuration triggers",
+    "SetStateTo": "Project created",
+    "Priority": -2000000,
+    "Request": {
+      "Path": {
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "/httpAuth/app/rest/projects",
+            "IgnoreCase": false
+          }
+        ]
+      },
+      "Methods": [
+        "POST"
+      ],
+      "HttpVersion": "1.1",
+      "Headers": [
+        {
+          "Name": "Accept",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "application/json",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Authorization",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Content-Type",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "application/xml; charset=us-ascii",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Content-Length",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "188",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        }
+      ],
+      "Body": {
+        "Matcher": {
+          "Name": "ExactMatcher",
+          "Pattern": "<newProjectDescription name='Project to test build config modification' id='Projecttotestbuildconfigmodification'><parentProject locator='id:TestingTeamCitySharp'/></newProjectDescription>",
+          "IgnoreCase": true
+        }
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "BodyAsJson": {
+        "id": "Projecttotestbuildconfigmodification",
+        "name": "Project to test build config modification",
+        "parentProjectId": "TestingTeamCitySharp",
+        "virtual": false,
+        "href": "/httpAuth/app/rest/projects/id:Projecttotestbuildconfigmodification",
+        "webUrl": "http://localhost:8111/project.html?projectId=Projecttotestbuildconfigmodification",
+        "parentProject": {
+          "id": "TestingTeamCitySharp",
+          "name": "Testing TeamCitySharp",
+          "parentProjectId": "_Root",
+          "href": "/httpAuth/app/rest/projects/id:TestingTeamCitySharp",
+          "webUrl": "http://localhost:8111/project.html?projectId=TestingTeamCitySharp"
+        },
+        "buildTypes": {
+          "count": 0,
+          "buildType": []
+        },
+        "templates": {
+          "count": 0,
+          "buildType": []
+        },
+        "deploymentDashboards": {
+          "count": 0
+        },
+        "parameters": {
+          "property": [
+            {
+              "name": "test",
+              "value": "",
+              "inherited": true
+            }
+          ],
+          "count": 1,
+          "href": "/httpAuth/app/rest/projects/id:Projecttotestbuildconfigmodification/parameters"
+        },
+        "vcsRoots": {
+          "count": 0,
+          "href": "/httpAuth/app/rest/vcs-roots?locator=project:(id:Projecttotestbuildconfigmodification)"
+        },
+        "projectFeatures": {
+          "count": 0,
+          "href": "/httpAuth/app/rest/projects/id:Projecttotestbuildconfigmodification/projectFeatures"
+        },
+        "projects": {
+          "count": 0
+        }
+      },
+      "Headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "1113",
+        "X-Frame-Options": "sameorigin",
+        "Strict-Transport-Security": "max-age=31536000;",
+        "X-Content-Type-Options": "nosniff",
+        "X-XSS-Protection": "1; mode=block",
+        "Referrer-Policy": "origin-when-cross-origin",
+        "mixed-content": "noupgrade",
+        "TeamCity-Node-Id": "MAIN_SERVER",
+        "Set-Cookie": [
+          "TCSESSIONID=81F425A3B2814F477985554FAC38C586; Path=/; HttpOnly",
+          "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:42:31 GMT; Path=/",
+          "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+        ],
+        "Cache-Control": "no-store",
+        "Date": "Wed, 01 Jan 2025 05:42:21 GMT"
+      }
+    }
+  },
+  {
+    "Guid": "80493dbc-df60-4255-83c9-3e91b3d918a3",
+    "UpdatedAt": "2025-01-01T05:15:37.368774Z",
+    "Title": "Proxy Mapping for POST /httpAuth/app/rest/projects/id:Projecttotestbuildconfigmodification/buildTypes",
+    "Description": "Proxy Mapping for POST /httpAuth/app/rest/projects/id:Projecttotestbuildconfigmodification/buildTypes",
+    "Scenario": "Modify build configuration triggers",
+    "SetStateTo": "Build config created",
+    "WhenStateIs": "Project created",
+    "Priority": -2000000,
+    "Request": {
+      "Path": {
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "/httpAuth/app/rest/projects/id:Projecttotestbuildconfigmodification/buildTypes",
+            "IgnoreCase": false
+          }
+        ]
+      },
+      "Methods": [
+        "POST"
+      ],
+      "HttpVersion": "1.1",
+      "Headers": [
+        {
+          "Name": "Accept",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "application/json",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Authorization",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Content-Type",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "text/plain; charset=us-ascii",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Content-Length",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "14",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        }
+      ],
+      "Body": {
+        "Matcher": {
+          "Name": "ExactMatcher",
+          "Pattern": "testNewConfig5",
+          "IgnoreCase": true
+        }
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "BodyAsJson": {
+        "id": "Projecttotestbuildconfigmodification_TestNewConfig5",
+        "name": "testNewConfig5",
+        "projectName": "Testing TeamCitySharp / Project to test build config modification",
+        "projectId": "Projecttotestbuildconfigmodification",
+        "href": "/httpAuth/app/rest/buildTypes/id:Projecttotestbuildconfigmodification_TestNewConfig5",
+        "webUrl": "http://localhost:8111/buildConfiguration/Projecttotestbuildconfigmodification_TestNewConfig5?mode=builds",
+        "project": {
+          "id": "Projecttotestbuildconfigmodification",
+          "name": "Project to test build config modification",
+          "parentProjectId": "TestingTeamCitySharp",
+          "href": "/httpAuth/app/rest/projects/id:Projecttotestbuildconfigmodification",
+          "webUrl": "http://localhost:8111/project.html?projectId=Projecttotestbuildconfigmodification"
+        },
+        "templates": {
+          "count": 0,
+          "buildType": []
+        },
+        "vcs-root-entries": {
+          "count": 0,
+          "vcs-root-entry": []
+        },
+        "settings": {
+          "property": [
+            {
+              "name": "buildNumberCounter",
+              "value": "1"
+            }
+          ],
+          "count": 1
+        },
+        "parameters": {
+          "property": [
+            {
+              "name": "test",
+              "value": "",
+              "inherited": true
+            }
+          ],
+          "count": 1,
+          "href": "/httpAuth/app/rest/buildTypes/id:Projecttotestbuildconfigmodification_TestNewConfig5/parameters"
+        },
+        "steps": {
+          "count": 0
+        },
+        "features": {
+          "count": 0
+        },
+        "triggers": {
+          "count": 0
+        },
+        "snapshot-dependencies": {
+          "count": 0
+        },
+        "artifact-dependencies": {
+          "count": 0
+        },
+        "agent-requirements": {
+          "count": 0
+        },
+        "builds": {
+          "href": "/httpAuth/app/rest/buildTypes/id:Projecttotestbuildconfigmodification_TestNewConfig5/builds/"
+        },
+        "investigations": {
+          "href": "/httpAuth/app/rest/investigations?locator=buildType:(id:Projecttotestbuildconfigmodification_TestNewConfig5)"
+        },
+        "compatibleAgents": {
+          "href": "/httpAuth/app/rest/agents?locator=compatible:(buildType:(id:Projecttotestbuildconfigmodification_TestNewConfig5))"
+        },
+        "compatibleCloudImages": {}
+      },
+      "Headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "1692",
+        "X-Frame-Options": "sameorigin",
+        "Strict-Transport-Security": "max-age=31536000;",
+        "X-Content-Type-Options": "nosniff",
+        "X-XSS-Protection": "1; mode=block",
+        "Referrer-Policy": "origin-when-cross-origin",
+        "mixed-content": "noupgrade",
+        "TeamCity-Node-Id": "MAIN_SERVER",
+        "Set-Cookie": [
+          "TCSESSIONID=34AEAB5F542A3A03D146FE44A618EF52; Path=/; HttpOnly",
+          "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:42:48 GMT; Path=/",
+          "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+        ],
+        "Cache-Control": "no-store",
+        "Date": "Wed, 01 Jan 2025 05:42:38 GMT"
+      }
+    }
+  },
+  {
+    "Guid": "42f313e2-3a4a-41ee-9e62-2ab1d98dc7bf",
+    "UpdatedAt": "2025-01-01T05:16:05.332509Z",
+    "Title": "Proxy Mapping for POST /httpAuth/app/rest/buildTypes/id:ProjectToTestBuildConfigModification_TestNewConfig5/triggers",
+    "Description": "Proxy Mapping for POST /httpAuth/app/rest/buildTypes/id:ProjectToTestBuildConfigModification_TestNewConfig5/triggers",
+    "Scenario": "Modify build configuration triggers",
+    "WhenStateIs": "Build config created",
+    "SetStateTo": "Trigger created",
+    "Priority": -2000000,
+    "Request": {
+      "Path": {
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "/httpAuth/app/rest/buildTypes/id:Projecttotestbuildconfigmodification_TestNewConfig5/triggers",
+            "IgnoreCase": false
+          }
+        ]
+      },
+      "Methods": [
+        "POST"
+      ],
+      "HttpVersion": "1.1",
+      "Headers": [
+        {
+          "Name": "Accept",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "application/json",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Authorization",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Content-Type",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "application/json; charset=us-ascii",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Content-Length",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "296",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        }
+      ],
+      "Body": {
+        "Matcher": {
+          "Name": "JsonMatcher",
+          "Pattern": {
+            "id": "ttt1",
+            "type": "buildDependencyTrigger",
+            "disabled": false,
+            "inherited": false,
+            "properties": {
+              "property": [
+                {
+                  "name": "afterSuccessfulBuildOnly",
+                  "value": "true",
+                  "inherited": false
+                },
+                {
+                  "name": "dependsOn",
+                  "value": "TeamcityDashboardScenario_Test_TestWithCheckout",
+                  "inherited": false
+                }
+              ],
+              "count": 0,
+              "href": null
+            }
+          },
+          "IgnoreCase": true,
+          "Regex": false
+        }
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "BodyAsJson": {
+        "id": "TRIGGER_169",
+        "type": "buildDependencyTrigger",
+        "properties": {
+          "property": [
+            {
+              "name": "afterSuccessfulBuildOnly",
+              "value": "true"
+            },
+            {
+              "name": "dependsOn",
+              "value": "TeamcityDashboardScenario_Test_TestWithCheckout"
+            }
+          ],
+          "count": 2
+        }
+      },
+      "Headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "220",
+        "X-Frame-Options": "sameorigin",
+        "Strict-Transport-Security": "max-age=31536000;",
+        "X-Content-Type-Options": "nosniff",
+        "X-XSS-Protection": "1; mode=block",
+        "Referrer-Policy": "origin-when-cross-origin",
+        "mixed-content": "noupgrade",
+        "TeamCity-Node-Id": "MAIN_SERVER",
+        "Set-Cookie": [
+          "TCSESSIONID=C7AD074401B61F161C25E26F45CCF3B9; Path=/; HttpOnly",
+          "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:43:09 GMT; Path=/",
+          "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+        ],
+        "Cache-Control": "no-store",
+        "Date": "Wed, 01 Jan 2025 05:42:59 GMT"
+      }
+    }
+  },
+  {
+    "Guid": "2ed25a74-35c5-4388-9446-9a184dac6632",
+    "UpdatedAt": "2025-01-01T05:16:35.02362Z",
+    "Title": "Proxy Mapping for GET /httpAuth/app/rest/buildTypes/id:ProjectToTestBuildConfigModification_TestNewConfig5",
+    "Description": "Proxy Mapping for GET /httpAuth/app/rest/buildTypes/id:ProjectToTestBuildConfigModification_TestNewConfig5",
+    "Scenario": "Modify build configuration triggers",
+    "WhenStateIs": "Trigger created",
+    "SetStateTo": "Got updated build config",
+    "Priority": -2000000,
+    "Request": {
+      "Path": {
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "/httpAuth/app/rest/buildTypes/id:Projecttotestbuildconfigmodification_TestNewConfig5",
+            "IgnoreCase": false
+          }
+        ]
+      },
+      "Methods": [
+        "GET"
+      ],
+      "HttpVersion": "1.1",
+      "Headers": [
+        {
+          "Name": "Accept",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "application/json",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Authorization",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        }
+      ]
+    },
+    "Response": {
+      "StatusCode": 200,
+      "BodyAsJson": {
+        "id": "Projecttotestbuildconfigmodification_TestNewConfig5",
+        "name": "testNewConfig5",
+        "projectName": "Testing TeamCitySharp / Project to test build config modification",
+        "projectId": "Projecttotestbuildconfigmodification",
+        "href": "/httpAuth/app/rest/buildTypes/id:Projecttotestbuildconfigmodification_TestNewConfig5",
+        "webUrl": "http://localhost:8111/buildConfiguration/Projecttotestbuildconfigmodification_TestNewConfig5?mode=builds",
+        "project": {
+          "id": "Projecttotestbuildconfigmodification",
+          "name": "Project to test build config modification",
+          "parentProjectId": "TestingTeamCitySharp",
+          "href": "/httpAuth/app/rest/projects/id:Projecttotestbuildconfigmodification",
+          "webUrl": "http://localhost:8111/project.html?projectId=Projecttotestbuildconfigmodification"
+        },
+        "templates": {
+          "count": 0,
+          "buildType": []
+        },
+        "vcs-root-entries": {
+          "count": 0,
+          "vcs-root-entry": []
+        },
+        "settings": {
+          "property": [
+            {
+              "name": "buildNumberCounter",
+              "value": "1"
+            }
+          ],
+          "count": 1
+        },
+        "parameters": {
+          "property": [
+            {
+              "name": "test",
+              "value": "",
+              "inherited": true
+            }
+          ],
+          "count": 1,
+          "href": "/httpAuth/app/rest/buildTypes/id:Projecttotestbuildconfigmodification_TestNewConfig5/parameters"
+        },
+        "steps": {
+          "count": 0
+        },
+        "features": {
+          "count": 0
+        },
+        "triggers": {
+          "count": 1,
+          "trigger": [
+            {
+              "id": "TRIGGER_169",
+              "type": "buildDependencyTrigger",
+              "properties": {
+                "property": [
+                  {
+                    "name": "afterSuccessfulBuildOnly",
+                    "value": "true"
+                  },
+                  {
+                    "name": "dependsOn",
+                    "value": "TeamcityDashboardScenario_Test_TestWithCheckout"
+                  }
+                ],
+                "count": 2
+              }
+            }
+          ]
+        },
+        "snapshot-dependencies": {
+          "count": 0
+        },
+        "artifact-dependencies": {
+          "count": 0
+        },
+        "agent-requirements": {
+          "count": 0
+        },
+        "builds": {
+          "href": "/httpAuth/app/rest/buildTypes/id:Projecttotestbuildconfigmodification_TestNewConfig5/builds/"
+        },
+        "investigations": {
+          "href": "/httpAuth/app/rest/investigations?locator=buildType:(id:Projecttotestbuildconfigmodification_TestNewConfig5)"
+        },
+        "compatibleAgents": {
+          "href": "/httpAuth/app/rest/agents?locator=compatible:(buildType:(id:Projecttotestbuildconfigmodification_TestNewConfig5))"
+        },
+        "compatibleCloudImages": {}
+      },
+      "Headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "1925",
+        "X-Frame-Options": "sameorigin",
+        "Strict-Transport-Security": "max-age=31536000;",
+        "X-Content-Type-Options": "nosniff",
+        "X-XSS-Protection": "1; mode=block",
+        "Referrer-Policy": "origin-when-cross-origin",
+        "mixed-content": "noupgrade",
+        "TeamCity-Node-Id": "MAIN_SERVER",
+        "Set-Cookie": [
+          "TCSESSIONID=69BEEFE2BBA7006C15C9FA0113C42C9C; Path=/; HttpOnly",
+          "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:43:20 GMT; Path=/",
+          "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+        ],
+        "Cache-Control": "no-store",
+        "Date": "Wed, 01 Jan 2025 05:43:10 GMT"
+      }
+    }
+  },
+  {
+    "Guid": "f73e9ef3-2994-4abf-bbc7-0e41944cd880",
+    "UpdatedAt": "2025-01-01T05:17:17.812189Z",
+    "Title": "Proxy Mapping for GET /httpAuth/app/rest/buildTypes/id:ProjectToTestBuildConfigModification_TestNewConfig5/triggers",
+    "Description": "Proxy Mapping for GET /httpAuth/app/rest/buildTypes/id:ProjectToTestBuildConfigModification_TestNewConfig5/triggers",
+    "Scenario": "Modify build configuration triggers",
+    "WhenStateIs": "Got updated build config",
+    "SetStateTo": "Got updated triggers",
+    "Priority": -2000000,
+    "Request": {
+      "Path": {
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "/httpAuth/app/rest/buildTypes/id:Projecttotestbuildconfigmodification_TestNewConfig5/triggers",
+            "IgnoreCase": false
+          }
+        ]
+      },
+      "Methods": [
+        "GET"
+      ],
+      "HttpVersion": "1.1",
+      "Headers": [
+        {
+          "Name": "Accept",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "application/json",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Authorization",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        }
+      ]
+    },
+    "Response": {
+      "StatusCode": 200,
+      "BodyAsJson": {
+        "count": 1,
+        "trigger": [
+          {
+            "id": "TRIGGER_169",
+            "type": "buildDependencyTrigger",
+            "properties": {
+              "property": [
+                {
+                  "name": "afterSuccessfulBuildOnly",
+                  "value": "true"
+                },
+                {
+                  "name": "dependsOn",
+                  "value": "TeamcityDashboardScenario_Test_TestWithCheckout"
+                }
+              ],
+              "count": 2
+            }
+          }
+        ]
+      },
+      "Headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "244",
+        "X-Frame-Options": "sameorigin",
+        "Strict-Transport-Security": "max-age=31536000;",
+        "X-Content-Type-Options": "nosniff",
+        "X-XSS-Protection": "1; mode=block",
+        "Referrer-Policy": "origin-when-cross-origin",
+        "mixed-content": "noupgrade",
+        "TeamCity-Node-Id": "MAIN_SERVER",
+        "Set-Cookie": [
+          "TCSESSIONID=220A92A15A916FAA43F5A5F3A1C265CE; Path=/; HttpOnly",
+          "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:43:34 GMT; Path=/",
+          "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+        ],
+        "Cache-Control": "no-store",
+        "Date": "Wed, 01 Jan 2025 05:43:24 GMT"
+      }
+    }
+  },
+  {
+    "Guid": "40d62468-a1db-4e34-b809-bd399cc43400",
+    "UpdatedAt": "2025-01-01T05:17:17.851355Z",
+    "Title": "Proxy Mapping for POST /httpAuth/app/rest/buildTypes/id:ProjectToTestBuildConfigModification_TestNewConfig5/triggers",
+    "Description": "Proxy Mapping for POST /httpAuth/app/rest/buildTypes/id:ProjectToTestBuildConfigModification_TestNewConfig5/triggers",
+    "Scenario": "Modify build configuration triggers",
+    "WhenStateIs": "Got updated triggers",
+    "SetStateTo": "Modified triggers",
+    "Priority": -2000000,
+    "Request": {
+      "Path": {
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "/httpAuth/app/rest/buildTypes/id:Projecttotestbuildconfigmodification_TestNewConfig5/triggers",
+            "IgnoreCase": false
+          }
+        ]
+      },
+      "Methods": [
+        "POST"
+      ],
+      "HttpVersion": "1.1",
+      "Headers": [
+        {
+          "Name": "Accept",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "application/json",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Authorization",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Content-Type",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "application/json; charset=us-ascii",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Content-Length",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "319",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        }
+      ],
+      "Body": {
+        "Matcher": {
+          "Name": "JsonMatcher",
+          "Pattern": {
+            "id": "TRIGGER_169",
+            "type": "buildDependencyTrigger",
+            "disabled": false,
+            "inherited": false,
+            "properties": {
+              "property": [
+                {
+                  "name": "afterSuccessfulBuildOnly",
+                  "value": "true",
+                  "inherited": false
+                },
+                {
+                  "name": "dependsOn",
+                  "value": "TeamcityDashboardScenario_Test_TestWithCheckoutWithDependencies",
+                  "inherited": false
+                }
+              ],
+              "count": 2,
+              "href": null
+            }
+          },
+          "IgnoreCase": true,
+          "Regex": false
+        }
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "BodyAsJson": {
+        "id": "TRIGGER_170",
+        "type": "buildDependencyTrigger",
+        "properties": {
+          "property": [
+            {
+              "name": "afterSuccessfulBuildOnly",
+              "value": "true"
+            },
+            {
+              "name": "dependsOn",
+              "value": "TeamcityDashboardScenario_Test_TestWithCheckoutWithDependencies"
+            }
+          ],
+          "count": 2
+        }
+      },
+      "Headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "236",
+        "X-Frame-Options": "sameorigin",
+        "Strict-Transport-Security": "max-age=31536000;",
+        "X-Content-Type-Options": "nosniff",
+        "X-XSS-Protection": "1; mode=block",
+        "Referrer-Policy": "origin-when-cross-origin",
+        "mixed-content": "noupgrade",
+        "TeamCity-Node-Id": "MAIN_SERVER",
+        "Set-Cookie": [
+          "TCSESSIONID=D6AC5F8F8DF5C1301397E3334458C293; Path=/; HttpOnly",
+          "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:43:34 GMT; Path=/",
+          "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+        ],
+        "Cache-Control": "no-store",
+        "Date": "Wed, 01 Jan 2025 05:43:24 GMT"
+      }
+    }
+  },
+  {
+    "Guid": "4186e5c0-0ab4-451d-9ba5-40a3285b87b8",
+    "UpdatedAt": "2025-01-01T05:17:17.894214Z",
+    "Title": "Proxy Mapping for DELETE /httpAuth/app/rest/buildTypes/id:ProjectToTestBuildConfigModification_TestNewConfig5/triggers/TRIGGER_161",
+    "Description": "Proxy Mapping for DELETE /httpAuth/app/rest/buildTypes/id:ProjectToTestBuildConfigModification_TestNewConfig5/triggers/TRIGGER_161",
+    "Scenario": "Modify build configuration triggers",
+    "WhenStateIs": "Modified triggers",
+    "SetStateTo": "Deleted old trigger",
+    "Priority": -2000000,
+    "Request": {
+      "Path": {
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "/httpAuth/app/rest/buildTypes/id:Projecttotestbuildconfigmodification_TestNewConfig5/triggers/TRIGGER_169",
+            "IgnoreCase": false
+          }
+        ]
+      },
+      "Methods": [
+        "DELETE"
+      ],
+      "HttpVersion": "1.1",
+      "Headers": [
+        {
+          "Name": "Accept",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "text/plain",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Authorization",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        }
+      ],
+      "Body": {
+        "Matcher": {
+          "Name": "ExactMatcher",
+          "Pattern": "",
+          "IgnoreCase": true
+        }
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "TeamCity-Node-Id": "MAIN_SERVER",
+        "Set-Cookie": [
+          "TCSESSIONID=C617FF462AA7209C3A92AF05CC13960B; Path=/; HttpOnly",
+          "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:43:34 GMT; Path=/",
+          "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+        ],
+        "Cache-Control": "no-store",
+        "Date": "Wed, 01 Jan 2025 05:43:24 GMT"
+      }
+    }
+  },
+  {
+    "Guid": "0df216f5-54af-4539-a864-036b4b356d39",
+    "UpdatedAt": "2025-01-01T05:18:22.088379Z",
+    "Title": "Proxy Mapping for GET /httpAuth/app/rest/buildTypes/id:ProjectToTestBuildConfigModification_TestNewConfig5",
+    "Description": "Proxy Mapping for GET /httpAuth/app/rest/buildTypes/id:ProjectToTestBuildConfigModification_TestNewConfig5",
+    "Scenario": "Modify build configuration triggers",
+    "WhenStateIs": "Deleted old trigger",
+    "SetStateTo": "Got latest old trigger",
+    "Priority": -2000000,
+    "Request": {
+      "Path": {
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "/httpAuth/app/rest/buildTypes/id:Projecttotestbuildconfigmodification_TestNewConfig5",
+            "IgnoreCase": false
+          }
+        ]
+      },
+      "Methods": [
+        "GET"
+      ],
+      "HttpVersion": "1.1",
+      "Headers": [
+        {
+          "Name": "Accept",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "application/json",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Authorization",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        }
+      ]
+    },
+    "Response": {
+      "StatusCode": 200,
+      "BodyAsJson": {
+        "id": "Projecttotestbuildconfigmodification_TestNewConfig5",
+        "name": "testNewConfig5",
+        "projectName": "Testing TeamCitySharp / Project to test build config modification",
+        "projectId": "Projecttotestbuildconfigmodification",
+        "href": "/httpAuth/app/rest/buildTypes/id:Projecttotestbuildconfigmodification_TestNewConfig5",
+        "webUrl": "http://localhost:8111/buildConfiguration/Projecttotestbuildconfigmodification_TestNewConfig5?mode=builds",
+        "project": {
+          "id": "Projecttotestbuildconfigmodification",
+          "name": "Project to test build config modification",
+          "parentProjectId": "TestingTeamCitySharp",
+          "href": "/httpAuth/app/rest/projects/id:Projecttotestbuildconfigmodification",
+          "webUrl": "http://localhost:8111/project.html?projectId=Projecttotestbuildconfigmodification"
+        },
+        "templates": {
+          "count": 0,
+          "buildType": []
+        },
+        "vcs-root-entries": {
+          "count": 0,
+          "vcs-root-entry": []
+        },
+        "settings": {
+          "property": [
+            {
+              "name": "buildNumberCounter",
+              "value": "1"
+            }
+          ],
+          "count": 1
+        },
+        "parameters": {
+          "property": [
+            {
+              "name": "test",
+              "value": "",
+              "inherited": true
+            }
+          ],
+          "count": 1,
+          "href": "/httpAuth/app/rest/buildTypes/id:Projecttotestbuildconfigmodification_TestNewConfig5/parameters"
+        },
+        "steps": {
+          "count": 0
+        },
+        "features": {
+          "count": 0
+        },
+        "triggers": {
+          "count": 1,
+          "trigger": [
+            {
+              "id": "TRIGGER_172",
+              "type": "buildDependencyTrigger",
+              "properties": {
+                "property": [
+                  {
+                    "name": "afterSuccessfulBuildOnly",
+                    "value": "true"
+                  },
+                  {
+                    "name": "dependsOn",
+                    "value": "TeamcityDashboardScenario_Test_TestWithCheckoutWithDependencies"
+                  }
+                ],
+                "count": 2
+              }
+            }
+          ]
+        },
+        "snapshot-dependencies": {
+          "count": 0
+        },
+        "artifact-dependencies": {
+          "count": 0
+        },
+        "agent-requirements": {
+          "count": 0
+        },
+        "builds": {
+          "href": "/httpAuth/app/rest/buildTypes/id:Projecttotestbuildconfigmodification_TestNewConfig5/builds/"
+        },
+        "investigations": {
+          "href": "/httpAuth/app/rest/investigations?locator=buildType:(id:Projecttotestbuildconfigmodification_TestNewConfig5)"
+        },
+        "compatibleAgents": {
+          "href": "/httpAuth/app/rest/agents?locator=compatible:(buildType:(id:Projecttotestbuildconfigmodification_TestNewConfig5))"
+        },
+        "compatibleCloudImages": {}
+      },
+      "Headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "1941",
+        "X-Frame-Options": "sameorigin",
+        "Strict-Transport-Security": "max-age=31536000;",
+        "X-Content-Type-Options": "nosniff",
+        "X-XSS-Protection": "1; mode=block",
+        "Referrer-Policy": "origin-when-cross-origin",
+        "mixed-content": "noupgrade",
+        "TeamCity-Node-Id": "MAIN_SERVER",
+        "Set-Cookie": [
+          "TCSESSIONID=2E107E81728FFC8C91DB5BB8107323A6; Path=/; HttpOnly",
+          "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:49:41 GMT; Path=/",
+          "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+        ],
+        "Cache-Control": "no-store",
+        "Date": "Wed, 01 Jan 2025 05:49:31 GMT"
+      }
+    }
+  },
+  {
+    "Guid": "995be964-9580-42cb-a753-f45b57dcc426",
+    "UpdatedAt": "2025-01-01T05:18:36.245723Z",
+    "Title": "Proxy Mapping for DELETE /httpAuth/app/rest/buildTypes/id:Projecttotestbuildconfigmodification_TestNewConfig5",
+    "Description": "Proxy Mapping for DELETE /httpAuth/app/rest/buildTypes/id:Projecttotestbuildconfigmodification_TestNewConfig5",
+    "Scenario": "Modify build configuration triggers",
+    "WhenStateIs": "Got latest old trigger",
+    "SetStateTo": "Deleted build config",
+    "Priority": -2000000,
+    "Request": {
+      "Path": {
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "/httpAuth/app/rest/buildTypes/id:Projecttotestbuildconfigmodification_TestNewConfig5",
+            "IgnoreCase": false
+          }
+        ]
+      },
+      "Methods": [
+        "DELETE"
+      ],
+      "HttpVersion": "1.1",
+      "Headers": [
+        {
+          "Name": "Accept",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "text/plain",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Authorization",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        }
+      ],
+      "Body": {
+        "Matcher": {
+          "Name": "ExactMatcher",
+          "Pattern": "",
+          "IgnoreCase": true
+        }
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "TeamCity-Node-Id": "MAIN_SERVER",
+        "Set-Cookie": [
+          "TCSESSIONID=F4CE3CDB7800145AE0D6D8D68829172D; Path=/; HttpOnly",
+          "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 06:16:05 GMT; Path=/",
+          "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+        ],
+        "Cache-Control": "no-store",
+        "Date": "Wed, 01 Jan 2025 06:15:55 GMT"
+      }
+    }
+  },
+  {
+    "Guid": "01780633-3723-42bc-834f-54c16e61e2ca",
+    "UpdatedAt": "2025-01-01T05:49:38.80021Z",
+    "Title": "Proxy Mapping for DELETE /httpAuth/app/rest/projects/name:Projecttotestbuildconfigmodification",
+    "Description": "Proxy Mapping for DELETE /httpAuth/app/rest/projects/name:Projecttotestbuildconfigmodification",
+    "Scenario": "Modify build configuration triggers",
+    "WhenStateIs": "Deleted build config",
+    "SetStateTo": "Deleted project",
+    "Priority": -2000000,
+    "Request": {
+      "Path": {
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "/httpAuth/app/rest/projects/name:Project to test build config modification",
+            "IgnoreCase": false
+          }
+        ]
+      },
+      "Methods": [
+        "DELETE"
+      ],
+      "HttpVersion": "1.1",
+      "Headers": [
+        {
+          "Name": "Accept",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "text/plain",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Authorization",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        }
+      ],
+      "Body": {
+        "Matcher": {
+          "Name": "ExactMatcher",
+          "Pattern": "",
+          "IgnoreCase": true
+        }
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "TeamCity-Node-Id": "MAIN_SERVER",
+        "Set-Cookie": [
+          "TCSESSIONID=D87D6963582E2433DB439DABEB622A4F; Path=/; HttpOnly",
+          "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 06:22:24 GMT; Path=/",
+          "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+        ],
+        "Cache-Control": "no-store",
+        "Date": "Wed, 01 Jan 2025 06:22:14 GMT"
+      }
+    }
+  }
+]

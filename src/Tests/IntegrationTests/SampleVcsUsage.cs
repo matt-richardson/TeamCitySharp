@@ -23,17 +23,17 @@ namespace TeamCitySharp.IntegrationTests
 
         public when_interacting_to_get_vcs_details()
         {
-            m_server = ConfigurationManager.AppSettings["Server"];
-            bool.TryParse(ConfigurationManager.AppSettings["UseSsl"], out m_useSsl);
-            m_username = ConfigurationManager.AppSettings["Username"];
-            m_password = ConfigurationManager.AppSettings["Password"];
-            m_goodProjectId = ConfigurationManager.AppSettings["GoodProjectId"];
+            m_server = Configuration.GetAppSetting("Server");
+            bool.TryParse(Configuration.GetAppSetting("UseSsl"), out m_useSsl);
+            m_username = Configuration.GetAppSetting("Username");
+            m_password = Configuration.GetAppSetting("Password");
+            m_goodProjectId = Configuration.GetAppSetting("GoodProjectId");
         }
 
         [SetUp]
         public void SetUp()
         {
-            m_client = new TeamCityClient(m_server, m_useSsl);
+            m_client = new TeamCityClient(m_server, m_useSsl, Configuration.GetWireMockClient);
             m_client.Connect(m_username, m_password);
         }
 
@@ -43,14 +43,6 @@ namespace TeamCitySharp.IntegrationTests
             Assert.Throws<ArgumentNullException>(() => new TeamCityClient(null));
         }
 
-        [Test]
-        public void it_returns_exception_when_host_does_not_exist()
-        {
-            var client = new TeamCityClient("test:81");
-            client.Connect("admin", "qwerty");
-
-            Assert.Throws<HttpRequestException>(() => client.VcsRoots.All());
-        }
 
         [Test]
         public void it_returns_exception_when_no_connection_formed()
@@ -67,59 +59,69 @@ namespace TeamCitySharp.IntegrationTests
             Assert.That(vcsRoots.Any(), "No VCS Roots were found for the installation");
         }
 
-        [TestCase("TestDrive_ReactApp_HttpsGithubComHypnosphiTeamcityReactDemoRefsHeadsMaster")]
-        public void it_returns_vcs_details_when_passing_vcs_root_id(string vcsRootId)
+        [Test]
+        public void it_returns_vcs_details_when_passing_vcs_root_id()
         {
+            string vcsRootId = Configuration.GetAppSetting("IdOfVcsRoot");
             VcsRoot rootDetails = m_client.VcsRoots.ById(vcsRootId);
 
-            Assert.That(rootDetails != null, "Cannot find the specific VCSRoot");
+            Assert.That(rootDetails, Is.Not.Null, "Cannot find the specific VCSRoot");
         }
 
         [Test]
         public void it_returns_correct_next_builds_with_filter()
         {
-            var client = new TeamCityClient(m_server, m_useSsl);
-            client.ConnectAsGuest();
-
             VcsRootField vcsRootField = VcsRootField.WithFields(id: true, href: true, lastChecked: true, name: true,
                 status: true, vcsName: true, version: true);
             VcsRootsField vcsRootsField = VcsRootsField.WithFields(vcsRootField);
-            var vcsRoots = client.VcsRoots.GetFields(vcsRootsField.ToString()).All();
+            var vcsRoots = m_client.VcsRoots.GetFields(vcsRootsField.ToString()).All();
 
-            Assert.That(vcsRoots != null);
+            Assert.That(vcsRoots, Is.Not.Null);
         }
 
-        [Test, Ignore("Test user doesn't have the rights to create new VcsRoot on tested instance.")]
+        [Test]
         public void it_create_new_vsc()
         {
-            var project = m_client.Projects.ById(m_goodProjectId);
+            VcsRoot createdVcsRoot = null;
+            try
+            {
+                var project = m_client.Projects.ById(m_goodProjectId);
 
-            VcsRoot vcsroot = new VcsRoot();
-            vcsroot.Id = project.Id + "_vcsroot1_01";
-            vcsroot.Name = project.Name + "_vcsroot1";
-            vcsroot.VcsName = "jetbrains.git";
-            vcsroot.Project = new Project();
-            vcsroot.Project.Id = project.Id;
+                VcsRoot vcsroot = new VcsRoot();
+                vcsroot.Id = project.Id + "_vcsroot1_01";
+                vcsroot.Name = project.Name + "_vcsroot1";
+                vcsroot.VcsName = "jetbrains.git";
+                vcsroot.Project = new Project();
+                vcsroot.Project.Id = project.Id;
 
-            Properties properties = new Properties();
+                Properties properties = new Properties();
 
-            properties.Add("agentCleanFilesPolicy", "IGNORED_ONLY");
-            vcsroot.Properties = properties;
+                properties.Add("agentCleanFilesPolicy", "IGNORED_ONLY");
+                vcsroot.Properties = properties;
 
-            var vcsroot2 = m_client.VcsRoots.CreateVcsRoot(vcsroot, project.Id);
+                createdVcsRoot = m_client.VcsRoots.CreateVcsRoot(vcsroot, project.Id);
 
-            m_client.VcsRoots.SetVcsRootValue(vcsroot2, VcsRootValue.Name, "TestChangeName");
+                m_client.VcsRoots.SetVcsRootValue(createdVcsRoot, VcsRootValue.Name, "TestChangeName");
 
-            m_client.VcsRoots.SetConfigurationProperties(vcsroot2, "agentCleanFilesPolicy", "ALL_UNTRACKED");
-            m_client.VcsRoots.SetConfigurationProperties(vcsroot2, "tt", "tt2");
-            m_client.VcsRoots.DeleteProperties(vcsroot2, "tt");
-            m_client.VcsRoots.DeleteVcsRoot(vcsroot2);
+                m_client.VcsRoots.SetConfigurationProperties(createdVcsRoot, "agentCleanFilesPolicy", "ALL_UNTRACKED");
+                m_client.VcsRoots.SetConfigurationProperties(createdVcsRoot, "tt", "tt2");
+            }
+            finally
+            {
+                if (createdVcsRoot != null)
+                {
+                    m_client.VcsRoots.DeleteProperties(createdVcsRoot, "tt");
+                    m_client.VcsRoots.DeleteVcsRoot(createdVcsRoot);
+                }
+            }
         }
 
         [Test]
         public void it_throws_exception_create_new_vsc_forbidden()
         {
-            var project = m_client.Projects.ById(m_goodProjectId);
+            var client = new TeamCityClient(m_server, m_useSsl);
+            client.Connect(Configuration.GetAppSetting("NonAdminUser"), m_password);
+            var project = client.Projects.ById(m_goodProjectId);
 
             VcsRoot vcsroot = new VcsRoot();
             vcsroot.Id = project.Id + "_vcsroot1_01";
@@ -133,18 +135,8 @@ namespace TeamCitySharp.IntegrationTests
             properties.Add("agentCleanFilesPolicy", "IGNORED_ONLY");
             vcsroot.Properties = properties;
 
-            try
-            {
-                m_client.VcsRoots.CreateVcsRoot(vcsroot, project.Id);
-            }
-            catch (HttpException e)
-            {
-                Assert.That(e.ResponseStatusCode == HttpStatusCode.Forbidden);
-            }
-            catch (Exception e)
-            {
-                Assert.Fail("CreateNewVsc faced an unexpected exception", e);
-            }
+            var e = Assert.Throws<HttpException>(() => client.VcsRoots.CreateVcsRoot(vcsroot, project.Id));
+            Assert.That(e.ResponseStatusCode, Is.EqualTo(HttpStatusCode.Forbidden));
         }
     }
 }

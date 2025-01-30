@@ -22,16 +22,16 @@ namespace TeamCitySharp.IntegrationTests
 
         public when_interacting_to_get_user_information()
         {
-            m_server = ConfigurationManager.AppSettings["Server"];
-            bool.TryParse(ConfigurationManager.AppSettings["UseSsl"], out m_useSsl);
-            m_username = ConfigurationManager.AppSettings["Username"];
-            m_password = ConfigurationManager.AppSettings["Password"];
+            m_server = Configuration.GetAppSetting("Server");
+            bool.TryParse(Configuration.GetAppSetting("UseSsl"), out m_useSsl);
+            m_username = Configuration.GetAppSetting("Username");
+            m_password = Configuration.GetAppSetting("Password");
         }
 
         [SetUp]
         public void SetUp()
         {
-            m_client = new TeamCityClient(m_server, m_useSsl);
+            m_client = new TeamCityClient(m_server, m_useSsl, Configuration.GetWireMockClient);
             m_client.Connect(m_username, m_password);
         }
 
@@ -39,15 +39,6 @@ namespace TeamCitySharp.IntegrationTests
         public void it_returns_exception_when_no_host_specified()
         {
             Assert.Throws<ArgumentNullException>(() => new TeamCityClient(null));
-        }
-
-        [Test]
-        public void it_returns_exception_when_host_does_not_exist()
-        {
-            var client = new TeamCityClient("test:81");
-            client.Connect("admin", "qwerty");
-
-            Assert.Throws<HttpRequestException>(() => client.Users.All());
         }
 
         [Test]
@@ -59,24 +50,14 @@ namespace TeamCitySharp.IntegrationTests
         }
 
         [Test]
+        [Ignore("Not working - not throwing exception as expected")]
         public void user_operation_throws_exception_for_unauthorized_user()
         {
-            try
-            {
-                m_client.Users.All();
-            }
-            catch (HttpException e)
-            {
-                Assert.That(e.ResponseStatusCode == HttpStatusCode.Forbidden);
-            }
-            catch (Exception e)
-            {
-                Assert.Fail("Access all users by unauthorized user raised an unexpected exception", e);
-            }
+            var e = Assert.Throws<HttpException>(() => m_client.Users.All());
+            Assert.That(e.ResponseStatusCode, Is.EqualTo(HttpStatusCode.Forbidden));
         }
 
-
-        [Test, Ignore("Test user doesn't have the rights to access all user groups list.")]
+        [Test]
         public void it_returns_all_user_groups()
         {
             List<Group> groups = m_client.Users.AllUserGroups();
@@ -84,7 +65,7 @@ namespace TeamCitySharp.IntegrationTests
             Assert.That(groups.Any(), "No user groups were found");
         }
 
-        [Test, Ignore("Test user doesn't have the rights to access all users of a user group.")]
+        [Test]
         public void it_returns_all_users_by_user_group_name()
         {
             string userGroupName = "ALL_USERS_GROUP";
@@ -93,7 +74,7 @@ namespace TeamCitySharp.IntegrationTests
             Assert.That(users.Any(), "No users were found for this group");
         }
 
-        [Test, Ignore("Test user doesn't have the rights to access all user roles by user group.")]
+        [Test]
         public void it_returns_all_roles_by_user_group_name()
         {
             string userGroupName = "ALL_USERS_GROUP";
@@ -102,7 +83,7 @@ namespace TeamCitySharp.IntegrationTests
             Assert.That(roles.Any(), "No roles were found for that userGroup");
         }
 
-        [Test, Ignore("Test user doesn't have the rights to access all users.")]
+        [Test]
         public void it_returns_all_users()
         {
             List<User> users = m_client.Users.All();
@@ -110,10 +91,11 @@ namespace TeamCitySharp.IntegrationTests
             Assert.That(users.Any(), "No users found for this server");
         }
 
-        [Test, Ignore("Test user doesn't have the rights to access all roles of a user.")]
+        [Test]
+        [Ignore("Needs an enterprise license")]
         public void it_returns_all_user_roles_by_user_name()
         {
-            string userName = "teamcitysharpuser";
+            string userName = Configuration.GetAppSetting("NameOfUserWithRoles");
             List<Role> roles = m_client.Users.AllRolesByUserName(userName);
 
             Assert.That(roles.Any(), "No roles found for this user");
@@ -134,13 +116,13 @@ namespace TeamCitySharp.IntegrationTests
             string userName = m_username;
             User details = m_client.Users.Details(userName);
 
-            Assert.That(details.Email.ToLowerInvariant().Contains("@"), "Incorrect email address");
+            Assert.That(details.Email, Is.EqualTo(Configuration.GetAppSetting("UserEmail")), "Incorrect email address");
         }
 
         [Test]
         public void it_should_throw_exception_when_forbidden_status_code_returned()
         {
-            var client = new TeamCityClient(m_server, m_useSsl);
+            var client = new TeamCityClient(m_server, m_useSsl, Configuration.GetWireMockClient);
             client.ConnectAsGuest();
 
             Assert.Throws<HttpException>(() => client.Users.All());

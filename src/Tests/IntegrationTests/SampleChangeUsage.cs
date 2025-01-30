@@ -23,17 +23,17 @@ namespace TeamCitySharp.IntegrationTests
 
     public when_interacting_to_get_change_information()
     {
-      m_server = ConfigurationManager.AppSettings["Server"];
-      bool.TryParse(ConfigurationManager.AppSettings["UseSsl"], out m_useSsl);
-      m_username = ConfigurationManager.AppSettings["Username"];
-      m_password = ConfigurationManager.AppSettings["Password"];
-      m_goodBuildConfigId = ConfigurationManager.AppSettings["GoodBuildConfigId"];
-      m_goodProjectId = ConfigurationManager.AppSettings["GoodProjectId"];
+      m_server = Configuration.GetAppSetting("Server");
+      bool.TryParse(Configuration.GetAppSetting("UseSsl"), out m_useSsl);
+      m_username = Configuration.GetAppSetting("Username");
+      m_password = Configuration.GetAppSetting("Password");
+      m_goodBuildConfigId = Configuration.GetAppSetting("GoodBuildConfigId");
+      m_goodProjectId = Configuration.GetAppSetting("GoodProjectId");
     }
     [SetUp]
     public void SetUp()
     {
-      m_client = new TeamCityClient(m_server,m_useSsl);
+      m_client = new TeamCityClient(m_server,m_useSsl, Configuration.GetWireMockClient);
       m_client.Connect(m_username,m_password);
     }
 
@@ -41,16 +41,6 @@ namespace TeamCitySharp.IntegrationTests
     public void it_returns_exception_when_no_host_specified()
     {
       Assert.Throws<ArgumentNullException>(() => new TeamCityClient(null));
-    }
-
-    [Test]
-    public void it_returns_exception_when_host_does_not_exist()
-    {
-      var client = new TeamCityClient("test:81");
-      client.Connect("admin", "qwerty");
-
-      Assert.Throws<HttpRequestException>(() => client.Changes.All());
-
     }
 
     [Test]
@@ -66,24 +56,30 @@ namespace TeamCitySharp.IntegrationTests
     {
       List<Change> changes = m_client.Changes.All();
 
-      Assert.That(changes.Any(), "Cannot find any changes recorded in any of the projects");
+      Assert.That(changes, Is.Not.Null);
+      Assert.That(changes, Is.Not.Empty, "Cannot find any changes recorded in any of the projects");
     }
 
-    [TestCase("4509768")]
-    public void it_returns_change_details_by_change_id(string changeId)
+    [Test]
+    public void it_returns_change_details_by_change_id()
     {
+      List<Change> changes = m_client.Changes.All();
+      Assert.That(changes, Is.Not.Null);
+      Assert.That(changes, Is.Not.Empty, "Cannot find any changes recorded in any of the projects");
+      
+      var changeId = changes.First().Id;
       Change changeDetails = m_client.Changes.ByChangeId(changeId);
 
-      Assert.That(changeDetails != null, "Cannot find details of that specified change");
+      Assert.That(changeDetails, Is.Not.Null, "Cannot find details of that specified change");
     }
 
     [Test]
     public void it_returns_change_details_for_build_config()
     {
-      string buildConfigId = m_goodBuildConfigId;
+      string buildConfigId = Configuration.GetAppSetting("IdOfBuildConfigWithArtifactAndVcsRoot");
       Change changeDetails = m_client.Changes.LastChangeDetailByBuildConfigId(buildConfigId);
 
-      Assert.That(changeDetails != null, "Cannot find details of that specified change");
+      Assert.That(changeDetails, Is.Not.Null, "Cannot find details of that specified change");
     }
   }
 }

@@ -1,0 +1,90 @@
+{
+  "Guid": "f1a21c46-fdd7-465f-b473-a16a58dd4e92",
+  "UpdatedAt": "2025-01-01T23:17:00.920406Z",
+  "Title": "Proxy Mapping for GET /httpAuth/app/rest/buildQueue",
+  "Description": "Proxy Mapping for GET /httpAuth/app/rest/buildQueue",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/buildQueue",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ],
+    "Params": [
+      {
+        "Name": "fields",
+        "Matchers": [
+          {
+            "Name": "ExactMatcher",
+            "Pattern": "count,build(id,compatibleAgents(agent(id)))",
+            "IgnoreCase": false
+          }
+        ]
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "count": 1,
+      "build": [
+        {
+          "id": 2504,
+          "compatibleAgents": {
+            "agent": []
+          }
+        }
+      ]
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "65",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=69D8524ADED469985E66C69572BC3374; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 23:17:10 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 23:17:00 GMT"
+    }
+  }
+}

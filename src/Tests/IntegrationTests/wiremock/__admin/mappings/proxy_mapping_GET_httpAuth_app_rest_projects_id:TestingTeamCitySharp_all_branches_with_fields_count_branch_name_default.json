@@ -1,0 +1,99 @@
+{
+  "Guid": "02d1c49b-44a2-420d-bc5f-1eb0505c4648",
+  "UpdatedAt": "2024-12-31T05:52:36.950537Z",
+  "Title": "Proxy Mapping for GET /httpAuth/app/rest/projects/id:TestingTeamCitySharp/branches",
+  "Description": "Proxy Mapping for GET /httpAuth/app/rest/projects/id:TestingTeamCitySharp/branches",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/projects/id:TestingTeamCitySharp/branches",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ],
+    "Params": [
+      {
+        "Name": "locator",
+        "Matchers": [
+          {
+            "Name": "ExactMatcher",
+            "Pattern": "policy:ALL_BRANCHES",
+            "IgnoreCase": false
+          }
+        ]
+      },
+      {
+        "Name": "fields",
+        "Matchers": [
+          {
+            "Name": "ExactMatcher",
+            "Pattern": "count,branch(name,default)",
+            "IgnoreCase": false
+          }
+        ]
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "count": 4,
+      "branch": [
+        {
+          "name": "<default>",
+          "default": true
+        },
+        {
+          "name": "refs/heads/dependabot/nuget/Nuke.Common-9.0.3",
+          "default": false
+        },
+        {
+          "name": "refs/heads/matt-richardson-patch-1",
+          "default": false
+        },
+        {
+          "name": "refs/heads/mattr/bump-fluent-assertions",
+          "default": false
+        }
+      ]
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "260",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=5774EA6DC3953BD16DA53E912395A8F0; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Tue, 31 Dec 2024 05:52:46 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Tue, 31 Dec 2024 05:52:36 GMT"
+    }
+  }
+}

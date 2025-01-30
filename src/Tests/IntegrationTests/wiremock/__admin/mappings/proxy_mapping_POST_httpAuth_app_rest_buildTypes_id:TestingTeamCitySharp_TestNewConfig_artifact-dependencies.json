@@ -1,0 +1,158 @@
+{
+  "Guid": "004045a4-0b2c-44ad-b4e1-ce9e02be5fb4",
+  "UpdatedAt": "2025-01-01T03:31:48.946418Z",
+  "Title": "Proxy Mapping for POST /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestNewConfig/artifact-dependencies",
+  "Description": "Proxy Mapping for POST /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestNewConfig/artifact-dependencies",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestNewConfig/artifact-dependencies",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "POST"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Content-Type",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json; charset=us-ascii",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Content-Length",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "939",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ],
+    "Body": {
+      "Matcher": {
+        "Name": "JsonMatcher",
+        "Pattern": {
+          "id": "TTTT_100",
+          "type": "artifact_dependency",
+          "inherited": false,
+          "properties": {
+            "property": [
+              {
+                "name": "cleanDestinationDirectory",
+                "value": "false",
+                "inherited": false
+              },
+              {
+                "name": "pathRules",
+                "value": "step1.txt",
+                "inherited": false
+              },
+              {
+                "name": "revisionName",
+                "value": "lastSuccessful",
+                "inherited": false
+              },
+              {
+                "name": "revisionValue",
+                "value": "latest.lastSuccessful",
+                "inherited": false
+              }
+            ],
+            "count": 0,
+            "href": null
+          },
+          "source-buildType": {
+            "id": "TeamcityDashboardScenario_Test_TestWithCheckout",
+            "name": null,
+            "number": null,
+            "status": null,
+            "href": null,
+            "projectId": null,
+            "projectName": null,
+            "description": null,
+            "webUrl": null,
+            "personal": null,
+            "cancelled": null,
+            "history": null,
+            "pinned": null,
+            "running": null,
+            "project": null,
+            "template": null,
+            "templates": null,
+            "parameters": null,
+            "artifact-dependencies": null,
+            "snapshot-dependencies": null,
+            "vcs-root-entries": null,
+            "steps": null,
+            "agent-requirements": null,
+            "triggers": null,
+            "settings": null,
+            "builds": null,
+            "investigations": null,
+            "compatibleAgents": null
+          }
+        },
+        "IgnoreCase": true,
+        "Regex": false
+      }
+    }
+  },
+  "Response": {
+    "StatusCode": 404,
+    "Body": "Responding with error, status code: 404 (Not Found).\nDetails: jetbrains.buildServer.server.rest.errors.NotFoundException: No build type nor template is found by id 'TestingTeamCitySharp_TestNewConfig'.\nCould not find the entity requested. Check the reference is correct and the user has permissions to access the entity.",
+    "Headers": {
+      "Content-Type": "text/plain",
+      "Content-Length": "320",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=95828739076AA06047D330F2BC753A52; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 03:31:58 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 03:31:48 GMT"
+    }
+  }
+}

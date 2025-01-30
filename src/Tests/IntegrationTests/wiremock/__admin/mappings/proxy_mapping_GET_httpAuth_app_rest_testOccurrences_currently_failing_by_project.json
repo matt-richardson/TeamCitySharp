@@ -1,0 +1,94 @@
+{
+  "Guid": "5eba01c3-088d-4d07-b3b6-da0a2b83266f",
+  "UpdatedAt": "2025-01-01T23:50:30.352356Z",
+  "Title": "Proxy Mapping for GET /httpAuth/app/rest/testOccurrences",
+  "Description": "Proxy Mapping for GET /httpAuth/app/rest/testOccurrences",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/testOccurrences",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ],
+    "Params": [
+      {
+        "Name": "locator",
+        "Matchers": [
+          {
+            "Name": "ExactMatcher",
+            "Pattern": "currentlyFailing:true,affectedProject:(id:TestingTeamCitySharp)",
+            "IgnoreCase": false
+          }
+        ]
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "count": 1,
+      "href": "http://localhost:8111/app/rest/testOccurrences?locator=currentlyFailing%3Atrue%2CaffectedProject%3A%28id%3ATestingTeamCitySharp%29",
+      "testOccurrence": [
+        {
+          "id": "build:(id:2508),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:2508),id:2000000001"
+        }
+      ],
+      "failed": 1,
+      "newFailed": 1
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "416",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=02EFC18EE27090F0AA7B110B20B2ABE8; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 23:50:40 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 23:50:30 GMT"
+    }
+  }
+}

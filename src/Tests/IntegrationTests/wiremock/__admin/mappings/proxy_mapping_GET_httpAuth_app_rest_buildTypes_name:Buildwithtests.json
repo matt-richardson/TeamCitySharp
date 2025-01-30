@@ -1,0 +1,162 @@
+{
+  "Guid": "c4cf7945-0324-4a65-b1cd-c454dd5adc1a",
+  "UpdatedAt": "2025-01-01T05:23:28.809873Z",
+  "Title": "Proxy Mapping for GET /httpAuth/app/rest/buildTypes/name:Build with tests",
+  "Description": "Proxy Mapping for GET /httpAuth/app/rest/buildTypes/name:Build with tests",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/buildTypes/name:Build with tests",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "id": "TestingTeamCitySharp_BuildWithTests",
+      "name": "Build with tests",
+      "projectName": "Testing TeamCitySharp",
+      "projectId": "TestingTeamCitySharp",
+      "href": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_BuildWithTests",
+      "webUrl": "http://localhost:8111/buildConfiguration/TestingTeamCitySharp_BuildWithTests?mode=builds",
+      "project": {
+        "id": "TestingTeamCitySharp",
+        "name": "Testing TeamCitySharp",
+        "parentProjectId": "_Root",
+        "href": "/httpAuth/app/rest/projects/id:TestingTeamCitySharp",
+        "webUrl": "http://localhost:8111/project.html?projectId=TestingTeamCitySharp"
+      },
+      "templates": {
+        "count": 0,
+        "buildType": []
+      },
+      "vcs-root-entries": {
+        "count": 0,
+        "vcs-root-entry": []
+      },
+      "settings": {
+        "property": [
+          {
+            "name": "buildNumberCounter",
+            "value": "5"
+          }
+        ],
+        "count": 1
+      },
+      "parameters": {
+        "property": [
+          {
+            "name": "test",
+            "value": "",
+            "inherited": true
+          }
+        ],
+        "count": 1,
+        "href": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_BuildWithTests/parameters"
+      },
+      "steps": {
+        "count": 1,
+        "step": [
+          {
+            "id": "simpleRunner",
+            "name": "",
+            "type": "simpleRunner",
+            "properties": {
+              "property": [
+                {
+                  "name": "script.content",
+                  "value": "mkdir Octopus.MattsTestProject\ncd Octopus.MattsTestProject\n\ndotnet new xunit\ndotnet add package teamcity.vstest.testadapter\ndotnet add package TeamCity.ServiceMessages\n\nrm UnitTest1.cs\n\ncat >> UnitTest1.cs<< EOF\nusing System;\nusing Xunit.Abstractions;\nusing JetBrains.TeamCity.ServiceMessages.Write.Special;\n\nnamespace Octopus.MattsTestProject;\n\npublic class UnitTest1\n{\n\tITestOutputHelper testOutputHelper;\n\n\tpublic UnitTest1(ITestOutputHelper testOutputHelper)\n\t{\n\t\tthis.testOutputHelper = testOutputHelper;\n\t}\n\n    [Fact]\n    public void Test1()\n    {\n    \tConsole.WriteLine(\"Some console output from Test1\");\n    \ttestOutputHelper.WriteLine(\"Some testOutputHelper output from Test1\");\n        testOutputHelper.WriteLine($@\"##teamcity[testMetadata name='MyTestOwnerMetadataKey' value='TheTestOwner']\");\n    }\n\n    [Theory]\n    [InlineData(7, true, \"a string\")]\n    [InlineData(17, false, \"another, string, i am. With a : in it too\")]\n    public void Test2(int num, bool value, string testString)\n    {\n    \tConsole.WriteLine(\"Some console output from Test2. Num was \" + num + \", value was \" + value + \", testString was '\" + testString + \"'\");\n    \ttestOutputHelper.WriteLine(\"Some testOutputHelper output from Test2. Num was \" + num + \", value was \" + value + \", testString was '\" + testString + \"'\");\n    }\n\n    [Fact]\n    public void Test3()\n    {\n    \tConsole.WriteLine(\"Some console output from Test3\");\n    \ttestOutputHelper.WriteLine(\"Some testOutputHelper output from Test3\");\n        testOutputHelper.WriteLine($@\"##teamcity[testMetadata name='MyTestOwnerMetadataKey' value='TheTestOwner']\");\n        throw new Exception();\n    }\n\n    [Fact]\n    public void Test4WithABuildProblem()\n    {\n        var writer = new TeamCityServiceMessages().CreateWriter();\n        var messageText = \"this is a very long message text that we're going to use for a title and it should be longer than 59 characters\";\n        Exception exception = null;\n        try {\n            throw new NullReferenceException();\n        } \n        catch (Exception e)\n        {\n            exception = e;    \n        }\n\n        writer.WriteBuildProblem(new string(messageText.Take(59).ToArray()), exception.ToString());\n    }\n}\nEOF\n\ndotnet build\ndotnet test"
+                },
+                {
+                  "name": "teamcity.step.mode",
+                  "value": "default"
+                },
+                {
+                  "name": "use.custom.script",
+                  "value": "true"
+                }
+              ],
+              "count": 3
+            }
+          }
+        ]
+      },
+      "features": {
+        "count": 0
+      },
+      "triggers": {
+        "count": 0
+      },
+      "snapshot-dependencies": {
+        "count": 0
+      },
+      "artifact-dependencies": {
+        "count": 0
+      },
+      "agent-requirements": {
+        "count": 0
+      },
+      "builds": {
+        "href": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_BuildWithTests/builds/"
+      },
+      "investigations": {
+        "href": "/httpAuth/app/rest/investigations?locator=buildType:(id:TestingTeamCitySharp_BuildWithTests)"
+      },
+      "compatibleAgents": {
+        "href": "/httpAuth/app/rest/agents?locator=compatible:(buildType:(id:TestingTeamCitySharp_BuildWithTests))"
+      },
+      "compatibleCloudImages": {}
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "4020",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=C8FCB571025D3C32BD82B0C42372B0AE; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:23:38 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 05:23:28 GMT"
+    }
+  }
+}

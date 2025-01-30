@@ -1,0 +1,97 @@
+{
+  "Guid": "2726a65a-75ce-4bfd-87bb-fd93dec9f7ff",
+  "UpdatedAt": "2025-01-01T23:25:48.060892Z",
+  "Title": "Proxy Mapping for GET /httpAuth/app/rest/projects/id:TestingTeamCitySharp/branches",
+  "Description": "Proxy Mapping for GET /httpAuth/app/rest/projects/id:TestingTeamCitySharp/branches",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/projects/id:TestingTeamCitySharp/branches",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ],
+    "Params": [
+      {
+        "Name": "locator",
+        "Matchers": [
+          {
+            "Name": "ExactMatcher",
+            "Pattern": "policy:ALL_BRANCHES",
+            "IgnoreCase": false
+          }
+        ]
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "count": 4,
+      "branch": [
+        {
+          "name": "<default>",
+          "default": true
+        },
+        {
+          "name": "refs/heads/dependabot/nuget/Nuke.Common-9.0.3"
+        },
+        {
+          "name": "refs/heads/matt-richardson-patch-1"
+        },
+        {
+          "name": "refs/heads/mattr/bump-fluent-assertions"
+        }
+      ]
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "212",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=5438CFC407B6CFB1C12BBDD4593A129E; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 23:25:58 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 23:25:48 GMT"
+    }
+  }
+}

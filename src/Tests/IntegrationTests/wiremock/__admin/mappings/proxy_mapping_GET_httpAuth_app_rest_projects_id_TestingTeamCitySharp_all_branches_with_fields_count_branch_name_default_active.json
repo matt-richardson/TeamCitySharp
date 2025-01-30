@@ -1,0 +1,114 @@
+{
+  "Guid": "b305c975-b72e-4285-ac8b-f4491b9b7a25",
+  "UpdatedAt": "2025-01-01T02:33:09.310322Z",
+  "Title": "Proxy Mapping for GET /httpAuth/app/rest/projects/id:TestingTeamCitySharp/branches",
+  "Description": "Proxy Mapping for GET /httpAuth/app/rest/projects/id:TestingTeamCitySharp/branches",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/projects/id:TestingTeamCitySharp/branches",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ],
+    "Params": [
+      {
+        "Name": "locator",
+        "Matchers": [
+          {
+            "Name": "ExactMatcher",
+            "Pattern": "policy:ALL_BRANCHES",
+            "IgnoreCase": false
+          }
+        ]
+      },
+      {
+        "Name": "fields",
+        "Matchers": [
+          {
+            "Name": "ExactMatcher",
+            "Pattern": "count,branch(name,default,active)",
+            "IgnoreCase": false
+          }
+        ]
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "count": 4,
+      "branch": [
+        {
+          "name": "<default>",
+          "default": true,
+          "active": true
+        },
+        {
+          "name": "refs/heads/dependabot/nuget/Nuke.Common-9.0.3",
+          "default": false,
+          "active": false
+        },
+        {
+          "name": "refs/heads/matt-richardson-patch-1",
+          "default": false,
+          "active": true
+        },
+        {
+          "name": "refs/heads/mattr/bump-fluent-assertions",
+          "default": false,
+          "active": false
+        }
+      ]
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "318",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=15804239036236D7C920B44F997DA309; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 02:33:19 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 02:33:09 GMT"
+    }
+  }
+}

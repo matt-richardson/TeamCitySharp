@@ -1,0 +1,156 @@
+{
+  "Guid": "13544256-c23b-49b0-96cc-cc3f3fe64b8a",
+  "UpdatedAt": "2025-01-01T02:17:26.426287Z",
+  "Title": "Proxy Mapping for GET /httpAuth/app/rest/builds/id:2508/statistics",
+  "Description": "Proxy Mapping for GET /httpAuth/app/rest/builds/id:2508/statistics",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/builds/id:2508/statistics",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ],
+    "Params": [
+      {
+        "Name": "fields",
+        "Matchers": [
+          {
+            "Name": "ExactMatcher",
+            "Pattern": "count,href,property(name,value)",
+            "IgnoreCase": false
+          }
+        ]
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "property": [
+        {
+          "name": "ArtifactsSize",
+          "value": "34207"
+        },
+        {
+          "name": "BuildDuration",
+          "value": "4064"
+        },
+        {
+          "name": "BuildDurationNetTime",
+          "value": "3943"
+        },
+        {
+          "name": "buildStageDuration:artifactsPublishing",
+          "value": "17"
+        },
+        {
+          "name": "buildStageDuration:buildFinishing",
+          "value": "6"
+        },
+        {
+          "name": "buildStageDuration:buildStepsimpleRunner",
+          "value": "3943"
+        },
+        {
+          "name": "buildStageDuration:firstStepPreparation",
+          "value": "9"
+        },
+        {
+          "name": "buildStageDuration:toolsUpdating",
+          "value": "1"
+        },
+        {
+          "name": "BuildTestStatus",
+          "value": "3"
+        },
+        {
+          "name": "FailedTestCount",
+          "value": "1"
+        },
+        {
+          "name": "PassedTestCount",
+          "value": "4"
+        },
+        {
+          "name": "queueWaitReason:Build_settings_have_not_been_finalized",
+          "value": "5"
+        },
+        {
+          "name": "queueWaitReason:Preparing_a_build_for_a_start_on_an_agent",
+          "value": "1"
+        },
+        {
+          "name": "queueWaitReason:Waiting_for_the_build_queue_distribution_process",
+          "value": "1"
+        },
+        {
+          "name": "serverSideBuildFinishing",
+          "value": "1"
+        },
+        {
+          "name": "SuccessRate",
+          "value": "0"
+        },
+        {
+          "name": "TimeSpentInQueue",
+          "value": "9"
+        },
+        {
+          "name": "TotalTestCount",
+          "value": "5"
+        }
+      ],
+      "count": 18
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "984",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=B4A91FB69330A6F6093877E543F10CA2; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 02:17:36 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 02:17:26 GMT"
+    }
+  }
+}

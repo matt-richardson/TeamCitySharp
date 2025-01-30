@@ -1,0 +1,147 @@
+{
+  "Guid": "f9b09a28-0079-4765-a147-360359dd93b8",
+  "UpdatedAt": "2025-01-01T22:54:05.881779Z",
+  "Title": "Proxy Mapping for GET /httpAuth/app/rest/builds",
+  "Description": "Proxy Mapping for GET /httpAuth/app/rest/builds",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/builds",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ],
+    "Params": [
+      {
+        "Name": "locator",
+        "Matchers": [
+          {
+            "Name": "ExactMatcher",
+            "Pattern": "user:(username:testing-tc-sharp)",
+            "IgnoreCase": false
+          }
+        ]
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "count": 6,
+      "build": [
+        {
+          "id": 2511,
+          "buildTypeId": "TestingTeamCitySharp_BuildWithVcsRoot",
+          "number": "3",
+          "status": "SUCCESS",
+          "state": "finished",
+          "branchName": "refs/heads/mattr/bump-fluent-assertions",
+          "href": "/httpAuth/app/rest/builds/id:2511",
+          "webUrl": "http://localhost:8111/buildConfiguration/TestingTeamCitySharp_BuildWithVcsRoot/2511",
+          "finishOnAgentDate": "20241231T115958+1100"
+        },
+        {
+          "id": 2510,
+          "buildTypeId": "TestingTeamCitySharp_BuildWithVcsRoot",
+          "number": "2",
+          "status": "SUCCESS",
+          "state": "finished",
+          "branchName": "refs/heads/dependabot/nuget/Nuke.Common-9.0.3",
+          "href": "/httpAuth/app/rest/builds/id:2510",
+          "webUrl": "http://localhost:8111/buildConfiguration/TestingTeamCitySharp_BuildWithVcsRoot/2510",
+          "finishOnAgentDate": "20241231T113424+1100"
+        },
+        {
+          "id": 2509,
+          "buildTypeId": "TestingTeamCitySharp_BuildWithVcsRoot",
+          "number": "1",
+          "status": "SUCCESS",
+          "state": "finished",
+          "href": "/httpAuth/app/rest/builds/id:2509",
+          "webUrl": "http://localhost:8111/buildConfiguration/TestingTeamCitySharp_BuildWithVcsRoot/2509",
+          "finishOnAgentDate": "20241231T112544+1100"
+        },
+        {
+          "id": 2508,
+          "buildTypeId": "TestingTeamCitySharp_BuildWithTests",
+          "number": "4",
+          "status": "FAILURE",
+          "state": "finished",
+          "href": "/httpAuth/app/rest/builds/id:2508",
+          "webUrl": "http://localhost:8111/buildConfiguration/TestingTeamCitySharp_BuildWithTests/2508",
+          "finishOnAgentDate": "20241231T104208+1100"
+        },
+        {
+          "id": 2507,
+          "buildTypeId": "TestingTeamCitySharp_BuildWithTests",
+          "number": "3",
+          "status": "SUCCESS",
+          "state": "finished",
+          "href": "/httpAuth/app/rest/builds/id:2507",
+          "webUrl": "http://localhost:8111/buildConfiguration/TestingTeamCitySharp_BuildWithTests/2507",
+          "finishOnAgentDate": "20241231T102117+1100"
+        },
+        {
+          "id": 2506,
+          "buildTypeId": "TestingTeamCitySharp_BuildWithTests",
+          "number": "2",
+          "status": "FAILURE",
+          "state": "finished",
+          "href": "/httpAuth/app/rest/builds/id:2506",
+          "webUrl": "http://localhost:8111/buildConfiguration/TestingTeamCitySharp_BuildWithTests/2506",
+          "finishOnAgentDate": "20241231T102057+1100"
+        }
+      ],
+      "href": "/httpAuth/app/rest/builds?locator=user:(username:testing-tc-sharp)"
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "1989",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=66F651450CF1EFAC8D015688D6B58F7E; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 22:54:15 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 22:54:05 GMT"
+    }
+  }
+}

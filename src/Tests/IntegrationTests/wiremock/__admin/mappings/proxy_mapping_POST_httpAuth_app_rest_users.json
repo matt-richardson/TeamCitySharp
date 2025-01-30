@@ -1,0 +1,91 @@
+{
+  "Guid": "13a050f9-fc24-46f4-b583-57001915e036",
+  "UpdatedAt": "2025-01-01T05:23:29.050447Z",
+  "Title": "Proxy Mapping for POST /httpAuth/app/rest/users",
+  "Description": "Proxy Mapping for POST /httpAuth/app/rest/users",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/users",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "POST"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/xml",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Content-Type",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/xml; charset=us-ascii",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Content-Length",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "88",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ],
+    "Body": {
+      "Matcher": {
+        "Name": "ExactMatcher",
+        "Pattern": "<user name=\"John Doe\" username=\"John.Doe\" email=\"John.Doe@test.com\" password=\"J0hnD03\"/>",
+        "IgnoreCase": true
+      }
+    }
+  },
+  "Response": {
+    "StatusCode": 200,
+    "Body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><user username=\"john.doe\" name=\"John Doe\" id=\"80\" email=\"John.Doe@test.com\" href=\"/httpAuth/app/rest/users/id:80\"><properties count=\"3\" href=\"/httpAuth/app/rest/users/id:80/properties\"><property name=\"addTriggeredBuildToFavorites\" value=\"true\"/><property name=\"plugin:vcs:anyVcs:anyVcsRoot\" value=\"John.Doe\"/><property name=\"teamcity.server.buildNumber\" value=\"156166\"/></properties><roles/><groups count=\"1\"><group key=\"ALL_USERS_GROUP\" name=\"All Users\" href=\"/httpAuth/app/rest/userGroups/key:ALL_USERS_GROUP\" description=\"Contains all TeamCity users\"/></groups></user>",
+    "Headers": {
+      "Content-Type": "application/xml",
+      "Content-Length": "626",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=3D5351C5026DF35704765E8F89AEAFFC; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:23:39 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 05:23:28 GMT"
+    }
+  }
+}

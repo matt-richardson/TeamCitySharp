@@ -1,0 +1,117 @@
+{
+  "Guid": "ff07a0ab-aa0e-4d6b-ac5a-ee384418ecf3",
+  "UpdatedAt": "2025-01-01T05:23:27.841295Z",
+  "Title": "Proxy Mapping for GET /httpAuth/app/rest/userGroups/key:ALL_USERS_GROUP",
+  "Description": "Proxy Mapping for GET /httpAuth/app/rest/userGroups/key:ALL_USERS_GROUP",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/userGroups/key:ALL_USERS_GROUP",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "key": "ALL_USERS_GROUP",
+      "name": "All Users",
+      "href": "/httpAuth/app/rest/userGroups/key:ALL_USERS_GROUP",
+      "description": "Contains all TeamCity users",
+      "parent-groups": {
+        "count": 0,
+        "group": []
+      },
+      "child-groups": {
+        "count": 1,
+        "group": [
+          {
+            "key": "ADMINUSERS",
+            "name": "AdminUsers",
+            "href": "/httpAuth/app/rest/userGroups/key:ADMINUSERS"
+          }
+        ]
+      },
+      "users": {
+        "count": 2,
+        "user": [
+          {
+            "username": "testing-tc-sharp",
+            "name": "Testing TeamCitySharp",
+            "id": 1,
+            "href": "/httpAuth/app/rest/users/id:1"
+          },
+          {
+            "username": "testing-tc-sharp-non-admin",
+            "id": 3,
+            "href": "/httpAuth/app/rest/users/id:3"
+          }
+        ]
+      },
+      "roles": {
+        "role": [
+          {
+            "roleId": "PROJECT_DEVELOPER",
+            "scope": "g",
+            "href": "/httpAuth/app/rest/userGroups/key:ALL_USERS_GROUP/roles/PROJECT_DEVELOPER/g"
+          }
+        ]
+      },
+      "properties": {
+        "property": [],
+        "count": 0,
+        "href": "/httpAuth/app/rest/userGroups/key:ALL_USERS_GROUP/properties"
+      }
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "800",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=1CE5973EE585FD15DFB5DC1CC34EDFA7; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:23:37 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 05:23:27 GMT"
+    }
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "Guid": "76309fdf-b145-459d-bb38-fecc5b5f8746",
+  "UpdatedAt": "2025-01-01T05:23:27.955052Z",
+  "Title": "Proxy Mapping for PUT /httpAuth/app/rest/vcs-roots/id:TestingTeamCitySharp_vcsroot1_01/properties/tt",
+  "Description": "Proxy Mapping for PUT /httpAuth/app/rest/vcs-roots/id:TestingTeamCitySharp_vcsroot1_01/properties/tt",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/vcs-roots/id:TestingTeamCitySharp_vcsroot1_01/properties/tt",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "PUT"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "text/plain",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Content-Type",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "text/plain; charset=us-ascii",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Content-Length",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "3",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ],
+    "Body": {
+      "Matcher": {
+        "Name": "ExactMatcher",
+        "Pattern": "tt2",
+        "IgnoreCase": true
+      }
+    }
+  },
+  "Response": {
+    "StatusCode": 200,
+    "Body": "tt2",
+    "Headers": {
+      "Content-Type": "text/plain",
+      "Content-Length": "3",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=77A1E59C49037E4590B14249F0719031; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:23:37 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 05:23:27 GMT"
+    }
+  }
+}

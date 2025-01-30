@@ -1,0 +1,113 @@
+{
+  "Guid": "2e5dc6fa-0bb3-4713-b3d7-4fbdd6c50c6c",
+  "UpdatedAt": "2025-01-01T05:23:27.777795Z",
+  "Title": "Proxy Mapping for GET /httpAuth/app/rest/server",
+  "Description": "Proxy Mapping for GET /httpAuth/app/rest/server",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/server",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "version": "2024.03 (build 156166)",
+      "versionMajor": 2024,
+      "versionMinor": 3,
+      "startTime": "20241230T152119+1100",
+      "currentTime": "20250101T162327+1100",
+      "buildNumber": "156166",
+      "buildDate": "20240326T000000+1100",
+      "internalId": "d36d48db-49df-4e4f-b788-a9891082fd01",
+      "role": "main_node",
+      "webUrl": "http://localhost:8111",
+      "projects": {
+        "href": "/httpAuth/app/rest/projects"
+      },
+      "vcsRoots": {
+        "href": "/httpAuth/app/rest/vcs-roots"
+      },
+      "builds": {
+        "href": "/httpAuth/app/rest/builds"
+      },
+      "users": {
+        "href": "/httpAuth/app/rest/users"
+      },
+      "userGroups": {
+        "href": "/httpAuth/app/rest/userGroups"
+      },
+      "agents": {
+        "href": "/httpAuth/app/rest/agents"
+      },
+      "buildQueue": {
+        "href": "/httpAuth/app/rest/buildQueue"
+      },
+      "agentPools": {
+        "href": "/httpAuth/app/rest/agentPools"
+      },
+      "investigations": {
+        "href": "/httpAuth/app/rest/investigations"
+      },
+      "mutes": {
+        "href": "/httpAuth/app/rest/mutes"
+      },
+      "artifactsUrl": "",
+      "nodes": {
+        "href": "/httpAuth/app/rest/server/nodes"
+      }
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "881",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=B88378F3FD6B39CDF593B6FD2E75BAAA; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:23:37 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 05:23:27 GMT"
+    }
+  }
+}

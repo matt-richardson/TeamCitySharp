@@ -1,0 +1,71 @@
+{
+  "Guid": "1a1b0c14-7eff-45fe-8124-79b732605c32",
+  "UpdatedAt": "2025-01-01T05:23:26.615689Z",
+  "Title": "Proxy Mapping for GET /httpAuth/repository/download/TestingTeamCitySharp_ContinuousIntegration/2/.teamcity/logs/buildLog.ui.map",
+  "Description": "Proxy Mapping for GET /httpAuth/repository/download/TestingTeamCitySharp_ContinuousIntegration/2/.teamcity/logs/buildLog.ui.map",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/repository/download/TestingTeamCitySharp_ContinuousIntegration/2/.teamcity/logs/buildLog.ui.map",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "Body": "\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0001\u0000\u0000\u0000\u0002\u0000\u0000\u0000\u0003\u0000\u0000\u0000\u0004\u0000\u0000\u0000\u0005\u0000\u0000\u0000\u0006\u0000\u0000\u0000\u0007\u0000\u0000\u0000\b\u0000\u0000\u0000\t\u0000\u0000\u0000\n\u0000\u0000\u0000\u000b\u0000\u0000\u0000\f\u0000\u0000\u0000\r\u0000\u0000\u0000\u000e\u0000\u0000\u0000\u000f\u0000\u0000\u0000\u0010\u0000\u0000\u0000\u0011\u0000\u0000\u0000\u0012\u0000\u0000\u0000\u0013\u0000\u0000\u0000\u0014\u0000\u0000\u0000\u0015\u0000\u0000\u0000\u0016\u0000\u0000\u0000\u0017\u0000\u0000\u0000\u0018\u0000\u0000\u0000\u0019\u0000\u0000\u0000\u001a\u0000\u0000\u0000\u001b\u0000\u0000\u0000\u001c\u0000\u0000\u0000\u001d\u0000\u0000\u0000\u001e\u0000\u0000\u0000\u001f\u0000\u0000\u0000 \u0000\u0000\u0000!\u0000\u0000\u0000\"\u0000\u0000\u0000#\u0000\u0000\u0000$\u0000\u0000\u0000%\u0000\u0000\u0000&\u0000\u0000\u0000'\u0000\u0000\u0000(\u0000\u0000\u0000)\u0000\u0000\u0000*\u0000\u0000\u0000+\u0000\u0000\u0000,\u0000\u0000\u0000-\u0000\u0000\u0000.\u0000\u0000\u0000/\u0000\u0000\u00000\u0000\u0000\u00001\u0000\u0000\u00002\u0000\u0000\u00003\u0000\u0000\u00004\u0000\u0000\u00005\u0000\u0000\u00006",
+    "Headers": {
+      "Last-Modified": "Mon, 30 Dec 2024 05:16:05 GMT",
+      "Content-Disposition": "attachment; filename*=UTF-8''buildLog.ui.map;",
+      "Content-Type": "application/octet-stream",
+      "Content-Length": "220",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=96B07FBD596C45CD60BFCB3027AED06E; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:23:36 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "max-age=86400",
+      "Accept-Ranges": "bytes",
+      "ETag": "\"2327c83e0bd1966154b461c9c34b8cc5\"",
+      "Date": "Wed, 01 Jan 2025 05:23:26 GMT"
+    }
+  }
+}

@@ -1,0 +1,358 @@
+{
+  "Guid": "dae982e2-50ca-4c71-8ab0-dfb507d203c1",
+  "UpdatedAt": "2025-01-01T05:23:28.932846Z",
+  "Title": "Proxy Mapping for GET /httpAuth/app/rest/buildTypes/id:ReleaseBotPlayground_Build",
+  "Description": "Proxy Mapping for GET /httpAuth/app/rest/buildTypes/id:ReleaseBotPlayground_Build",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/buildTypes/id:ReleaseBotPlayground_Build",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "id": "ReleaseBotPlayground_Build",
+      "name": "Build",
+      "projectName": "GithubStatusTests",
+      "projectId": "GithubStatusTests",
+      "href": "/httpAuth/app/rest/buildTypes/id:ReleaseBotPlayground_Build",
+      "webUrl": "http://localhost:8111/buildConfiguration/ReleaseBotPlayground_Build?mode=builds",
+      "project": {
+        "id": "GithubStatusTests",
+        "name": "GithubStatusTests",
+        "parentProjectId": "_Root",
+        "href": "/httpAuth/app/rest/projects/id:GithubStatusTests",
+        "webUrl": "http://localhost:8111/project.html?projectId=GithubStatusTests"
+      },
+      "templates": {
+        "count": 0,
+        "buildType": []
+      },
+      "vcs-root-entries": {
+        "count": 1,
+        "vcs-root-entry": [
+          {
+            "id": "ReleaseBotPlayground_HttpsGithubComOctopusDeployReleaseBotPlaygroundRefsHeadsMain",
+            "vcs-root": {
+              "id": "ReleaseBotPlayground_HttpsGithubComOctopusDeployReleaseBotPlaygroundRefsHeadsMain",
+              "name": "https://github.com/matt-richardson/GithubStatusTests.git",
+              "href": "/httpAuth/app/rest/vcs-roots/id:ReleaseBotPlayground_HttpsGithubComOctopusDeployReleaseBotPlaygroundRefsHeadsMain"
+            },
+            "checkout-rules": ""
+          }
+        ]
+      },
+      "settings": {
+        "property": [
+          {
+            "name": "buildNumberCounter",
+            "value": "1"
+          },
+          {
+            "name": "buildNumberPattern",
+            "value": "0.0.%build.counter%"
+          },
+          {
+            "name": "cleanBuild",
+            "value": "true"
+          }
+        ],
+        "count": 3
+      },
+      "parameters": {
+        "property": [
+          {
+            "name": "test",
+            "value": "",
+            "inherited": true
+          }
+        ],
+        "count": 1,
+        "href": "/httpAuth/app/rest/buildTypes/id:ReleaseBotPlayground_Build/parameters"
+      },
+      "steps": {
+        "count": 6,
+        "step": [
+          {
+            "id": "RUNNER_7",
+            "name": "",
+            "type": "simpleRunner",
+            "properties": {
+              "property": [
+                {
+                  "name": "script.content",
+                  "value": "echo \"hello\""
+                },
+                {
+                  "name": "teamcity.step.mode",
+                  "value": "default"
+                },
+                {
+                  "name": "use.custom.script",
+                  "value": "true"
+                }
+              ],
+              "count": 3
+            }
+          },
+          {
+            "id": "RUNNER_9",
+            "name": "",
+            "type": "dotnet",
+            "properties": {
+              "property": [
+                {
+                  "name": "command",
+                  "value": "build"
+                },
+                {
+                  "name": "dotNetCoverage.dotCover.home.path",
+                  "value": "%teamcity.tool.JetBrains.dotCover.CommandLineTools.DEFAULT%"
+                },
+                {
+                  "name": "paths",
+                  "value": "GithubStatusTests.csproj"
+                },
+                {
+                  "name": "teamcity.step.mode",
+                  "value": "default"
+                }
+              ],
+              "count": 4
+            }
+          },
+          {
+            "id": "RUNNER_8",
+            "name": "",
+            "type": "octopus.pack.package",
+            "properties": {
+              "property": [
+                {
+                  "name": "octopus_packageformat",
+                  "value": "NuPkg"
+                },
+                {
+                  "name": "octopus_packageid",
+                  "value": "MyApp.Web"
+                },
+                {
+                  "name": "octopus_packageoutputpath",
+                  "value": "artifacts"
+                },
+                {
+                  "name": "octopus_packagesourcepath",
+                  "value": "./"
+                },
+                {
+                  "name": "octopus_packageversion",
+                  "value": "%build.number%"
+                },
+                {
+                  "name": "teamcity.step.mode",
+                  "value": "default"
+                }
+              ],
+              "count": 6
+            }
+          },
+          {
+            "id": "RUNNER_10",
+            "name": "",
+            "type": "octopus.metadata",
+            "properties": {
+              "property": [
+                {
+                  "name": "octopus_forcepush",
+                  "value": "false"
+                },
+                {
+                  "name": "octopus_host",
+                  "value": "http://localhost:8066/"
+                },
+                {
+                  "name": "octopus_packageid",
+                  "value": "MyApp.Web"
+                },
+                {
+                  "name": "octopus_packageversion",
+                  "value": "%build.number%"
+                },
+                {
+                  "name": "secure:octopus_apikey"
+                },
+                {
+                  "name": "teamcity.step.mode",
+                  "value": "default"
+                }
+              ],
+              "count": 6
+            }
+          },
+          {
+            "id": "RUNNER_11",
+            "name": "",
+            "type": "octopus.push.package",
+            "properties": {
+              "property": [
+                {
+                  "name": "octopus_forcepush",
+                  "value": "false"
+                },
+                {
+                  "name": "octopus_host",
+                  "value": "http://localhost:8066"
+                },
+                {
+                  "name": "octopus_packagepaths",
+                  "value": "./artifacts/MyApp.Web.%build.number%.nupkg"
+                },
+                {
+                  "name": "secure:octopus_apikey"
+                },
+                {
+                  "name": "teamcity.step.mode",
+                  "value": "default"
+                }
+              ],
+              "count": 5
+            }
+          },
+          {
+            "id": "RUNNER_12",
+            "name": "",
+            "type": "octopus.create.release",
+            "properties": {
+              "property": [
+                {
+                  "name": "octopus_host",
+                  "value": "http://localhost:8066"
+                },
+                {
+                  "name": "octopus_project_name",
+                  "value": "MyApp"
+                },
+                {
+                  "name": "octopus_releasenumber",
+                  "value": "%build.number%"
+                },
+                {
+                  "name": "octopus_version",
+                  "value": "3.0+"
+                },
+                {
+                  "name": "secure:octopus_apikey"
+                },
+                {
+                  "name": "teamcity.step.mode",
+                  "value": "default"
+                }
+              ],
+              "count": 6
+            }
+          }
+        ]
+      },
+      "features": {
+        "count": 0
+      },
+      "triggers": {
+        "count": 1,
+        "trigger": [
+          {
+            "id": "TRIGGER_2",
+            "type": "vcsTrigger",
+            "properties": {
+              "property": [
+                {
+                  "name": "branchFilter",
+                  "value": "+:*"
+                },
+                {
+                  "name": "enableQueueOptimization",
+                  "value": "true"
+                },
+                {
+                  "name": "quietPeriodMode",
+                  "value": "DO_NOT_USE"
+                }
+              ],
+              "count": 3
+            }
+          }
+        ]
+      },
+      "snapshot-dependencies": {
+        "count": 0
+      },
+      "artifact-dependencies": {
+        "count": 0
+      },
+      "agent-requirements": {
+        "count": 0
+      },
+      "builds": {
+        "href": "/httpAuth/app/rest/buildTypes/id:ReleaseBotPlayground_Build/builds/"
+      },
+      "investigations": {
+        "href": "/httpAuth/app/rest/investigations?locator=buildType:(id:ReleaseBotPlayground_Build)"
+      },
+      "compatibleAgents": {
+        "href": "/httpAuth/app/rest/agents?locator=compatible:(buildType:(id:ReleaseBotPlayground_Build))"
+      },
+      "compatibleCloudImages": {}
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "4180",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=C0DC3725018E75EF75B87C334C6F4FFA; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:23:38 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 05:23:28 GMT"
+    }
+  }
+}

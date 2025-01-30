@@ -1,0 +1,69 @@
+{
+  "Guid": "c080b114-a304-4b3d-b24e-579030ee3b6d",
+  "UpdatedAt": "2025-01-01T03:27:03.894568Z",
+  "Title": "Proxy Mapping for DELETE /httpAuth/app/rest/buildTypes/name:",
+  "Description": "Proxy Mapping for DELETE /httpAuth/app/rest/buildTypes/name:",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/buildTypes/name:",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "DELETE"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "text/plain",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ],
+    "Body": {
+      "Matcher": {
+        "Name": "ExactMatcher",
+        "Pattern": "",
+        "IgnoreCase": true
+      }
+    }
+  },
+  "Response": {
+    "StatusCode": 404,
+    "Body": "Responding with error, status code: 404 (Not Found).\nDetails: jetbrains.buildServer.server.rest.errors.NotFoundException: Nothing is found by locator 'count:1,name:'.\nCould not find the entity requested. Check the reference is correct and the user has permissions to access the entity.",
+    "Headers": {
+      "Content-Type": "text/plain",
+      "Content-Length": "285",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=A904AE83AE8DF6EF9C37653B48E8F3DA; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 03:27:13 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 03:27:03 GMT"
+    }
+  }
+}

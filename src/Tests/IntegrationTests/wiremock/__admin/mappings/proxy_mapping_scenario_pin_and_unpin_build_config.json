@@ -1,0 +1,189 @@
+[
+  {
+    "Guid": "fe0748ce-a073-4c23-bc08-17ec8a7432fe",
+    "UpdatedAt": "2025-01-01T06:24:08.22021Z",
+    "Title": "Proxy Mapping for PUT /httpAuth/app/rest/builds/buildType:TestingTeamCitySharp_BuildWithTests,number:3/pinInfo",
+    "Description": "Proxy Mapping for PUT /httpAuth/app/rest/builds/buildType:TestingTeamCitySharp_BuildWithTests,number:3/pinInfo",
+    "Scenario": "Pin and unpin build config",
+    "SetStateTo": "Build config pinned",
+    "Priority": -2000000,
+    "Request": {
+      "Path": {
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "/httpAuth/app/rest/builds/buildType:TestingTeamCitySharp_BuildWithTests,number:3/pinInfo",
+            "IgnoreCase": false
+          }
+        ]
+      },
+      "Methods": [
+        "PUT"
+      ],
+      "HttpVersion": "1.1",
+      "Headers": [
+        {
+          "Name": "Accept",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "application/xml",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Authorization",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Content-Type",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "application/xml; charset=us-ascii",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Content-Length",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "82",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        }
+      ],
+      "Body": {
+        "Matcher": {
+          "Name": "ExactMatcher",
+          "Pattern": "<pinInfo status=\"true\"><comment><text>Automated Comment</text></comment></pinInfo>",
+          "IgnoreCase": true
+        }
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><pinInfo status=\"true\"><comment><user username=\"testing-tc-sharp\" name=\"Testing TeamCitySharp\" id=\"1\" href=\"/httpAuth/app/rest/users/id:1\"/><timestamp>20250101T172408+1100</timestamp><text>Automated Comment</text></comment></pinInfo>",
+      "Headers": {
+        "Content-Type": "application/xml",
+        "Content-Length": "288",
+        "TeamCity-Node-Id": "MAIN_SERVER",
+        "Set-Cookie": [
+          "TCSESSIONID=B28943AC541AB55E41A7BEFABFFD3219; Path=/; HttpOnly",
+          "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 06:24:18 GMT; Path=/",
+          "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+        ],
+        "Cache-Control": "no-store",
+        "Date": "Wed, 01 Jan 2025 06:24:07 GMT"
+      }
+    }
+  },
+  {
+    "Guid": "072a3d28-1ba0-4368-8144-da5cc827b030",
+    "UpdatedAt": "2025-01-01T20:44:03.42367Z",
+    "Title": "Proxy Mapping for PUT /httpAuth/app/rest/builds/buildType:TestingTeamCitySharp_BuildWithTests,number:3/pinInfo",
+    "Description": "Proxy Mapping for PUT /httpAuth/app/rest/builds/buildType:TestingTeamCitySharp_BuildWithTests,number:3/pinInfo",
+    "Scenario": "Pin and unpin build config",
+    "WhenStateIs": "Build config pinned",
+    "SetStateTo": "Complete",
+    "Priority": -2000000,
+    "Request": {
+      "Path": {
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "/httpAuth/app/rest/builds/buildType:TestingTeamCitySharp_BuildWithTests,number:3/pinInfo",
+            "IgnoreCase": false
+          }
+        ]
+      },
+      "Methods": [
+        "PUT"
+      ],
+      "HttpVersion": "1.1",
+      "Headers": [
+        {
+          "Name": "Accept",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "application/xml",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Authorization",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Content-Type",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "application/xml; charset=us-ascii",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Content-Length",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "26",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        }
+      ],
+      "Body": {
+        "Matcher": {
+          "Name": "ExactMatcher",
+          "Pattern": "<pinInfo status=\"false\" />",
+          "IgnoreCase": true
+        }
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><pinInfo status=\"false\"><comment><user username=\"testing-tc-sharp\" name=\"Testing TeamCitySharp\" id=\"1\" href=\"/httpAuth/app/rest/users/id:1\"/><timestamp>20250101T172919+1100</timestamp></comment></pinInfo>",
+      "Headers": {
+        "Content-Type": "application/xml",
+        "Content-Length": "259",
+        "TeamCity-Node-Id": "MAIN_SERVER",
+        "Set-Cookie": [
+          "TCSESSIONID=BDFF8C6E822F20F26295F1F08DC814EF; Path=/; HttpOnly",
+          "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 20:44:13 GMT; Path=/",
+          "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+        ],
+        "Cache-Control": "no-store",
+        "Date": "Wed, 01 Jan 2025 20:44:02 GMT"
+      }
+    }
+  }
+]

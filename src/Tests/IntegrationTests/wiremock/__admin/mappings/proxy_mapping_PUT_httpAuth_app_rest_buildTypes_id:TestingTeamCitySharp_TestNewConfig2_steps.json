@@ -1,0 +1,91 @@
+{
+  "Guid": "f5451dec-7c50-4017-b545-4cf54ff439d7",
+  "UpdatedAt": "2025-01-01T05:23:28.256195Z",
+  "Title": "Proxy Mapping for PUT /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestNewConfig2/steps",
+  "Description": "Proxy Mapping for PUT /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestNewConfig2/steps",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestNewConfig2/steps",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "PUT"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/xml",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Content-Type",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/xml; charset=us-ascii",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Content-Length",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "909",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ],
+    "Body": {
+      "Matcher": {
+        "Name": "ExactMatcher",
+        "Pattern": "<steps>\n                        <step name=\"Test1\" type=\"simpleRunner\">\n                        <properties>\n                          <property name=\"script.content\" value=\"@echo off&#xA;echo Step1&#xA;touch step1.txt\" />\n                          <property name=\"teamcity.step.mode\" value=\"default\" />\n                          <property name=\"use.custom.script\" value=\"true\" />\n                        </properties>\n                    </step>\n                    <step name=\"Test2\" type=\"simpleRunner\">\n                        <properties>\n                          <property name=\"script.content\" value=\"@echo off&#xA;echo Step1&#xA;touch step2.txt\" />\n                          <property name=\"teamcity.step.mode\" value=\"default\" />\n                          <property name=\"use.custom.script\" value=\"true\" />\n                        </properties>\n                    </step>\n                   </steps>",
+        "IgnoreCase": true
+      }
+    }
+  },
+  "Response": {
+    "StatusCode": 200,
+    "Body": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><steps count=\"2\"><step id=\"RUNNER_409\" name=\"Test1\" type=\"simpleRunner\"><properties count=\"3\"><property name=\"script.content\" value=\"@echo off&#xA;echo Step1&#xA;touch step1.txt\"/><property name=\"teamcity.step.mode\" value=\"default\"/><property name=\"use.custom.script\" value=\"true\"/></properties></step><step id=\"RUNNER_410\" name=\"Test2\" type=\"simpleRunner\"><properties count=\"3\"><property name=\"script.content\" value=\"@echo off&#xA;echo Step1&#xA;touch step2.txt\"/><property name=\"teamcity.step.mode\" value=\"default\"/><property name=\"use.custom.script\" value=\"true\"/></properties></step></steps>",
+    "Headers": {
+      "Content-Type": "application/xml",
+      "Content-Length": "650",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=E4B36D9609C6F6D29A871A64B36D234D; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:23:38 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 05:23:27 GMT"
+    }
+  }
+}

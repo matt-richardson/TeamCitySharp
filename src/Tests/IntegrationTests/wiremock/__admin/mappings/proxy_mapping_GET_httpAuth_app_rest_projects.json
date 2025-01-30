@@ -1,0 +1,206 @@
+{
+  "Guid": "9c7921f2-321c-4812-aa7e-a871b12c7b60",
+  "UpdatedAt": "2025-01-01T05:23:27.61256Z",
+  "Title": "Proxy Mapping for GET /httpAuth/app/rest/projects",
+  "Description": "Proxy Mapping for GET /httpAuth/app/rest/projects",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/projects",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "count": 18,
+      "href": "/httpAuth/app/rest/projects",
+      "project": [
+        {
+          "id": "_Root",
+          "name": "<Root project>",
+          "description": "Contains all other projects",
+          "href": "/httpAuth/app/rest/projects/id:_Root",
+          "webUrl": "http://localhost:8111/project.html?projectId=_Root"
+        },
+        {
+          "id": "GithubStatusTests",
+          "name": "GithubStatusTests",
+          "parentProjectId": "_Root",
+          "href": "/httpAuth/app/rest/projects/id:GithubStatusTests",
+          "webUrl": "http://localhost:8111/project.html?projectId=GithubStatusTests"
+        },
+        {
+          "id": "TestTcWebhooks",
+          "name": "Test tcWebhooks",
+          "parentProjectId": "_Root",
+          "href": "/httpAuth/app/rest/projects/id:TestTcWebhooks",
+          "webUrl": "http://localhost:8111/project.html?projectId=TestTcWebhooks"
+        },
+        {
+          "id": "OpenTelemetry",
+          "name": "Testing OpenTelemetry",
+          "parentProjectId": "_Root",
+          "description": "Enabled, points at honeycomb",
+          "href": "/httpAuth/app/rest/projects/id:OpenTelemetry",
+          "webUrl": "http://localhost:8111/project.html?projectId=OpenTelemetry"
+        },
+        {
+          "id": "OpenTelemetry_Test3",
+          "name": "Send OTEL to Honeycomb Classic",
+          "parentProjectId": "OpenTelemetry",
+          "description": "OTEL enabled, pointing at honeycomb",
+          "href": "/httpAuth/app/rest/projects/id:OpenTelemetry_Test3",
+          "webUrl": "http://localhost:8111/project.html?projectId=OpenTelemetry_Test3"
+        },
+        {
+          "id": "OpenTelemetry_SendOtelToHoneycombEnvironment",
+          "name": "Send OTEL to Honeycomb Environment",
+          "parentProjectId": "OpenTelemetry",
+          "description": "OTEL enabled, pointing at honeycomb",
+          "href": "/httpAuth/app/rest/projects/id:OpenTelemetry_SendOtelToHoneycombEnvironment",
+          "webUrl": "http://localhost:8111/project.html?projectId=OpenTelemetry_SendOtelToHoneycombEnvironment"
+        },
+        {
+          "id": "Childproject",
+          "name": "childproject",
+          "parentProjectId": "OpenTelemetry",
+          "description": "OTEL disabled",
+          "href": "/httpAuth/app/rest/projects/id:Childproject",
+          "webUrl": "http://localhost:8111/project.html?projectId=Childproject"
+        },
+        {
+          "id": "Test",
+          "name": "test",
+          "parentProjectId": "OpenTelemetry",
+          "description": "OTEL enabled, pointing at zipkin",
+          "href": "/httpAuth/app/rest/projects/id:Test",
+          "webUrl": "http://localhost:8111/project.html?projectId=Test"
+        },
+        {
+          "id": "Test2",
+          "name": "test2",
+          "parentProjectId": "OpenTelemetry",
+          "description": "OTEL enabled, inherited",
+          "href": "/httpAuth/app/rest/projects/id:Test2",
+          "webUrl": "http://localhost:8111/project.html?projectId=Test2"
+        },
+        {
+          "id": "TestingReportPortalPlugin",
+          "name": "Testing ReportPortal plugin",
+          "parentProjectId": "_Root",
+          "href": "/httpAuth/app/rest/projects/id:TestingReportPortalPlugin",
+          "webUrl": "http://localhost:8111/project.html?projectId=TestingReportPortalPlugin"
+        },
+        {
+          "id": "TestingReportPortalPlugin_SubProject",
+          "name": "SubProject",
+          "parentProjectId": "TestingReportPortalPlugin",
+          "href": "/httpAuth/app/rest/projects/id:TestingReportPortalPlugin_SubProject",
+          "webUrl": "http://localhost:8111/project.html?projectId=TestingReportPortalPlugin_SubProject"
+        },
+        {
+          "id": "TestingTeamCitySharp",
+          "name": "Testing TeamCitySharp",
+          "parentProjectId": "_Root",
+          "href": "/httpAuth/app/rest/projects/id:TestingTeamCitySharp",
+          "webUrl": "http://localhost:8111/project.html?projectId=TestingTeamCitySharp"
+        },
+        {
+          "id": "TestingTcWebhooksIssue242",
+          "name": "Testing tcWebhooks Issue 242",
+          "parentProjectId": "_Root",
+          "description": "Testing for https://github.com/tcplugins/tcWebHooks/issues/242",
+          "href": "/httpAuth/app/rest/projects/id:TestingTcWebhooksIssue242",
+          "webUrl": "http://localhost:8111/project.html?projectId=TestingTcWebhooksIssue242"
+        },
+        {
+          "id": "TestingTcWebhooksIssue242_SubProject1",
+          "name": "Sub Project 1",
+          "parentProjectId": "TestingTcWebhooksIssue242",
+          "href": "/httpAuth/app/rest/projects/id:TestingTcWebhooksIssue242_SubProject1",
+          "webUrl": "http://localhost:8111/project.html?projectId=TestingTcWebhooksIssue242_SubProject1"
+        },
+        {
+          "id": "TestingTcWebhooksIssue242_SubProject2",
+          "name": "Sub Project 2",
+          "parentProjectId": "TestingTcWebhooksIssue242",
+          "href": "/httpAuth/app/rest/projects/id:TestingTcWebhooksIssue242_SubProject2",
+          "webUrl": "http://localhost:8111/project.html?projectId=TestingTcWebhooksIssue242_SubProject2"
+        },
+        {
+          "id": "TestingTcWebhooksIssue242_SubProject3",
+          "name": "Sub Project 3",
+          "parentProjectId": "TestingTcWebhooksIssue242",
+          "href": "/httpAuth/app/rest/projects/id:TestingTcWebhooksIssue242_SubProject3",
+          "webUrl": "http://localhost:8111/project.html?projectId=TestingTcWebhooksIssue242_SubProject3"
+        },
+        {
+          "id": "TestingTcWebhooksIssue242_SubProject4",
+          "name": "Sub Project 4",
+          "parentProjectId": "TestingTcWebhooksIssue242",
+          "href": "/httpAuth/app/rest/projects/id:TestingTcWebhooksIssue242_SubProject4",
+          "webUrl": "http://localhost:8111/project.html?projectId=TestingTcWebhooksIssue242_SubProject4"
+        },
+        {
+          "id": "TestingTcWebhooksIssue242_SubProject5",
+          "name": "Sub Project 5",
+          "parentProjectId": "TestingTcWebhooksIssue242",
+          "href": "/httpAuth/app/rest/projects/id:TestingTcWebhooksIssue242_SubProject5",
+          "webUrl": "http://localhost:8111/project.html?projectId=TestingTcWebhooksIssue242_SubProject5"
+        }
+      ]
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "4753",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=557C5DC4AC80888A0FFA867B606303BF; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:23:37 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 05:23:27 GMT"
+    }
+  }
+}

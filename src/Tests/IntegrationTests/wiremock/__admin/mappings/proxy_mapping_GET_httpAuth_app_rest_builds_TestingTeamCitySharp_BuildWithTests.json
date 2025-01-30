@@ -1,0 +1,85 @@
+{
+  "Guid": "0c563b2a-28b9-4f44-a07d-550674be3bec",
+  "UpdatedAt": "2024-12-31T06:09:30.580484Z",
+  "Title": "Proxy Mapping for GET /httpAuth/app/rest/builds",
+  "Description": "Proxy Mapping for GET /httpAuth/app/rest/builds",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/builds",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ],
+    "Params": [
+      {
+        "Name": "locator",
+        "Matchers": [
+          {
+            "Name": "ExactMatcher",
+            "Pattern": "buildType:(id:TestingTeamCitySharp_BuildWithTests),count:1",
+            "IgnoreCase": false
+          }
+        ]
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "count": 1,
+      "nextHref": "/httpAuth/app/rest/builds?locator=buildType:(id:TestingTeamCitySharp_BuildWithTests),count:1,start:1",
+      "build": [
+        {
+          "id": 2508,
+          "buildTypeId": "TestingTeamCitySharp_BuildWithTests",
+          "number": "4",
+          "status": "FAILURE",
+          "state": "finished",
+          "href": "/httpAuth/app/rest/builds/id:2508",
+          "webUrl": "http://localhost:8111/buildConfiguration/TestingTeamCitySharp_BuildWithTests/2508",
+          "finishOnAgentDate": "20241231T104208+1100"
+        }
+      ],
+      "href": "/httpAuth/app/rest/builds?locator=buildType:(id:TestingTeamCitySharp_BuildWithTests),count:1"
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "531",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=9D50CAE0A566F6E865A296F2BD5490AC; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Tue, 31 Dec 2024 06:09:40 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Tue, 31 Dec 2024 06:09:30 GMT"
+    }
+  }
+}

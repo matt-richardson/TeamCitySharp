@@ -1,0 +1,305 @@
+[
+  {
+    "Guid": "dd14a811-beb9-426d-97ae-e53b2cae2da9",
+    "UpdatedAt": "2024-12-31T06:00:24.729151Z",
+    "Title": "Proxy Mapping for PUT /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_ContinuousIntegration/templates",
+    "Description": "Proxy Mapping for PUT /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_ContinuousIntegration/templates",
+    "Scenario": "Detach Template",
+    "SetStateTo": "Template Attached 1",
+    "Priority": -2000000,
+    "Request": {
+      "Path": {
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_ContinuousIntegration/templates",
+            "IgnoreCase": false
+          }
+        ]
+      },
+      "Methods": [
+        "PUT"
+      ],
+      "HttpVersion": "1.1",
+      "Headers": [
+        {
+          "Name": "Accept",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "application/json",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Content-Type",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "application/json; charset=us-ascii",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Content-Length",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "110",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        }
+      ],
+      "Body": {
+        "Matcher": {
+          "Name": "JsonMatcher",
+          "Pattern": {
+            "buildType": [
+              {
+                "id": "TestingTeamCitySharp_TestTemplate",
+                "name": "",
+                "href": "",
+                "projectId": "",
+                "projectName": ""
+              }
+            ]
+          },
+          "IgnoreCase": true,
+          "Regex": false
+        }
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "BodyAsJson": {
+        "count": 1,
+        "buildType": [
+          {
+            "id": "TestingTeamCitySharp_TestTemplate",
+            "name": "Test Template",
+            "templateFlag": true,
+            "projectName": "Testing TeamCitySharp",
+            "projectId": "TestingTeamCitySharp",
+            "href": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestTemplate"
+          }
+        ]
+      },
+      "Headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "260",
+        "X-Frame-Options": "sameorigin",
+        "Strict-Transport-Security": "max-age=31536000;",
+        "X-Content-Type-Options": "nosniff",
+        "X-XSS-Protection": "1; mode=block",
+        "Referrer-Policy": "origin-when-cross-origin",
+        "mixed-content": "noupgrade",
+        "TeamCity-Node-Id": "MAIN_SERVER",
+        "Set-Cookie": [
+          "TCSESSIONID=417348F8F1A491A5639D71FCC06673F6; Path=/; HttpOnly",
+          "RecentLogin=; Max-Age=10; Expires=Tue, 31 Dec 2024 06:00:34 GMT; Path=/",
+          "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+        ],
+        "Cache-Control": "no-store",
+        "Date": "Tue, 31 Dec 2024 06:00:24 GMT"
+      }
+    }
+  },
+  {
+    "Guid": "7879cba1-1cc3-47da-a4c5-4d4a0ac0c569",
+    "UpdatedAt": "2024-12-31T06:00:24.742254Z",
+    "Title": "Proxy Mapping for GET /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_ContinuousIntegration/templates",
+    "Description": "Proxy Mapping for GET /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_ContinuousIntegration/templates",
+    "Scenario": "Detach Template",
+    "WhenStateIs": "Template Attached 1",
+    "SetStateTo": "Template Attached 2",
+    "Priority": -2000000,
+    "Request": {
+      "Path": {
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_ContinuousIntegration/templates",
+            "IgnoreCase": false
+          }
+        ]
+      },
+      "Methods": [
+        "GET"
+      ],
+      "HttpVersion": "1.1",
+      "Headers": [
+        {
+          "Name": "Accept",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "application/json",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        }
+      ]
+    },
+    "Response": {
+      "StatusCode": 200,
+      "BodyAsJson": {
+        "count": 1,
+        "buildType": [
+          {
+            "id": "TestingTeamCitySharp_TestTemplate",
+            "name": "Test Template",
+            "templateFlag": true,
+            "projectName": "Testing TeamCitySharp",
+            "projectId": "TestingTeamCitySharp",
+            "href": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestTemplate"
+          }
+        ]
+      },
+      "Headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "260",
+        "X-Frame-Options": "sameorigin",
+        "Strict-Transport-Security": "max-age=31536000;",
+        "X-Content-Type-Options": "nosniff",
+        "X-XSS-Protection": "1; mode=block",
+        "Referrer-Policy": "origin-when-cross-origin",
+        "mixed-content": "noupgrade",
+        "TeamCity-Node-Id": "MAIN_SERVER",
+        "Set-Cookie": [
+          "TCSESSIONID=CC45F72B507B5933DABA4B9B786D8E1E; Path=/; HttpOnly",
+          "RecentLogin=; Max-Age=10; Expires=Tue, 31 Dec 2024 06:00:34 GMT; Path=/",
+          "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+        ],
+        "Cache-Control": "no-store",
+        "Date": "Tue, 31 Dec 2024 06:00:24 GMT"
+      }
+    }
+  },
+  {
+    "Guid": "9479a76a-ee4b-4a1e-88ef-a2aec70c6107",
+    "UpdatedAt": "2024-12-31T06:00:24.825773Z",
+    "Title": "Proxy Mapping for DELETE /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_ContinuousIntegration/templates",
+    "Description": "Proxy Mapping for DELETE /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_ContinuousIntegration/templates",
+    "Scenario": "Detach Template",
+    "WhenStateIs": "Template Attached 2",
+    "SetStateTo": "Template Detached",
+    "Priority": -2000000,
+    "Request": {
+      "Path": {
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_ContinuousIntegration/templates",
+            "IgnoreCase": false
+          }
+        ]
+      },
+      "Methods": [
+        "DELETE"
+      ],
+      "HttpVersion": "1.1",
+      "Headers": [
+        {
+          "Name": "Accept",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "text/plain",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        }
+      ],
+      "Body": {
+        "Matcher": {
+          "Name": "ExactMatcher",
+          "Pattern": "",
+          "IgnoreCase": true
+        }
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "TeamCity-Node-Id": "MAIN_SERVER",
+        "Set-Cookie": [
+          "TCSESSIONID=1675F9957D2CCC752D55B240F5E55B47; Path=/; HttpOnly",
+          "RecentLogin=; Max-Age=10; Expires=Tue, 31 Dec 2024 06:00:34 GMT; Path=/",
+          "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+        ],
+        "Cache-Control": "no-store",
+        "Date": "Tue, 31 Dec 2024 06:00:24 GMT"
+      }
+    }
+  },
+  {
+    "Guid": "c494464b-7265-402b-ad62-134da92edf11",
+    "UpdatedAt": "2024-12-31T06:00:24.742254Z",
+    "Title": "Proxy Mapping for GET /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_ContinuousIntegration/templates",
+    "Description": "Proxy Mapping for GET /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_ContinuousIntegration/templates",
+    "Scenario": "Detach Template",
+    "WhenStateIs": "Template Detached",
+    "Priority": -2000000,
+    "Request": {
+      "Path": {
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_ContinuousIntegration/templates",
+            "IgnoreCase": false
+          }
+        ]
+      },
+      "Methods": [
+        "GET"
+      ],
+      "HttpVersion": "1.1",
+      "Headers": [
+        {
+          "Name": "Accept",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "application/json",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        }
+      ]
+    },
+    "Response": {
+      "StatusCode": 200,
+      "BodyAsJson": {
+        "count": 0,
+        "buildType": []
+      },
+      "Headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "260",
+        "X-Frame-Options": "sameorigin",
+        "Strict-Transport-Security": "max-age=31536000;",
+        "X-Content-Type-Options": "nosniff",
+        "X-XSS-Protection": "1; mode=block",
+        "Referrer-Policy": "origin-when-cross-origin",
+        "mixed-content": "noupgrade",
+        "TeamCity-Node-Id": "MAIN_SERVER",
+        "Set-Cookie": [
+          "TCSESSIONID=CC45F72B507B5933DABA4B9B786D8E1E; Path=/; HttpOnly",
+          "RecentLogin=; Max-Age=10; Expires=Tue, 31 Dec 2024 06:00:34 GMT; Path=/",
+          "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+        ],
+        "Cache-Control": "no-store",
+        "Date": "Tue, 31 Dec 2024 06:00:24 GMT"
+      }
+    }
+  }
+]

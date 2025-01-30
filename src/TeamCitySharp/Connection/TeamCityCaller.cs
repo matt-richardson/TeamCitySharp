@@ -15,13 +15,15 @@ namespace TeamCitySharp.Connection
     private readonly Credentials m_credentials;
     private bool m_useNoCache;
     private string m_version="";
+    private readonly Func<HttpClient> m_httpClientFactory;
 
-    public TeamCityCaller(string hostName, bool useSsl)
+    public TeamCityCaller(string hostName, bool useSsl, Func<HttpClient> httpClientFactory)
     {
       if (string.IsNullOrEmpty(hostName))
         throw new ArgumentNullException("hostName");
 
       m_credentials = new Credentials {UseSSL = useSsl, HostName = hostName};
+      m_httpClientFactory = httpClientFactory ?? (() => new HttpClient());
     }
 
     public void DisableCache()
@@ -291,7 +293,7 @@ namespace TeamCitySharp.Connection
 
     private HttpClient CreateHttpClient(string userName, string password, string accept)
     {
-      var httpClient = new HttpClient();
+      var httpClient = m_httpClientFactory();
       httpClient.DefaultRequestHeaders.Accept
           .Add(new MediaTypeWithQualityHeaderValue(accept));
 

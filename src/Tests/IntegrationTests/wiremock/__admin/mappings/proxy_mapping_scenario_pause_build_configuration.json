@@ -1,0 +1,319 @@
+[
+  {
+    "Guid": "94d61dad-af77-490a-a8fc-6e0ad7242b0e",
+    "UpdatedAt": "2025-01-01T20:25:49.702973Z",
+    "Title": "Proxy Mapping for PUT /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_ContinuousIntegration/paused/",
+    "Description": "Proxy Mapping for PUT /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_ContinuousIntegration/paused/",
+    "Scenario": "Pause Build Configuration",
+    "SetStateTo": "Build Paused",
+    "Priority": -2000000,
+    "Request": {
+      "Path": {
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_ContinuousIntegration/paused/",
+            "IgnoreCase": false
+          }
+        ]
+      },
+      "Methods": [
+        "PUT"
+      ],
+      "HttpVersion": "1.1",
+      "Headers": [
+        {
+          "Name": "Accept",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "text/plain",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Authorization",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Content-Type",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "text/plain; charset=us-ascii",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Content-Length",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "4",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        }
+      ],
+      "Body": {
+        "Matcher": {
+          "Name": "ExactMatcher",
+          "Pattern": "True",
+          "IgnoreCase": true
+        }
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "BodyAsJson": true,
+      "Headers": {
+        "Content-Type": "text/plain",
+        "Content-Length": "4",
+        "TeamCity-Node-Id": "MAIN_SERVER",
+        "Set-Cookie": [
+          "TCSESSIONID=78FA616DDBC8E370DA2EF9647D9DD9F9; Path=/; HttpOnly",
+          "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 20:25:59 GMT; Path=/",
+          "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+        ],
+        "Cache-Control": "no-store",
+        "Date": "Wed, 01 Jan 2025 20:25:49 GMT"
+      }
+    }
+  },
+  {
+    "Guid": "cc6b8cb8-32c6-41a5-833d-017a07738e2f",
+    "UpdatedAt": "2025-01-01T05:23:28.72759Z",
+    "Title": "Proxy Mapping for GET /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_ContinuousIntegration/paused/",
+    "Description": "Proxy Mapping for GET /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_ContinuousIntegration/paused/",
+    "Scenario": "Pause Build Configuration",
+    "WhenStateIs": "Build Paused",
+    "SetStateTo": "Got Pause Status",
+    "Priority": -2000000,
+    "Request": {
+      "Path": {
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_ContinuousIntegration/paused/",
+            "IgnoreCase": false
+          }
+        ]
+      },
+      "Methods": [
+        "GET"
+      ],
+      "HttpVersion": "1.1",
+      "Headers": [
+        {
+          "Name": "Accept",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "text/plain",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Authorization",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        }
+      ]
+    },
+    "Response": {
+      "StatusCode": 200,
+      "BodyAsJson": true,
+      "Headers": {
+        "Content-Type": "text/plain",
+        "Content-Length": "4",
+        "TeamCity-Node-Id": "MAIN_SERVER",
+        "Set-Cookie": [
+          "TCSESSIONID=AC669AD1A9835255D81119EE87ADA353; Path=/; HttpOnly",
+          "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:23:38 GMT; Path=/",
+          "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+        ],
+        "Cache-Control": "no-store",
+        "Date": "Wed, 01 Jan 2025 05:23:28 GMT"
+      }
+    }
+  },
+  {
+    "Guid": "848fdfc9-2289-41a6-8c3e-b9396fed8f2d",
+    "UpdatedAt": "2025-01-01T20:30:52.5916Z",
+    "Title": "Proxy Mapping for PUT /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_ContinuousIntegration/paused/",
+    "Description": "Proxy Mapping for PUT /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_ContinuousIntegration/paused/",
+    "Scenario": "Pause Build Configuration",
+    "WhenStateIs": "Got Pause Status",
+    "SetStateTo": "Build Unpaused",
+    "Priority": -2000000,
+    "Request": {
+      "Path": {
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_ContinuousIntegration/paused/",
+            "IgnoreCase": false
+          }
+        ]
+      },
+      "Methods": [
+        "PUT"
+      ],
+      "HttpVersion": "1.1",
+      "Headers": [
+        {
+          "Name": "Accept",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "text/plain",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Authorization",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Content-Type",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "text/plain; charset=us-ascii",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Content-Length",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "5",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        }
+      ],
+      "Body": {
+        "Matcher": {
+          "Name": "ExactMatcher",
+          "Pattern": "False",
+          "IgnoreCase": true
+        }
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "BodyAsJson": false,
+      "Headers": {
+        "Content-Type": "text/plain",
+        "Content-Length": "5",
+        "TeamCity-Node-Id": "MAIN_SERVER",
+        "Set-Cookie": [
+          "TCSESSIONID=FD2DDDA1478E32E1D60EA0035DD66185; Path=/; HttpOnly",
+          "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 20:31:02 GMT; Path=/",
+          "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+        ],
+        "Cache-Control": "no-store",
+        "Date": "Wed, 01 Jan 2025 20:30:52 GMT"
+      }
+    }
+  },
+  {
+    "Guid": "71035c86-d726-42ea-adc4-ee3b357835b4",
+    "UpdatedAt": "2025-01-01T20:30:52.636866Z",
+    "Title": "Proxy Mapping for GET /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_ContinuousIntegration/paused/",
+    "Description": "Proxy Mapping for GET /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_ContinuousIntegration/paused/",
+    "Scenario": "Pause Build Configuration",
+    "WhenStateIs": "Build Unpaused",
+    "SetStateTo": "Complete",
+    "Priority": -2000000,
+    "Request": {
+      "Path": {
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_ContinuousIntegration/paused/",
+            "IgnoreCase": false
+          }
+        ]
+      },
+      "Methods": [
+        "GET"
+      ],
+      "HttpVersion": "1.1",
+      "Headers": [
+        {
+          "Name": "Accept",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "text/plain",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        },
+        {
+          "Name": "Authorization",
+          "Matchers": [
+            {
+              "Name": "WildcardMatcher",
+              "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+              "IgnoreCase": true
+            }
+          ],
+          "IgnoreCase": true
+        }
+      ]
+    },
+    "Response": {
+      "StatusCode": 200,
+      "BodyAsJson": false,
+      "Headers": {
+        "Content-Type": "text/plain",
+        "Content-Length": "5",
+        "TeamCity-Node-Id": "MAIN_SERVER",
+        "Set-Cookie": [
+          "TCSESSIONID=9B0041826B8BE8C249234D354FC880C3; Path=/; HttpOnly",
+          "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 20:31:02 GMT; Path=/",
+          "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+        ],
+        "Cache-Control": "no-store",
+        "Date": "Wed, 01 Jan 2025 20:30:52 GMT"
+      }
+    }
+  }
+]

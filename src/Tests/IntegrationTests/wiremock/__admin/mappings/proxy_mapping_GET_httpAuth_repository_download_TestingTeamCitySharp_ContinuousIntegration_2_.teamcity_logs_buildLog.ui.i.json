@@ -1,0 +1,71 @@
+{
+  "Guid": "dc38bc2d-62ab-4910-9da3-0c03a0bf358d",
+  "UpdatedAt": "2025-01-01T05:23:26.600843Z",
+  "Title": "Proxy Mapping for GET /httpAuth/repository/download/TestingTeamCitySharp_ContinuousIntegration/2/.teamcity/logs/buildLog.ui.i",
+  "Description": "Proxy Mapping for GET /httpAuth/repository/download/TestingTeamCitySharp_ContinuousIntegration/2/.teamcity/logs/buildLog.ui.i",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/repository/download/TestingTeamCitySharp_ContinuousIntegration/2/.teamcity/logs/buildLog.ui.i",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsBytes": "AAAAAAAAAADZrjuKAAAAAAAAAAEAAAAAAAAAAAAAADXZrjuKAAAAAAAAAAMAAAAAAAAAAAAAAJRw4mtjAAAAXgAAAAcAAAAAAAAAAAAAAMFw4mtjAAAAAAAAAAEAAAAAAAAAAAAAARdw4mtjAAAAfQAAAAIAAAAAAAAAAAAAAWTZrjuKAAAAAAAAAAMAAAAAAAAAAAAAAdDZrjuKAAAAAAAAAAMAAAAAAAAAAAAAAivZrjuKAAAAAAAAAAMAAAAAAAAAAAAAAofZrjuKAAAAAAAAAAMAAAAAAAAAAAAAAuPZrjuKAAAAAAAAAAEAAAAAAAAAAAAAAyzZrjuKAAAAAAAAAAMAAAAAAAAAAAAAA3LZrjuKAAAAfQAAAAIAAAAAAAAAAAAAA7zZrjuKAAAAAAAAAAMAAAAAAAAAAAAABDO4MtC8AAAAXgAAAAcAAAAAAAAAAAAABGC4MtC8AAAAAAAAAAEAAAAAAAAAAAAABKS4MtC8AAAAAAAAAAMAAAAAAAAAAAAABOy4MtC8AAAAAAAAAAMAAAAAAAAAAAAABUO4MtC8AAAAAAAAAAMAAAAAAAAAAAAABbC4MtC8AAAAfQAAAAIAAAAAAAAAAAAABfW4MtC8AAAAXgAAAAgAAAAAAAAAAAAABiPZrjuKAAAAAAAAAAMAAAAAAAAAAAAABpPZrjuKAAAAAAAAAAMAAAAAAAAAAAAABwbZrjuKAAAAAAAAAAMAAAAAAAAAAAAAB4rZrjuKtzoPrgAAAAMAAAAAAAAAAAAAB8jZrjuKE89/5AAAAAEAAAAAAAAAAAAACBdUH/ZTAAAAXgAAAAcAAAAAAAAAAAAACERUH/ZTAAAAAAAAAAMAAAAAAAAAAAAACUjZrjuKAAAAAAAAAAMAAAAAAAAAAAAACczZrjuKAAAAAAAAAAMAAAAAAAAAAAAACjtUH/ZTAAAAAAAAAAMAAAAAAAAAAAAACmK0VbbYAAAAXgAAAAcAAAAAAAAAAAAACo+0VbbYAAAAAAAAAAEAAAAAAAAAAAAACsq0VbbYAAAAAAAAAAMAAAAAAAAAAAAACxa0VbbYAAAAAAAAAAMAAAAAAAAAAAAAC2u0VbbYAAAAAAAAAAMAAAAAAAAAAAAAC8+0VbbYAAAAAAAAAAMAAAAAAAAAAAAADDy0VbbYAAAAfQAAAAIAAAAAAAAAAAAADHi0VbbYAAAAXgAAAAgAAAAAAAAAAAAADKZUH/ZTAAAAAAAAAAMAAAAAAAAAAAAADQhUH/ZTAAAAAAAAAAMAAAAAAAAAAAAADURUH/ZTAAAAXgAAAAgAAAAAAAAAAAAADXHZrjuKAAAAfQAAAAIAAAAAAAAAAAAADbTM9ji/AAAAXgAAAAcAAAAAAAAAAAAADeHM9ji/AAAAAAAAAAEAAAAAAAAAAAAADiXM9ji/AAAAAAAAAAMAAAAAAAAAAAAADm3M9ji/AAAAAAAAAAMAAAAAAAAAAAAADsTM9ji/AAAAAAAAAAMAAAAAAAAAAAAADzHM9ji/AAAAfQAAAAIAAAAAAAAAAAAAD3bM9ji/AAAAXgAAAAgAAAAAAAAAAAAAD6PohRLUAAAAXgAAAAcAAAAAAAAAAAAAD9DohRLUAAAAAAAAAAEAAAAAAAAAAAAAEBTohRLUAAAAfQAAAAIAAAAAAAAAAAAAEFnohRLUAAAAXgAAAAgAAAAAAAAAAAAAEIbZrjuKAAAAAAAAAAMAAAAAAAAAAAAAEMDZrjuKAAAAfQAAAAIAAAAA",
+    "Headers": {
+      "Last-Modified": "Mon, 30 Dec 2024 05:16:05 GMT",
+      "Content-Disposition": "attachment; filename*=UTF-8''buildLog.ui.i;",
+      "Content-Type": "application/octet-stream",
+      "Content-Length": "1320",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=D861BE40A844C42947F81BA284006DE5; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:23:36 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "max-age=86400",
+      "Accept-Ranges": "bytes",
+      "ETag": "\"0a394a624e332a5f39c62404669147f6\"",
+      "Date": "Wed, 01 Jan 2025 05:23:26 GMT"
+    }
+  }
+}

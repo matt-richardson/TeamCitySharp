@@ -1,0 +1,83 @@
+{
+  "Guid": "cec2a861-e76c-42f1-839f-8586d67a9b16",
+  "UpdatedAt": "2025-01-01T05:23:27.99501Z",
+  "Title": "Proxy Mapping for GET /httpAuth/app/rest/vcs-roots",
+  "Description": "Proxy Mapping for GET /httpAuth/app/rest/vcs-roots",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/vcs-roots",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "count": 2,
+      "href": "/httpAuth/app/rest/vcs-roots",
+      "vcs-root": [
+        {
+          "id": "ReleaseBotPlayground_HttpsGithubComOctopusDeployReleaseBotPlaygroundRefsHeadsMain",
+          "name": "https://github.com/matt-richardson/GithubStatusTests.git",
+          "href": "/httpAuth/app/rest/vcs-roots/id:ReleaseBotPlayground_HttpsGithubComOctopusDeployReleaseBotPlaygroundRefsHeadsMain"
+        },
+        {
+          "id": "TestingTeamCitySharp_VcsRootTeamCitySharp",
+          "name": "https://github.com/OctopusDeploy/Octopus.TeamCitySharp",
+          "href": "/httpAuth/app/rest/vcs-roots/id:TestingTeamCitySharp_VcsRootTeamCitySharp"
+        }
+      ]
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "594",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=06B29ABDF9927A9D6EB303B835DD1F2A; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:23:37 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 05:23:27 GMT"
+    }
+  }
+}

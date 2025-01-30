@@ -1,0 +1,101 @@
+{
+  "Guid": "3d16a010-0cfe-4e34-b238-02a99a197b35",
+  "UpdatedAt": "2025-01-01T05:23:28.45744Z",
+  "Title": "Proxy Mapping for GET /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestNewConfig6/artifact-dependencies",
+  "Description": "Proxy Mapping for GET /httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestNewConfig6/artifact-dependencies",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/buildTypes/id:TestingTeamCitySharp_TestNewConfig6/artifact-dependencies",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "count": 1,
+      "artifact-dependency": [
+        {
+          "id": "ARTIFACT_DEPENDENCY_166",
+          "type": "artifact_dependency",
+          "properties": {
+            "property": [
+              {
+                "name": "cleanDestinationDirectory",
+                "value": "false"
+              },
+              {
+                "name": "pathRules",
+                "value": "step1.txt"
+              },
+              {
+                "name": "revisionName",
+                "value": "lastSuccessful"
+              },
+              {
+                "name": "revisionValue",
+                "value": "latest.lastSuccessful"
+              }
+            ],
+            "count": 4
+          },
+          "source-buildType": {
+            "id": "TeamcityDashboardScenario_Test_TestWithCheckout",
+            "internalId": "__unresolved_TeamcityDashboardScenario_Test_TestWithCheckout"
+          }
+        }
+      ]
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "487",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=55A0DEA159E10580C423EF18BB43B096; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:23:38 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 05:23:28 GMT"
+    }
+  }
+}

@@ -33,7 +33,7 @@ namespace TeamCitySharp.IntegrationTests
     [SetUp]
     public void SetUp()
     {
-      m_client = new TeamCityClient(m_server,m_useSsl);
+      m_client = new TeamCityClient(m_server,m_useSsl, Configuration.GetWireMockClient);
       m_client.Connect(m_username,m_password);
     }
 

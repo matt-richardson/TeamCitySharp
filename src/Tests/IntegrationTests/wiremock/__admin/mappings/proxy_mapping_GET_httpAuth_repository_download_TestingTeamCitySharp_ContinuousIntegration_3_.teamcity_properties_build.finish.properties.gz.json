@@ -1,0 +1,71 @@
+{
+  "Guid": "1377abcc-d28e-492a-9077-74a0a555c1a5",
+  "UpdatedAt": "2025-01-01T05:23:26.85647Z",
+  "Title": "Proxy Mapping for GET /httpAuth/repository/download/TestingTeamCitySharp_ContinuousIntegration/3/.teamcity/properties/build.finish.properties.gz",
+  "Description": "Proxy Mapping for GET /httpAuth/repository/download/TestingTeamCitySharp_ContinuousIntegration/3/.teamcity/properties/build.finish.properties.gz",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/repository/download/TestingTeamCitySharp_ContinuousIntegration/3/.teamcity/properties/build.finish.properties.gz",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsBytes": "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",
+    "Headers": {
+      "Last-Modified": "Mon, 30 Dec 2024 05:20:30 GMT",
+      "Content-Disposition": "attachment; filename*=UTF-8''build.finish.properties.gz;",
+      "Content-Type": "application/x-gzip",
+      "Content-Length": "2880",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=CC47919A69476ACBA729C8FEB6293D1E; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:23:36 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "max-age=86400",
+      "Accept-Ranges": "bytes",
+      "ETag": "\"fe2f64bf7ca38c4d6f07b88579644df9\"",
+      "Date": "Wed, 01 Jan 2025 05:23:26 GMT"
+    }
+  }
+}

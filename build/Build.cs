@@ -74,7 +74,7 @@ class Build : NukeBuild
         {
             DotNetTest(_ => _
                 //currently skipping the integration tests as they require a TeamCity server to be running 
-                .SetProjectFile(Solution.Tests.TeamCitySharp_UnitTests)
+                .SetProjectFile(Solution)
                 .SetConfiguration(Configuration)
                 .SetLoggers("trx")
                 .SetVerbosity(DotNetVerbosity.normal)

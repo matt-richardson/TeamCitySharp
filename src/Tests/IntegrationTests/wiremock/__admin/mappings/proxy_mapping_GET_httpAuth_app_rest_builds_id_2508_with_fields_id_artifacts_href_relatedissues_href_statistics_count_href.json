@@ -1,0 +1,92 @@
+{
+  "Guid": "4b020248-30f8-4ae8-8e55-5d9faa8e7af5",
+  "UpdatedAt": "2025-01-01T02:22:20.60218Z",
+  "Title": "Proxy Mapping for GET /httpAuth/app/rest/builds/id:2508",
+  "Description": "Proxy Mapping for GET /httpAuth/app/rest/builds/id:2508",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/builds/id:2508",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ],
+    "Params": [
+      {
+        "Name": "fields",
+        "Matchers": [
+          {
+            "Name": "ExactMatcher",
+            "Pattern": "id,artifacts(href),relatedIssues(href),statistics(count,href)",
+            "IgnoreCase": false
+          }
+        ]
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "id": 2508,
+      "artifacts": {
+        "href": "/httpAuth/app/rest/builds/id:2508/artifacts/children/"
+      },
+      "relatedIssues": {
+        "href": "/httpAuth/app/rest/builds/id:2508/relatedIssues"
+      },
+      "statistics": {
+        "count": 18,
+        "href": "/httpAuth/app/rest/builds/id:2508/statistics"
+      }
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "243",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=2CF74435D4892DA695FD2AEADE7DF930; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 02:22:30 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 02:22:20 GMT"
+    }
+  }
+}

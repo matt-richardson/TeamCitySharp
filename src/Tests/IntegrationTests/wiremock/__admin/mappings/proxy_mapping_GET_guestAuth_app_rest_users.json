@@ -1,0 +1,57 @@
+{
+  "Guid": "24f6f68e-33f9-4c94-8ef3-1b6fcf31c5b9",
+  "UpdatedAt": "2025-01-01T05:23:27.890835Z",
+  "Title": "Proxy Mapping for GET /guestAuth/app/rest/users",
+  "Description": "Proxy Mapping for GET /guestAuth/app/rest/users",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/guestAuth/app/rest/users",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 401,
+    "Body": "",
+    "Headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "0",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": "TCSESSIONID=6067117D7F9F77E7333C24F7C9A242E6; Path=/; HttpOnly",
+      "WWW-Authenticate": [
+        "Basic realm=\"TeamCity\"",
+        "Bearer realm=\"TeamCity\"",
+        "Bearer realm=\"TeamCity\""
+      ],
+      "Date": "Wed, 01 Jan 2025 05:23:27 GMT"
+    }
+  }
+}

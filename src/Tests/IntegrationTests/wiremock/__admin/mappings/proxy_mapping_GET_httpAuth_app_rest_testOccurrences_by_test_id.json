@@ -1,0 +1,445 @@
+{
+  "Guid": "645205f6-6b8b-4b22-a625-9a4abd5ee37a",
+  "UpdatedAt": "2025-01-01T06:24:08.60275Z",
+  "Title": "Proxy Mapping for GET /httpAuth/app/rest/testOccurrences",
+  "Description": "Proxy Mapping for GET /httpAuth/app/rest/testOccurrences",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/testOccurrences",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ],
+    "Params": [
+      {
+        "Name": "locator",
+        "Matchers": [
+          {
+            "Name": "ExactMatcher",
+            "Pattern": "test:(id:9197712699487599028)",
+            "IgnoreCase": false
+          }
+        ]
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "count": 51,
+      "href": "http://localhost:8111/app/rest/testOccurrences?locator=test%3A%28id%3A9197712699487599028%29",
+      "testOccurrence": [
+        {
+          "id": "build:(id:2508),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:2508),id:2000000001"
+        },
+        {
+          "id": "build:(id:2507),id:2000000000",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "SUCCESS",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:2507),id:2000000000"
+        },
+        {
+          "id": "build:(id:2506),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "SUCCESS",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:2506),id:2000000001"
+        },
+        {
+          "id": "build:(id:2505),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:2505),id:2000000001"
+        },
+        {
+          "id": "build:(id:2406),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:2406),id:2000000001"
+        },
+        {
+          "id": "build:(id:2404),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:2404),id:2000000001"
+        },
+        {
+          "id": "build:(id:2402),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:2402),id:2000000001"
+        },
+        {
+          "id": "build:(id:2302),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:2302),id:2000000001"
+        },
+        {
+          "id": "build:(id:2204),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:2204),id:2000000001"
+        },
+        {
+          "id": "build:(id:2202),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:2202),id:2000000001"
+        },
+        {
+          "id": "build:(id:2104),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:2104),id:2000000001"
+        },
+        {
+          "id": "build:(id:2102),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:2102),id:2000000001"
+        },
+        {
+          "id": "build:(id:2002),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:2002),id:2000000001"
+        },
+        {
+          "id": "build:(id:1908),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:1908),id:2000000001"
+        },
+        {
+          "id": "build:(id:1906),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:1906),id:2000000001"
+        },
+        {
+          "id": "build:(id:1904),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:1904),id:2000000001"
+        },
+        {
+          "id": "build:(id:1902),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:1902),id:2000000001"
+        },
+        {
+          "id": "build:(id:1806),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:1806),id:2000000001"
+        },
+        {
+          "id": "build:(id:1804),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:1804),id:2000000001"
+        },
+        {
+          "id": "build:(id:1802),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:1802),id:2000000001"
+        },
+        {
+          "id": "build:(id:1702),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:1702),id:2000000001"
+        },
+        {
+          "id": "build:(id:1604),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:1604),id:2000000001"
+        },
+        {
+          "id": "build:(id:1602),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:1602),id:2000000001"
+        },
+        {
+          "id": "build:(id:1502),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:1502),id:2000000001"
+        },
+        {
+          "id": "build:(id:1402),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:1402),id:2000000001"
+        },
+        {
+          "id": "build:(id:1312),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:1312),id:2000000001"
+        },
+        {
+          "id": "build:(id:1310),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:1310),id:2000000001"
+        },
+        {
+          "id": "build:(id:1308),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 2,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:1308),id:2000000001"
+        },
+        {
+          "id": "build:(id:1306),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:1306),id:2000000001"
+        },
+        {
+          "id": "build:(id:1302),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 2,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:1302),id:2000000001"
+        },
+        {
+          "id": "build:(id:1210),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:1210),id:2000000001"
+        },
+        {
+          "id": "build:(id:1206),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:1206),id:2000000001"
+        },
+        {
+          "id": "build:(id:1202),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:1202),id:2000000001"
+        },
+        {
+          "id": "build:(id:1102),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:1102),id:2000000001"
+        },
+        {
+          "id": "build:(id:1010),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:1010),id:2000000001"
+        },
+        {
+          "id": "build:(id:1006),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:1006),id:2000000001"
+        },
+        {
+          "id": "build:(id:1002),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:1002),id:2000000001"
+        },
+        {
+          "id": "build:(id:902),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:902),id:2000000001"
+        },
+        {
+          "id": "build:(id:802),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:802),id:2000000001"
+        },
+        {
+          "id": "build:(id:702),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:702),id:2000000001"
+        },
+        {
+          "id": "build:(id:602),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:602),id:2000000001"
+        },
+        {
+          "id": "build:(id:508),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:508),id:2000000001"
+        },
+        {
+          "id": "build:(id:402),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:402),id:2000000001"
+        },
+        {
+          "id": "build:(id:302),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:302),id:2000000001"
+        },
+        {
+          "id": "build:(id:208),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:208),id:2000000001"
+        },
+        {
+          "id": "build:(id:202),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:202),id:2000000001"
+        },
+        {
+          "id": "build:(id:108),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:108),id:2000000001"
+        },
+        {
+          "id": "build:(id:102),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:102),id:2000000001"
+        },
+        {
+          "id": "build:(id:14),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:14),id:2000000001"
+        },
+        {
+          "id": "build:(id:8),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:8),id:2000000001"
+        },
+        {
+          "id": "build:(id:2),id:2000000001",
+          "name": "Octopus.MattsTestProject: Octopus.MattsTestProject.UnitTest1.Test3",
+          "status": "FAILURE",
+          "duration": 1,
+          "href": "/httpAuth/app/rest/testOccurrences/build:(id:2),id:2000000001"
+        }
+      ],
+      "failed": 49,
+      "passed": 2,
+      "newFailed": 5
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=BE1888AB2228E7BD5591F2F9A4E2AECF; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 06:24:18 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Transfer-Encoding": "chunked",
+      "Date": "Wed, 01 Jan 2025 06:24:07 GMT"
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "Guid": "36b6e888-6244-496f-9e48-29744251a74b",
+  "UpdatedAt": "2025-01-01T01:45:09.670503Z",
+  "Title": "Proxy Mapping for GET /httpAuth/app/rest",
+  "Description": "Proxy Mapping for GET /httpAuth/app/rest",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "text/plain",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "ExactMatcher",
+            "Pattern": "Basic c21pdGh5OnNtaXRoeQ==",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 401,
+    "Body": "",
+    "Headers": {
+      "Content-Length": "0",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": "TCSESSIONID=34CA8CA6B914A340EC0542B9DA7F229D; Path=/; HttpOnly",
+      "WWW-Authenticate": "Basic realm=\"TeamCity\"",
+      "Date": "Wed, 01 Jan 2025 01:45:09 GMT"
+    }
+  }
+}

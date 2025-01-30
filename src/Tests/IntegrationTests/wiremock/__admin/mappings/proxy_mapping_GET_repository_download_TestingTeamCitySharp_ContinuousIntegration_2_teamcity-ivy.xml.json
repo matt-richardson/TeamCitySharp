@@ -1,0 +1,58 @@
+{
+  "Guid": "0feeb35f-4481-442a-84bf-6967d22edb48",
+  "UpdatedAt": "2025-01-01T05:23:26.714138Z",
+  "Title": "Proxy Mapping for GET /repository/download/TestingTeamCitySharp_ContinuousIntegration/2/teamcity-ivy.xml",
+  "Description": "Proxy Mapping for GET /repository/download/TestingTeamCitySharp_ContinuousIntegration/2/teamcity-ivy.xml",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/repository/download/TestingTeamCitySharp_ContinuousIntegration/2/teamcity-ivy.xml",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "text/plain",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Bearer secret-token-for-testing-teamcity-sharp-admin-user",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "Body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<ivy-module version=\"1.4\">\n  <info organisation=\"org\" module=\"TestingTeamCitySharp_ContinuousIntegration\" revision=\"2\" />\n  <publications>\n    <artifact name=\".teamcity/logs/buildLog\" type=\"msg5\" ext=\"msg5\" />\n    <artifact name=\".teamcity/logs/buildLog.msg5\" type=\"i1\" ext=\"i1\" />\n    <artifact name=\".teamcity/logs/buildLog.ui\" type=\"i\" ext=\"i\" />\n    <artifact name=\".teamcity/logs/buildLog.ui\" type=\"map\" ext=\"map\" />\n    <artifact name=\".teamcity/properties/build.finish.properties\" type=\"gz\" ext=\"gz\" />\n    <artifact name=\".teamcity/properties/build.start.properties\" type=\"gz\" ext=\"gz\" />\n    <artifact name=\".teamcity/settings/buildSettings\" type=\"xml\" ext=\"xml\" />\n    <artifact name=\".teamcity/settings/digest\" type=\"txt\" ext=\"txt\" />\n    <artifact name=\"Outputs\" type=\"zip\" ext=\"zip\" />\n  </publications>\n</ivy-module>\n\n",
+    "Headers": {
+      "Last-Modified": "Thu, 01 Jan 1970 00:00:00 GMT",
+      "Content-Type": "text/xml",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Cache-Control": "max-age=3600",
+      "Transfer-Encoding": "chunked",
+      "Date": "Wed, 01 Jan 2025 05:23:26 GMT"
+    }
+  }
+}

@@ -1,0 +1,188 @@
+{
+  "Guid": "d251ebac-92ed-4821-b63c-6535d4449dfc",
+  "UpdatedAt": "2025-01-01T05:23:27.719589Z",
+  "Title": "Proxy Mapping for GET /httpAuth/app/rest/projects/id:_Root/projectFeatures",
+  "Description": "Proxy Mapping for GET /httpAuth/app/rest/projects/id:_Root/projectFeatures",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/projects/id:_Root/projectFeatures",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "count": 4,
+      "href": "/httpAuth/app/rest/projects/id:_Root/projectFeatures",
+      "projectFeature": [
+        {
+          "id": "PROJECT_EXT_1",
+          "type": "ReportTab",
+          "href": "/httpAuth/app/rest/projects/id:_Root/projectFeatures/id:PROJECT_EXT_1",
+          "properties": {
+            "property": [
+              {
+                "name": "startPage",
+                "value": "coverage.zip!index.html"
+              },
+              {
+                "name": "title",
+                "value": "Code Coverage"
+              },
+              {
+                "name": "type",
+                "value": "BuildReportTab"
+              }
+            ],
+            "count": 3,
+            "href": "/httpAuth/app/rest/projects/id:_Root/projectFeatures/id:PROJECT_EXT_1/properties"
+          }
+        },
+        {
+          "id": "PROJECT_EXT_2",
+          "type": "teamcity-opentelemetry",
+          "href": "/httpAuth/app/rest/projects/id:_Root/projectFeatures/id:PROJECT_EXT_2",
+          "properties": {
+            "property": [
+              {
+                "name": "octopus.teamcity.opentelemetry.plugin.enabled",
+                "value": ""
+              },
+              {
+                "name": "octopus.teamcity.opentelemetry.plugin.endpoint",
+                "value": "http://localhost:9411"
+              },
+              {
+                "name": "octopus.teamcity.opentelemetry.plugin.service",
+                "value": "zipkin.io"
+              }
+            ],
+            "count": 3,
+            "href": "/httpAuth/app/rest/projects/id:_Root/projectFeatures/id:PROJECT_EXT_2/properties"
+          }
+        },
+        {
+          "id": "PROJECT_EXT_4",
+          "type": "tcWebHookParameter",
+          "href": "/httpAuth/app/rest/projects/id:_Root/projectFeatures/id:PROJECT_EXT_4",
+          "properties": {
+            "property": [
+              {
+                "name": "boolean.forceResolveTeamCityVariable",
+                "value": "false"
+              },
+              {
+                "name": "boolean.includedInLegacyPayloads",
+                "value": "false"
+              },
+              {
+                "name": "boolean.secure",
+                "value": "true"
+              },
+              {
+                "name": "name",
+                "value": "bearerToken"
+              },
+              {
+                "name": "secure:value"
+              },
+              {
+                "name": "templateEngine",
+                "value": "STANDARD"
+              }
+            ],
+            "count": 6,
+            "href": "/httpAuth/app/rest/projects/id:_Root/projectFeatures/id:PROJECT_EXT_4/properties"
+          }
+        },
+        {
+          "id": "PROJECT_EXT_6",
+          "type": "teamcity-reportportal",
+          "href": "/httpAuth/app/rest/projects/id:_Root/projectFeatures/id:PROJECT_EXT_6",
+          "properties": {
+            "property": [
+              {
+                "name": "octopus.teamcity.reportportal.plugin.enable-rerun-support",
+                "value": ""
+              },
+              {
+                "name": "octopus.teamcity.reportportal.plugin.enabled",
+                "value": ""
+              },
+              {
+                "name": "octopus.teamcity.reportportal.plugin.endpoint",
+                "value": "https://reportportal.octopushq.com"
+              },
+              {
+                "name": "octopus.teamcity.reportportal.plugin.project",
+                "value": "octopusserver"
+              },
+              {
+                "name": "octopus.teamcity.reportportal.plugin.sendtests",
+                "value": ""
+              },
+              {
+                "name": "octopus.teamcity.reportportal.plugin.token",
+                "value": "scrambled:b2N0b3B1c3NlcnZlcg=="
+              }
+            ],
+            "count": 6,
+            "href": "/httpAuth/app/rest/projects/id:_Root/projectFeatures/id:PROJECT_EXT_6/properties"
+          }
+        }
+      ]
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "2259",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=B1B875721B718E581AB5655C52B9D149; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:23:37 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 05:23:27 GMT"
+    }
+  }
+}

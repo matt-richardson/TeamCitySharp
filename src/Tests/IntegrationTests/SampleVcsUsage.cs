@@ -33,7 +33,7 @@ namespace TeamCitySharp.IntegrationTests
         [SetUp]
         public void SetUp()
         {
-            m_client = new TeamCityClient(m_server, m_useSsl);
+            m_client = new TeamCityClient(m_server, m_useSsl, Configuration.GetWireMockClient);
             m_client.Connect(m_username, m_password);
         }
 
@@ -82,7 +82,7 @@ namespace TeamCitySharp.IntegrationTests
         [Test]
         public void it_create_new_vsc()
         {
-            VcsRoot vcsroot2 = null;
+            VcsRoot createdVcsRoot = null;
             try
             {
                 var project = m_client.Projects.ById(m_goodProjectId);
@@ -99,19 +99,19 @@ namespace TeamCitySharp.IntegrationTests
                 properties.Add("agentCleanFilesPolicy", "IGNORED_ONLY");
                 vcsroot.Properties = properties;
 
-                vcsroot2 = m_client.VcsRoots.CreateVcsRoot(vcsroot, project.Id);
+                createdVcsRoot = m_client.VcsRoots.CreateVcsRoot(vcsroot, project.Id);
 
-                m_client.VcsRoots.SetVcsRootValue(vcsroot2, VcsRootValue.Name, "TestChangeName");
+                m_client.VcsRoots.SetVcsRootValue(createdVcsRoot, VcsRootValue.Name, "TestChangeName");
 
-                m_client.VcsRoots.SetConfigurationProperties(vcsroot2, "agentCleanFilesPolicy", "ALL_UNTRACKED");
-                m_client.VcsRoots.SetConfigurationProperties(vcsroot2, "tt", "tt2");
+                m_client.VcsRoots.SetConfigurationProperties(createdVcsRoot, "agentCleanFilesPolicy", "ALL_UNTRACKED");
+                m_client.VcsRoots.SetConfigurationProperties(createdVcsRoot, "tt", "tt2");
             }
             finally
             {
-                if (vcsroot2 != null)
+                if (createdVcsRoot != null)
                 {
-                    m_client.VcsRoots.DeleteProperties(vcsroot2, "tt");
-                    m_client.VcsRoots.DeleteVcsRoot(vcsroot2);
+                    m_client.VcsRoots.DeleteProperties(createdVcsRoot, "tt");
+                    m_client.VcsRoots.DeleteVcsRoot(createdVcsRoot);
                 }
             }
         }
@@ -135,14 +135,8 @@ namespace TeamCitySharp.IntegrationTests
             properties.Add("agentCleanFilesPolicy", "IGNORED_ONLY");
             vcsroot.Properties = properties;
 
-            try
-            {
-                client.VcsRoots.CreateVcsRoot(vcsroot, project.Id);
-            }
-            catch (HttpException e)
-            {
-                Assert.That(e.ResponseStatusCode, Is.EqualTo(HttpStatusCode.Forbidden));
-            }
+            var e = Assert.Throws<HttpException>(() => client.VcsRoots.CreateVcsRoot(vcsroot, project.Id));
+            Assert.That(e.ResponseStatusCode, Is.EqualTo(HttpStatusCode.Forbidden));
         }
     }
 }

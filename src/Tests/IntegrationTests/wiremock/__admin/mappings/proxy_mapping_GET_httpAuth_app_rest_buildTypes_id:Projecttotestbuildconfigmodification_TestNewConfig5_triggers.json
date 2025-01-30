@@ -1,0 +1,89 @@
+{
+  "Guid": "192e7670-8f79-41d8-bb61-c0679bb73fcb",
+  "UpdatedAt": "2025-01-01T06:24:06.236972Z",
+  "Title": "Proxy Mapping for GET /httpAuth/app/rest/buildTypes/id:Projecttotestbuildconfigmodification_TestNewConfig5/triggers",
+  "Description": "Proxy Mapping for GET /httpAuth/app/rest/buildTypes/id:Projecttotestbuildconfigmodification_TestNewConfig5/triggers",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/buildTypes/id:Projecttotestbuildconfigmodification_TestNewConfig5/triggers",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "count": 1,
+      "trigger": [
+        {
+          "id": "TRIGGER_181",
+          "type": "buildDependencyTrigger",
+          "properties": {
+            "property": [
+              {
+                "name": "afterSuccessfulBuildOnly",
+                "value": "true"
+              },
+              {
+                "name": "dependsOn",
+                "value": "TeamcityDashboardScenario_Test_TestWithCheckout"
+              }
+            ],
+            "count": 2
+          }
+        }
+      ]
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "244",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=E96DDAA15970925B4CB9953BBEA132F6; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 06:24:16 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 06:24:06 GMT"
+    }
+  }
+}

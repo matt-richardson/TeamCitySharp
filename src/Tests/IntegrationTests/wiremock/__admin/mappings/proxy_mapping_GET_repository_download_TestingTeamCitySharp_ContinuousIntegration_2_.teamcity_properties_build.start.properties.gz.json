@@ -1,0 +1,66 @@
+{
+  "Guid": "20a05503-870c-42d7-89d5-a98dec479123",
+  "UpdatedAt": "2025-01-01T05:23:26.752694Z",
+  "Title": "Proxy Mapping for GET /repository/download/TestingTeamCitySharp_ContinuousIntegration/2/.teamcity/properties/build.start.properties.gz",
+  "Description": "Proxy Mapping for GET /repository/download/TestingTeamCitySharp_ContinuousIntegration/2/.teamcity/properties/build.start.properties.gz",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/repository/download/TestingTeamCitySharp_ContinuousIntegration/2/.teamcity/properties/build.start.properties.gz",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Bearer secret-token-for-testing-teamcity-sharp-admin-user",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsBytes": "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",
+    "Headers": {
+      "Last-Modified": "Mon, 30 Dec 2024 05:11:21 GMT",
+      "Content-Disposition": "attachment; filename*=UTF-8''build.start.properties.gz;",
+      "Content-Type": "application/x-gzip",
+      "Content-Length": "2858",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Cache-Control": "max-age=86400",
+      "Accept-Ranges": "bytes",
+      "ETag": "\"68e9893be6d2438d26731fa25f72269b\"",
+      "Date": "Wed, 01 Jan 2025 05:23:26 GMT"
+    }
+  }
+}

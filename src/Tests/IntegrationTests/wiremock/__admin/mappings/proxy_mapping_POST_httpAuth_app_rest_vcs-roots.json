@@ -1,0 +1,157 @@
+{
+  "Guid": "e668d6de-f74f-4b58-871a-b3b3812a36de",
+  "UpdatedAt": "2025-01-01T06:24:08.649791Z",
+  "Title": "Proxy Mapping for POST /httpAuth/app/rest/vcs-roots",
+  "Description": "Proxy Mapping for POST /httpAuth/app/rest/vcs-roots",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/vcs-roots",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "POST"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Content-Type",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json; charset=us-ascii",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Content-Length",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "573",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ],
+    "Body": {
+      "Matcher": {
+        "Name": "JsonMatcher",
+        "Pattern": {
+          "id": "TestingTeamCitySharp_vcsroot1_01",
+          "vcs-root-id": null,
+          "vcsName": "jetbrains.git",
+          "href": null,
+          "name": "Testing TeamCitySharp_vcsroot1",
+          "version": null,
+          "status": null,
+          "lastChecked": "0001-01-01T00:00:00",
+          "lastVersion": null,
+          "project": {
+            "archived": false,
+            "description": null,
+            "href": null,
+            "id": "TestingTeamCitySharp",
+            "name": null,
+            "webUrl": null,
+            "parentProject": null,
+            "buildTypes": null,
+            "parameters": null,
+            "templates": null,
+            "projects": null,
+            "projectFeatures": null
+          },
+          "properties": {
+            "property": [
+              {
+                "name": "agentCleanFilesPolicy",
+                "value": "IGNORED_ONLY",
+                "inherited": false
+              }
+            ],
+            "count": 0,
+            "href": null
+          }
+        },
+        "IgnoreCase": true,
+        "Regex": false
+      }
+    }
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "id": "TestingTeamCitySharp_vcsroot1_01",
+      "name": "Testing TeamCitySharp_vcsroot1",
+      "vcsName": "jetbrains.git",
+      "href": "/httpAuth/app/rest/vcs-roots/id:TestingTeamCitySharp_vcsroot1_01",
+      "project": {
+        "id": "TestingTeamCitySharp",
+        "name": "Testing TeamCitySharp",
+        "parentProjectId": "_Root",
+        "href": "/httpAuth/app/rest/projects/id:TestingTeamCitySharp",
+        "webUrl": "http://localhost:8111/project.html?projectId=TestingTeamCitySharp"
+      },
+      "properties": {
+        "property": [
+          {
+            "name": "agentCleanFilesPolicy",
+            "value": "IGNORED_ONLY"
+          }
+        ],
+        "count": 1
+      },
+      "vcsRootInstances": {
+        "href": "/httpAuth/app/rest/vcs-root-instances?locator=vcsRoot:(id:TestingTeamCitySharp_vcsroot1_01)"
+      }
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "632",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=25CFD90D81A879681892D8240E0B18E7; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 06:24:18 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Date": "Wed, 01 Jan 2025 06:24:07 GMT"
+    }
+  }
+}

@@ -29,7 +29,7 @@ namespace TeamCitySharp.IntegrationTests
     [SetUp]
     public void SetUp()
     {
-      m_client = new TeamCityClient(m_server, m_useSsl);
+      m_client = new TeamCityClient(m_server, m_useSsl, Configuration.GetWireMockClient);
       m_client.Connect(m_username, m_password);
     }
 
@@ -46,7 +46,7 @@ namespace TeamCitySharp.IntegrationTests
       {
         createUserResult = m_client.Users.Create(userName, name, email, password);
 
-        var newUserClient = new TeamCityClient(m_server, m_useSsl);
+        var newUserClient = new TeamCityClient(m_server, m_useSsl, Configuration.GetWireMockClient);
         newUserClient.Connect(userName, password);
 
         var loginResponse = newUserClient.Authenticate();

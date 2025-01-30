@@ -1,0 +1,393 @@
+{
+  "Guid": "ebb7ab97-141e-4cf1-abf1-ba139796c85b",
+  "UpdatedAt": "2025-01-01T05:23:27.52624Z",
+  "Title": "Proxy Mapping for GET /httpAuth/app/rest/changes",
+  "Description": "Proxy Mapping for GET /httpAuth/app/rest/changes",
+  "Priority": -2000000,
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/httpAuth/app/rest/changes",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "HttpVersion": "1.1",
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      },
+      {
+        "Name": "Authorization",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "Basic dGVzdGluZy10Yy1zaGFycDpzZWNyZXQtcGFzc3dvcmQ=",
+            "IgnoreCase": true
+          }
+        ],
+        "IgnoreCase": true
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "count": 40,
+      "change": [
+        {
+          "id": 40,
+          "version": "a066c167d618d06db7b5ac65d90c03c9f09d3e75",
+          "username": "matt.richardson",
+          "date": "20241231T151741+1100",
+          "href": "/httpAuth/app/rest/changes/id:40",
+          "webUrl": "http://localhost:8111/change/40?personal=false"
+        },
+        {
+          "id": 39,
+          "version": "7d98859f60b615c3f36e37f4c738972cb4875cde",
+          "username": "matt.richardson",
+          "date": "20241231T151539+1100",
+          "href": "/httpAuth/app/rest/changes/id:39",
+          "webUrl": "http://localhost:8111/change/39?personal=false"
+        },
+        {
+          "id": 38,
+          "version": "f42c77c72647ea3b5a199b4899d3ffea6dde7f40",
+          "username": "matt.richardson",
+          "date": "20241231T151620+1100",
+          "href": "/httpAuth/app/rest/changes/id:38",
+          "webUrl": "http://localhost:8111/change/38?personal=false"
+        },
+        {
+          "id": 37,
+          "version": "60d1422dd78b396828f3dbf3fe98bc9cb1b9b6f4",
+          "username": "matt.richardson",
+          "date": "20241231T151613+1100",
+          "href": "/httpAuth/app/rest/changes/id:37",
+          "webUrl": "http://localhost:8111/change/37?personal=false"
+        },
+        {
+          "id": 36,
+          "version": "06836e2a6a6d8bd9672e28bb7abfabf7ec9001d1",
+          "username": "matt.richardson",
+          "date": "20241231T151234+1100",
+          "href": "/httpAuth/app/rest/changes/id:36",
+          "webUrl": "http://localhost:8111/change/36?personal=false"
+        },
+        {
+          "id": 35,
+          "version": "ce8ffeca75b03b0b6a28ac878590465860a75312",
+          "username": "matt.richardson",
+          "date": "20241231T150636+1100",
+          "href": "/httpAuth/app/rest/changes/id:35",
+          "webUrl": "http://localhost:8111/change/35?personal=false"
+        },
+        {
+          "id": 34,
+          "version": "d767418cacbdf2713c76fbd7723aa64309670071",
+          "username": "matt.richardson",
+          "date": "20241231T150503+1100",
+          "href": "/httpAuth/app/rest/changes/id:34",
+          "webUrl": "http://localhost:8111/change/34?personal=false"
+        },
+        {
+          "id": 33,
+          "version": "5d6cb9a01196975feb6a2797bc920dbab2aa4e6b",
+          "username": "matt.richardson",
+          "date": "20241231T145745+1100",
+          "href": "/httpAuth/app/rest/changes/id:33",
+          "webUrl": "http://localhost:8111/change/33?personal=false"
+        },
+        {
+          "id": 32,
+          "version": "ac6040ffe9e48188e23b3ad8f23d386ee929c304",
+          "username": "matt.richardson",
+          "date": "20241231T145531+1100",
+          "href": "/httpAuth/app/rest/changes/id:32",
+          "webUrl": "http://localhost:8111/change/32?personal=false"
+        },
+        {
+          "id": 31,
+          "version": "f961211b67b4105890a09a09380ea3a7fde2a9cf",
+          "username": "matt.richardson",
+          "date": "20241231T145338+1100",
+          "href": "/httpAuth/app/rest/changes/id:31",
+          "webUrl": "http://localhost:8111/change/31?personal=false"
+        },
+        {
+          "id": 30,
+          "version": "cf9c93dfa73cdf5fc16f04bd26c6fa63947a416c",
+          "username": "matt.richardson",
+          "date": "20241231T145255+1100",
+          "href": "/httpAuth/app/rest/changes/id:30",
+          "webUrl": "http://localhost:8111/change/30?personal=false"
+        },
+        {
+          "id": 29,
+          "version": "2806b843a851accf64b2a433ad0644608553e191",
+          "username": "matt.richardson",
+          "date": "20241231T145117+1100",
+          "href": "/httpAuth/app/rest/changes/id:29",
+          "webUrl": "http://localhost:8111/change/29?personal=false"
+        },
+        {
+          "id": 28,
+          "version": "e8998e1af2da4c8684f30524019ad6b484acb4e7",
+          "username": "matt.richardson",
+          "date": "20241231T144929+1100",
+          "href": "/httpAuth/app/rest/changes/id:28",
+          "webUrl": "http://localhost:8111/change/28?personal=false"
+        },
+        {
+          "id": 27,
+          "version": "e38cb08fb22b82b4dfda69edce1f34ba79a64fb4",
+          "username": "matt.richardson",
+          "date": "20241231T144841+1100",
+          "href": "/httpAuth/app/rest/changes/id:27",
+          "webUrl": "http://localhost:8111/change/27?personal=false"
+        },
+        {
+          "id": 26,
+          "version": "b73f1b474c4c69891b845599152c2b45cc617f91",
+          "username": "matt.richardson",
+          "date": "20241231T144618+1100",
+          "href": "/httpAuth/app/rest/changes/id:26",
+          "webUrl": "http://localhost:8111/change/26?personal=false"
+        },
+        {
+          "id": 25,
+          "version": "055cddfd12f7144ae262df4325c57288f95089b6",
+          "username": "matt.richardson",
+          "date": "20241231T144403+1100",
+          "href": "/httpAuth/app/rest/changes/id:25",
+          "webUrl": "http://localhost:8111/change/25?personal=false"
+        },
+        {
+          "id": 24,
+          "version": "9fc5017afa3d12faae0bf5d6d5ace185f03dfa16",
+          "username": "matt.richardson",
+          "date": "20241231T144030+1100",
+          "href": "/httpAuth/app/rest/changes/id:24",
+          "webUrl": "http://localhost:8111/change/24?personal=false"
+        },
+        {
+          "id": 23,
+          "version": "a1d97a9b29f5982040fda25e28b5fdf0369be5af",
+          "username": "matt.richardson",
+          "date": "20241231T143749+1100",
+          "href": "/httpAuth/app/rest/changes/id:23",
+          "webUrl": "http://localhost:8111/change/23?personal=false"
+        },
+        {
+          "id": 22,
+          "version": "80bb96815a05e2d6a410da8f178e3b21bc877970",
+          "username": "matt.richardson",
+          "date": "20241231T143551+1100",
+          "href": "/httpAuth/app/rest/changes/id:22",
+          "webUrl": "http://localhost:8111/change/22?personal=false"
+        },
+        {
+          "id": 21,
+          "version": "b344b1b66f19aca7b959ee13a349da5713541bf6",
+          "username": "matt.richardson",
+          "date": "20241231T143527+1100",
+          "href": "/httpAuth/app/rest/changes/id:21",
+          "webUrl": "http://localhost:8111/change/21?personal=false"
+        },
+        {
+          "id": 20,
+          "version": "5eb61ef91f2b5b8a1d987f3347a7a64627ed7b12",
+          "username": "matt.richardson",
+          "date": "20241231T143517+1100",
+          "href": "/httpAuth/app/rest/changes/id:20",
+          "webUrl": "http://localhost:8111/change/20?personal=false"
+        },
+        {
+          "id": 19,
+          "version": "eb80abc5094e64b6dae39550cbc6dd23b302c39b",
+          "username": "matt.richardson",
+          "date": "20241231T143315+1100",
+          "href": "/httpAuth/app/rest/changes/id:19",
+          "webUrl": "http://localhost:8111/change/19?personal=false"
+        },
+        {
+          "id": 18,
+          "version": "d323d448d9a4f948a68bcb5d3faea0072b75a7eb",
+          "username": "matt.richardson",
+          "date": "20241231T143156+1100",
+          "href": "/httpAuth/app/rest/changes/id:18",
+          "webUrl": "http://localhost:8111/change/18?personal=false"
+        },
+        {
+          "id": 17,
+          "version": "49168ba6eb719a8cd41780b6701a884626126b1d",
+          "username": "matt.richardson",
+          "date": "20241231T142104+1100",
+          "href": "/httpAuth/app/rest/changes/id:17",
+          "webUrl": "http://localhost:8111/change/17?personal=false"
+        },
+        {
+          "id": 16,
+          "version": "5a8a010dde344c7ba04eea9a674cf58687e18998",
+          "username": "matt.richardson",
+          "date": "20241231T141851+1100",
+          "href": "/httpAuth/app/rest/changes/id:16",
+          "webUrl": "http://localhost:8111/change/16?personal=false"
+        },
+        {
+          "id": 15,
+          "version": "46d5f5c06396c03da8bf7279ec6bbc6f3c57ed06",
+          "username": "matt.richardson",
+          "date": "20241231T135838+1100",
+          "href": "/httpAuth/app/rest/changes/id:15",
+          "webUrl": "http://localhost:8111/change/15?personal=false"
+        },
+        {
+          "id": 14,
+          "version": "61c8b11b87eca5db7db4397630178d984efceede",
+          "username": "matt.richardson",
+          "date": "20241231T135537+1100",
+          "href": "/httpAuth/app/rest/changes/id:14",
+          "webUrl": "http://localhost:8111/change/14?personal=false"
+        },
+        {
+          "id": 13,
+          "version": "ded1d7574a07b4a9bddfd292e45bb0aeb44003ed",
+          "username": "matt.richardson",
+          "date": "20241231T135501+1100",
+          "href": "/httpAuth/app/rest/changes/id:13",
+          "webUrl": "http://localhost:8111/change/13?personal=false"
+        },
+        {
+          "id": 12,
+          "version": "18580a44ea0af6e3023689b319d22d6a73a42f59",
+          "username": "matt.richardson",
+          "date": "20241231T135335+1100",
+          "href": "/httpAuth/app/rest/changes/id:12",
+          "webUrl": "http://localhost:8111/change/12?personal=false"
+        },
+        {
+          "id": 11,
+          "version": "4ee86200fd33f6c832f53cea5c8114714210be65",
+          "username": "matt.richardson",
+          "date": "20241231T135050+1100",
+          "href": "/httpAuth/app/rest/changes/id:11",
+          "webUrl": "http://localhost:8111/change/11?personal=false"
+        },
+        {
+          "id": 10,
+          "version": "89a86b4845d7ac5b27ee2d91f0596e7eebd6843e",
+          "username": "matt.richardson",
+          "date": "20241231T134901+1100",
+          "href": "/httpAuth/app/rest/changes/id:10",
+          "webUrl": "http://localhost:8111/change/10?personal=false"
+        },
+        {
+          "id": 9,
+          "version": "f3208eb149ece675032bf8e1fb87d9efbe6372e8",
+          "username": "matt.richardson",
+          "date": "20241231T134359+1100",
+          "href": "/httpAuth/app/rest/changes/id:9",
+          "webUrl": "http://localhost:8111/change/9?personal=false"
+        },
+        {
+          "id": 8,
+          "version": "a5d1cd7ccd486317a6ddd514caedf5a30149280d",
+          "username": "matt.richardson",
+          "date": "20241231T132153+1100",
+          "href": "/httpAuth/app/rest/changes/id:8",
+          "webUrl": "http://localhost:8111/change/8?personal=false"
+        },
+        {
+          "id": 7,
+          "version": "1f1015c48b6dc56b516a546781c42c986b9067c2",
+          "username": "matt.richardson",
+          "date": "20241231T131930+1100",
+          "href": "/httpAuth/app/rest/changes/id:7",
+          "webUrl": "http://localhost:8111/change/7?personal=false"
+        },
+        {
+          "id": 6,
+          "version": "e36e27be64ddafd1de3a7cd6f0bff135d630c082",
+          "username": "matt.richardson",
+          "date": "20241231T131646+1100",
+          "href": "/httpAuth/app/rest/changes/id:6",
+          "webUrl": "http://localhost:8111/change/6?personal=false"
+        },
+        {
+          "id": 5,
+          "version": "d55ab5472f479190a4310de2d232abcd237cdf1b",
+          "username": "matt.richardson",
+          "date": "20241231T123423+1100",
+          "href": "/httpAuth/app/rest/changes/id:5",
+          "webUrl": "http://localhost:8111/change/5?personal=false"
+        },
+        {
+          "id": 4,
+          "version": "62318723aedaa8a5b541f7cf071959ff936176ba",
+          "username": "matt.richardson",
+          "date": "20241231T123217+1100",
+          "href": "/httpAuth/app/rest/changes/id:4",
+          "webUrl": "http://localhost:8111/change/4?personal=false"
+        },
+        {
+          "id": 3,
+          "version": "5a46cae6bd39fd6964521147811b9ae0650576e0",
+          "username": "matt.richardson",
+          "date": "20241231T120332+1100",
+          "href": "/httpAuth/app/rest/changes/id:3",
+          "webUrl": "http://localhost:8111/change/3?personal=false"
+        },
+        {
+          "id": 2,
+          "version": "34d8901f1ac4d2e77b9755245620338b0100b59f",
+          "username": "matt.richardson",
+          "date": "20241231T115821+1100",
+          "href": "/httpAuth/app/rest/changes/id:2",
+          "webUrl": "http://localhost:8111/change/2?personal=false"
+        },
+        {
+          "id": 1,
+          "version": "32fd5ceecb09161b7ae4440499bc13b0affadfc5",
+          "username": "matt.richardson",
+          "date": "20241231T114415+1100",
+          "href": "/httpAuth/app/rest/changes/id:1",
+          "webUrl": "http://localhost:8111/change/1?personal=false"
+        }
+      ],
+      "href": "/httpAuth/app/rest/changes"
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "X-Frame-Options": "sameorigin",
+      "Strict-Transport-Security": "max-age=31536000;",
+      "X-Content-Type-Options": "nosniff",
+      "X-XSS-Protection": "1; mode=block",
+      "Referrer-Policy": "origin-when-cross-origin",
+      "mixed-content": "noupgrade",
+      "TeamCity-Node-Id": "MAIN_SERVER",
+      "Set-Cookie": [
+        "TCSESSIONID=AF902F2CF41178AE57BB4BDE11BB4B8A; Path=/; HttpOnly",
+        "RecentLogin=; Max-Age=10; Expires=Wed, 01 Jan 2025 05:23:37 GMT; Path=/",
+        "RememberMe=; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; HttpOnly"
+      ],
+      "Cache-Control": "no-store",
+      "Transfer-Encoding": "chunked",
+      "Date": "Wed, 01 Jan 2025 05:23:27 GMT"
+    }
+  }
+}

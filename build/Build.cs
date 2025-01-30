@@ -15,8 +15,6 @@ using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Tools.OctoVersion;
 using Nuke.Common.Utilities.Collections;
 using Serilog;
-using static Nuke.Common.IO.CompressionTasks;
-using static Nuke.Common.IO.FileSystemTasks;
 using static Nuke.Common.IO.PathConstruction;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 
@@ -80,7 +78,7 @@ class Build : NukeBuild
                 .SetVerbosity(DotNetVerbosity.normal)
                 .EnableNoBuild()
                 .EnableNoRestore());
-            SourceDirectory.GlobFiles("**/*.trx").ForEach(x => CopyFileToDirectory(x, ArtifactsDirectory));
+            SourceDirectory.GlobFiles("**/*.trx").ForEach(x => x.CopyToDirectory(ArtifactsDirectory));
         });
 
     Target Pack => _ => _
